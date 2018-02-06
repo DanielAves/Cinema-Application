@@ -1,0 +1,22 @@
+# .gitignore file
+
+
+
+# Compiled bytecode
+*.class
+
+#Intellij
+/out
+*.idea
+
+# Zip archives
+*.zip
+
+# Doc comments 
+/doc
+
+
+
+
+
+
