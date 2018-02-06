@@ -1,2 +1,3 @@
 website/flask/
 website/app/__pycache__/
+*.pyc
