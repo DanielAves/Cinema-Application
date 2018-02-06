@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  {% if title %}
+    <title>{{ title }}</title>
+  {% else %}
+    <title>No title specified</title>
+  {% endif %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+  <ul id="menu">
+    <li><a href="/">Home</a></li>
+    <li><a>What's On</a></li>
+    <li><a>About Us</a></li>
+    <li><a>My Account</a></li>
+  </ul>
+  <br>
+  <div>
+  {% block content %}{% endblock %}<br>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for message in messages %}
+        <p>{{ message }}</p><br>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+  </div>
+</body>
+</html>
