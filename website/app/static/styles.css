@@ -48,7 +48,8 @@ header li{
 
 header #title{
   float: left;
-  margin-bottom: -1%;
+  margin-top: -2%;
+  margin-bottom: -3%;
 }
 
 header #title h1{
