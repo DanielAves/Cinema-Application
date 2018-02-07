@@ -74,65 +74,6 @@ header a:hover{
   margin-left: 20%;
 }
 
-/*.container{
-  width:80%;
-  margin:auto;
-  overflow:hidden;
-}*/
-
-/* Header **/
-/*header{
-  background:#404040;
-  color:#FFFFFF;
-  padding-top:2%;
-  min-height:70px;
-  border-bottom:#992600 5px solid;
-}
-
-ul{
-  margin:0;
-  padding:0;
-}
-
-header a{
-  color:#ffffff;
-  text-decoration:none;
-  text-transform: uppercase;
-  font-size:16px;
-}
-
-header li{
-  float: left;
-  display: inline;
-  padding: 0 20px 0 20px;
-}
-
-header #title{
-  float: left;
-}
-
-header #title h1{
-  margin:0;
-}
-
-header nav{
-  float: right;
-  margin-top: 10px;
-}
-
-header .highlight, header .page a{
-  color:#b32d00;
-}
-
-header a:hover{
-  color:#cccccc;
-  font-weight:bold;
-}
-
-.container h1{
-  margin-left: 20%;
-}*/
-
 /* */
 
 div {
@@ -154,4 +95,14 @@ label {
 
 input {
   display: table-cell;
+}
+
+/* footer */
+
+footer{
+  padding:20px;
+  margin-top:20px;
+  color:#ffffff;
+  background-color:#404040;
+  text-align: center;
 }
