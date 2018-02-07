@@ -10,12 +10,81 @@ body{
   background-color:#f4f4f4;
 }
 
+/* Global */
+
+.container{
+  width:80%;
+  margin:auto;
+  overflow:hidden;
+}
+
 /* Header */
 header{
   background:#404040;
   color:#FFFFFF;
-  padding-top:1%;
-  padding-bottom: 1%;
+  /*padding-top:2%;
+  min-height:0px;*/
+  border-bottom:#992600 5px solid;
+}
+
+ul{
+  margin:0;
+  padding:0;
+  margin-top: 5%;
+}
+
+header a{
+  color:#ffffff;
+  text-decoration:none;
+  text-transform: uppercase;
+  font-size:16px;
+}
+
+header li{
+  float: left;
+  display: inline;
+  padding: 0 20px 0 20px;
+}
+
+header #title{
+  float: left;
+  margin-bottom: -1%;
+}
+
+header #title h1{
+  margin:0;
+}
+
+header nav{
+  float: right;
+  margin-top: 10px;
+}
+
+header .highlight, header .page a{
+  color:#b32d00;
+  font: bold;
+}
+
+header a:hover{
+  color:#cccccc;
+  font-weight:bold;
+}
+
+.container h1{
+  margin-left: 20%;
+}
+
+/*.container{
+  width:80%;
+  margin:auto;
+  overflow:hidden;
+}*/
+
+/* Header **/
+/*header{
+  background:#404040;
+  color:#FFFFFF;
+  padding-top:2%;
   min-height:70px;
   border-bottom:#992600 5px solid;
 }
@@ -35,11 +104,11 @@ header a{
 header li{
   float: left;
   display: inline;
-  padding: 0 15px 0 15px;
+  padding: 0 20px 0 20px;
 }
 
 header #title{
-  margin-left: 1%;
+  float: left;
 }
 
 header #title h1{
@@ -47,8 +116,8 @@ header #title h1{
 }
 
 header nav{
-  margin-top: 1%;
-  margin-left: 60%;
+  float: right;
+  margin-top: 10px;
 }
 
 header .highlight, header .page a{
@@ -62,7 +131,7 @@ header a:hover{
 
 .container h1{
   margin-left: 20%;
-}
+}*/
 
 /* */
 
