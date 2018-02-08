@@ -77,11 +77,11 @@ header a:hover{
 
 /* */
 
-div {
+.mainBody {
     padding: 2em;
 }
 
-form {
+/*form {
   display: table;
 }
 
@@ -96,7 +96,7 @@ label {
 
 input {
   display: table-cell;
-}
+}*/
 
 /* footer */
 
