@@ -1,5 +1,7 @@
-from flask import render_template
+from flask import render_template, flash, redirect, session, url_for, request, make_response
 from app import app
+from .forms import CreateForm, SessionForm, SignupForm, PasswordForm         #all the imports needed for the functions
+import datetime
 
 @app.route('/')
 def index():
@@ -36,19 +38,20 @@ def login():
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
-	message=""
-	user = User.query.all()
-	signform = SignupForm()										#use validation for forms
-	if signform.validate_on_submit():
-		variableFind = User.query.filter_by(username = signform.username.data).first()
-		if variableFind:
-			message="Username Already Taken"
-		else:
-			username_form = User(username = signform.username.data, password = signform.password.data)
-			db.session.add(username_form)									#checks user data and adds to db
-			db.session.commit()
-			return redirect(url_for('create_task'))
-    return render_template('signup.html', title='Sign up', signform = signform, user = user, message = message)
+    signform = SignupForm()
+	# message=""
+	# user = User.query.all()
+	# signform = SignupForm()										#use validation for forms
+	# if signform.validate_on_submit():
+	# 	variableFind = User.query.filter_by(username = signform.username.data).first()
+	# 	if variableFind:
+	# 		message="Username Already Taken"
+	# 	else:
+	# 		username_form = User(username = signform.username.data, password = signform.password.data)
+	# 		db.session.add(username_form)									#checks user data and adds to db
+	# 		db.session.commit()
+	# 		return redirect(url_for('create_task'))
+    return render_template('signup.html', title='Sign up',signform=signform)
 
 @app.route('/card')
 def card():
