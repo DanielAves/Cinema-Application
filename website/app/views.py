@@ -34,9 +34,21 @@ def checkout():
 def login():
     return render_template('login.html', title='Login')
 
-@app.route('/signup')
+@app.route('/signup', methods=['GET', 'POST'])
 def signup():
-    return render_template('signup.html', title='Sign up')
+	message=""
+	user = User.query.all()
+	signform = SignupForm()										#use validation for forms
+	if signform.validate_on_submit():
+		variableFind = User.query.filter_by(username = signform.username.data).first()
+		if variableFind:
+			message="Username Already Taken"
+		else:
+			username_form = User(username = signform.username.data, password = signform.password.data)
+			db.session.add(username_form)									#checks user data and adds to db
+			db.session.commit()
+			return redirect(url_for('create_task'))
+    return render_template('signup.html', title='Sign up', signform = signform, user = user, message = message)
 
 @app.route('/card')
 def card():

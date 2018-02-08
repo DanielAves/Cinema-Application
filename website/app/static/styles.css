@@ -7,16 +7,16 @@ body{
     font: 15px/1.5 Arial;
     padding:0;
     margin:0;
-    background-color:#f4f4f4;
+    background-color:#f4f4f4;v class="container">
 }
 
 /* Global */
-
+/*
 .container{
     width:80%;
     margin:auto;
     overflow:hidden;
-}
+}*/
 
 /* Header */
 header{
@@ -24,15 +24,13 @@ header{
     height: 100px;
     background:#404040;
     color:#FFFFFF;
-    /*padding-top:2%;
-    min-height:0px;*/
     border-bottom:#992600 5px solid;
 }
 
 ul{
     margin:0;
     padding:0;
-    margin-top: 10px;
+    margin-top: 5%;
 }
 
 header a{
@@ -50,12 +48,11 @@ header li{
 
 header #title{
     float: left;
-    margin-top: -2%;
-    margin-bottom: -3%;
 }
 
 header #title h1{
     margin:0;
+    margin-top: 1%;
 }
 
 header nav{
@@ -70,10 +67,9 @@ header .highlight, header .page a{
 
 header a:hover{
     color:#cccccc;
-    font-weight:bold;
 }
 
-.container h1{
+h1{
     margin-left: 20%;
 }
 
