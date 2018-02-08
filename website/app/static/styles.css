@@ -4,106 +4,91 @@
 }
 
 body{
-  font: 15px/1.5 Arial;
-  padding:0;
-  margin:0;
-  background-color:#f4f4f4;
+    font: 15px/1.5 Arial;
+    padding:0;
+    margin:0;
+    background-color:#f4f4f4;
 }
 
 /* Global */
 
 .container{
-  width:80%;
-  margin:auto;
-  overflow:hidden;
+    width:80%;
+    margin:auto;
+    overflow:hidden;
 }
 
 /* Header */
 header{
-  background:#404040;
-  color:#FFFFFF;
-  /*padding-top:2%;
-  min-height:0px;*/
-  border-bottom:#992600 5px solid;
+
+    height: 100px;
+    background:#404040;
+    color:#FFFFFF;
+    /*padding-top:2%;
+    min-height:0px;*/
+    border-bottom:#992600 5px solid;
 }
 
 ul{
-  margin:0;
-  padding:0;
-  margin-top: 5%;
+    margin:0;
+    padding:0;
+    margin-top: 10px;
 }
 
 header a{
-  color:#ffffff;
-  text-decoration:none;
-  text-transform: uppercase;
-  font-size:16px;
+    color:#ffffff;
+    text-decoration:none;
+    text-transform: uppercase;
+    font-size:16px;
 }
 
 header li{
-  float: left;
-  display: inline;
-  padding: 0 20px 0 20px;
+    float: left;
+    display: inline;
+    padding: 0 20px 0 20px;
 }
 
 header #title{
-  float: left;
-  margin-top: -2%;
-  margin-bottom: -3%;
+    float: left;
+    margin-top: -2%;
+    margin-bottom: -3%;
 }
 
 header #title h1{
-  margin:0;
+    margin:0;
 }
 
 header nav{
-  float: right;
-  margin-top: 10px;
+    float: right;
+    margin-top: 10px;
 }
 
 header .highlight, header .page a{
-  color:#b32d00;
-  font: bold;
+    color:#b32d00;
+    font: bold;
 }
 
 header a:hover{
-  color:#cccccc;
-  font-weight:bold;
+    color:#cccccc;
+    font-weight:bold;
 }
 
 .container h1{
-  margin-left: 20%;
+    margin-left: 20%;
 }
 
-/* */
+/* Main Body*/
 
-.mainBody {
+div{
     padding: 2em;
 }
-
-/*form {
-  display: table;
-}
-
-p {
-  display: table-row;
-}
-
-label {
-  display: table-cell;
-  padding-right: 1em;
-}
-
-input {
-  display: table-cell;
-}*/
 
 /* footer */
 
 footer{
-  padding:20px;
-  margin-top:20px;
-  color:#ffffff;
-  background-color:#404040;
-  text-align: center;
+    padding:20px;
+    margin-bottom: 1px;
+    color:#ffffff;
+    background-color:#404040;
+    text-align: center;
 }
