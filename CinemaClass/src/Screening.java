@@ -9,7 +9,7 @@ import java.util.GregorianCalendar;
 *
 */
 
-public class Screening {
+public class Screening extends Film {
 
 private GregorianCalendar dateAndTime ;
 private  int screen ;
@@ -23,7 +23,8 @@ private  int screen ;
 */
 
 public Screening (String title , String synopsis, int year, int month, int dayOfMonth, int hourOfDay, int minute, int second){
-    super();
+    
+    super(title , synopsis);
     dateAndTime = new GregorianCalendar(year,month,dayOfMonth,hourOfDay,minute,second);
 
 }
