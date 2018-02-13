@@ -8,6 +8,9 @@
     <title> No title specified </title>
     {% endif %}
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <![endif]-->
 </head>
 
 <body>
@@ -42,11 +45,11 @@
             {% endwith %}
         </div>
     </section>
+    
     <br>
-
+    
     <footer>
-        <p>Team Osprey, Copyright  &copy 2018</p>
+        <p>Team Osprey, Copyright  &copy; 2018</p>
     </footer>
-
 </body>
 </html>
