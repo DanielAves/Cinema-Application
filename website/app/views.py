@@ -1,6 +1,8 @@
-from flask import render_template, flash, redirect, session, url_for, request, make_response
-from app import app
-from .forms import CreateForm, SessionForm, SignupForm, PasswordForm #All the imports needed for the functions
+from flask import render_template, flash, make_response, redirect, session, url_for, request
+from app import app, db, admin
+from flask_admin.contrib.sqla import ModelView
+from .forms import CreateForm, SessionForm, SignupForm, PasswordForm
+
 import datetime
 
 @app.route('/')

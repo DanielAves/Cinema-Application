@@ -1,6 +1,6 @@
 from flask_wtf import Form
 from wtforms import TextAreaField, StringField, TextField
-from wtforms.validators import DataRequired #Imports needed for form
+from wtforms.validators import DataRequired #Imports needed for forms
 # from .models import Task
 
 class CreateForm(Form):
