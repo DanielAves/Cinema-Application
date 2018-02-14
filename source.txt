@@ -1,0 +1,79 @@
+CREATE TABLE Card
+(
+  card_id INT NOT NULL,
+  card_number INT NOT NULL,
+  card_expiry DATE NOT NULL,
+  card_cvv INT NOT NULL,
+  PRIMARY KEY (card_id),
+  UNIQUE (card_number)
+);
+
+CREATE TABLE Film
+(
+  film_id INT NOT NULL,
+  film_name VARCHAR(30) NOT NULL,
+  film_desc VARCHAR(500) NOT NULL,
+  film_runtime INT NOT NULL,
+  film_director VARCHAR(50) NOT NULL,
+  PRIMARY KEY (film_id),
+  UNIQUE (film_name)
+);
+
+CREATE TABLE Screen
+(
+  screen_id INT NOT NULL,
+  screen_capacity INT,
+  PRIMARY KEY (screen_id)
+);
+
+CREATE TABLE Screening
+(
+  screening_id INT NOT NULL,
+  screening_time INT NOT NULL,
+  screening_date DATE NOT NULL,
+  film_id INT NOT NULL,
+  screen_id INT NOT NULL,
+  PRIMARY KEY (screening_id),
+  FOREIGN KEY (film_id) REFERENCES Film(film_id),
+  FOREIGN KEY (screen_id) REFERENCES Screen(screen_id)
+);
+
+CREATE TABLE Login
+(
+  login_id INT NOT NULL,
+  login_email VARCHAR(30) NOT NULL,
+  login_pwd VARCHAR(30) NOT NULL,
+  login_hint VARCHAR(30),
+  PRIMARY KEY (login_id),
+  UNIQUE (login_email)
+);
+
+CREATE TABLE Customer
+(
+  customer_id INT NOT NULL,
+  customer_f_name VARCHAR(20) NOT NULL,
+  customer_s_name VARCHAR(30) NOT NULL,
+  customer_dob DATE NOT NULL,
+  customer_mobile INT NOT NULL,
+  customer_address VARCHAR(40) NOT NULL,
+  customer_postcode VARCHAR(8) NOT NULL,
+  card_id INT,
+  login_id INT NOT NULL,
+  PRIMARY KEY (customer_id),
+  FOREIGN KEY (card_id) REFERENCES Card(card_id),
+  FOREIGN KEY (login_id) REFERENCES Login(login_id),
+  UNIQUE (customer_mobile),
+  UNIQUE (card_id),
+  UNIQUE (login_id)
+);
+
+CREATE TABLE Booking
+(
+  booking_id INT NOT NULL,
+  booking_seat INT NOT NULL,
+  customer_id INT NOT NULL,
+  screening_id INT NOT NULL,
+  PRIMARY KEY (booking_id),
+  FOREIGN KEY (customer_id) REFERENCES Customer(customer_id),
+  FOREIGN KEY (screening_id) REFERENCES Screening(screening_id)
+);
