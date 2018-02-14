@@ -1,6 +1,8 @@
-from flask import render_template, flash, redirect, session, url_for, request, make_response
-from app import app
-from .forms import CreateForm, SessionForm, SignupForm, PasswordForm         #all the imports needed for the functions
+from flask import render_template, flash, make_response, redirect, session, url_for, request
+from app import app, db, admin
+from flask_admin.contrib.sqla import ModelView
+from .forms import CreateForm, SessionForm, SignupForm, PasswordForm
+
 import datetime
 
 @app.route('/')
@@ -20,7 +22,7 @@ def aboutus():
 def myaccount():
     return render_template('myaccount.html', title='My Account')
 
-@app.route('/moviepage')
+@app.route('/moviepage') #Consider renaming to 'filmpage'
 def movie():
     return render_template('movie.html', title='Movie')
 
@@ -41,14 +43,14 @@ def signup():
     signform = SignupForm()
 	# message=""
 	# user = User.query.all()
-	# signform = SignupForm()										#use validation for forms
+	# signform = SignupForm() #Use validation for forms
 	# if signform.validate_on_submit():
 	# 	variableFind = User.query.filter_by(username = signform.username.data).first()
 	# 	if variableFind:
 	# 		message="Username Already Taken"
 	# 	else:
 	# 		username_form = User(username = signform.username.data, password = signform.password.data)
-	# 		db.session.add(username_form)									#checks user data and adds to db
+	# 		db.session.add(username_form) #Checks user data and adds to db
 	# 		db.session.commit()
 	# 		return redirect(url_for('create_task'))
     return render_template('signup.html', title='Sign up',signform=signform)
