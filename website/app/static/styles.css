@@ -49,7 +49,7 @@ header li{
 header #title{
     float: left;
 }
-http://www.bbc.co.uk/news
+
 header #title h1{
     margin:0;
     margin-top: 1%;
@@ -88,6 +88,20 @@ footer{
     background-color:#404040;
     text-align: center;
 }
+
+/*Index*/
+.wrap{
+  padding:5px;
+  background:#e6e6e6;
+  color: black;
+  margin-top:10px;
+  margin-bottom:10px;
+  list-style: none;
+  padding:20px;
+  border: #cccccc solid 1px;
+  margin-top: 10px;
+}
+
 
 /* Sign Up/ Log In */
 h1{
