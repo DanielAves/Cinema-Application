@@ -10,13 +10,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.io.IOException;
 
 public class filmScreenController{
 
     @FXML
-    private Label film1;
-
+    public Label film1;
 
     public void logoutButtonClicked(ActionEvent event) throws IOException{
         Parent secondaryroot = FXMLLoader.load(getClass().getResource("loginScreen.fxml"));
@@ -25,6 +25,14 @@ public class filmScreenController{
         window.setScene(filmScreen);
         window.show();
 
+    }
+
+    public void selectFilm(ActionEvent event) throws IOException{
+        Parent secondaryroot = FXMLLoader.load(getClass().getResource("timetableScreen.fxml"));
+        Scene timetableScreen = new Scene(secondaryroot);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(timetableScreen);
+        window.show();
 
     }
 
@@ -33,6 +41,7 @@ public class filmScreenController{
         film1.setText("The Greatest Show Man");
 
     }
+
 
 
 

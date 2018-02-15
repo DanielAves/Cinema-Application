@@ -77,7 +77,7 @@
    <right>
       <VBox prefHeight="718.0" prefWidth="349.0" spacing="25.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="filmButton1" alignment="CENTER" mnemonicParsing="false" prefHeight="60.0" prefWidth="200.0" text="Select">
+            <Button fx:id="filmButton1" alignment="CENTER" mnemonicParsing="false" onAction="#selectFilm" prefHeight="60.0" prefWidth="200.0" text="Select">
                <VBox.margin>
                   <Insets top="55.0" />
                </VBox.margin>
