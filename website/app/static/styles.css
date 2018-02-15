@@ -13,18 +13,20 @@ body{
 /* Global */
 /*
 .container{
-    width:80%;
-    margin:auto;
-    overflow:hidden;
+width:80%;
+margin:auto;
+overflow:hidden;
 }*/
 
 /* Header */
 header{
 
     height: 100px;
+    width: 100%;
     background:#404040;
     color:#FFFFFF;
     border-bottom:#992600 5px solid;
+    position: fixed;
 }
 
 ul{
@@ -91,24 +93,70 @@ footer{
 
 /*Index*/
 .wrap{
-  padding:5px;
-  background:#e6e6e6;
-  color: black;
-  margin-top:10px;
-  margin-bottom:10px;
-  list-style: none;
-  padding:20px;
-  border: #cccccc solid 1px;
-  margin-top: 10px;
+    padding:5px;
+    background:#e6e6e6;
+    color: black;
+    margin-top:10px;
+    margin-bottom:10px;
+    list-style: none;
+    padding:20px;
+    border: #cccccc solid 1px;
+    margin-top: 10px;
 }
 
+#gallery .slider{
+    margin-top: 1.5%;
+}
+
+#gallery .slider img{
+    height: 400px;
+    width: 1400px;
+}
+
+.imgContainer{
+    width: 100%;
+    overflow: hidden;
+}
+
+#topFilms h1{
+    margin-left: 129px;
+    float: left;
+    font-size: 25px;
+}
+
+#topFilms{
+    margin-top:-2%;
+}
+
+#topFilms .image{
+    float: left;
+    text-align: center;
+    width: 24%;
+    padding: 1px;
+}
+
+#topFilms .image img{
+    width:190px;
+    height: 230px;
+}
+
+#advertising .filmAd img{
+    float: left;
+    margin-left: 8%;
+    width: 1200px;
+    height: 200px;
+}
+/*
+#about .aboutus{
+float: left;
+}*/
 
 /* Sign Up/ Log In */
 h1{
     float: right;
 }
 .container{
-  width:80%;
-  margin:auto;
-  overflow:hidden;
+    width:80%;
+    margin:auto;
+    overflow:hidden;
 }

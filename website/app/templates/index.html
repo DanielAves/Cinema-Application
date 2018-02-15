@@ -2,50 +2,51 @@
 
 {% block content %}
     <!-- <h1>Hello, {{ user.name }}!</h1> -->
-        <section class = "gallery">
-            <div>
+    <section id = "gallery">
+        <div class = "slider">
+            <a href="/whatson"><img src="./static/img/cocoBanner.jpg" alt ="Coco Movie"></a>
+        </div>
+    </section>
 
-            </div>
-        </section>
-
-        <section class = "topFilms">
-            <h1> Top Films: </h1>
+    <section id = "topFilms">
+        <h1> Top Films: </h1>
+        <!-- <div class = "wrap"> -->
             <div class = "imgContainer">
                 <div class = "image">
-                    <a href=""><img src="./img/BlackPanther.jpg" alt ="Black Panther"></a>
-                    <h2> Black Panther </h2>
+                    <a href="/whatson"><img src="./static/img/BlackPanther.jpg" alt ="Black Panther"></a>
+                    <h4> Black Panther </h4>
                 </div>
                 <div class = "image">
-                    <a href=""><img src="./img/downsizingTeen.jpg" alt ="Downsizing"></a>
-                    <h2> Downsizing </h2>
+                    <a href="/whatson"><img src="./static/img/downsizingTeen.jpg" alt ="Downsizing"></a>
+                    <h4> Downsizing </h4>
                 </div>
                 <div class = "image">
-                    <a href=""><img src="./img/jumanji.jpg" alt ="Jumanji"></a>
-                    <h2> Jumanji: Welcome To The Jungle </h2>
+                    <a href="/whatson"><img src="./static/img/jumanji.jpg" alt ="Jumanji"></a>
+                    <h4> Jumanji: Welcome To The Jungle </h4>
                 </div>
                 <div class = "image">
-                    <a href=""><img src="./img/starwars.jpg" alt ="Star Wars"></a>
-                    <h2> Star Wars: The Last Jedi </h2>
+                    <a href="/whatson"><img src="./static/img/starwars.jpg" alt ="Star Wars"></a>
+                    <h4> Star Wars: The Last Jedi </h4>
                 </div>
-            </div>
-        </section>
+            <!-- </div> -->
+        </div>
+    </section>
 
-        <section id = "promtions">
-            <div class = "filmPromtotion">
-                <a href=""><img src="./img/cocoBanner.jpg" alt ="Coco Movie"></a>
-            </div>
-        </section>
+    <section id = "advertising">
+        <div class = "filmAd">
+            <a href="/whatson"><img src="./static/img/ad1.png" alt ="Coco Movie"></a>
+        </div>
+    </section>
 
-        <section id = "about">
-            <div class = "aboutContainer">
-                <div class="about Us">
-                    <h2> About Us </h2>
-                    <div class = "wrap">
-                        <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis non aliquam nulla. Morbi convallis, justo ac tempus sagittis, augue diam scelerisque lorem, sit amet pellentesque eros lectus sit amet libero. Pellentesque sit amet lorem ut orci mattis hendrerit. Maecenas vestibulum, augue et dapibus sollicitudin, lorem urna fringilla quam, sed tempor ante turpis et erat. Maecenas vitae dui nulla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Proin fermentum, eros a ultricies fermentum, nisi nibh viverra nisi, sit amet varius metus tortor a sapien. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.  #
-                        </p>
-                    </div>
-                </div>
+    <section id = "about">
+        <div class="aboutus">
+            <h2> About Us </h2>
+            <div class = "wrap">
+                <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis non aliquam nulla. Morbi convallis, justo ac tempus sagittis, augue diam scelerisque lorem, sit amet pellentesque eros lectus sit amet libero. Pellentesque sit amet lorem ut orci mattis hendrerit. Maecenas vestibulum, augue et dapibus sollicitudin, lorem urna fringilla quam, sed tempor ante turpis et erat. Maecenas vitae dui nulla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Proin fermentum, eros a ultricies fermentum, nisi nibh viverra nisi, sit amet varius metus tortor a sapien. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.  #
+                </p>
             </div>
-        </section>
+        </div>
+    </div>
+    </section>
 {% endblock %}
