@@ -9,7 +9,7 @@
    <children>
       <HBox alignment="TOP_RIGHT" prefHeight="26.0" prefWidth="600.0">
          <children>
-          <Button alignment="TOP_RIGHT" mnemonicParsing="false" onAction="#homeButtonClicked" text="Logout" />
+          <Button alignment="TOP_RIGHT" mnemonicParsing="false" onAction="#logoutButtonClicked" text="Logout" />
          </children>
       </HBox>
       <HBox layoutX="7.0" prefHeight="400.0" prefWidth="368.0">

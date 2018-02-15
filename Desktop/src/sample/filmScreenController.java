@@ -13,18 +13,25 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class filmScreenController{
+
     @FXML
     private Label film1;
 
-    public void homeButtonClicked(ActionEvent event) throws IOException{
+
+    public void logoutButtonClicked(ActionEvent event) throws IOException{
         Parent secondaryroot = FXMLLoader.load(getClass().getResource("loginScreen.fxml"));
         Scene filmScreen = new Scene(secondaryroot);
-        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        app_stage.setScene(filmScreen);
-        app_stage.show();
-
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(filmScreen);
+        window.show();
 
     }
+    public void initialize(){
+        film1.setText("The Greatest Show");
+
+    }
+
+
 
 
 
