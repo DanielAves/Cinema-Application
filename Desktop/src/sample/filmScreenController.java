@@ -25,9 +25,12 @@ public class filmScreenController{
         window.setScene(filmScreen);
         window.show();
 
+
     }
+
+
     public void initialize(){
-        film1.setText("The Greatest Show");
+        film1.setText("The Greatest Show Man");
 
     }
 
