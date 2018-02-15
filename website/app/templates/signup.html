@@ -1,17 +1,67 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <div class="wrap">
+    <!-- <div class="wrap"> -->
         <h1>Sign Up</h1>
         <form class ="signUp" action="" method="post">
             {{ signform.hidden_tag() }}
-            {{ signform.username (placeholder='Username')}}<br>              <!--First input box and message if not input -->
-            {% for error in signform.username.errors %}
+            {{ signform.firstname (placeholder='Firstname',class_="form-control")}}<br>              <!--First input box and message if not input -->
+            {% for error in signform.firstname.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}<br>
+
+            {{ signform.surname (placeholder='Surname',class_="form-control")}}<br>             <!--Second input box and message if not input -->
+            {% for error in signform.surname.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}<br>
+
+            {{ signform.dob (placeholder='Date of Birth')}}<br>             <!--Second input box and message if not input -->
+            {% for error in signform.dob.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}<br>
+
+            {{ signform.mobile (placeholder='Mobile')}}<br>             <!--Second input box and message if not input -->
+            {% for error in signform.mobile.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}<br>
+
+            {{ signform.address (placeholder='Address')}}<br>             <!--Second input box and message if not input -->
+            {% for error in signform.address.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}<br>
+
+            {{ signform.postcode (placeholder='Postcode')}}<br>             <!--Second input box and message if not input -->
+            {% for error in signform.postcode.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}<br>
+
+            {{ signform.email (placeholder='Email')}}<br>             <!--Second input box and message if not input -->
+            {% for error in signform.email.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}<br>
 
             {{ signform.password (placeholder='Password')}}<br>             <!--Second input box and message if not input -->
-            {% for error in signform.username.errors %}
+            {% for error in signform.password.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}<br>
+
+            {{ signform.confirm (placeholder='Confirm Password')}}<br>             <!--Second input box and message if not input -->
+            {% for error in signform.confirm.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}<br>
+
+            {{ signform.card_number (placeholder='Card Number')}}<br>             <!--Second input box and message if not input -->
+            {% for error in signform.card_number.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}<br>
+
+            {{ signform.card_expiry (placeholder='Card Expiry Date')}}<br>             <!--Second input box and message if not input -->
+            {% for error in signform.card_expiry.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}<br>
+
+            {{ signform.card_cvv (placeholder='Card Verification Number (On back of card)')}}<br>             <!--Second input box and message if not input -->
+            {% for error in signform.card_cvv.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}<br>
 
@@ -19,7 +69,7 @@
         </form>
         {% if message %}
         <p style="color: red; width:100%; text-align:center;">{{ message }}</p>       <!--Message if username taken-->
-    </div>
+    <!-- </div> -->
 
     {% endif %}
 {% endblock %}

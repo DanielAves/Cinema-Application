@@ -1,6 +1,6 @@
 from flask_wtf import Form
-from wtforms import TextAreaField, StringField, TextField
-from wtforms.validators import DataRequired #Imports needed for forms
+from wtforms import TextAreaField, StringField, TextField,IntegerField, DateField,PasswordField
+from wtforms.validators import DataRequired,InputRequired, Length, Email, EqualTo #Imports needed for forms
 # from .models import Task
 
 class CreateForm(Form):
@@ -11,8 +11,19 @@ class SessionForm(Form):
     pw = TextField('pw', validators=[DataRequired()])
 
 class SignupForm(Form):
-    username = TextField('username', validators=[DataRequired()]) #Used for signing up
-    password = TextField('password', validators=[DataRequired()])
+    firstname = TextField('firstname', validators=[DataRequired()])
+    surname = TextField('surname', validators=[DataRequired()])
+    dob = DateField('dob', validators=[DataRequired()],)
+    mobile = TextField('mobile', validators=[DataRequired(),Length(min=9, message="Mobile number not entered")])
+    address = TextField('address', validators=[DataRequired()])
+    postcode = TextField('postcode', validators=[DataRequired()])
+    email = TextField('email', validators=[DataRequired(),Email(message="Incorrect email")]) #Used for signing up
+    password = PasswordField('New Password', [InputRequired(), EqualTo('confirm', message='Passwords must match')])
+    confirm  = PasswordField('Repeat Password')
+    hint = TextField('hint', validators=[DataRequired()])
+    card_number = IntegerField('cardnumber', validators=[DataRequired()])
+    card_expiry = TextField('card_expiry', validators=[DataRequired()])
+    card_cvv = IntegerField('card_cvv', validators=[DataRequired()])
 
 class PasswordForm(Form):
     changeusername = TextField('changeusername', validators=[DataRequired()])
