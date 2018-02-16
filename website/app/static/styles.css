@@ -69,6 +69,7 @@ header .highlight, header .page a{
 
 header a:hover{
     color:#cccccc;
+    /*color:#b32d00;*/
 }
 
 h1{
@@ -89,9 +90,15 @@ footer{
     color:#ffffff;
     background-color:#404040;
     text-align: center;
+    border-top:#992600 5px solid;
 }
 
 /*Index*/
+
+hr{
+    color:#b32d00;
+}
+
 .wrap{
     padding:5px;
     background:#e6e6e6;
@@ -105,6 +112,8 @@ footer{
 }
 
 #gallery .slider{
+    margin-left: 10%;
+    margin-right: 10%;
     margin-top: 1.5%;
 }
 
@@ -119,13 +128,13 @@ footer{
 }
 
 #topFilms h1{
-    margin-left: 129px;
+    margin-left: 5%;
     float: left;
-    font-size: 25px;
+    font-size: 30px;
 }
 
 #topFilms{
-    margin-top:-2%;
+    margin-top: 1%;
 }
 
 #topFilms .image{
@@ -136,13 +145,20 @@ footer{
 }
 
 #topFilms .image img{
-    width:190px;
-    height: 230px;
+    /*width:190px;
+    height: 230px;*/
+    width:260px;
+    height: 345px;
+}
+
+#advertising .filmAd{
+    height: 200px;
+    width: 100%;
 }
 
 #advertising .filmAd img{
     float: left;
-    margin-left: 8%;
+    margin-left: 15%;
     width: 1200px;
     height: 200px;
 }
@@ -161,6 +177,6 @@ h1{
     overflow:hidden;
 }
 
-form-control{               #this is the class for the form
-
+form-control{              /* #this is the class for the form*/
+    margin-top: 500px;;
 }
