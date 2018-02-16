@@ -1,9 +1,9 @@
-DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd )"
-echo $DIR
+# DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd )"
+# echo $DIR
 module add python/3.4.3
-cd $DIR/website
-virtualenv $DIR/flask
-source $DIR/flask/bin/activate
+cd website
+virtualenv flask
+source flask/bin/activate
 
 flask/bin/pip install flask
 flask/bin/pip install flask-login
