@@ -144,6 +144,10 @@ hr{
     padding: 1px;
 }
 
+#topFilms .image h4{
+    font-size: 18px;
+}
+
 #topFilms .image img{
     /*width:190px;
     height: 230px;*/
