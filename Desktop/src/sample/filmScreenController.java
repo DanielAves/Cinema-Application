@@ -15,8 +15,15 @@ import java.io.IOException;
 
 public class filmScreenController{
 
+
     @FXML
     public Label film1;
+
+    public String filmName;
+
+
+
+
 
     public void logoutButtonClicked(ActionEvent event) throws IOException{
         Parent secondaryroot = FXMLLoader.load(getClass().getResource("loginScreen.fxml"));
@@ -32,13 +39,19 @@ public class filmScreenController{
         Scene timetableScreen = new Scene(secondaryroot);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(timetableScreen);
+        this.filmName = "Film 1";
+        System.out.println(filmName);
         window.show();
+
 
     }
 
 
+
+
     public void initialize(){
         film1.setText("The Greatest Show Man");
+
 
     }
 

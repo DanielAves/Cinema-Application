@@ -15,7 +15,7 @@ import java.io.IOException;
 
 
 
-public class timetableController extends filmScreenController{
+public class timetableController{
 
     @FXML
     private Label timeFor;
@@ -32,8 +32,17 @@ public class timetableController extends filmScreenController{
     }
 
 
+
+
+
     public void initialize(){
-        timeFor.setText("The greatest showman");
+
+//        String theFilm = selectFilm
+//
+//        timeFor.setText(filmName);
+
+
+        timeFor.setText("");
 
     }
 
