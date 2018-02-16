@@ -16,5 +16,4 @@ flask/bin/pip install flask-babel
 flask/bin/pip install coverage
 flask/bin/pip install flask-admin
 
-from flask import Flask
 python run.py
