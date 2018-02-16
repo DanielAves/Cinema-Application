@@ -1,6 +1,7 @@
 package sample;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -22,17 +23,7 @@ public class Main extends Application {
 
         window.setScene(loginScreen);
         window.show();
-
-//
-//        Parent secondaryroot = FXMLLoader.load(getClass().getResource("filmScreen.fxml"));
-//        filmScreen = new Scene(secondaryroot, 600, 500);
-
-
-
-
-
-
-        //window.setScene(new Scene(root,600,500));
+        
     }
 
 
