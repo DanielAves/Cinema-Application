@@ -23,7 +23,7 @@ public class Main extends Application {
 
         window.setScene(loginScreen);
         window.show();
-        
+
     }
 
 
