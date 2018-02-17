@@ -82,7 +82,7 @@
                   <Insets top="55.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="filmButton2" mnemonicParsing="false" prefHeight="60.0" prefWidth="200.0" text="Select" />
+            <Button fx:id="filmButton2" mnemonicParsing="false" onAction="#selectFilm" prefHeight="60.0" prefWidth="200.0" text="Select" />
             <Button fx:id="filmButton3" mnemonicParsing="false" prefHeight="60.0" prefWidth="200.0" text="Select" />
             <Button fx:id="filmButton4" mnemonicParsing="false" prefHeight="60.0" prefWidth="200.0" text="Select" />
             <Button fx:id="filmButton5" mnemonicParsing="false" prefHeight="60.0" prefWidth="200.0" text="Select" />

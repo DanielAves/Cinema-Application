@@ -1,18 +1,17 @@
 package sample;
 
-import com.sun.xml.internal.bind.v2.runtime.unmarshaller.Loader;
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import javax.swing.*;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,6 +21,9 @@ public class filmScreenController{
 
     @FXML
     public Label film1;
+
+    @FXML
+    public Button filmButton1;
 
     public String filmName;
 
@@ -38,6 +40,18 @@ public class filmScreenController{
 
     }
     public void selectFilm(ActionEvent event) throws IOException{
+        System.out.println(event.getSource());
+
+        if ("".equals(event.getSource())) {
+            System.out.println("test");
+        }
+
+
+
+
+
+
+
         //if statement here for button selection, changes filmname
         String filmName = film1.getText();
 
@@ -56,6 +70,8 @@ public class filmScreenController{
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(new Scene(p));
         window.show();
+
+
 
 
     }
