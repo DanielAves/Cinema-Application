@@ -31,6 +31,7 @@ public class filmScreenController{
     public Label film2;
 
 
+
     public void logoutButtonClicked(ActionEvent event) throws IOException{
         Parent secondaryroot = FXMLLoader.load(getClass().getResource("loginScreen.fxml"));
         Scene filmScreen = new Scene(secondaryroot);
