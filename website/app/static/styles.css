@@ -111,16 +111,19 @@ hr{
     margin-top: 10px;
 }
 
-#gallery .slider{
+/*------------------------------------------------*/
+
+
+#carousel .carouselPosition{
     margin-left: 10%;
     margin-right: 10%;
     margin-top: 1.5%;
 }
 
-#gallery .slider img{
+/*#carousel .carouselPosition{
     height: 400px;
     width: 1400px;
-}
+}*/
 
 .imgContainer{
     width: 100%;
