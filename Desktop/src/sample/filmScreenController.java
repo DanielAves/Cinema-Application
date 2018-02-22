@@ -56,6 +56,9 @@ public class filmScreenController{
         //if statement here for button selection, changes filmname
         String filmName = film1.getText();
 
+
+
+
         FXMLLoader Loader = new FXMLLoader();
         Loader.setLocation(getClass().getResource("timetableScreen.fxml"));
         try{
@@ -79,7 +82,9 @@ public class filmScreenController{
 
 
     public void initialize(){
-        film1.setText("The Greatest Show Man");
+        dbConnection test2 = new dbConnection();
+        film1.setText(test2.getFilmName());
+        //film1.setText("The Greatest Show Man ever");
         film2.setText("terminator");
 
 

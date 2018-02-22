@@ -19,7 +19,7 @@ public class Main extends Application {
     Stage window;
     Scene loginScreen,filmScreen,timeTable,tickets,seatSelection;
 
-    //public dbConnection db = new dbConnection();
+
 
 
     @Override
@@ -33,20 +33,46 @@ public class Main extends Application {
         window.setScene(loginScreen);
         window.show();
 
-        //int test = db.getfilmID();
-        //System.out.println(test);
-
-
-
-
-
-
-
     }
 
 
+    public static void main(String[] args) throws ClassNotFoundException {
 
-    public static void main(String[] args) {
+
+
+        Connection connection = null;
+        try
+        {
+            // create a database connection
+            connection = DriverManager.getConnection("jdbc:sqlite:films.db"); //jdbc:sqlite:Desktop/films.db - Dec10 pc
+            Statement statement = connection.createStatement();
+            statement.setQueryTimeout(30);  // set timeout to 30 sec.
+
+            dbConnection test = new dbConnection();
+
+
+            ResultSet rs = statement.executeQuery("select * from Film");
+            while(rs.next())
+            {
+
+                // read the result set
+                test.setFilmID(rs.getInt("film_id"));
+                test.setFilmName(rs.getString("film_name"));
+                System.out.println("film_name = " + rs.getString("film_name"));
+
+
+            }
+        }
+        catch(SQLException e)
+        {
+            // if the error message is "out of memory",
+            // it probably means no database file is found
+            System.err.println(e.getMessage());
+        }
+
+
         launch(args);
     }
+
+
 }

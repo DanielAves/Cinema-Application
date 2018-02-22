@@ -33,11 +33,7 @@ public class timetableController{
     public void setFilmName(String filmName){
         this.timeFor.setText(filmName);
 
-
-
     }
-
-
 
     public void backButton(ActionEvent event) throws IOException {
         Parent secondaryroot = FXMLLoader.load(getClass().getResource("filmScreen.fxml"));
