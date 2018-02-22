@@ -6,12 +6,21 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 
 
 public class Main extends Application {
 
     Stage window;
     Scene loginScreen,filmScreen,timeTable,tickets,seatSelection;
+
+    //public dbConnection db = new dbConnection();
+
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -24,7 +33,17 @@ public class Main extends Application {
         window.setScene(loginScreen);
         window.show();
 
+        //int test = db.getfilmID();
+        //System.out.println(test);
+
+
+
+
+
+
+
     }
+
 
 
     public static void main(String[] args) {
