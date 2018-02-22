@@ -67,6 +67,6 @@ public abstract class SeatCollection {
    * Sorts this collection's seats into their natural order.
    */
   public void sort() {
-    Collections.sort(seats);
+    //Collections.sort(seats);
   }
 }

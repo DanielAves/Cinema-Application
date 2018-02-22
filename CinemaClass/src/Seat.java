@@ -12,7 +12,7 @@ public class Seat {
 
     private char row ;
     private int col ;
-    private boolean avalible
+    private boolean avalible;
 
 /**
 *
@@ -29,5 +29,6 @@ public class Seat {
     }
 
 
+}
 
 
