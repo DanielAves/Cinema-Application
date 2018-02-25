@@ -4,7 +4,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@resources/darkTheme.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.loginController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@darkTheme.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.loginController">
    <children>
       <TextField id="username1" fx:id="username" layoutX="146.0" layoutY="62.0" prefHeight="42.0" prefWidth="309.0" promptText="Username" styleClass="textField" />
       <TextField id="passwordField" fx:id="password" layoutX="146.0" layoutY="145.0" prefHeight="42.0" prefWidth="309.0" promptText="Password" styleClass="textField" />

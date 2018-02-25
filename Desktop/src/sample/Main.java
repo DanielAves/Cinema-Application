@@ -25,7 +25,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         window = primaryStage;
-        Parent root = FXMLLoader.load(getClass().getResource("loginScreen.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("resources/loginScreen.fxml"));
         window.setTitle("Desktop Interface");
         loginScreen = new Scene(root, 600, 500);
 
@@ -44,7 +44,7 @@ public class Main extends Application {
         try
         {
             // create a database connection
-            connection = DriverManager.getConnection("jdbc:sqlite:films.db"); //jdbc:sqlite:Desktop/films.db - Dec10 pc
+            connection = DriverManager.getConnection("jdbc:sqlite:films.db"); //jdbc:sqlite:Desktop/films.db - Dec10 pc, intellij
             Statement statement = connection.createStatement();
             statement.setQueryTimeout(30);  // set timeout to 30 sec.
 

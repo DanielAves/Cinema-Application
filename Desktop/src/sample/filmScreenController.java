@@ -9,11 +9,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class filmScreenController{
@@ -33,7 +31,7 @@ public class filmScreenController{
 
 
     public void logoutButtonClicked(ActionEvent event) throws IOException{
-        Parent secondaryroot = FXMLLoader.load(getClass().getResource("loginScreen.fxml"));
+        Parent secondaryroot = FXMLLoader.load(getClass().getResource("resources/loginScreen.fxml"));
         Scene filmScreen = new Scene(secondaryroot);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(filmScreen);
@@ -60,7 +58,7 @@ public class filmScreenController{
 
 
         FXMLLoader Loader = new FXMLLoader();
-        Loader.setLocation(getClass().getResource("timetableScreen.fxml"));
+        Loader.setLocation(getClass().getResource("resources/timetableScreen.fxml"));
         try{
             Loader.load();
         }catch (IOException ex){
