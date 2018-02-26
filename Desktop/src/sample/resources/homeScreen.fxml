@@ -21,7 +21,7 @@
     <RowConstraints maxHeight="451.0" minHeight="10.0" prefHeight="311.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Button mnemonicParsing="false" prefHeight="150.0" prefWidth="300.0" styleClass="Button" stylesheets="@darkTheme.css" text="View" textFill="WHITE" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+      <Button mnemonicParsing="false" onAction="#showToday" prefHeight="150.0" prefWidth="300.0" styleClass="Button" stylesheets="@darkTheme.css" text="View" textFill="WHITE" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
          <font>
             <Font size="25.0" />
          </font>
@@ -43,7 +43,7 @@
             <Insets left="10.0" top="20.0" />
          </GridPane.margin>
       </Label>
-      <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="300.0" styleClass="Button" stylesheets="@darkTheme.css" text="Submit" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" GridPane.vgrow="ALWAYS">
+      <Button mnemonicParsing="false" onAction="#showFutureDate" prefHeight="100.0" prefWidth="300.0" styleClass="Button" stylesheets="@darkTheme.css" text="Submit" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" GridPane.vgrow="ALWAYS">
          <font>
             <Font size="25.0" />
          </font>

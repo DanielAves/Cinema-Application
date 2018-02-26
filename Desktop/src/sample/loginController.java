@@ -29,16 +29,16 @@ public class loginController{
         System.out.println(uname);
         System.out.println(pass);
 
-        if (test.equals(uname) && passwordStore.equals(pass)) {
-            Parent secondaryroot = FXMLLoader.load(getClass().getResource("resources/filmScreen.fxml"));
+ //       if (test.equals(uname) && passwordStore.equals(pass)) {
+            Parent secondaryroot = FXMLLoader.load(getClass().getResource("resources/homeScreen.fxml"));
             Scene filmScreen = new Scene(secondaryroot);
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
             window.setScene(filmScreen);
             window.show();
 
-        } else {
-            System.out.println("Wrong credentials");
-        }
+    //    } else {
+    //        System.out.println("Wrong credentials");
+    //    }
 
     }
 }

@@ -12,26 +12,43 @@ import java.sql.Statement;
  * Created by sc16da on 22/02/18.
  */
 public class dbConnection {
-    private static Integer filmID;
-    private static String filmName;
-    //public void connection() throws ClassNotFoundException{
+
+    public static void Open()throws ClassNotFoundException{
+        Connection connection = null;
+        try
+        {
+            // create a database connection
+            connection = DriverManager.getConnection("jdbc:sqlite:Desktop/films.db"); //jdbc:sqlite:Desktop/films.db - Dec10 pc, intellij
+            Statement statement = connection.createStatement();
+            statement.setQueryTimeout(30);  // set timeout to 30 sec.
+
+            film test = new film();
 
 
-    public void setFilmID(Integer film_id) {
-        this.filmID = film_id;
+            ResultSet rs = statement.executeQuery("select * from Film");
+            while(rs.next())
+            {
+
+                // read the result set
+                test.setFilmID(rs.getInt("film_id"));
+                test.setFilmName(rs.getString("film_name"));
+                System.out.println("film_name = " + rs.getString("film_name"));
+
+
+            }
+        }
+        catch(SQLException e)
+        {
+            // if the error message is "out of memory",
+            // it probably means no database file is found
+            System.err.println(e.getMessage());
+        }
+
+
     }
 
-    public Integer getFilmID() {
-        return filmID;
-    }
 
-    public void setFilmName(String film_name) {
-        this.filmName = film_name;
-    }
 
-    public String getFilmName() {
-        return filmName;
-    }
 
 
 }

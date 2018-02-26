@@ -12,6 +12,8 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.logging.Logger;
 
 public class filmScreenController{
@@ -27,6 +29,8 @@ public class filmScreenController{
 
     @FXML
     public Label film2;
+
+    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
 
 
@@ -45,16 +49,7 @@ public class filmScreenController{
             System.out.println("test");
         }
 
-
-
-
-
-
-
-        //if statement here for button selection, changes filmname
         String filmName = film1.getText();
-
-
 
 
         FXMLLoader Loader = new FXMLLoader();
@@ -73,23 +68,29 @@ public class filmScreenController{
         window.setScene(new Scene(p));
         window.show();
 
-
-
-
     }
 
 
     public void initialize(){
-        dbConnection test2 = new dbConnection();
-        film1.setText(test2.getFilmName());
+        film db = new film();
+        film1.setText(db.getFilmName());
         //film1.setText("The Greatest Show Man ever");
-        film2.setText("terminator");
+        film2.setText(db.getFilmName());
+
+    }
+
+
+
+    public void setDate(LocalDate date){
+        //this.timeFor.setText(filmName);
+        System.out.println(dtf.format(date));
 
 
     }
 
 
-    }
+
+}
 
 
 
