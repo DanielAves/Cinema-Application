@@ -18,11 +18,12 @@ public class dbConnection {
         try
         {
             // create a database connection
-            connection = DriverManager.getConnection("jdbc:sqlite:Desktop/films.db"); //jdbc:sqlite:Desktop/films.db - Dec10 pc, intellij
-            Statement statement = connection.createStatement();
+            Connection con = DriverManager.getConnection("jdbc:sqlite:Desktop/films.db"); //jdbc:sqlite:Desktop/films.db - Dec10 pc, intellij
+            Statement statement = con.createStatement();
             statement.setQueryTimeout(30);  // set timeout to 30 sec.
 
-            film test = new film();
+            film db = new film();
+            db.setConnection(con);
 
 
             ResultSet rs = statement.executeQuery("select * from Film");
@@ -30,8 +31,8 @@ public class dbConnection {
             {
 
                 // read the result set
-                test.setFilmID(rs.getInt("film_id"));
-                test.setFilmName(rs.getString("film_name"));
+                db.setFilmID(rs.getInt("film_id"));
+                db.setFilmName(rs.getString("film_name"));
                 System.out.println("film_name = " + rs.getString("film_name"));
 
 
