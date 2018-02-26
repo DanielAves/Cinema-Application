@@ -27,7 +27,7 @@ CREATE TABLE Film
 (
   film_id INT NOT NULL,
   film_name VARCHAR(30) NOT NULL,
-  film_desc VARCHAR(500) NOT NULL,
+  film_description VARCHAR(500) NOT NULL,
   film_runtime INT NOT NULL,
   film_director VARCHAR(50) NOT NULL,
   film_age_rating VARCHAR(3) NOT NULL,
@@ -58,7 +58,7 @@ CREATE TABLE Screening
 CREATE TABLE Login
 (
   login_email VARCHAR(30) NOT NULL,
-  login_pwd VARCHAR(30) NOT NULL,
+  login_password VARCHAR(30) NOT NULL,
   login_hint VARCHAR(30),
   customer_id INT NOT NULL,
   PRIMARY KEY (customer_id),
@@ -81,20 +81,10 @@ CREATE TABLE Staff
   staff_mobile CHAR(13) NOT NULL,
   staff_address VARCHAR(40) NOT NULL,
   staff_postcode VARCHAR(8) NOT NULL,
-  staff_NIN CHAR(9) NOT NULL,
+  staff_ni CHAR(9) NOT NULL,
   PRIMARY KEY (staff_id),
   UNIQUE (staff_mobile),
-  UNIQUE (staff_NIN)
-);
-
-CREATE TABLE StaffLogin
-(
-  staff_username VARCHAR(20) NOT NULL,
-  staff_password VARCHAR(30) NOT NULL,
-  staff_id INT NOT NULL,
-  PRIMARY KEY (staff_id),
-  FOREIGN KEY (staff_id) REFERENCES Staff(staff_id),
-  UNIQUE (staff_username)
+  UNIQUE (staff_ni)
 );
 
 CREATE TABLE Ticket
