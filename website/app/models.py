@@ -8,8 +8,8 @@ class Customer(db.Model):
     customer_mobile   = db.Column(db.String(13), unique=True)
     customer_address  = db.Column(db.String(40))
     customer_postcode = db.Column(db.String(8))
-    card  = db.relationship('Card', backref = 'customer', lazy = 'dynamic')
-    login = db.relationship('Login', backref = 'customer', lazy = 'dynamic')
+    card   = db.relationship('Card', backref = 'customer', lazy = 'dynamic')
+    login  = db.relationship('Login', backref = 'customer', lazy = 'dynamic')
     ticket = db.relationship('Ticket', backref = 'customer', lazy = 'dynamic')
 
     def __repr__(self):
