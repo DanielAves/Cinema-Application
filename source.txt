@@ -4,7 +4,7 @@ CREATE TABLE Customer
   customer_f_name VARCHAR(20) NOT NULL,
   customer_s_name VARCHAR(30) NOT NULL,
   customer_dob DATE NOT NULL,
-  customer_mobile INT NOT NULL,
+  customer_mobile CHAR(13) NOT NULL,
   customer_address VARCHAR(40) NOT NULL,
   customer_postcode VARCHAR(8) NOT NULL,
   PRIMARY KEY (customer_id),
@@ -14,9 +14,9 @@ CREATE TABLE Customer
 CREATE TABLE Card
 (
   card_id INT NOT NULL,
-  card_number INT NOT NULL,
-  card_expiry DATE NOT NULL,
-  card_cvv INT NOT NULL,
+  card_number CHAR(16) NOT NULL,
+  card_expiry CHAR(5) NOT NULL,
+  card_cvv CHAR(3) NOT NULL,
   customer_id INT NOT NULL,
   PRIMARY KEY (card_id),
   FOREIGN KEY (customer_id) REFERENCES Customer(customer_id),
@@ -30,7 +30,7 @@ CREATE TABLE Film
   film_desc VARCHAR(500) NOT NULL,
   film_runtime INT NOT NULL,
   film_director VARCHAR(50) NOT NULL,
-  film_age_rating INT NOT NULL,
+  film_age_rating VARCHAR(3) NOT NULL,
   PRIMARY KEY (film_id),
   UNIQUE (film_name)
 );
@@ -45,7 +45,7 @@ CREATE TABLE Screen
 CREATE TABLE Screening
 (
   screening_id INT NOT NULL,
-  screening_time INT NOT NULL,
+  screening_time CHAR(5) NOT NULL,
   screening_date DATE NOT NULL,
   film_id INT NOT NULL,
   screen_id INT NOT NULL,
@@ -78,10 +78,10 @@ CREATE TABLE Staff
   staff_f_name VARCHAR(20) NOT NULL,
   staff_s_name VARCHAR(30) NOT NULL,
   staff_dob DATE NOT NULL,
-  staff_mobile INT NOT NULL,
+  staff_mobile CHAR(13) NOT NULL,
   staff_address VARCHAR(40) NOT NULL,
   staff_postcode VARCHAR(8) NOT NULL,
-  staff_NIN INT NOT NULL,
+  staff_NIN CHAR(9) NOT NULL,
   PRIMARY KEY (staff_id),
   UNIQUE (staff_mobile),
   UNIQUE (staff_NIN)
@@ -109,3 +109,4 @@ CREATE TABLE Ticket
   FOREIGN KEY (seat_id) REFERENCES Seat(seat_id),
   UNIQUE (screening_id, seat_id)
 );
+
