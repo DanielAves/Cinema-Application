@@ -9,4 +9,4 @@ db = SQLAlchemy(app)
 
 admin = Admin(app,template_mode='bootstrap3')
 
-from app import views, models
+from app import views, models, rest_api
