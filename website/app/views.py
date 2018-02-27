@@ -2,7 +2,7 @@ from flask import render_template, flash, make_response, redirect, session, url_
 from app import app, db, admin
 from flask_admin.contrib.sqla import ModelView
 from .forms import CreateForm, SessionForm, SignupForm, PasswordForm
-
+from app.models import Customer,Card,Film,Screen,Screening,Login,Seat,Staff,Ticket
 import datetime
 
 @app.route('/')
@@ -41,19 +41,16 @@ def login():
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     signform = SignupForm()
-	# message=""
-	# user = User.query.all()
-	# signform = SignupForm() #Use validation for forms
-	# if signform.validate_on_submit():
-	# 	variableFind = User.query.filter_by(username = signform.username.data).first()
-	# 	if variableFind:
-	# 		message="Username Already Taken"
-	# 	else:
-	# 		username_form = User(username = signform.username.data, password = signform.password.data)
-	# 		db.session.add(username_form) #Checks user data and adds to db
-	# 		db.session.commit()
-	# 		return redirect(url_for('create_task'))
-    return render_template('signup.html', title='Sign up',signform=signform)
+    if signform.validate_on_submit():
+        form_thing = Customer(customer_f_name=signform.firstname.data,customer_s_name=signform.surname.data,customer_dob=signform.dob.data,customer_mobile=signform.mobile.data,customer_address=signform.address.data,customer_postcode=signform.postcode.data)
+        db.session.add(form_thing)
+        db.session.commit()
+        # another_form = Login(login_email=signform.email.data,login_password=signform.confirm.data,login_hint=signform.hint.data)
+        # db.session.add(another_form)
+        # db.session.commit()
+
+    customerList = Customer.query.all()
+    return render_template('signup.html', title='Sign up',signform=signform,customerList=customerList)
 
 @app.route('/card')
 def card():

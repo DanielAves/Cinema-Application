@@ -21,9 +21,9 @@ class SignupForm(Form):
     password = PasswordField('New Password', [InputRequired(), EqualTo('confirm', message='Passwords must match')])
     confirm  = PasswordField('Repeat Password')
     hint = TextField('hint', validators=[DataRequired()])
-    card_number = IntegerField('cardnumber', validators=[DataRequired()])
-    card_expiry = TextField('card_expiry', validators=[DataRequired()])
-    card_cvv = IntegerField('card_cvv', validators=[DataRequired()])
+    # card_number = IntegerField('cardnumber', validators=[DataRequired()])
+    # card_expiry = TextField('card_expiry', validators=[DataRequired()])
+    # card_cvv = IntegerField('card_cvv', validators=[DataRequired()])
 
 class PasswordForm(Form):
     changeusername = TextField('changeusername', validators=[DataRequired()])
