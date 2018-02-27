@@ -236,6 +236,7 @@ float: left;
 }*/
 
 /* Whats On */
+
 .movieWrap{
     padding:5px;
     background:#e6e6e6;
@@ -252,12 +253,9 @@ float: left;
 #title h1{
     margin-top: 80px;
     float: center;
-    /*margin-left: 350px;*/
-    font-size: 40px;
+    /*margin-left: 350px;
+    font-size: 40px;*/
 }
-/*#title p{
-    margin-top: 100px;
-}*/
 
 .movieContainer1{
     width: 75%;
@@ -281,19 +279,23 @@ float: left;
     margin-left: 190px;
 }
 
+.movieInfo1{
+    margin-top: -350px;
+    width: 40%;
+    overflow: hidden;
+    margin-left: 400px;
+}
 
 #movieList .image img{
-    /*width:190px;
-    height: 230px;*/
     width:260px;
     height: 345px;
 }
 
-#topFilms .image h4{
+/*#topFilms .image h4{
     font-size: 18px;
     float: center;
     margin-top: 100px;
-}
+}*/
 
 
 /* Sign Up/Log In */
