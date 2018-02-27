@@ -19,22 +19,10 @@ import java.util.logging.Logger;
 public class filmScreenController{
 
 
-    @FXML
-    public Label film1;
 
     @FXML
-    public Button filmButton1;
+    public Button film1,film2,film3,film4,film5,film6,film7,film8,film9,film10;
 
-    public String filmName;
-
-    @FXML
-    public Label film2;
-    public Label film3;
-    public Label film4;
-    public Label film5;
-    public Label film6;
-    public Label film7;
-    public Label film8;
 
 
     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -49,7 +37,16 @@ public class filmScreenController{
         window.show();
 
     }
-    public void selectFilm(ActionEvent event) throws IOException{
+
+    public void backButtonClicked(ActionEvent event) throws IOException{
+        Parent secondaryroot = FXMLLoader.load(getClass().getResource("resources/homeScreen.fxml"));
+        Scene filmScreen = new Scene(secondaryroot);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(filmScreen);
+        window.show();
+
+    }
+    public void selectFilm1(ActionEvent event) throws IOException{
         System.out.println(event.getSource());
 
         if ("".equals(event.getSource())) {
@@ -68,7 +65,7 @@ public class filmScreenController{
         }
 
         timetableController display = Loader.getController();
-        display.setFilmName(filmName);
+        //display.setFilmName(filmName);
 
         Parent p = Loader.getRoot();
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -90,14 +87,8 @@ public class filmScreenController{
         film6.setText(con.filmList.get(5).getFilmName());
         film7.setText(con.filmList.get(6).getFilmName());
         film8.setText(con.filmList.get(7).getFilmName());
-//        film2.setText(con.filmList.get(8).getFilmName());
-//        film2.setText(con.filmList.get(9).getFilmName());
-//        film2.setText(con.filmList.get(10).getFilmName());
-
-
-
-
-
+        film9.setText(con.filmList.get(8).getFilmName());
+        film10.setText(con.filmList.get(9).getFilmName());
 
     }
 
@@ -106,12 +97,7 @@ public class filmScreenController{
     public void setDate(LocalDate date){
         //this.timeFor.setText(filmName);
         System.out.println(dtf.format(date));
-
-
     }
-
-
-
 }
 
 

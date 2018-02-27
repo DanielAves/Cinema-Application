@@ -24,7 +24,7 @@ public class dbConnection {
 
         try {
             // create a database connection
-            Connection con = DriverManager.getConnection("jdbc:sqlite:Desktop/films.db"); //jdbc:sqlite:Desktop/films.db - Dec10 pc, intellij
+            Connection con = DriverManager.getConnection("jdbc:sqlite:app.db"); //jdbc:sqlite:Desktop/films.db - Dec10 pc, intellij
             Statement statement = con.createStatement();
             statement.setQueryTimeout(30);  // set timeout to 30 sec.
 
@@ -36,7 +36,7 @@ public class dbConnection {
 
                 db.setFilmID(rs.getInt("film_id"));
                 db.setFilmName(rs.getString("film_name"));
-                db.setFilmDesc(rs.getString("film_desc"));
+                db.setFilmDescription(rs.getString("film_description"));
                 db.setFilmRuntime(rs.getInt("film_runtime"));
                 db.setFilmDirector(rs.getString("film_director"));
                 db.setFilmAgeRating(rs.getInt("film_age_rating"));

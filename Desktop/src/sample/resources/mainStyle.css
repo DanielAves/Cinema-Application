@@ -31,10 +31,14 @@
 }
 
 .textField {
-    -fx-text-fill: -fx-primary;
+    -fx-text-fill: rgb(255, 255, 255);
     -fx-font-size : 13pt;
     -fx-focus-color: -fx-secondary;
     -fx-border-color: -fx-secondary;
+}
+
+.text {
+
 }
 
 /* .label {

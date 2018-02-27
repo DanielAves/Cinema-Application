@@ -15,7 +15,7 @@ public class Film {
 
     private Integer filmID;
     private String filmName;
-    private String filmDesc;
+    private String filmDescription;
     private Integer filmRuntime;
     private String filmDirector;
     private Integer filmAgeRating;
@@ -33,12 +33,12 @@ public class Film {
     public void setFilmName(String film_name) { this.filmName = film_name; }
 
 
-    public String getFilmDesc() {
-        return filmDesc;
+    public String getFilmDescription() {
+        return filmDescription;
     }
 
-    public void setFilmDesc(String film_desc) {
-        this.filmDesc = film_desc;
+    public void setFilmDescription(String film_description) {
+        this.filmDescription = film_description;
     }
 
 

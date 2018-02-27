@@ -13,24 +13,26 @@ import java.io.IOException;
 
 public class timetableController{
 
-    @FXML
-    public Label timeFor;
-    //@FXML
-    private Label film1;
+//    @FXML
+//    public Label timeFor;
 
 
-    public String temp;
+//    public void setFilmName(String filmName){
+//        this.timeFor.setText(filmName);
+//
+//    }
 
-
-
-
-    public void setFilmName(String filmName){
-        this.timeFor.setText(filmName);
+    public void backButtonClicked(ActionEvent event) throws IOException {
+        Parent secondaryroot = FXMLLoader.load(getClass().getResource("resources/filmScreen.fxml"));
+        Scene filmScreen = new Scene(secondaryroot);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(filmScreen);
+        window.show();
 
     }
 
-    public void backButton(ActionEvent event) throws IOException {
-        Parent secondaryroot = FXMLLoader.load(getClass().getResource("resources/filmScreen.fxml"));
+    public void logoutButtonClicked(ActionEvent event) throws IOException{
+        Parent secondaryroot = FXMLLoader.load(getClass().getResource("resources/loginScreen.fxml"));
         Scene filmScreen = new Scene(secondaryroot);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(filmScreen);

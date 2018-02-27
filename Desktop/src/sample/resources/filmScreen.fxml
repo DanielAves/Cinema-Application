@@ -2,94 +2,61 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<BorderPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.filmScreenController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@mainStyle.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.filmScreenController">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="866.0" minWidth="10.0" prefWidth="866.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="621.0" minWidth="10.0" prefWidth="169.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="869.0" minWidth="10.0" prefWidth="865.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+  </rowConstraints>
    <padding>
-      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+      <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
    </padding>
-   <top>
-      <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="1180.0" spacing="10.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label prefHeight="26.0" prefWidth="113.0" text="Select Film Date" />
-            <DatePicker />
-            <Label prefHeight="26.0" prefWidth="71.0" />
-            <Button mnemonicParsing="false" onAction="#logoutButtonClicked" prefHeight="42.0" prefWidth="154.0" text="Logout" />
-         </children>
-      </HBox>
-   </top>
-   <left>
-      <VBox prefHeight="718.0" prefWidth="773.0" spacing="10.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label fx:id="film1" prefHeight="74.0" prefWidth="771.0" stylesheets="@darkTheme.css" text="Film 1" textAlignment="CENTER">
-               <VBox.margin>
-                  <Insets top="50.0" />
-               </VBox.margin>
-               <padding>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </padding>
-            </Label>
-            <Label fx:id="film2" prefHeight="72.0" prefWidth="807.0" stylesheets="@darkTheme.css" text="film 2" textAlignment="CENTER">
-               <padding>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </padding>
-            </Label>
-            <Label fx:id="film3" prefHeight="75.0" prefWidth="856.0" stylesheets="@darkTheme.css" text="film 3" textAlignment="CENTER">
-               <padding>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </padding>
-            </Label>
-            <Label fx:id="film4" prefHeight="76.0" prefWidth="808.0" stylesheets="@darkTheme.css" text="film 4" textAlignment="CENTER">
-               <padding>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </padding>
-            </Label>
-            <Label fx:id="film5" prefHeight="77.0" prefWidth="882.0" stylesheets="@darkTheme.css" text="film 5" textAlignment="CENTER">
-               <padding>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </padding>
-            </Label>
-            <Label fx:id="film6" prefHeight="77.0" prefWidth="787.0" stylesheets="@darkTheme.css" text="film 6" textAlignment="CENTER">
-               <padding>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </padding>
-            </Label>
-            <Label fx:id="film7" prefHeight="77.0" prefWidth="802.0" stylesheets="@darkTheme.css" text="film 7" textAlignment="CENTER">
-               <padding>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </padding>
-            </Label>
-            <Label fx:id="film8" prefHeight="77.0" prefWidth="782.0" stylesheets="@darkTheme.css" text="film 8" textAlignment="CENTER">
-               <padding>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </padding>
-            </Label>
-         </children>
-         <BorderPane.margin>
+   <children>
+      <Button fx:id="logOut" mnemonicParsing="false" onAction="#logoutButtonClicked" prefHeight="50.0" prefWidth="150.0" styleClass="Button" stylesheets="@darkTheme.css" text="Logout" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
+         <GridPane.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </GridPane.margin>
+      </Button>
+      <Button fx:id="backButton" alignment="TOP_CENTER" onAction="#backButtonClicked" cancelButton="true" contentDisplay="TOP" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" styleClass="Button" stylesheets="@darkTheme.css" text="&lt;" textFill="WHITE" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+         <font>
+            <Font size="22.0" />
+         </font>
+         <GridPane.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </GridPane.margin>
+      </Button>
+      <Button fx:id="film1" mnemonicParsing="false" onAction="#selectFilm1" prefHeight="125.0" prefWidth="600.0" styleClass="Button" stylesheets="@darkTheme.css" text="Button" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+         <GridPane.margin>
             <Insets />
-         </BorderPane.margin>
-      </VBox>
-   </left>
-   <right>
-      <VBox prefHeight="718.0" prefWidth="349.0" spacing="25.0" BorderPane.alignment="CENTER">
-         <children>
-            <Button fx:id="filmButton1" alignment="CENTER" mnemonicParsing="false" onAction="#selectFilm" prefHeight="60.0" prefWidth="200.0" text="Select">
-               <VBox.margin>
-                  <Insets top="55.0" />
-               </VBox.margin>
-            </Button>
-            <Button fx:id="filmButton2" mnemonicParsing="false" onAction="#selectFilm" prefHeight="60.0" prefWidth="200.0" text="Select" />
-            <Button fx:id="filmButton3" mnemonicParsing="false" prefHeight="60.0" prefWidth="200.0" text="Select" />
-            <Button fx:id="filmButton4" mnemonicParsing="false" prefHeight="60.0" prefWidth="200.0" text="Select" />
-            <Button fx:id="filmButton5" mnemonicParsing="false" prefHeight="60.0" prefWidth="200.0" text="Select" />
-            <Button fx:id="filmButton6" mnemonicParsing="false" prefHeight="60.0" prefWidth="200.0" text="Select" />
-            <Button fx:id="filmButton7" mnemonicParsing="false" prefHeight="60.0" prefWidth="200.0" text="Select" />
-            <Button fx:id="filmButton8" mnemonicParsing="false" prefHeight="60.0" prefWidth="200.0" text="Select" />
-         </children>
-      </VBox>
-   </right>
-</BorderPane>
+         </GridPane.margin>
+      </Button>
+      <Button fx:id="film3" mnemonicParsing="false" prefHeight="125.0" prefWidth="600.0" styleClass="Button" stylesheets="@darkTheme.css" text="Button" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+      <Button fx:id="film5" mnemonicParsing="false" prefHeight="125.0" prefWidth="600.0" styleClass="Button" stylesheets="@darkTheme.css" text="Button" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+      <Button fx:id="film7" mnemonicParsing="false" prefHeight="125.0" prefWidth="600.0" styleClass="Button" stylesheets="@darkTheme.css" text="Button" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+      <Button fx:id="film2" mnemonicParsing="false" prefHeight="125.0" prefWidth="600.0" styleClass="Button" stylesheets="@darkTheme.css" text="Button" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+      <Button fx:id="film4" mnemonicParsing="false" prefHeight="125.0" prefWidth="600.0" styleClass="Button" stylesheets="@darkTheme.css" text="Button" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+      <Button fx:id="film6" mnemonicParsing="false" prefHeight="125.0" prefWidth="600.0" styleClass="Button" stylesheets="@darkTheme.css" text="Button" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+      <Button fx:id="film8" mnemonicParsing="false" prefHeight="125.0" prefWidth="600.0" styleClass="Button" stylesheets="@darkTheme.css" text="Button" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+      <Text fx:id="filmDate" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Showing films for:" textAlignment="CENTER" wrappingWidth="146.13671875" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+         <GridPane.margin>
+            <Insets top="30.0" />
+         </GridPane.margin>
+      </Text>
+      <Button fx:id="film9" mnemonicParsing="false" prefHeight="125.0" prefWidth="600.0" styleClass="Button" stylesheets="@darkTheme.css" text="Button" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+      <Button fx:id="film10" mnemonicParsing="false" prefHeight="125.0" prefWidth="600.0" styleClass="Button" stylesheets="@darkTheme.css" text="Button" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+   </children>
+</GridPane>
