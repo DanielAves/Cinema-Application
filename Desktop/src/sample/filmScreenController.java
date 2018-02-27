@@ -29,6 +29,13 @@ public class filmScreenController{
 
     @FXML
     public Label film2;
+    public Label film3;
+    public Label film4;
+    public Label film5;
+    public Label film6;
+    public Label film7;
+    public Label film8;
+
 
     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
@@ -72,10 +79,25 @@ public class filmScreenController{
 
 
     public void initialize(){
-        film db = new film();
-        film1.setText(db.getFilmName());
-        //film1.setText("The Greatest Show Man ever");
-        film2.setText(db.getFilmName());
+        Film db = new Film();
+        dbConnection con = new dbConnection();
+        film1.setText(con.filmList.get(0).getFilmName());
+
+        film2.setText(con.filmList.get(1).getFilmName());
+        film3.setText(con.filmList.get(2).getFilmName());
+        film4.setText(con.filmList.get(3).getFilmName());
+        film5.setText(con.filmList.get(4).getFilmName());
+        film6.setText(con.filmList.get(5).getFilmName());
+        film7.setText(con.filmList.get(6).getFilmName());
+        film8.setText(con.filmList.get(7).getFilmName());
+//        film2.setText(con.filmList.get(8).getFilmName());
+//        film2.setText(con.filmList.get(9).getFilmName());
+//        film2.setText(con.filmList.get(10).getFilmName());
+
+
+
+
+
 
     }
 
