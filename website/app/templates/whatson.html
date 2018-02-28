@@ -1,52 +1,111 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <section id="title">
-        <h1> Whats On </h1>
-    </section>
-
     <hr>
-
-    <section id="movieList">
-        <div class = "movieContainer1">
-            <div class = 'wrap'>
-                <div class = "image">
-                    <img src="./static/img/BlackPanther.jpg" alt ="Black Panther">
-                </div>
-                <div class="movieInfo1">
-                    <div class = 'wrap'>
-                        <h3> Title </h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet blandit sem. Morbi varius, lorem in bibendum lacinia,
-                         enim nisl elementum libero, vitae scelerisque nisi ligula eu ligula. Phasellus pellentesque mauris sed odio tristique,
-                         vel scelerisque lorem iaculis. Donec bibendum posuere porttitor.</p>
-                    </div>
-            </div>
+    <hr>
+    <div class="row" id="spaceFiller">
+        <div class="col-sm-12">
+            <h1 class="text-center"> Whats On </h1>
         </div>
-        <div class = "movieContainer2">
-            <div class = 'wrap'>
-                <div class = "image">
-                    <img src="./static/img/downsizingTeen.jpg" alt ="Downsizing">
 
+    </div>
+
+    <div class="movies" id="allMovies">
+        <hr>
+        <div class="row">
+            <div class="col-sm-6" style="text-align:center;">
+                <div class="pull-center">
+                    <img src="./static/img/BlackPanther.jpg" alt="Black Panther" class="img-rounded">
                 </div>
             </div>
-        </div>
-        <div class = "movieContainer3">
-            <div class = 'wrap'>
-                <div class = "image">
-                    <img src="./static/img/jumanji.jpg" alt ="Jumanji">
 
-                </div>
-            </div>
-        </div>
-        <div class = "movieContainer4">
-            <div class = 'wrap'>
-                <div class = "image">
-                    <img src="./static/img/starwars.jpg" alt ="Star Wars">
-
-                </div>
+            <div class="col-sm-6">
+                <h3> Title</h3>
+                <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                </p>
+                <a href="#"><button type="button" class="btn">Book Tickets</button> </a>
             </div>
         </div>
 
+        <hr>
 
-    </section>
+        <div class="row">
+            <div class="col-sm-6" style="text-align:center;">
+                <div class="pull-center">
+                    <img src="./static/img/mazerunnerTeen.jpg" alt="Black Panther" class="img-rounded">
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <h3> Title</h3>
+                <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                </p>
+                <a href="#"><button type="button" class="btn">Book Tickets</button> </a>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-sm-6" style="text-align:center;">
+                <div class="pull-center">
+                    <img src="./static/img/jumanji.jpg" alt="Black Panther" class="img-rounded">
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <h3> Title</h3>
+                <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                </p>
+                <a href="#"><button type="button" class="btn">Book Tickets</button> </a>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-sm-6" style="text-align:center;">
+                <div class="pull-center">
+                    <img src="./static/img/thepostSenior.jpg" alt="Black Panther" class="img-rounded">
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <h3> Title</h3>
+                <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                </p>
+                <a href="#"><button type="button" class="btn">Book Tickets</button> </a>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-sm-6" style="text-align:center;">
+                <div class="pull-center">
+                    <img src="./static/img/cocoKids.jpg" alt="Black Panther" class="img-rounded">
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <h3> Title</h3>
+                <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                </p>
+                <a href="#"><button type="button" class="btn">Book Tickets</button> </a>
+            </div>
+        </div>
+
+        <hr>
+    </div>
+    </div>
 {% endblock %}
