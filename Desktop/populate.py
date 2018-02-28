@@ -32,7 +32,7 @@ c.executemany("INSERT INTO Film(film_id, film_name, film_description, film_runti
 (6, u'Jumanji: Welcome To THe Jungle', u'When four kids dust off an old video game and begin to play ‘Jumanji’, they quickly realise this is not a normal game. It’s a game of survival, where only the winners return to the real world.', 119, u'Jake Kasdan', u'12'),
 (7, u'Darkest Hour', u'The fate of Britain lies on Winston Churchill’s shoulders, in this historical-drama that tells the story of the country’s darkest – and strongest – hours.', 125, u'Joe Wright', u'U'),
 (8, u'The Post', u'In June 1971 The New York Times, the Washington Post and the nations major newspapers took a brave stand for freedom of speech and reported on the Pentagon Papers, the massive cover-up of government secrets that spanned four decades and four Presidents.', 116, u'Steven Spielberg', u'12'),
-(9, u'Maze Runner: uThe Death Cure', 'The final battle: Thomas must try to find a cure for the disease that has destroyed most of society. Live or die: everything is about to change...', 142, u'Wes Ball', u'12'),
+(9, u'Maze Runner: The Death Cure', u'The final battle: Thomas must try to find a cure for the disease that has destroyed most of society. Live or die: everything is about to change...', 142, u'Wes Ball', u'12'),
 (10, u'Journeys End', u'With Operation Michael in full swing and a battle on the horizon, a group of British soldiers holed up in a dugout in Aisne in 1918 anxiously await their fate.', 107, u'Saul Dibb', u'12')
 ])
 
