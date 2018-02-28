@@ -7,8 +7,8 @@ class CreateForm(Form):
     number2 = TextAreaField('number2', validators=[DataRequired()]) #The description field
 
 class SessionForm(Form):
-    value = TextField('value', validators=[DataRequired()]) #Used for login
-    pw = TextField('pw', validators=[DataRequired()])
+    login = TextField('login', validators=[DataRequired()]) #Used for login
+    password = TextField('password', validators=[DataRequired()])
 
 class SignupForm(Form):
     firstname = TextField('firstname', validators=[DataRequired()])

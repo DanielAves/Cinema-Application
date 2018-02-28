@@ -20,11 +20,19 @@ def aboutus():
 
 @app.route('/myaccount')
 def myaccount():
+    if 'variable' not in session:
+        return redirect(url_for('login'))
     return render_template('myaccount.html', title='My Account')
 
-@app.route('/moviepage') #Consider renaming to 'filmpage'
+@app.route('/unsetvariable')
+def logout():
+	session.pop('variable', None)					#gets rid of the session
+	return redirect(url_for('index'))
+
+@app.route('/movie') #Consider renaming to 'filmpage'
 def movie():
-    return render_template('movie.html', title='Movie')
+    film = Film.query.all()
+    return render_template('movie.html', title='Movie',film=film)
 
 @app.route('/seatchoice')
 def seatchoice():
@@ -34,9 +42,14 @@ def seatchoice():
 def checkout():
     return render_template('checkout.html', title='Checkout')
 
-@app.route('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def login():
-    return render_template('login.html', title='Login')
+    sessionform = SessionForm()
+    if sessionform.validate_on_submit():
+        session['variable'] = sessionform.login.data
+        return redirect(url_for('myaccount'))
+
+    return render_template('login.html', title='Login', sessionform=sessionform)
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
@@ -49,7 +62,7 @@ def signup():
         # db.session.add(another_form)
         # db.session.commit()
 
-    customerList = Customer.query.all()
+    # customerList = Customer.query.filter_by(customer_f_name="Ben").all()
     return render_template('signup.html', title='Sign up',signform=signform,customerList=customerList)
 
 @app.route('/card')

@@ -1,4 +1,9 @@
 {% extends "base.html" %}
-
 {% block content %}
+
+{% for each in film %}
+      <div id="des  c"> <p>{{ each.film_name}}</p> </div>            <!--  displays a records values -->
+      <!-- <div id="desc"> <p>{{ each.firstname }}</p> </div> -->
+{%endfor%}
+
 {% endblock %}

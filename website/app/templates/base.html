@@ -47,6 +47,7 @@
          <li><a href="/">Home</a></li>
          <li><a href = "/whatson"> What's On </a></li>
          <li><a href = "/aboutus"> About Us</a></li>
+         <li><a href = "/unsetvariable">Log Out</a></li>
        </ul>
        <ul class="nav navbar-nav navbar-right">
          <form class="navbar-form navbar-right" action="/action_page.php">
@@ -67,10 +68,9 @@
    </div>
    </nav>
     <br>
-
+    {% block content %}{% endblock %}<br>
     <section>
         <div>
-            {% block content %}{% endblock %}<br>
             {% with messages = get_flashed_messages() %}
                 {% if messages %}
                     {% for message in messages %}
