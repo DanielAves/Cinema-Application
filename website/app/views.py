@@ -12,7 +12,8 @@ def index():
 
 @app.route('/whatson')
 def whatson():
-    return render_template('whatson.html', title='What is on?')
+    film = Film.query.all()
+    return render_template('whatson.html', title='What is on?',film=film)
 
 @app.route('/aboutus')
 def aboutus():
@@ -22,7 +23,11 @@ def aboutus():
 def myaccount():
     if 'variable' not in session:
         return redirect(url_for('login'))
-    return render_template('myaccount.html', title='My Account')
+    value = session['variable']
+    variableFind = Login.query.filter_by(login_email=value).first()
+    if variableFind:
+        customer = Customer.query.filter_by(customer_id=variableFind.customer_id).all()
+    return render_template('myaccount.html', title='My Account',customer=customer)
 
 @app.route('/unsetvariable')
 def logout():
@@ -31,8 +36,7 @@ def logout():
 
 @app.route('/movie') #Consider renaming to 'filmpage'
 def movie():
-    film = Film.query.all()
-    return render_template('movie.html', title='Movie',film=film)
+    return render_template('movie.html', title='Movie')
 
 @app.route('/seatchoice')
 def seatchoice():
@@ -44,12 +48,16 @@ def checkout():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    message=""
     sessionform = SessionForm()
     if sessionform.validate_on_submit():
-        session['variable'] = sessionform.login.data
-        return redirect(url_for('myaccount'))
-
-    return render_template('login.html', title='Login', sessionform=sessionform)
+        variableFind = Login.query.filter_by(login_email=sessionform.login.data).first()
+        if variableFind:
+            if variableFind.login_password == sessionform.password.data:					#validation to check user data
+                session['variable'] = sessionform.login.data				#creates the session
+                return redirect(url_for('myaccount'))
+        message="Invalid Username or Password"
+    return render_template('login.html', title='Login', sessionform=sessionform,message=message)
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
@@ -61,9 +69,8 @@ def signup():
         # another_form = Login(login_email=signform.email.data,login_password=signform.confirm.data,login_hint=signform.hint.data)
         # db.session.add(another_form)
         # db.session.commit()
-
-    # customerList = Customer.query.filter_by(customer_f_name="Ben").all()
-    return render_template('signup.html', title='Sign up',signform=signform,customerList=customerList)
+    # customer = Customer.query.all()
+    return render_template('signup.html', title='Sign up',signform=signform)
 
 @app.route('/card')
 def card():

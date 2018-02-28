@@ -9,8 +9,9 @@
         </div>
 
     </div>
-
     <div class="movies" id="allMovies">
+
+      {% for each in film %}
         <hr>
         <div class="row">
             <div class="col-sm-6" style="text-align:center;">
@@ -20,16 +21,16 @@
             </div>
 
             <div class="col-sm-6">
-                <h3> Title</h3>
-                <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                </p>
+                <h3> {{ each.film_name}} - {{each.film_age_rating}}</h3>
+                <p>{{ each.film_description}} </p>
+                <p>{{ each.film_runtime}} Minutes</p>
+                <p>Directed by {{ each.film_director}} </p>
                 <a href="#"><button type="button" class="btn">Book Tickets</button> </a>
             </div>
         </div>
+      {%endfor%}
 
-        <hr>
+        <!-- <hr>
 
         <div class="row">
             <div class="col-sm-6" style="text-align:center;">
@@ -103,7 +104,7 @@
                 </p>
                 <a href="#"><button type="button" class="btn">Book Tickets</button> </a>
             </div>
-        </div>
+        </div> -->
 
         <hr>
     </div>

@@ -8,12 +8,12 @@ class CreateForm(Form):
 
 class SessionForm(Form):
     login = TextField('login', validators=[DataRequired()]) #Used for login
-    password = TextField('password', validators=[DataRequired()])
+    password = PasswordField('password', validators=[DataRequired()])
 
 class SignupForm(Form):
     firstname = TextField('firstname', validators=[DataRequired()])
     surname = TextField('surname', validators=[DataRequired()])
-    dob = DateField('dob', validators=[DataRequired()],)
+    dob = DateField('dob', validators=[DataRequired()],format='%Y-%m-%d')
     mobile = TextField('mobile', validators=[DataRequired(),Length(min=9, message="Mobile number not entered")])
     address = TextField('address', validators=[DataRequired()])
     postcode = TextField('postcode', validators=[DataRequired()])
