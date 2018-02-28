@@ -2,8 +2,10 @@
 {% block content %}
 
 {% for each in film %}
-      <div id="des  c"> <p>{{ each.film_name}}</p> </div>            <!--  displays a records values -->
+      <div id="des  c"> <h2>{{ each.film_name}} - {{each.film_runtime}} Minutes</h2> </div>            <!--  displays a records values -->
+      <div id="des  c"> <p>{{ each.film_description}}</p> </div>
       <!-- <div id="desc"> <p>{{ each.firstname }}</p> </div> -->
+      <hr>
 {%endfor%}
 
 {% endblock %}
