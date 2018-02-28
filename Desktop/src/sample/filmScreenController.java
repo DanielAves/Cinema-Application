@@ -9,6 +9,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -22,6 +24,10 @@ public class filmScreenController{
 
     @FXML
     public Button film1,film2,film3,film4,film5,film6,film7,film8,film9,film10;
+    public Text filmDate;
+
+
+
 
 
 
@@ -96,6 +102,7 @@ public class filmScreenController{
 
     public void setDate(LocalDate date){
         //this.timeFor.setText(filmName);
+        filmDate.setText("Showing films for " + dtf.format(date));
         System.out.println(dtf.format(date));
     }
 }

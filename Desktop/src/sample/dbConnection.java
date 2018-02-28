@@ -15,6 +15,7 @@ import java.util.ArrayList;
 public class dbConnection {
 
     public static ArrayList<Film> filmList = new ArrayList<Film>();
+    public static ArrayList<Screening> screeningList = new ArrayList<>();
 
 
     public static void Open()throws ClassNotFoundException {
@@ -45,7 +46,24 @@ public class dbConnection {
 
             System.out.println(filmList.get(8).getFilmName());
 
+            ResultSet rst = statement.executeQuery("SELECT * FROM Screening");
+            while(rs.next()){
+                Screening db = new Screening();
 
+                db.setScreeningID(rst.getInt("screening_id"));
+                db.setScreeningTime(rst.getString("screening_time"));
+                db.setScreeningDate(rst.getString("screening_date"));
+                db.setFilmId(rst.getInt("film_id"));
+                db.setScreenID(rst.getInt("screen_id"));
+                screeningList.add(db);
+
+                //Film db = new Film();
+
+            }
+            //List<Screening>
+
+            System.out.println(screeningList.get(7).getScreeningTime());
+            //System.out.println(screeningList.get(5).getScreeningDate());
         }
         catch(SQLException e) {
             // if the error message is "out of memory",
