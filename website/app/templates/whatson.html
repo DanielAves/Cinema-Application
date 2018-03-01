@@ -28,7 +28,7 @@
                 <p>{{ each.film_description}}</p>
                 <p>Length: {{ each.film_runtime}} minutes</p>
                 <p>Director: {{ each.film_director}} </p>
-                <a href="/movie"><button type="button" class="btn">Book Tickets</button> </a>
+                <a href="/movie/{{each.film_id}}"><button type="button" class="btn">Book Tickets</button> </a>
             </div>
         </div>
       {%endfor%}

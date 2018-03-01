@@ -34,9 +34,11 @@ def logout():
 	session.pop('variable', None)					#gets rid of the session
 	return redirect(url_for('index'))
 
-@app.route('/movie') #Consider renaming to 'filmpage'
-def movie():
-    return render_template('movie.html', title='Movie')
+@app.route('/movie/<movieID>') #Consider renaming to 'filmpage'
+def movie(movieID):
+    film = Film.query.filter_by(film_id=movieID).first()
+    return render_template('movie.html', title='Movie',film=film)
+
 
 @app.route('/seatchoice')
 def seatchoice():
