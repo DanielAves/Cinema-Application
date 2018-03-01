@@ -9,6 +9,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.util.logging.Logger;
 
 
 public class timetableController{
@@ -39,6 +41,26 @@ public class timetableController{
         window.show();
 
     }
+
+    public void time1Clicked(javafx.event.ActionEvent event) throws IOException{
+
+
+
+        FXMLLoader Loader = new FXMLLoader();
+        Loader.setLocation(getClass().getResource("resources/bookingScreen.fxml"));
+        try{
+            Loader.load();
+        }catch (IOException ex){
+            Logger.getLogger(filmScreenController.class.getName());
+        }
+
+        Parent p = Loader.getRoot();
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(new Scene(p));
+        window.show();
+    }
+
+
 
 
 
