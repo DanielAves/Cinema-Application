@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang = "en-GB">
+<head>
+    <meta charset = "utf-8">
+    {% if title %}
+    <title> {{ title }} </title>
+    {% else %}
+    <title> No title specified </title>
+    {% endif %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+</head>
+
+<body>
+    <header>
+        <div id="title">
+            <h1><span class="highlight">OSPREY</span>CINEMA</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href = "/whatson"> What's On </a></li>
+                <li><a href = "/aboutus"> About Us</a></li>
+                <li><a href = "/myaccount"> My Account </a></li>
+                <li><a href = "/signup"> Log In / Sign Up </a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <br>
+
+    <section>
+        <div>
+            {% block content %}{% endblock %}<br>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p>{{ message }}</p><br>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+    </section>
+
+    <br>
+
+    <footer>
+        <p>Team Osprey, Copyright  &copy; 2018</p>
+    </footer>
+</body>
+</html>

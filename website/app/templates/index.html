@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <!-- <h1>Hello, {{ user.name }}!</h1> -->
+    <section id="carousel">
+        <div class="wrapper">
+            <div id="arrow-left" class="arrow"></div>
+            <div id="slider">
+                <div class="slide slide1">
+                    <div class="slide-content">
+                        <span>Image One</span>
+                    </div>
+                </div>
+                <div class="slide slide2">
+                    <div class="slide-content">
+                        <span>Image Two</span>
+                    </div>
+                </div>
+                <div class="slide slide3">
+                    <div class="slide-content">
+                        <span>Image Three</span>
+                    </div>
+                </div>
+            </div>
+            <div id="arrow-right" class="arrow"></div>
+        </div>
+    </section>
+
+    <hr>
+    <hr>
+
+    <section id = "topFilms">
+        <h1> Top Films: </h1>
+        <!-- <div class = "wrap"> -->
+            <div class = "imgContainer">
+                <div class = "image">
+                    <a href="/whatson"><img src="./static/img/BlackPanther.jpg" alt ="Black Panther"></a>
+                    <h4> Black Panther </h4>
+                </div>
+                <div class = "image">
+                    <a href="/whatson"><img src="./static/img/downsizingTeen.jpg" alt ="Downsizing"></a>
+                    <h4> Downsizing </h4>
+                </div>
+                <div class = "image">
+                    <a href="/whatson"><img src="./static/img/jumanji.jpg" alt ="Jumanji"></a>
+                    <h4> Jumanji: Welcome To The Jungle </h4>
+                </div>
+                <div class = "image">
+                    <a href="/whatson"><img src="./static/img/starwars.jpg" alt ="Star Wars"></a>
+                    <h4> Star Wars: The Last Jedi </h4>
+                </div>
+            <!-- </div> -->
+        </div>
+    </section>
+
+    <hr>
+    <hr>
+
+    <section id = "advertising">
+        <div class = "filmAd">
+            <a href="/whatson"><img src="./static/img/ad1.png" alt ="Coco Movie"></a>
+        </div>
+    </section>
+
+    <hr>
+    <hr>
+
+    <section id = "about">
+        <div class="aboutus">
+            <h2> About Us </h2>
+            <!-- <div class = "wrap"> -->
+                <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis non aliquam nulla. Morbi convallis, justo ac tempus sagittis, augue diam scelerisque lorem, sit amet pellentesque eros lectus sit amet libero. Pellentesque sit amet lorem ut orci mattis hendrerit. Maecenas vestibulum, augue et dapibus sollicitudin, lorem urna fringilla quam, sed tempor ante turpis et erat. Maecenas vitae dui nulla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Proin fermentum, eros a ultricies fermentum, nisi nibh viverra nisi, sit amet varius metus tortor a sapien. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.  #
+                </p>
+            <!-- </div> -->
+        </div>
+    </div>
+    </section>
+
+    <script>
+        //selecting all elements known as ......
+        let sliderImages = document.querySelectorAll('.slide'),
+            arrowLeft = document.querySelector('#arrow-left'),
+            arrowRight = document.querySelector('#arrow-right'),
+            //represents the slide that is showing
+            current = 0;
+
+        // Clear all images
+        function reset() {
+            for (let i = 0; i < sliderImages.length; i++) {
+                sliderImages[i].style.display = "none";
+            }
+        }
+
+        // Init slider
+        function startSlide() {
+            reset();
+            sliderImages[0].style.display = "block";
+        }
+
+        // Show prev
+        function slideLeft() {
+            reset();
+            sliderImages[current - 1].style.display = "block";
+            current--;
+        }
+
+        // Show next
+        function slideRight() {
+            reset();
+            sliderImages[current + 1].style.display = "block";
+            current++;
+        }
+
+        // Left arrow click
+        arrowLeft.addEventListener("click", function() {
+            if (current === 0) {
+                current = sliderImages.length;
+            }
+            slideLeft();
+        });
+
+        // Right arrow click
+        arrowRight.addEventListener("click", function() {
+            if (current === sliderImages.length - 1) {
+                current = -1;
+            }
+            slideRight();
+        });
+
+        startSlide();
+    </script>
+
+{% endblock %}
