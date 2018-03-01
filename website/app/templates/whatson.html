@@ -1,36 +1,40 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <section id="title">
-        <h1> Whats On </h1>
-    </section>
+    <hr>
+    <hr>
+    <div class="row" id="spaceFiller">
+        <div class="col-sm-12">
+            <h1 class="text-center"> Whats On </h1>
+        </div>
 
-    <section id="movieList">
-        <div class = "movieContainer1">
-            <div class = 'wrap'>
-                <div class = "image">
-                    <img src="./static/img/BlackPanther.jpg" alt ="Black Panther">
-                    <h4> Black Panther </h4>
+    </div>
+    <div class="movies" id="allMovies">
+
+      {% for each in film %}
+        <hr>
+        <div class="row">
+            <div class="col-sm-6" style="text-align:center;">
+                <div class="pull-center">
+                    <img src="./static/img/BlackPanther.jpg" alt="Black Panther" class="img-rounded">
                 </div>
             </div>
-        </div>
-        <div class = "movieContainer2">
-            <div class = "image">
-                <img src="./static/img/downsizingTeen.jpg" alt ="Downsizing">
-                <h4> Downsizing </h4>
+
+            <div class="col-sm-6">
+                <h3> {{ each.film_name}}</h3>
+                <hr>
+                <h4>Rating: <span class="highlight">{{each.film_age_rating}}</span></h4>
+                <p>{{ each.film_description}}</p>
+                <p>Length: {{ each.film_runtime}} minutes</p>
+                <p>Director: {{ each.film_director}} </p>
+                <a href="#"><button type="button" class="btn">Book Tickets</button> </a>
             </div>
         </div>
-        <div class = "movieContainer3">
-            <div class = "image">
-                <img src="./static/img/jumanji.jpg" alt ="Jumanji">
-                <h4> Jumanji: Welcome To The Jungle </h4>
-            </div>
-        </div>
-        <div class = "movieContainer4">
-            <div class = "image">
-                <img src="./static/img/starwars.jpg" alt ="Star Wars">
-                <h4> Star Wars: The Last Jedi </h4>
-            </div>
-        </div>
-    </section>
+      {%endfor%}
+
+
+
+        <hr>
+    </div>
+    </div>
 {% endblock %}

@@ -261,6 +261,7 @@ float: left;
     width: 75%;
     overflow: hidden;
     margin-left: 190px;
+    padding-bottom: 50px;
 }
 
 .movieContainer2{
@@ -281,8 +282,8 @@ float: left;
 
 .movieInfo1{
     margin-top: -350px;
-    width: 40%;
-    overflow: hidden;
+    width: 50%;
+    /*overflow: hidden;*/
     margin-left: 400px;
 }
 
