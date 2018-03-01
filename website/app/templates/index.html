@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-
-    <div class="container">
+<br>
+<hr>
+<hr>
+    <div class="container" id="main">
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
             <ol class="carousel-indicators">
@@ -40,7 +42,7 @@
             <!-- Left and right controls -->
             <a class="left carousel-control" href="#myCarousel" data-slide="prev">
                 <!-- <span class="glyphicon glyphicon-chevron-left"></span> -->
-                <span class="sr-only"></span>
+                <span clas    <div class="container">s="sr-only"></span>
             </a>
             <a class="right carousel-control" href="#myCarousel" data-slide="next">
                 <!-- <span class="glyphicon glyphicon-chevron-right"></span> -->
@@ -65,7 +67,7 @@
                 <h3 class="panel-title">Black Panther</h3>
                 <hr>
                 <img src="./static/img/BlackPanther.jpg" alt="Black Panther" class="img-rounded">
-            <p><a href="#"><button type="button" class="btn">Book Now</button> </a></p>
+            <p><a href="/movie"><button type="button" class="btn">Book Now</button> </a></p>
             </div>
         </div>
 
@@ -74,7 +76,7 @@
                 <h3 class="panel-title">Downsizing</h3>
                 <hr >
                 <img src="./static/img/downsizingTeen.jpg" alt="Downsizing" class="img-rounded">
-                <p><a href="#"><button type="button" class="btn">Book Now</button> </a></p>
+                <p><a href="/movie"><button type="button" class="btn">Book Now</button> </a></p>
             </div>
         </div>
 
@@ -84,7 +86,7 @@
                 <h3 class="panel-title">Star Wars: The Last Jedi</h3>
                 <hr>
                 <img src="./static/img/starwars.jpg" alt="The Greatest Showman" class="img-rounded">
-                <p><a href="#"><button type="button" class="btn">Book Now</button> </a></p>
+                <p><a href="/movie"><button type="button" class="btn">Book Now</button> </a></p>
 
             </div>
         </div>
@@ -137,5 +139,7 @@
             </div>
         </div>
     </div>
+    <hr>
+    <hr>
 
 {% endblock %}

@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+    <br>
     <hr>
     <hr>
     <div class="row" id="spaceFiller">
@@ -27,13 +28,13 @@
                 <p>{{ each.film_description}}</p>
                 <p>Length: {{ each.film_runtime}} minutes</p>
                 <p>Director: {{ each.film_director}} </p>
-                <a href="#"><button type="button" class="btn">Book Tickets</button> </a>
+                <a href="/movie"><button type="button" class="btn">Book Tickets</button> </a>
             </div>
         </div>
       {%endfor%}
 
 
-
+        <hr>
         <hr>
     </div>
     </div>
