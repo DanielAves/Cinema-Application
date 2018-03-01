@@ -102,4 +102,4 @@ class Ticket(db.Model):
     seat_id      = db.Column(db.Integer, db.ForeignKey('seat.seat_id'))
 
     def __repr__(self):
-        return '' % (sel
+        return '' % (self)
