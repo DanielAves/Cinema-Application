@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@mainStyle.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.filmScreenController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="980.0" prefWidth="1820.0" stylesheets="@mainStyle.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.filmScreenController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="866.0" minWidth="10.0" prefWidth="866.0" />
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="621.0" minWidth="10.0" prefWidth="169.0" />
@@ -31,7 +31,7 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </GridPane.margin>
       </Button>
-      <Button fx:id="backButton" alignment="TOP_CENTER" onAction="#backButtonClicked" cancelButton="true" contentDisplay="TOP" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" styleClass="Button" stylesheets="@darkTheme.css" text="&lt;" textFill="WHITE" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+      <Button fx:id="backButton" alignment="TOP_CENTER" cancelButton="true" contentDisplay="TOP" mnemonicParsing="false" onAction="#backButtonClicked" prefHeight="50.0" prefWidth="150.0" styleClass="Button" stylesheets="@darkTheme.css" text="&lt;" textFill="WHITE" GridPane.halignment="LEFT" GridPane.valignment="TOP">
          <font>
             <Font size="22.0" />
          </font>
