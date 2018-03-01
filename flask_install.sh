@@ -1,19 +1,17 @@
 # DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd )"
 # echo $DIR
-module add python/3.4.3
-cd website
-virtualenv flask
-source flask/bin/activate
+module add anaconda3/5.0.1
 
-flask/bin/pip install flask
-flask/bin/pip install flask-login
-flask/bin/pip install flask-mail
-flask/bin/pip install flask-sqlalchemy
-flask/bin/pip install sqlalchemy-migrate
-flask/bin/pip install flask-whooshalchemy
-flask/bin/pip install flask-wtf
-flask/bin/pip install flask-babel
-flask/bin/pip install coverage
-flask/bin/pip install flask-admin
+conda create -n flask python
+source activate flask
 
-python run.py
+pip install flask
+pip install flask-login
+pip install flask-mail
+pip install flask-sqlalchemy
+pip install sqlalchemy-migrate
+pip install flask-whooshalchemy
+pip install flask-wtf
+pip install coverage
+pip install flask-admin
+pip install flask-restless
