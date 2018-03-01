@@ -109,7 +109,7 @@ public class HttpClient {
     HttpClient hc = new HttpClient("localhost", 5000);
     System.out.println(hc.get("screen"));
 
-    hc.delete("screen/5","{\"screen_capacity\": 2222222222}");
+    hc.delete("screen/5");
 
     System.out.println("\n\n\n\n");
 

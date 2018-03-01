@@ -2,30 +2,49 @@ import java.util.Map;
 
 public class Screen extends Resource {
 
-  private int id;
+  private int screen_id;
 
-  private int capacity;
-
-  public Screen(int id) throws Exception {
-    /**String json = this.client.get("screen/"+id);
-    Map<String, Object> p = this.getMap(json);
-
-    this.id = (int)p.get("screen_id");
-    this.capacity = (int)p.get("screen_capacity");
-    */
-    
-  }
+  private int screen_capacity;
 
 
-  public int getId(){
-    return id;
-  }
+	/**
+	* Returns value of screen_id
+	* @return
+	*/
+	public int getScreen_id() {
+		return screen_id;
+	}
 
-  public int getCapacity(){
-    return capacity;
-  }
+	/**
+	* Sets new value of screen_id
+	* @param
+	*/
+	public void setScreen_id(int screen_id) {
+		this.screen_id = screen_id;
+	}
 
-  public void setCapacity(int capacity){
+	/**
+	* Returns value of screen_capacity
+	* @return
+	*/
+	public int getScreen_capacity() {
+		return screen_capacity;
+	}
 
-  }
+	/**
+	* Sets new value of screen_capacity
+	* @param
+	*/
+	public void setScreen_capacity(int screen_capacity) {
+		this.screen_capacity = screen_capacity;
+	}
+
+	/**
+	* Create string representation of Screen for printing
+	* @return
+	*/
+	@Override
+	public String toString() {
+		return "Screen [screen_id=" + screen_id + ", screen_capacity=" + screen_capacity + "]";
+	}
 }

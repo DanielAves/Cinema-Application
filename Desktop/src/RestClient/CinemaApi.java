@@ -1,23 +1,13 @@
+import java.util.List;
+
 public interface CinemaApi {
-
-    /**
-    * Bookings methods
-    */
-    public void createBooking();
-
-    public boolean deleteBooking(Booking booking);
-
-    public boolean updateBooking(Booking booking);
-
-    public List<Booking> getBookings();
-
 
     /**
     * Customers methods
     */
     public Customer createCustomer();
 
-    public boolean deleteCustomer(Customer customer)
+    public boolean deleteCustomer(Customer customer);
 
     public boolean updateCustomer(Customer customer);
 
@@ -44,6 +34,8 @@ public interface CinemaApi {
 
     public boolean updateScreen(Screen screen);
 
+    public Screen getScreen(int id) throws Exception ;
+
     public List<Screen> getScreens();
 
     /**
@@ -65,6 +57,8 @@ public interface CinemaApi {
     public boolean deleteSeat(Seat seat);
 
     public boolean updateSeat(Seat seat);
+
+    public Seat getSeat(int id) throws Exception;
 
     public List<Seat> getSeats();
 
