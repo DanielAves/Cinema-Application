@@ -1,10 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
+    <br>
     <hr>
     <hr>
+    <div class="row">
     <div class="row" id="customerDetails">
         <div class="col-sm-4">
-            <h1>My Details</h1><hr>
+
+        </div>
+        <div class="col-sm-4">
+            <h1>My Details</h1>
             {% for each in customer %}
                 <h3>{{each.customer_f_name}}</h3>
                 <h3>{{each.customer_s_name}}</h3>
