@@ -85,6 +85,11 @@ ul.unstyled {
 /* --------------------------------------
    Global Styles
    -------------------------------------- */
+
+#chosenFilm img{
+	width: 230px;
+	height: 310px;
+}
 .panel img{
 	width: 230px;
 	height: 310px;

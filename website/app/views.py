@@ -37,7 +37,7 @@ def logout():
 @app.route('/movie/<movieID>') #Consider renaming to 'filmpage'
 def movie(movieID):
     film = Film.query.filter_by(film_id=movieID).first()
-    return render_template('movie.html', title='Movie',film=film)
+    return render_template('movie.html', title='Movie', film=film)
 
 
 @app.route('/seatchoice')
