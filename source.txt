@@ -31,6 +31,7 @@ CREATE TABLE Film
   film_runtime INT NOT NULL,
   film_director VARCHAR(50) NOT NULL,
   film_age_rating VARCHAR(3) NOT NULL,
+  film_poster VARCHAR(50) NOT NULL,
   PRIMARY KEY (film_id),
   UNIQUE (film_name)
 );
@@ -99,4 +100,3 @@ CREATE TABLE Ticket
   FOREIGN KEY (seat_id) REFERENCES Seat(seat_id),
   UNIQUE (screening_id, seat_id)
 );
-
