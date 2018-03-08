@@ -21,7 +21,7 @@ class Card(db.Model):
     card_id = db.Column(db.Integer, primary_key=True)
     customer_id = db.Column(db.Integer, db.ForeignKey('customer.customer_id'))
     card_number = db.Column(db.Integer, unique=True)
-    card_expiry = db.Column(db.Integer)
+    card_expiry = db.Column(db.Date)
     card_cvv = db.Column(db.Integer)
 
     def __repr__(self):
@@ -54,8 +54,8 @@ class Screen(db.Model):
 class Screening(db.Model):
     screening_id = db.Column(db.Integer, primary_key=True)
     film_id  = db.Column(db.Integer, db.ForeignKey('film.film_id'))
-    screen_id = db.Column(db.Integer, primary_key = True,db.ForeignKey('screen.screen_id'))
-    screening_time = db.Column(db.Time, primary_key=True)
+    screen_id = db.Column(db.Integer,db.ForeignKey('screen.screen_id'),primary_key = True)
+    screening_time = db.Column(db.String, primary_key=True)
     screening_date = db.Column(db.Date)
     ticket = db.relationship('Ticket', backref = 'screening', lazy = 'dynamic')
 
@@ -99,8 +99,8 @@ class Staff(db.Model):
 class Ticket(db.Model):
     ticket_id = db.Column(db.Integer, primary_key=True)
     customer_id  = db.Column(db.Integer, db.ForeignKey('customer.customer_id'))
-    screening_id = db.Column(db.Integer, primary_key = True,db.ForeignKey('screening.screening_id'))
-    seat_id      = db.Column(db.Integer, primary_key = True,db.ForeignKey('seat.seat_id'))
+    screening_id = db.Column(db.Integer,db.ForeignKey('screening.screening_id'), primary_key = True)
+    seat_id      = db.Column(db.Integer,db.ForeignKey('seat.seat_id'),primary_key = True)
 
     def __repr__(self):
         return '' % (self)
