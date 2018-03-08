@@ -23,8 +23,11 @@ public interface CinemaApi {
 
     public boolean updateFilm(Film film);
 
-    public List<Film> getFilms();
+    /*****/
+    public Film getFilm(int id) throws Exception ;
 
+    public List<Film> getFilms();
+    /********/
     /**
     * Screen methods
     */
@@ -34,10 +37,11 @@ public interface CinemaApi {
 
     public boolean updateScreen(Screen screen);
 
+    /********/
     public Screen getScreen(int id) throws Exception ;
 
     public List<Screen> getScreens();
-
+    /********/
     /**
     * Screenings methods
     */
@@ -46,9 +50,12 @@ public interface CinemaApi {
     public boolean deleteScreening(Screening screening);
 
     public boolean updateScreening(Screening screening);
+    /********/
 
-    public List<Screening> getScreening();
+    public Screening getScreening(int id) throws Exception ;
+    public List<Screening> getScreenings();
 
+    /********/
     /**
     * Seat methods
     */
@@ -71,6 +78,12 @@ public interface CinemaApi {
 
     public boolean updateTicket(Ticket ticket);
 
+      /*****/
+
+    public Ticket getTicket(int id) throws Exception;
+
     public List<Ticket> getTickets();
+
+      /*****/
 
 }

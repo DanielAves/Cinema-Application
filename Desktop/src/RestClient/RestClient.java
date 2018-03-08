@@ -46,6 +46,15 @@ public class RestClient implements CinemaApi {
         return false;
       }
 
+      public Film getFilm(int id) throws Exception {
+        String json = this.client.get("film/"+id);
+        Film film = mapper.readValue(json, Film.class);
+        return film;
+
+
+      }
+
+
       public List<Film> getFilms(){
         return null;
       }
@@ -90,7 +99,13 @@ public class RestClient implements CinemaApi {
         return false;
       }
 
-      public List<Screening> getScreening(){
+      public Screening getScreening(int id) throws Exception {
+        String json = this.client.get("screening/"+id);
+        Screening screening = mapper.readValue(json, Screening.class);
+        return screening;
+      }
+
+      public List<Screening> getScreenings(){
         return null;
       }
 
@@ -132,6 +147,10 @@ public class RestClient implements CinemaApi {
 
       public boolean updateTicket(Ticket ticket){
         return false;
+      }
+
+      public Ticket getTicket(int id) throws Exception{
+        return null ;
       }
 
       public List<Ticket> getTickets(){
