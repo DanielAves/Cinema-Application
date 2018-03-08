@@ -35,6 +35,7 @@ class Film(db.Model):
     film_runtime = db.Column(db.Integer)
     film_director = db.Column(db.String(50))
     film_age_rating = db.Column(db.String(3))
+    film_poster = db.Column(db.String(40))
     screening = db.relationship('Screening', backref = 'film', lazy = 'dynamic')
 
     def __repr__(self):
@@ -53,9 +54,9 @@ class Screen(db.Model):
 class Screening(db.Model):
     screening_id = db.Column(db.Integer, primary_key=True)
     film_id  = db.Column(db.Integer, db.ForeignKey('film.film_id'))
-    screen_id = db.Column(db.Integer, db.ForeignKey('screen.screen_id'))
-    screening_time = db.Column(db.String(5))
-    screening_date = db.Column(db.DateTime)
+    screen_id = db.Column(db.Integer, primary_key = True,db.ForeignKey('screen.screen_id'))
+    screening_time = db.Column(db.Time, primary_key=True)
+    screening_date = db.Column(db.Date)
     ticket = db.relationship('Ticket', backref = 'screening', lazy = 'dynamic')
 
     def __repr__(self):
@@ -84,7 +85,7 @@ class Staff(db.Model):
     staff_id = db.Column(db.Integer, primary_key=True)
     staff_f_name = db.Column(db.String(20))
     staff_s_name = db.Column(db.String(30))
-    staff_dob = db.Column(db.DateTime)
+    staff_dob = db.Column(db.Date)
     staff_mobile = db.Column(db.String(13), unique=True)
     staff_address = db.Column(db.String(40))
     staff_postcode = db.Column(db.String(8))
@@ -98,8 +99,8 @@ class Staff(db.Model):
 class Ticket(db.Model):
     ticket_id = db.Column(db.Integer, primary_key=True)
     customer_id  = db.Column(db.Integer, db.ForeignKey('customer.customer_id'))
-    screening_id = db.Column(db.Integer, db.ForeignKey('screening.screening_id'))
-    seat_id      = db.Column(db.Integer, db.ForeignKey('seat.seat_id'))
+    screening_id = db.Column(db.Integer, primary_key = True,db.ForeignKey('screening.screening_id'))
+    seat_id      = db.Column(db.Integer, primary_key = True,db.ForeignKey('seat.seat_id'))
 
     def __repr__(self):
         return '' % (self)
