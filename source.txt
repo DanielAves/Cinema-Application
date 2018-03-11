@@ -91,6 +91,7 @@ CREATE TABLE Staff
 CREATE TABLE Ticket
 (
   ticket_id INT NOT NULL,
+  ticket_price VARCHAR(6) NOT NULL,
   screening_id INT NOT NULL,
   customer_id INT NOT NULL,
   seat_id INT NOT NULL,
