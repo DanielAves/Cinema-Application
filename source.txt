@@ -14,10 +14,10 @@ CREATE TABLE Customer
 CREATE TABLE Card
 (
   card_id INT NOT NULL,
+  customer_id INT NOT NULL,
   card_number CHAR(16) NOT NULL,
   card_expiry CHAR(5) NOT NULL,
   card_cvv CHAR(3) NOT NULL,
-  customer_id INT NOT NULL,
   PRIMARY KEY (card_id),
   FOREIGN KEY (customer_id) REFERENCES Customer(customer_id),
   UNIQUE (card_number)
@@ -46,10 +46,10 @@ CREATE TABLE Screen
 CREATE TABLE Screening
 (
   screening_id INT NOT NULL,
-  screening_time CHAR(5) NOT NULL,
-  screening_date DATE NOT NULL,
   film_id INT NOT NULL,
   screen_id INT NOT NULL,
+  screening_time CHAR(5) NOT NULL,
+  screening_date DATE NOT NULL,
   PRIMARY KEY (screening_id),
   FOREIGN KEY (film_id) REFERENCES Film(film_id),
   FOREIGN KEY (screen_id) REFERENCES Screen(screen_id),
@@ -58,10 +58,10 @@ CREATE TABLE Screening
 
 CREATE TABLE Login
 (
+  customer_id INT NOT NULL,
   login_email VARCHAR(30) NOT NULL,
   login_password VARCHAR(30) NOT NULL,
   login_hint VARCHAR(30),
-  customer_id INT NOT NULL,
   PRIMARY KEY (customer_id),
   FOREIGN KEY (customer_id) REFERENCES Customer(customer_id),
   UNIQUE (login_email)
@@ -91,13 +91,13 @@ CREATE TABLE Staff
 CREATE TABLE Ticket
 (
   ticket_id INT NOT NULL,
-  ticket_price VARCHAR(6) NOT NULL,
-  screening_id INT NOT NULL,
   customer_id INT NOT NULL,
+  screening_id INT NOT NULL,
   seat_id INT NOT NULL,
+  ticket_price VARCHAR(6) NOT NULL,
   PRIMARY KEY (ticket_id),
-  FOREIGN KEY (screening_id) REFERENCES Screening(screening_id),
   FOREIGN KEY (customer_id) REFERENCES Customer(customer_id),
+  FOREIGN KEY (screening_id) REFERENCES Screening(screening_id),
   FOREIGN KEY (seat_id) REFERENCES Seat(seat_id),
   UNIQUE (screening_id, seat_id)
 );
