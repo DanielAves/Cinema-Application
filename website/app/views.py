@@ -37,12 +37,16 @@ def logout():
 @app.route('/movie/<movieID>') #Consider renaming to 'filmpage'
 def movie(movieID):
     film = Film.query.filter_by(film_id=movieID).first()
-    return render_template('movie.html', title='Movie', film=film)
+    screening = Screening.query.filter_by(film_id=movieID).all()
+    return render_template('movie.html', title='Movie', film=film, screening=screening)
 
 
-@app.route('/seatchoice')
-def seatchoice():
-    return render_template('seatchoice.html', title='Choose Seat')
+@app.route('/seatchoice/<screeningID>')
+def seatchoice(screeningID):
+    screening = Screening.query.filter_by(screening_id=screeningID).first()
+    if screening:
+        film = Film.query.filter_by(film_id=screening.film_id).first()
+    return render_template('seatchoice.html', title='Choose Seat',screening=screening, film=film)
 
 @app.route('/checkout')
 def checkout():
