@@ -27,6 +27,8 @@ public class bookingScreenController {
 
     double childTotal2,studentTotal2,adultTotal2,vipTotal2;
 
+    Double grandTotal2 = 0.0;
+
     
 
 
@@ -86,7 +88,11 @@ public class bookingScreenController {
     }
 
     public void grandTotal(Double vipTotal2, Double adultTotal2, double studentTotal2, double childTotal2){
-        Double grandTotal2 = childTotal2 + studentTotal2 + adultTotal2 + vipTotal2;
+
+        grandTotal2 += childTotal2;
+        grandTotal2 += studentTotal2;
+        grandTotal2 += adultTotal2;
+        grandTotal2 += vipTotal2;
         grandTotal.setText("Total   £ " + String.format("%.2f", grandTotal2));
 
 
