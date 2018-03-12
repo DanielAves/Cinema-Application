@@ -18,6 +18,11 @@
                 <h3>{{each.customer_mobile}}</h3>
                 <h3>{{each.customer_dob}}</h3>
             {%endfor%}
+
+            <h1>Bookings</h1>
+              {% for some in tickets %}
+                  <h3>{{some.ticket_id}} {{some.screening_time}}</h3>
+              {%endfor%}
         </div>
     </div>
 

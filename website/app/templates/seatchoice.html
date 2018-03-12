@@ -11,10 +11,9 @@
 
     <hr>
 
-
     <div class="row" id="chosenFilm">
         <div class="col-sm-6" style="text-align: center;">
-            <img src="./static/img/BlackPanther.jpg">
+            <img src="../static/img/BlackPanther.jpg">
 
         </div>
 
@@ -22,11 +21,11 @@
             <h3 class="pull-left"><span class="highlight"> Now Booking </span><h3>
             <hr>
             <br>
-            <h3> Title </h3>
-            <p> Rating: <span class="highlight"> 12 </span><p>
-            <p> Screen: <p>
-            <p> Date: <p>
-            <p> Time: <p>
+            <h3> {{film.film_name}} </h3>
+            <p> Rating: <span class="highlight"> {{film.film_age_rating}} </span><p>
+            <p> Screen: {{screening.screen_id}}<p>
+            <p> Date: {{screening.screening_date}}<p>
+            <p> Time: {{screening.screening_time}}<p>
         </div>
     </div>
     <br>
@@ -47,4 +46,5 @@
     </div>
     <hr>
     <hr>
+
 {% endblock %}

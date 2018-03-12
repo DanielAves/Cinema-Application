@@ -44,7 +44,9 @@
             <p>Director: {{ film.film_director}} </p>
             <hr>
             <p> Choose your viewing time: </p>
-
+              {% for each in screening %}
+                <a href="/seatchoice/{{each.screening_id}}"><button type="button" class="btn">Date: {{each.screening_date}} Time: {{each.screening_time}}</button> </a>
+              {%endfor%}
         </div>
 
     </div>

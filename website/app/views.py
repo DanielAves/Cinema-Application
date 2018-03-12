@@ -27,7 +27,10 @@ def myaccount():
     variableFind = Login.query.filter_by(login_email=value).first()
     if variableFind:
         customer = Customer.query.filter_by(customer_id=variableFind.customer_id).all()
-    return render_template('myaccount.html', title='My Account',customer=customer)
+        tickets = Ticket.query.filter_by(customer_id=variableFind.customer_id).all()
+    for each in tickets:
+            screening = Screening.query.filter_by(screening_id=each.screening_id).all()
+    return render_template('myaccount.html', title='My Account',customer=customer,tickets=tickets,screening=screening)
 
 @app.route('/unsetvariable')
 def logout():
@@ -37,12 +40,16 @@ def logout():
 @app.route('/movie/<movieID>') #Consider renaming to 'filmpage'
 def movie(movieID):
     film = Film.query.filter_by(film_id=movieID).first()
-    return render_template('movie.html', title='Movie', film=film)
+    screening = Screening.query.filter_by(film_id=movieID).all()
+    return render_template('movie.html', title='Movie', film=film, screening=screening)
 
 
-@app.route('/seatchoice')
-def seatchoice():
-    return render_template('seatchoice.html', title='Choose Seat')
+@app.route('/seatchoice/<screeningID>')
+def seatchoice(screeningID):
+    screening = Screening.query.filter_by(screening_id=screeningID).first()
+    if screening:
+        film = Film.query.filter_by(film_id=screening.film_id).first()
+    return render_template('seatchoice.html', title='Choose Seat',screening=screening, film=film)
 
 @app.route('/checkout')
 def checkout():
