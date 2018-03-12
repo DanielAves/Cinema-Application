@@ -1,5 +1,6 @@
 import java.util.List;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.text.SimpleDateFormat;
 
 public class RestClient implements CinemaApi {
 
@@ -10,6 +11,9 @@ public class RestClient implements CinemaApi {
         super();
         this.client = new HttpClient(host, port);
         this.mapper = new ObjectMapper();
+
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss");
+        mapper.setDateFormat(df);
       }
       /**
       * Customers methods
@@ -105,8 +109,10 @@ public class RestClient implements CinemaApi {
         return screening;
       }
 
-      public List<Screening> getScreenings(){
-        return null;
+      public List<Screening> getScreenings() throws Exception {
+        String json = this.client.get("screening");
+        GenericWrapper<Screening> myObjects = mapper.readValue(json, GenericWrapper.class);
+        return myObjects.getObjects();
       }
 
       /**
@@ -130,8 +136,10 @@ public class RestClient implements CinemaApi {
         return seat;
       }
 
-      public List<Seat> getSeats(){
-        return null;
+      public List<Seat> getSeats() throws Exception{
+        String json = this.client.get("seat");
+        GenericWrapper<Seat> myObjects = mapper.readValue(json, GenericWrapper.class);
+        return myObjects.getObjects();
       }
 
       /**

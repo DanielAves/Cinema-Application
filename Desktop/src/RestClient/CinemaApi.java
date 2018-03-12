@@ -53,7 +53,7 @@ public interface CinemaApi {
     /********/
 
     public Screening getScreening(int id) throws Exception ;
-    public List<Screening> getScreenings();
+    public List<Screening> getScreenings() throws Exception;
 
     /********/
     /**
@@ -67,7 +67,7 @@ public interface CinemaApi {
 
     public Seat getSeat(int id) throws Exception;
 
-    public List<Seat> getSeats();
+    public List<Seat> getSeats() throws Exception;
 
     /**
     * Ticket methods
