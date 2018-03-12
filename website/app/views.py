@@ -27,7 +27,10 @@ def myaccount():
     variableFind = Login.query.filter_by(login_email=value).first()
     if variableFind:
         customer = Customer.query.filter_by(customer_id=variableFind.customer_id).all()
-    return render_template('myaccount.html', title='My Account',customer=customer)
+        tickets = Ticket.query.filter_by(customer_id=variableFind.customer_id).all()
+    for each in tickets:
+            screening = Screening.query.filter_by(screening_id=each.screening_id).all()
+    return render_template('myaccount.html', title='My Account',customer=customer,tickets=tickets,screening=screening)
 
 @app.route('/unsetvariable')
 def logout():
