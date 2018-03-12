@@ -35,6 +35,7 @@ class Film(db.Model):
     film_runtime = db.Column(db.Integer)
     film_director = db.Column(db.String(50))
     film_age_rating = db.Column(db.String(3))
+    film_poster = db.Column(db.String(40))
     screening = db.relationship('Screening', backref = 'film', lazy = 'dynamic')
 
     def __repr__(self):
