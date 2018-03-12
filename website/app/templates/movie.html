@@ -6,22 +6,7 @@
     <br>
     <hr>
     <hr>
-    <!-- <div class="row" id="title">
-        <div class="col-12">
 
-        </div>
-    </div> -->
-
-    <!-- <div class="row" id="title">
-        <div class="col-12">
-            <h1> </h1>
-            <h1> </h1>
-            <h1> </h1>
-            <h1> </h1>
-            <h1> </h1>
-            <p></p>
-        </div>
-    </div> -->
 
     <br>
     <br>
@@ -44,6 +29,23 @@
             <p>Director: {{ film.film_director}} </p>
             <hr>
             <p> Choose your viewing time: </p>
+
+            <div class="container">
+                <h3>Tabs</h3>
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#">Home</a>
+                        <p> hi </p>
+                    </li>
+                    <li><a href="#">Menu 1</a><p> hello </p></li>
+                    <li><a href="#">Menu 2</a><p> bye </p></li>
+                    <li><a href="#">Menu 3</a><p> 1234 </p></li>
+                </ul>
+                <br>
+                
+            </div>
+
+            <br>
+            <br>
               {% for each in screening %}
                 <a href="/seatchoice/{{each.screening_id}}"><button type="button" class="btn">Date: {{each.screening_date}} Time: {{each.screening_time}}</button> </a>
               {%endfor%}
