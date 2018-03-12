@@ -1,5 +1,5 @@
 from app import db
-from app.models import Card, Film, Customer, Screen, Screening, Seat
+from app.models import Card, Film, Customer, Screen, Screening, Seat, Login
 
 import datetime
 
@@ -57,9 +57,20 @@ def populate_tickets():
 	pass
 
 def populate_screen():
-	for i in range(0,10):
+	for i in range(1,11):
 		screen = Screen(screen_capacity=i*10)
 		db.session.add(screen)
+	db.session.commit()
+
+def populate_login():
+	data = [(1, u'ben19feb@hotmail.co.uk', u'password', u'Mwhahahahaha'),
+	(2, u'taranebola@gmail.com', u'yellow', u'asdfasdfasdf'),
+	(3, u'dannyboi@outlook.com', u'ilovetaran', u'123456789'),
+	(4, u'mattycutts@hotmail.com', u'hi', u'greetings')]
+	
+	for d in data:
+		login = Login(customer_id=d[0], login_email=d[1], login_password=d[2],login_hint=d[3])
+		db.session.add(login)
 	db.session.commit()
 
 
@@ -69,3 +80,4 @@ populate_customers()
 populate_tickets()
 populate_screen()
 populate_screenings()
+populate_login()

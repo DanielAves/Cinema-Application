@@ -28,9 +28,9 @@ def myaccount():
     if variableFind:
         customer = Customer.query.filter_by(customer_id=variableFind.customer_id).all()
         tickets = Ticket.query.filter_by(customer_id=variableFind.customer_id).all()
-    for each in tickets:
-            screening = Screening.query.filter_by(screening_id=each.screening_id).all()
-    return render_template('myaccount.html', title='My Account',customer=customer,tickets=tickets,screening=screening)
+    # for each in tickets:
+    #         screening = Screening.query.filter_by(screening_id=each.screening_id).all()
+    return render_template('myaccount.html', title='My Account',customer=customer,tickets=tickets)
 
 @app.route('/unsetvariable')
 def logout():
@@ -50,7 +50,8 @@ def seatchoice(screeningID):
     if screening:
         film = Film.query.filter_by(film_id=screening.film_id).first()
         capacity = Screen.query.filter_by(screen_id=screening.screen_id).first()
-    return render_template('seatchoice.html', title='Choose Seat',screening=screening, film=film, capacity=capacity)
+        seats = Seat.query.filter_by(seat_id=capacity.screen_capacity).all()
+    return render_template('seatchoice.html', title='Choose Seat',screening=screening, film=film, seats=seats)
 
 @app.route('/checkout')
 def checkout():
