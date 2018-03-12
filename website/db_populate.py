@@ -1,12 +1,12 @@
 from app import db
-from app.models import Card, Film, Customer, Screen, Screening
+from app.models import Card, Film, Customer, Screen, Screening, Seat
 
 import datetime
 
 def populate_seats():
 
 	for i in range(2,50):
-		s = models.Seat(seat_id=i)
+		s = Seat(seat_id=i)
 		db.session.add(s)
 	db.session.commit()
 
@@ -64,8 +64,9 @@ def populate_screen():
 	
 
 populate_seats()
-populate_film()	
+populate_films()	
 populate_customers()
 populate_tickets()
+populate_screen()
 populate_screenings()
 
