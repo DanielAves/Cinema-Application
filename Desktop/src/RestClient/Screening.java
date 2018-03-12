@@ -1,5 +1,8 @@
 import java.time.LocalTime ;
 import java.time.LocalDate ;
+import java.util.Map;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Screening {
   private int screening_id ;
   private int film_id;
@@ -55,9 +58,16 @@ public class Screening {
 	* Returns value of film_id
 	* @return
 	*/
-	public int getFilm_id() {
-		return film_id;
-	}
+	//public int getFilm_id() {
+		//return film_id;
+	//}
+
+  @SuppressWarnings("unchecked")
+  @JsonPropery("film_id")
+  private void unpackFilm_idFromNestedObject(Map<String,Object> film_id){
+    this.film_id = film.get("film_id");
+
+  }
 
 	/**
 	* Sets new value of film_id
