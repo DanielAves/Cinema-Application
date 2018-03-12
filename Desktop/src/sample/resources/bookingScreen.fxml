@@ -32,7 +32,7 @@
                 <Insets right="10.0" />
             </GridPane.margin>
         </ComboBox>
-        <Button fx:id="backButton" alignment="TOP_CENTER" cancelButton="true" contentDisplay="TOP" mnemonicParsing="false" onAction="#backButtonClicked" prefHeight="50.0" prefWidth="150.0" styleClass="Button" stylesheets="@darkTheme.css" text="&lt;" textFill="WHITE">
+        <Button fx:id="backButton" alignment="TOP_CENTER" cancelButton="true" contentDisplay="TOP" mnemonicParsing="false" onAction="#backButtonClicked" prefHeight="50.0" prefWidth="150.0" styleClass="Button" stylesheets="@darkTheme.css" text="&lt;" textFill="WHITE" GridPane.valignment="TOP">
             <font>
                 <Font size="22.0" />
             </font>
@@ -40,7 +40,7 @@
                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
             </GridPane.margin>
         </Button>
-        <Button fx:id="logOut" mnemonicParsing="false" onAction="#logoutButtonClicked" prefHeight="50.0" prefWidth="150.0" styleClass="Button" stylesheets="@darkTheme.css" text="Logout" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
+        <Button fx:id="logOut" mnemonicParsing="false" onAction="#logoutButtonClicked" prefHeight="50.0" prefWidth="150.0" styleClass="Button" stylesheets="@darkTheme.css" text="Logout" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
             <GridPane.margin>
                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
             </GridPane.margin>

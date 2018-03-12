@@ -31,7 +31,7 @@ public class bookingScreenController {
 
     int selectedChild,selectedStudent,selectedAdult,selectedVip =0;
 
-    
+
     public void backButtonClicked(ActionEvent event) throws IOException {
         Parent secondaryroot = FXMLLoader.load(getClass().getResource("resources/filmScreen.fxml"));
         Scene filmScreen = new Scene(secondaryroot);
