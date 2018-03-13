@@ -5,7 +5,7 @@ import datetime
 
 def populate_seats():
 
-	for i in range(2,50):
+	for i in range(1,100):
 		s = Seat(seat_id=i)
 		db.session.add(s)
 	db.session.commit()
@@ -58,7 +58,7 @@ def populate_tickets():
 
 def populate_screen():
 	for i in range(1,11):
-		screen = Screen(screen_capacity=i*10)
+		screen = Screen(screen_capacity=100)
 		db.session.add(screen)
 	db.session.commit()
 

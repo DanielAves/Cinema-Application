@@ -51,6 +51,7 @@ def seatchoice(screeningID):
         film = Film.query.filter_by(film_id=screening.film_id).first()
         capacity = Screen.query.filter_by(screen_id=screening.screen_id).first()
         seats = Seat.query.all()[0:capacity.screen_capacity]
+        tickets = Tickets.query.filter_by().all()
     return render_template('seatchoice.html', title='Choose Seat',screening=screening, film=film, seats=seats)
 
 @app.route('/checkout')
