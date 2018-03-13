@@ -50,7 +50,7 @@ def seatchoice(screeningID):
     if screening:
         film = Film.query.filter_by(film_id=screening.film_id).first()
         capacity = Screen.query.filter_by(screen_id=screening.screen_id).first()
-        seats = Seat.query.filter_by(seat_id=capacity.screen_capacity).all()
+        seats = Seat.query.all()[0:capacity.screen_capacity]
     return render_template('seatchoice.html', title='Choose Seat',screening=screening, film=film, seats=seats)
 
 @app.route('/checkout')

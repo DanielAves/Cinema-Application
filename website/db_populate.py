@@ -67,7 +67,7 @@ def populate_login():
 	(2, u'taranebola@gmail.com', u'yellow', u'asdfasdfasdf'),
 	(3, u'dannyboi@outlook.com', u'ilovetaran', u'123456789'),
 	(4, u'mattycutts@hotmail.com', u'hi', u'greetings')]
-	
+
 	for d in data:
 		login = Login(customer_id=d[0], login_email=d[1], login_password=d[2],login_hint=d[3])
 		db.session.add(login)
