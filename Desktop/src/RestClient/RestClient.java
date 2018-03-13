@@ -149,7 +149,11 @@ public class RestClient implements CinemaApi {
       /**
       * Ticket methods
       */
-      public Ticket createTicket(){
+      public Ticket createTicket(Customer customer, Screening screening, Seat seat) throws Exception{
+        Ticket t = new Ticket(customer.getCustomer_id(), screening.getScreening_id(),seat.getSeat_id());
+        String json = mapper.writeValueAsString(t);
+        this.client.post("ticket",json);
+
         return null;
       }
 
@@ -162,7 +166,9 @@ public class RestClient implements CinemaApi {
       }
 
       public Ticket getTicket(int id) throws Exception{
-        return null ;
+        String json = this.client.get("ticket/"+id);
+        Ticket ticket = mapper.readValue(json, Ticket.class);
+        return ticket;
       }
 
       public List<Ticket> getTickets(){

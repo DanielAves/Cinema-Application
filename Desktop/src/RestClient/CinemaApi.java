@@ -72,7 +72,7 @@ public interface CinemaApi {
     /**
     * Ticket methods
     */
-    public Ticket createTicket();
+    public Ticket createTicket(Customer customer, Screening screening, Seat seat)  throws Exception;
 
     public boolean deleteTicket(Ticket ticket);
 
