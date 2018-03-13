@@ -59,8 +59,10 @@ public class RestClient implements CinemaApi {
       }
 
 
-      public List<Film> getFilms(){
-        return null;
+      public List<Film> getFilms() throws Exception{
+        String json = this.client.get("film");
+        GenericWrapper<Film> myObjects = mapper.readValue(json, GenericWrapper.class);
+        return myObjects.getObjects();
       }
 
       /**
@@ -84,8 +86,10 @@ public class RestClient implements CinemaApi {
         return screen;
       }
 
-      public List<Screen> getScreens(){
-        return null;
+      public List<Screen> getScreens() throws Exception{
+        String json = this.client.get("screen");
+        GenericWrapper<Screen> myObjects = mapper.readValue(json, GenericWrapper.class);
+        return myObjects.getObjects();
       }
 
       /**

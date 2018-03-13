@@ -5,7 +5,7 @@ public class Harness {
 
   public static void main(String[] args) throws Exception {
       RestClient client = new RestClient("localhost", 5000);
-      List<Seat> s = client.getSeats();
+      List<Film> s = client.getFilms();
 
       System.out.println(s);
   }

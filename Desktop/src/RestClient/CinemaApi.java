@@ -26,7 +26,7 @@ public interface CinemaApi {
     /*****/
     public Film getFilm(int id) throws Exception ;
 
-    public List<Film> getFilms();
+    public List<Film> getFilms() throws Exception;
     /********/
     /**
     * Screen methods
@@ -40,7 +40,7 @@ public interface CinemaApi {
     /********/
     public Screen getScreen(int id) throws Exception ;
 
-    public List<Screen> getScreens();
+    public List<Screen> getScreens() throws Exception;
     /********/
     /**
     * Screenings methods
