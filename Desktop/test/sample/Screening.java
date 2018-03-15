@@ -1,4 +1,3 @@
-package sample;
 
 /**
  * Created by sc16da on 28/02/18.
@@ -17,7 +16,7 @@ public class Screening {
     private Integer screeningID;
     private String ScreeningTime;
     private String ScreeningDate;
-    private Integer FilmID;
+    private Integer FilmId;
     private Integer ScreenID;
 
     public Integer getScreeningID() {
@@ -46,11 +45,11 @@ public class Screening {
     }
 
     public Integer getFilmID() {
-        return FilmID;
+        return FilmId;
     }
 
     public void setFilmID(Integer film_id) {
-        FilmID = film_id;
+        FilmId = film_id;
     }
 
     public Integer getScreenID() {

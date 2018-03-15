@@ -1,5 +1,3 @@
-package sample;
-
 import java.sql.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,7 +10,7 @@ import java.util.ArrayList;
 /**
  * Created by sc16da on 22/02/18.
  */
-public class dbConnection {
+public class DbConnection {
 
     public static ArrayList<Film> filmList = new ArrayList<Film>();
     public static ArrayList<Screening> screeningList = new ArrayList<>();
