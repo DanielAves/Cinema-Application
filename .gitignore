@@ -1,5 +1,10 @@
+# Compiled bytecode
+*.class
+
 website/flask/
 website/app/__pycache__/
 *.pyc
 website/db_repository/
 *.db
+
+
