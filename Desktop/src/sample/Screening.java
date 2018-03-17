@@ -17,7 +17,7 @@ public class Screening {
     private Integer screeningID;
     private String ScreeningTime;
     private String ScreeningDate;
-    private Integer FilmId;
+    private Integer FilmID;
     private Integer ScreenID;
 
     public Integer getScreeningID() {
@@ -45,12 +45,12 @@ public class Screening {
         ScreeningDate = screening_date;
     }
 
-    public Integer getFilmId() {
-        return FilmId;
+    public Integer getFilmID() {
+        return FilmID;
     }
 
-    public void setFilmId(Integer film_id) {
-        FilmId = film_id;
+    public void setFilmID(Integer film_id) {
+        FilmID = film_id;
     }
 
     public Integer getScreenID() {

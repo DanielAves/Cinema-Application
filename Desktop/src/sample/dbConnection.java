@@ -53,7 +53,7 @@ public class dbConnection {
                 db.setScreeningID(rst.getInt("screening_id"));
                 db.setScreeningTime(rst.getString("screening_time"));
                 db.setScreeningDate(rst.getString("screening_date"));
-                db.setFilmId(rst.getInt("film_id"));
+                db.setFilmID(rst.getInt("film_id"));
                 db.setScreenID(rst.getInt("screen_id"));
                 screeningList.add(db);
 
