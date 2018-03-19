@@ -1,4 +1,98 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+<br>
+<br>
+<hr>
+<hr>
+
+<div class="row" id="title">
+    <div class="col-sm-12">
+        <h1 style="text-align: center;">Update <span class="highlight"> Card </span><h1>
+    </div>
+</div>
+
+<hr>
+<br>
+<div class="row" id="cardDetails">
+    <div class="col-sm-3">
+
+    </div>
+    <div class="col-sm-6">
+        <form class ="details" action="" method="post">
+
+            <form>
+                <label class="radio-inline">
+                    <p> Visa </p>
+                    <input type="radio" name="optradio">
+                </label>
+                <label class="radio-inline">
+                    <p> MasterCard </p>
+                    <input type="radio" name="optradio">
+                </label>
+                <label class="radio-inline">
+                    <p> Maestro </p>
+                    <input type="radio" name="optradio">
+                </label>
+            </form>
+            <br>
+
+            <div class="form-group">
+                <label for="text">Card Number:</label>
+                <input type="text" class="form-control" id="cardNum" placeholder="Number" name="text">
+            </div>
+
+            <div class="form-group">
+                <p> Card Expiry Date: </p>
+                <label class="inline" for="sel11">Month:</label>
+                <select class="form-control" id="sel11">
+                    <option>Month</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                    <option>11</option>
+                    <option>12</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="inline" for="sel10">Year:</label>
+                <select class="form-control" id="sel10">
+                    <option>Year</option>
+                    <option>2018</option>
+                    <option>2019</option>
+                    <option>2020</option>
+                    <option>2021</option>
+                    <option>2022</option>
+                    <option>2023</option>
+                    <option>2024</option>
+                    <option>2025</option>
+                    <option>2026</option>
+                    <option>2027</option>
+                    <option>2028</option>
+                    <option>2029</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="text">CVV:</label>
+                <input type="text" class="form-control" id="pwd" placeholder="Enter CVV" name="text">
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+    </div>
+
+    <div class="col-sm-3">
+    </div>
+
+</div>
+
 {% endblock %}

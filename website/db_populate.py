@@ -43,12 +43,13 @@ def populate_customers():
 (1, u'Ben', u'Ashby',u'+447845775449', u'5 Magna Close', u'AL51RH'),
 (2, u'Taran', u'Bola',  u'+447400832054', u'6 Winfield Place', u'LS23AB'),
 (3, u'Dan', u'Aves',  u'+447803849940', u'15 Beckett Garden', u'AL69JE'),
-(4, u'Matt', u'Cutts',  u'+447908858831', u'6 Allister Drive', u'CH630LH')
+(4, u'Matt', u'Cutts',  u'+447908858831', u'6 Alistair Drive', u'CH630LH')
 ]
 	i = 1
 	for d in data:
 		customer = Customer(customer_id=d[0], customer_f_name=d[1], customer_s_name=d[2],customer_dob=datetime.date(2017,1,17),customer_mobile=d[3],customer_address=d[4], customer_postcode=d[5])
-		customer.card.append(Card(card_number=123412341234123 +i, card_expiry=datetime.date(2017,1,17),card_cvv=111))
+		# customer.card.append(Card(card_number=123412341234123 +i, card_expiry=datetime.date(2017,1,17),card_cvv=111))
+		customer.card.append(Card(card_number = d.card_number, card_expiry = datetime.date(),card_cvv = d.card_cvv))
 		db.session.add(customer)
 		i = i+1
 	db.session.commit()
@@ -59,12 +60,12 @@ def populate_tickets():
 def populate_screen():
 	for i in range(1,11):
 		screen = Screen(screen_capacity=100)
-		db.session.add(screen)
+		db.session.add(screen)    </form>
 	db.session.commit()
 
 def populate_login():
 	data = [(1, u'ben19feb@hotmail.co.uk', u'password', u'Mwhahahahaha'),
-	(2, u'taran.s.bola@gmail.com', u'yellow', u'colour'),
+	(2, u'taran.s.bola@gmail.com', u'yellow', u'colour')    </form>,
 	(3, u'danaves@outlook.com', u'1234', u'123456789'),
 	(4, u'mattycutts@hotmail.com', u'password', u'pd')]
 
