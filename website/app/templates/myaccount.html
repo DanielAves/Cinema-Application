@@ -11,12 +11,12 @@
         <div class="col-sm-4">
             <h1>My Details</h1>
             {% for each in customer %}
-                <h3>{{each.customer_f_name}}</h3>
-                <h3>{{each.customer_s_name}}</h3>
-                <h3>{{each.customer_address}}</h3>
-                <h3>{{each.customer_postcode}}</h3>
-                <h3>{{each.customer_mobile}}</h3>
-                <h3>{{each.customer_dob}}</h3>
+                <h3>First name: {{each.customer_f_name}}</h3>
+                <h3>Surname : {{each.customer_s_name}}</h3>
+                <h3>Address : {{each.customer_address}}</h3>
+                <h3>Postcode : {{each.customer_postcode}}</h3>
+                <h3>Mobile No. : {{each.customer_mobile}}</h3>
+                <h3>Date Of Birth : {{each.customer_dob}}</h3>
             {%endfor%}
 
             <h1>Bookings</h1>

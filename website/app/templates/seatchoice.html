@@ -41,15 +41,16 @@
     <hr> -->
 
     <div class="row" id="ticketseat">
-        <div class="panel panel-default">
+        <!-- <div class="panel panel-default"> -->
             <div class="col-sm-6">
-                <h1> Choose <span class="highlight"> Ticket('s) </span></h1>
+                <h1> Choose <span class="highlight"> Ticket(s) </span></h1>
                 <hr>
 
                 <form>
                     <div class="form-group">
                         <label for="sel1">Adult (20+ years):</label>
                         <select class="form-control" id="sel1">
+                            <option>0</option>
                             <option>1</option>
                             <option>2</option>
                             <option>3</option>
@@ -69,6 +70,7 @@
 
                         <label for="sel2">Teen (16-19 years):</label>
                         <select class="form-control" id="sel2">
+                            <option>0</option>
                             <option>1</option>
                             <option>2</option>
                             <option>3</option>
@@ -88,6 +90,7 @@
 
                         <label for="sel3">Child (4-15 years):</label>
                         <select class="form-control" id="sel3">
+                            <option>0</option>
                             <option>1</option>
                             <option>2</option>
                             <option>3</option>
@@ -108,6 +111,7 @@
 
                         <label for="sel4">Pensioner (60+ years):</label>
                         <select class="form-control" id="sel4">
+                            <option>0</option>
                             <option>1</option>
                             <option>2</option>
                             <option>3</option>
@@ -128,6 +132,7 @@
                         <label for="sel5">Student:</label>
                         <p> Provide your valid student ID upon entry. </p>
                         <select class="form-control" id="sel5">
+                            <option>0</option>
                             <option>1</option>
                             <option>2</option>
                             <option>3</option>
@@ -145,8 +150,11 @@
                             <option>15</option>
                         </select>
 
+                        <hr>
+
                         <label for="sel5"><span class="highlight">VIP:</span></label>
                         <select class="form-control" id="sel5">
+                            <option>0</option>
                             <option>1</option>
                             <option>2</option>
                             <option>3</option>
@@ -163,18 +171,19 @@
                             <option>14</option>
                             <option>15</option>
                         </select>
+                        <hr>
                     </div>
                 </form>
 
             </div>
             <div class="col-sm-6">
-                <h1> Choose <span class="highlight"> Seat('s) </span></h1>
+                <h1> Choose <span class="highlight"> Seat(s) </span></h1>
                 <hr>
                 {% for each in seats[1:10] %}
                     <button>{{each.seat_id}}</button>
                 {% endfor %}
             </div>
-        </div>
+        <!-- </div> -->
     </div>
     <hr>
     <hr>
