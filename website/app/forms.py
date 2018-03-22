@@ -30,7 +30,7 @@ class PasswordForm(Form):
     changepassword = TextField('changepassword', validators=[DataRequired()]) #Used for changing password
     newpassword = TextField('newpassword', validators=[DataRequired()])
 
-class cardForm(Form):
-    card_number = IntegerField('cardnumber', validators=[DataRequired()])
-    card_expiry = TextField('card_expiry', validators=[DataRequired()])
-    card_cvv = IntegerField('card_cvv', validators=[DataRequired()])
+# class cardForm(Form):
+#     card_number = IntegerField('cardnumber', validators=[DataRequired()])
+#     card_expiry = TextField('card_expiry', validators=[DataRequired()])
+#     card_cvv = IntegerField('card_cvv', validators=[DataRequired()])
