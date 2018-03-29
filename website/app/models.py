@@ -56,7 +56,6 @@ class Screening(db.Model):
     film_id  = db.Column(db.Integer, db.ForeignKey('film.film_id'))
     screen_id = db.Column(db.Integer, db.ForeignKey('screen.screen_id'))
     screening_time = db.Column(db.Time)
-    screening_time = db.Column(db.String(5))
     screening_date = db.Column(db.Date)
     ticket = db.relationship('Ticket', backref = 'screening', lazy = 'dynamic')
 
