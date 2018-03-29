@@ -10,14 +10,17 @@
         </div>
         <div class="col-sm-4">
             <h1>My Details</h1>
-            {% for each in customer %}
-                <h3>First name: {{each.customer_f_name}}</h3>
-                <h3>Surname : {{each.customer_s_name}}</h3>
-                <h3>Address : {{each.customer_address}}</h3>
-                <h3>Postcode : {{each.customer_postcode}}</h3>
-                <h3>Mobile No. : {{each.customer_mobile}}</h3>
-                <h3>Date Of Birth : {{each.customer_dob}}</h3>
-            {%endfor%}
+                <h3>First name: {{customer.customer_f_name}}</h3>
+                <h3>Surname : {{customer.customer_s_name}}</h3>
+                <h3>Address : {{customer.customer_address}}</h3>
+                <h3>Postcode : {{customer.customer_postcode}}</h3>
+                <h3>Mobile No. : {{customer.customer_mobile}}</h3>
+                <h3>Date Of Birth : {{customer.customer_dob}}</h3>
+
+            <h1>Card Details</h1>
+                <h3>Card Number: {{card.card_number}}</h3>
+                <h3>Card card_expiry: {{card.card_expiry}}</h3>
+                <h3>Card cvv : {{card.card_cvv}}</h3>
 
             <h1>Bookings</h1>
               {% for some in tickets %}

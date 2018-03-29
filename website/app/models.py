@@ -4,7 +4,7 @@ class Customer(db.Model):
     customer_id = db.Column(db.Integer, primary_key=True)
     customer_f_name = db.Column(db.String(20))
     customer_s_name = db.Column(db.String(30))
-    customer_dob = db.Column(db.DateTime)
+    customer_dob = db.Column(db.Date)
     customer_mobile = db.Column(db.String(13), unique=True)
     customer_address = db.Column(db.String(40))
     customer_postcode = db.Column(db.String(8))

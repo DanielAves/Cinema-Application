@@ -26,11 +26,13 @@ def myaccount():
     value = session['variable']
     variableFind = Login.query.filter_by(login_email=value).first()
     if variableFind:
-        customer = Customer.query.filter_by(customer_id=variableFind.customer_id).all()
+        customer = Customer.query.filter_by(customer_id=variableFind.customer_id).first()
+        #add validation if there is no card added.
+        card = Card.query.filter_by(customer_id=variableFind.customer_id).first()
         tickets = Ticket.query.filter_by(customer_id=variableFind.customer_id).all()
     # for each in tickets:
     #         screening = Screening.query.filter_by(screening_id=each.screening_id).all()
-    return render_template('myaccount.html', title='My Account',customer=customer,tickets=tickets)
+    return render_template('myaccount.html', title='My Account',customer=customer,tickets=tickets,card=card)
 
 @app.route('/unsetvariable')
 def logout():
@@ -75,12 +77,18 @@ def login():
 def signup():
     signform = SignupForm()
     if signform.validate_on_submit():
-        form_thing = Customer(customer_f_name=signform.firstname.data,customer_s_name=signform.surname.data,customer_dob=signform.dob.data,customer_mobile=signform.mobile.data,customer_address=signform.address.data,customer_postcode=signform.postcode.data)
+        form_thing = Customer(customer_f_name=signform.firstname.data,
+        customer_s_name=signform.surname.data,customer_dob=signform.dob.data,
+        customer_mobile=signform.mobile.data,customer_address=signform.address.data,
+        customer_postcode=signform.postcode.data)
         db.session.add(form_thing)
         db.session.commit()
-        # another_form = Login(login_email=signform.email.data,login_password=signform.confirm.data,login_hint=signform.hint.data)
-        # db.session.add(another_form)
-        # db.session.commit()
+
+        another_form = Login(customer_id=form_thing.customer_id,login_email=signform.email.data,
+        login_password=signform.confirm.data,login_hint=signform.hint.data)
+        db.session.add(another_form)
+        db.session.commit()
+        return redirect(url_for('login'))
     # customer = Customer.query.all()
     return render_template('signup.html', title='Sign up',signform=signform)
 
