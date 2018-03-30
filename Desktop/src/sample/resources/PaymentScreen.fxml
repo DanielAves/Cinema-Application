@@ -44,27 +44,27 @@
             <Font size="25.0" />
          </font>
       </Text>
-      <Button fx:id="card" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" text="Card" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+      <Button fx:id="card" mnemonicParsing="false" onAction="#cardClicked" prefHeight="100.0" prefWidth="200.0" text="Card" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets right="10.0" />
          </GridPane.margin>
       </Button>
-      <Button fx:id="cash" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" text="Cash" GridPane.columnIndex="2" GridPane.rowIndex="1">
+      <Button fx:id="cash" mnemonicParsing="false" onAction="#cashClicked" prefHeight="100.0" prefWidth="200.0" text="Cash" GridPane.columnIndex="2" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets left="10.0" />
          </GridPane.margin>
       </Button>
-      <TextField alignment="CENTER_RIGHT" prefHeight="64.0" prefWidth="675.0" promptText="Enter tender" styleClass="textField" stylesheets="@mainStyle.css" GridPane.rowIndex="2">
+      <TextField fx:id="quantity" onAction="#quantityEntered" alignment="CENTER_RIGHT" prefHeight="64.0" prefWidth="675.0" promptText="Enter tender" styleClass="textField" stylesheets="@mainStyle.css" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets />
          </GridPane.margin>
       </TextField>
-      <Button fx:id="five" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" text="£5" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
-      <Button fx:id="ten" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" text="£10" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-      <Button fx:id="fithteen" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" text="£15" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
-      <Button fx:id="twenty" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" text="£20" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-      <Button fx:id="thirty" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" text="£30" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
-      <Button fx:id="forty" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" text="£40" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+      <Button fx:id="five" mnemonicParsing="false" onAction="#fiveClicked" prefHeight="100.0" prefWidth="200.0" text="£5" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
+      <Button fx:id="ten" mnemonicParsing="false" onAction="#tenClicked" prefHeight="100.0" prefWidth="200.0" text="£10" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+      <Button fx:id="fithteen" mnemonicParsing="false" onAction="#fithteenClicked" prefHeight="100.0" prefWidth="200.0" text="£15" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
+      <Button fx:id="twenty" mnemonicParsing="false" onAction="#twentyClicked" prefHeight="100.0" prefWidth="200.0" text="£20" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+      <Button fx:id="thirty" mnemonicParsing="false" onAction="#thirtyClicked" prefHeight="100.0" prefWidth="200.0" text="£30" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
+      <Button fx:id="forty" mnemonicParsing="false" onAction="#fortyClicked" prefHeight="100.0" prefWidth="200.0" text="£40" GridPane.columnIndex="2" GridPane.rowIndex="5" />
       <Label fx:id="changeDue" text="Change due" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6">
          <font>
             <Font size="25.0" />

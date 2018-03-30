@@ -154,7 +154,7 @@
                 <Insets left="10.0" />
             </GridPane.margin>
         </Label>
-        <Label fx:id="grandTotal" alignment="CENTER" prefHeight="36.0" prefWidth="279.0" text="Grand Total £60.00" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
+        <Label fx:id="grandTotal" alignment="CENTER" prefHeight="36.0" prefWidth="279.0" text="Grand Total" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
             <padding>
                 <Insets left="10.0" />
             </padding>

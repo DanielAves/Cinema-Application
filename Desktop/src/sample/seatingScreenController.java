@@ -11,6 +11,13 @@ import java.io.IOException;
 import java.util.logging.Logger;
 
 public class seatingScreenController {
+
+  double totalNew;
+
+  public void setTotal(double grandTotal2){
+    System.out.println(grandTotal2);
+    totalNew = grandTotal2;
+  }
     public void payClicked(ActionEvent event)throws IOException{
         FXMLLoader Loader = new FXMLLoader();
         Loader.setLocation(getClass().getResource("resources/PaymentScreen.fxml"));
@@ -21,7 +28,7 @@ public class seatingScreenController {
         }
 
         PaymentScreenController total = Loader.getController();
-        //display.setFilmName(filmName);
+        total.setTotal(totalNew);
 
         Parent p = Loader.getRoot();
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
