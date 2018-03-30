@@ -101,13 +101,18 @@ def card():
     cardform = CardForm()
     if cardform.validate_on_submit():
         cardFind = Card.query.filter_by(customer_id=variableFind.customer_id).first()
+        expirydate = int(str(cardform.expirymonth.data) + str(cardform.expiryyear.data))
         if cardFind:
             cardFind.card_number=cardform.number.data
-            expirydate = int(str(cardform.expirymonth.data) + str(cardform.expiryyear.data))
             cardFind.card_expiry=expirydate
             cardFind.card_cvv=cardform.cvv.data
             db.session.commit()
             return redirect(url_for('myaccount'))
-        # return redirect(url_for('myaccount'))
+        else:
+            form_thing = Card(customer_id=variableFind.customer_id,card_number=cardform.number.data,
+            card_expiry=expirydate,card_cvv=cardform.cvv.data)
+            db.session.add(form_thing)
+            db.session.commit()
+            return redirect(url_for('myaccount'))
 
     return render_template('card.html', title='Card', cardform=cardform)
