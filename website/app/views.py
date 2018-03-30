@@ -1,7 +1,7 @@
 from flask import render_template, flash, make_response, redirect, session, url_for, request
 from app import app, db, admin
 from flask_admin.contrib.sqla import ModelView
-from .forms import CreateForm, SessionForm, SignupForm, PasswordForm
+from .forms import CreateForm, SessionForm, SignupForm, PasswordForm, CardForm
 from app.models import Customer,Card,Film,Screen,Screening,Login,Seat,Staff,Ticket
 import datetime
 
@@ -92,6 +92,22 @@ def signup():
     # customer = Customer.query.all()
     return render_template('signup.html', title='Sign up',signform=signform)
 
-@app.route('/card')
+@app.route('/card', methods=['GET', 'POST'])
 def card():
-    return render_template('card.html', title='Sign up')
+    if 'variable' not in session:
+        return redirect(url_for('login'))
+    value = session['variable']
+    variableFind = Login.query.filter_by(login_email=value).first()
+    cardform = CardForm()
+    if cardform.validate_on_submit():
+        cardFind = Card.query.filter_by(customer_id=variableFind.customer_id).first()
+        if cardFind:
+            cardFind.card_number=cardform.number.data
+            expirydate = int(str(cardform.expirymonth.data) + str(cardform.expiryyear.data))
+            cardFind.card_expiry=expirydate
+            cardFind.card_cvv=cardform.cvv.data
+            db.session.commit()
+            return redirect(url_for('myaccount'))
+        # return redirect(url_for('myaccount'))
+
+    return render_template('card.html', title='Card', cardform=cardform)
