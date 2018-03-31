@@ -12,9 +12,6 @@
     </div>
     <hr>
     <br>
-    <br>
-    <br>
-    <br>
 
     <div class="row" id="login">
         <div class="col-sm-4">
@@ -29,7 +26,7 @@
                             {{ sessionform.login (placeholder='Email',class_="form-control")}}<br>              <!--First input box and message if not input -->
                             {% for error in sessionform.login.errors %}
                             <span style="color: red;">[{{ error }}]</span>
-                            {% endfor %}<br>
+                            {% endfor %}
                     </div>
 
                     <div class="form-group">
@@ -37,8 +34,11 @@
                         {{ sessionform.password (placeholder='Password',class_="form-control")}}<br>             <!--Second input box and message if not input -->
                         {% for error in sessionform.password.errors %}
                         <span style="color: red;">[{{ error }}]</span>
-                        {% endfor %}<br>
+                        {% endfor %}
                     </div>
+                    {% if message %}
+                      <p style="color: red; width:100%; text-align:center;">{{ message }}</p>           <!--Message if wrong user input -->
+                    {% endif %}
                     <div class="form-group">
                       <div class = "col-sm-12">
                         <p class="text-center"><input type="submit" class="btn btn-default" value="Login"></p>

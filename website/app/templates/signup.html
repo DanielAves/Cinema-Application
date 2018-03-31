@@ -67,6 +67,9 @@
                     {% for error in signform.mobile.errors %}
                     <span style="color: red;">[{{ error }}]</span>
                     {% endfor %}
+                    {% if message2 %}
+                      <p style="color: red; width:100%; text-align:center;">{{ message2 }}</p>           <!--Message if wrong user input -->
+                    {% endif %}
                     {{ signform.mobile (placeholder='Mobile',class_="form-control")}}<br>             <!--Second input box and message if not input -->
                 </div>
                 <div class="form-group">
@@ -74,6 +77,9 @@
                     {% for error in signform.email.errors %}
                      <span style="color: red;">[{{ error }}]</span>
                     {% endfor %}
+                    {% if message1 %}
+                      <p style="color: red; width:100%; text-align:center;">{{ message1 }}</p>           <!--Message if wrong user input -->
+                    {% endif %}
                     {{ signform.email (placeholder='Email',class_="form-control")}}<br>             <!--Second input box and message if not input -->
                 </div>
                 <div class="form-group">

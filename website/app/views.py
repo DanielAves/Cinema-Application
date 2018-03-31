@@ -75,22 +75,31 @@ def login():
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
+    i = 0
+    message1 = ""
+    message2 = ""
     signform = SignupForm()
     if signform.validate_on_submit():
-        form_thing = Customer(customer_f_name=signform.firstname.data,
-        customer_s_name=signform.surname.data,customer_dob=signform.dob.data,
-        customer_mobile=signform.mobile.data,customer_address=signform.address.data,
-        customer_postcode=signform.postcode.data)
-        db.session.add(form_thing)
-        db.session.commit()
+        variableFind = Login.query.filter_by(login_email=signform.email.data).first()
+        findMobile = Customer.query.filter_by(customer_mobile=signform.mobile.data).first()
+        if variableFind:
+            message1 = "Email is already being used"
+            i = 1
 
-        another_form = Login(customer_id=form_thing.customer_id,login_email=signform.email.data,
-        login_password=signform.confirm.data,login_hint=signform.hint.data)
-        db.session.add(another_form)
-        db.session.commit()
-        return redirect(url_for('login'))
-    # customer = Customer.query.all()
-    return render_template('signup.html', title='Sign up',signform=signform)
+        if findMobile:
+            message2 = "Mobile number is already being used"
+            i = 2
+
+        if i == 0:
+            form_thing = Customer(customer_f_name=signform.firstname.data,customer_s_name=signform.surname.data,customer_dob=signform.dob.data,customer_mobile=signform.mobile.data,customer_address=signform.address.data,customer_postcode=signform.postcode.data)
+            db.session.add(form_thing)
+            db.session.commit()
+
+            another_form = Login(customer_id=form_thing.customer_id,login_email=signform.email.data,login_password=signform.confirm.data,login_hint=signform.hint.data)
+            db.session.add(another_form)
+            db.session.commit()
+            return redirect(url_for('login'))
+    return render_template('signup.html', title='Sign up',signform=signform,message1=message1,message2=message2)
 
 @app.route('/card', methods=['GET', 'POST'])
 def card():
