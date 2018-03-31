@@ -44,6 +44,9 @@
                 {% for error in cardform.number.errors %}
                 <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
+                {% if message %}
+                  <p style="color: red; width:100%; text-align:center;">{{ message }}</p>           <!--Message if wrong user input -->
+                {% endif %}
                 {{ cardform.number (placeholder='Card Number',class_="form-control")}}<br>              <!--First input box and message if not input -->
             </div>
 

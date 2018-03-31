@@ -30,7 +30,9 @@ class PasswordForm(Form):
 def validate_cardnumber(form, field):
         str(field.data).strip()
         if len(str(field.data)) != 16:
-            raise ValidationError('Card Number must be 16 characters')
+            if len(str(field.data)) != 15:
+                if len(str(field.data)) != 14:
+                    raise ValidationError('Card Number must be 14-16 characters long')
 
 def validate_cvv(form, field):
         str(field.data).strip()
