@@ -3,6 +3,7 @@ from app import db
 from app.models import Card, Film, Customer, Screen, Screening, Seat, Login
 
 import datetime
+from random import randrange
 
 def populate_seats():
 
@@ -31,12 +32,25 @@ def populate_films():
 	db.session.commit()
 
 def populate_screenings():
-	i=0;
 	for screen in Screen.query.all():
-		for film in Film.query.all():
-			i = i+1
-			screening = Screening(screening_id=i,screen_id=screen.screen_id,film_id=film.film_id,screening_time=datetime.time(),screening_date=datetime.date(2017,1,17))
-			db.session.add(screening)
+		current = datetime.datetime.today()
+		counter = 1
+		m = randrange(0, 59)
+		h = randrange(0, 23)
+		while counter < 7:
+			for film in Film.query.all():
+				if m < 40:
+					m = m + 20
+				else:
+					m = 0
+				if h < 21:
+					h = h+3
+				else:
+					h = 0
+					current += datetime.timedelta(days=1)
+					counter += 1
+				screening = Screening(screen_id=screen.screen_id,film_id=film.film_id,screening_time=datetime.time(h,m),screening_date=current)
+				db.session.add(screening)
 	db.session.commit()
 
 def populate_customers():
