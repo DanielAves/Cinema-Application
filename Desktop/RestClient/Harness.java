@@ -1,5 +1,5 @@
-
 import java.util.List;
+import java.util.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.time.LocalDate ;
 
@@ -9,15 +9,38 @@ public class Harness {
       RestClient client = new RestClient("localhost", 5000);
       LocalDate d = LocalDate.of(1997 , 12, 20);
       Customer c = new Customer(5 , "Mitch" , "Gladstone" , d, "0007999977", "archery rd" , "Ls2 9au");
-      Seat seat = client.getSeat(2);
-      Screening s = client.getScreening(5);
+       List filmList = new ArrayList();
 
-      System.out.println(s);
+       filmList = client.getFilms();
 
-      Ticket t = client.createTicket(c , s , seat );
+       int filmAmount = filmList.size();
 
-      ObjectMapper mapper = new ObjectMapper();
+      for(int i =1; i<=filmAmount ;i++){ //client.getFilm(i) != null
+        Film f = client.getFilm(i);
+        String filmName = f.getFilm_name();
+        System.out.println(filmName);
+      }
 
-      System.out.println(mapper.writeValueAsString(t));
+      List screeningsList = new ArrayList();
+
+      screeningsList = client.getScreenings();
+
+      int screeningAmount = screeningsList.size();
+
+      LocalDate inputDate = LocalDate.of(2018,04,03);
+      System.out.println(inputDate);
+
+      for(int i = 1; i<=screeningAmount; i++){
+        Screening s = client.getScreening(i);
+        LocalDate date = s.getScreening_date();
+        if(date.equals(inputDate)){
+          System.out.println("Entered");
+          System.out.println(s.getFilm_id());
+        }
+
+
+
+      }
+
   }
 }
