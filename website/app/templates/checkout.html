@@ -1,4 +1,27 @@
 {% extends "base.html" %}
-
 {% block content %}
+<br>
+<br>
+<br>
+{% if message %}
+  <p style="color: red; width:100%; text-align:center;">{{ message }}</p>
+{% endif %}
+<p>Film: {{film.film_name}}</p>
+<p>Screening Date: {{screening.screening_date}}</p>
+<p>Screening Time: {{screening.screening_time}}</p>
+<p>Seat Number: {{seat.seat_id}}</p>
+
+<div class="col-sm-6">
+    <form class ="checkoutform" action="" method="post">
+    {{ checkoutform.hidden_tag() }}
+
+      <div class="form-group">
+          <p>All values correct. Do you wanna checkout?</p> {{checkoutform.check (class_="checkbox")}}</p><br>
+          <p><input type="submit" class="btn btn-default" value="Checkout"></p>
+      </div>
+
+    </form>
+
+</div>
+
 {% endblock %}

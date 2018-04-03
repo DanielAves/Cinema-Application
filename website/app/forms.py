@@ -1,5 +1,5 @@
 from flask_wtf import Form
-from wtforms import TextAreaField, StringField, TextField,IntegerField, DateField,PasswordField, SelectField
+from wtforms import TextAreaField, StringField, TextField,IntegerField, DateField,PasswordField, SelectField, BooleanField
 from wtforms.validators import DataRequired,InputRequired, Length, Email, EqualTo, NumberRange, ValidationError #Imports needed for forms
 # from .models import Task
 
@@ -45,3 +45,6 @@ class CardForm(Form):
     expirymonth = SelectField(choices=[(1,1),(2,2),(3,3),(4,4),(5,5),(6,6),(7,7),(8,8),(9,9),(10,10),(11,11),(12,12)],coerce=int)
     expiryyear = SelectField(choices=[(2018,2018),(2019,2019),(2020,2020),(2021,2021),(2022,2022),(2023,2023),(2024,2024),(2025,2025)],coerce=int)
     cvv = IntegerField('cvv', validators=[validate_cvv])
+
+class CheckoutForm(Form):
+    check = BooleanField('Agree?', validators=[DataRequired(), ])

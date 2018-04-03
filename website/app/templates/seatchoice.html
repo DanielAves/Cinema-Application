@@ -180,8 +180,9 @@
                 <h1> Choose <span class="highlight"> Seat(s) </span></h1>
                 <hr>
                 {% for each in seats[1:10] %}
-                    <button>{{each.seat_id}}</button>
+                    <a href="/checkout/{{screening.screening_id}}/{{each.seat_id}}"><button>{{each.seat_id}}</button><a/>
                 {% endfor %}
+                <br><br>
             </div>
         <!-- </div> -->
     </div>

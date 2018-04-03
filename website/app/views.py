@@ -1,7 +1,7 @@
 from flask import render_template, flash, make_response, redirect, session, url_for, request
 from app import app, db, admin
 from flask_admin.contrib.sqla import ModelView
-from .forms import CreateForm, SessionForm, SignupForm, PasswordForm, CardForm
+from .forms import CreateForm, SessionForm, SignupForm, PasswordForm, CardForm, CheckoutForm
 from app.models import Customer,Card,Film,Screen,Screening,Login,Seat,Staff,Ticket
 import datetime
 
@@ -63,9 +63,31 @@ def seatchoice(screeningID):
         tickets = Ticket.query.filter_by(screening_id=screening.screening_id).all()
     return render_template('seatchoice.html', title='Choose Seat',screening=screening, film=film, seats=seats, tickets=tickets)
 
-@app.route('/checkout')
-def checkout():
-    return render_template('checkout.html', title='Checkout')
+@app.route('/checkout/<screeningID>/<seatID>',methods=['GET', 'POST'])
+def checkout(screeningID,seatID):
+    message = ""
+    if 'variable' not in session:
+        return redirect(url_for('login'))
+    value = session['variable']
+    variableFind = Login.query.filter_by(login_email=value).first()
+    if variableFind:
+        customer = Customer.query.filter_by(customer_id=variableFind.customer_id).first()
+        cardFind = Card.query.filter_by(customer_id=variableFind.customer_id).first()
+        if cardFind:
+            message = "You can checkout"
+            screening = Screening.query.filter_by(screening_id=screeningID).first()
+            film = Film.query.filter_by(film_id=screening.film_id).first()
+            seatID = int(seatID)
+            seat = Seat.query.filter_by(seat_id=seatID).first()
+            checkoutform = CheckoutForm()
+            if checkoutform.validate_on_submit():
+                another_form = Ticket(customer_id=customer.customer_id,screening_id=screening.screening_id,seat_id=seatID)
+                db.session.add(another_form)
+                db.session.commit()
+                return redirect(url_for('index'))
+        else:
+            message = "You need to enter card details into your account to continue."
+    return render_template('checkout.html', title='Checkout', message=message,customer=customer,film=film, seat=seat, screening=screening, checkoutform=checkoutform)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
