@@ -42,7 +42,7 @@
 
     <div class="row" id="ticketseat">
         <!-- <div class="panel panel-default"> -->
-            <div class="col-sm-6">
+            <div class="col-sm-4">
                 <h1> Choose <span class="highlight"> Ticket(s) </span></h1>
                 <hr>
 
@@ -176,10 +176,22 @@
                 </form>
 
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-2" id="seat">
                 <h1> Choose <span class="highlight"> Seat(s) </span></h1>
                 <hr>
-                {% for each in seats[1:10] %}
+                {% for each in seats[0:3] %}
+                    <button>{{each.seat_id}}</button>
+                {% endfor %}
+            </div>
+            <div class="col-sm-4" id="seat">
+                <hr>
+                {% for each in seats[4:7] %}
+                    <button>{{each.seat_id}}</button>
+                {% endfor %}
+            </div>
+            <div class="col-sm-2" id="seat">
+                <hr>
+                {% for each in seats[8:10] %}
                     <button>{{each.seat_id}}</button>
                 {% endfor %}
             </div>
