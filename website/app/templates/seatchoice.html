@@ -171,8 +171,19 @@
             <div class="col-sm-6 text-center">
                 <h1> Choose <span class="highlight"> Seat(s) </span></h1>
                 <hr>
+
                     {% for each in seats[0:9] %}
+
+                      {% for a in tickets %}
+
+                        {% if each.seat_id == a.seat_id %}
+                          <button type="button" class="btn btn-primary" >---</button>
+
+                        {% endif %}
+
+                      {% endfor %}
                       <a href="/checkout/{{screening.screening_id}}/{{each.seat_id}}"><button type="button" class="btn btn-primary" > &nbsp;{{each.seat_id}}&nbsp;</button><a/>
+
                     {% endfor %}
 
                     <br>
