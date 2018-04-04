@@ -5,11 +5,8 @@
     <hr>
     <div class="row">
     <div class="row" id="customerDetails">
-        <div class="col-sm-4">
-
-        </div>
-        <div class="col-sm-4">
-            <h1>My Details</h1>
+        <div class="col-sm-6">
+            <h1>My <span class="highlight"> Details </span></h1>
                 <h3>First name: {{customer.customer_f_name}}</h3>
                 <h3>Surname : {{customer.customer_s_name}}</h3>
                 <h3>Address : {{customer.customer_address}}</h3>
@@ -17,19 +14,20 @@
                 <h3>Mobile No. : {{customer.customer_mobile}}</h3>
                 <h3>Date Of Birth : {{customer.customer_dob}}</h3>
             <br>
-            <a href="/card"><button type="button" class="btn">Change Card Details</button> </a>
-            <h1>Card Details</h1>
+            <h1>Card <span class="highlight"> Details </span></h1>
                 <h3>Card Number: {{card.card_number}}</h3>
                 <h3>Card Expiry Date: {{card.card_expiry}}</h3>
                 <h3>Card CVV : {{card.card_cvv}}</h3>
-
-            <h1>Bookings</h1>
+            <br>
+            <a href="/card"><button type="button" class="btn">Change Card Details</button> </a>
+        </div>
+        <div class="col-sm-6">
+            <h1>My <span class="highlight"> Bookings </span></h1>
               {% for each in tickets %}
-                  <h3>
-                  Film: {{each.screening.film.film_name}}
-                  Seat:{{each.seat_id}}
-                  Date: {{each.screening.screening_date}} Time:{{each.screening.screening_time.strftime('%H:%M')}}
-                  Screen:{{each.screening.screen_id}} </h3>
+                  <h3> Film: {{each.screening.film.film_name}} </h3>
+                  <h3> Seat: {{each.seat_id}}</h3>
+                  <h3> Date: {{each.screening.screening_date}} Time: {{each.screening.screening_time.strftime('%H:%M')}} </h3>
+                  <h3> Screen: {{each.screening.screen_id}} </h3>
                 <hr>
               {%endfor%}
               {% for each in film_list %}

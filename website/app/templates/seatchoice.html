@@ -14,7 +14,6 @@
     <div class="row" id="chosenFilm">
         <div class="col-sm-6" style="text-align: center;">
             <img src="../static/img/{{film.film_poster}}">
-
         </div>
 
         <div class="col-sm-6">
@@ -32,13 +31,6 @@
     <br>
     <hr>
     <hr>
-
-    <!-- <div class="row" id="title">
-        <div class="col-sm-12" style="text-align: center;">
-            <h1> Choose Your <span class="highlight"> Seat </span></h1>
-        </div>
-    </div>
-    <hr> -->
 
     <div class="row" id="ticketseat">
         <!-- <div class="panel panel-default"> -->
@@ -68,7 +60,7 @@
                             <option>15</option>
                         </select>
 
-                        <label for="sel2">Teen (16-19 years):</label>
+                        <label for="sel2">Teen (17-19 years):</label>
                         <select class="form-control" id="sel2">
                             <option>0</option>
                             <option>1</option>
@@ -88,7 +80,7 @@
                             <option>15</option>
                         </select>
 
-                        <label for="sel3">Child (4-15 years):</label>
+                        <label for="sel3">Child (16 years and below):</label>
                         <select class="form-control" id="sel3">
                             <option>0</option>
                             <option>1</option>
@@ -109,7 +101,7 @@
 
                         </select>
 
-                        <label for="sel4">Pensioner (60+ years):</label>
+                        <label for="sel4">Pensioner (65+ years):</label>
                         <select class="form-control" id="sel4">
                             <option>0</option>
                             <option>1</option>
@@ -184,7 +176,7 @@
                     {% endfor %}
 
                     <br>
-                    <br>
+                    <hr>
 
                     {% for each in seats[9:19] %}
                       <a href="/checkout/{{screening.screening_id}}/{{each.seat_id}}"><button type="button" class="btn btn-primary" > {{each.seat_id}}</button><a/>
