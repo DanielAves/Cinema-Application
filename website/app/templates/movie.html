@@ -1,19 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
 
-
-
     <br>
     <hr>
     <hr>
-
-
-    <br>
-    <br>
-    <br>
-    <br>
-
-
 
     <div class="row" id="title">
         <div class="col-6" style="text-align: center;">
@@ -32,8 +22,39 @@
 
             <br>
             <br>
+            <p>Today:</p>
               {% for each in screening %}
-                <a href="/seatchoice/{{each.screening_id}}"><button type="button" class="btn">Date: {{each.screening_date}} Time: {{each.screening_time}}</button> </a>
+                <a href="/seatchoice/{{each.screening_id}}"><button type="button" class="btn"> Time: {{each.screening_time.strftime('%H:%M')}}</button> </a>
+              {%endfor%}
+
+            <p>Tomorrow:</p>
+              {% for each in screeningtomorrow %}
+                <a href="/seatchoice/{{each.screening_id}}"><button type="button" class="btn"> Time: {{each.screening_time.strftime('%H:%M')}}</button> </a>
+              {%endfor%}
+
+            <p>Day + 2:</p>
+              {% for each in screeningplus2 %}
+                <a href="/seatchoice/{{each.screening_id}}"><button type="button" class="btn"> Time: {{each.screening_time.strftime('%H:%M')}}</button> </a>
+              {%endfor%}
+
+            <p>Day + 3:</p>
+              {% for each in screeningplus3 %}
+                <a href="/seatchoice/{{each.screening_id}}"><button type="button" class="btn"> Time: {{each.screening_time.strftime('%H:%M')}}</button> </a>
+              {%endfor%}
+
+            <p>Day + 4:</p>
+              {% for each in screeningplus4 %}
+                <a href="/seatchoice/{{each.screening_id}}"><button type="button" class="btn"> Time: {{each.screening_time.strftime('%H:%M')}}</button> </a>
+              {%endfor%}
+
+            <p>Day + 5:</p>
+              {% for each in screeningplus5 %}
+                <a href="/seatchoice/{{each.screening_id}}"><button type="button" class="btn"> Time: {{each.screening_time.strftime('%H:%M')}}</button> </a>
+              {%endfor%}
+
+            <p>Day + 6:</p>
+              {% for each in screeningplus6 %}
+                <a href="/seatchoice/{{each.screening_id}}"><button type="button" class="btn"> Time: {{each.screening_time.strftime('%H:%M')}}</button> </a>
               {%endfor%}
         </div>
 

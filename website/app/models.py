@@ -4,7 +4,7 @@ class Customer(db.Model):
     customer_id = db.Column(db.Integer, primary_key=True)
     customer_f_name = db.Column(db.String(20))
     customer_s_name = db.Column(db.String(30))
-    customer_dob = db.Column(db.DateTime)
+    customer_dob = db.Column(db.Date)
     customer_mobile = db.Column(db.String(13), unique=True)
     customer_address = db.Column(db.String(40))
     customer_postcode = db.Column(db.String(8))
@@ -39,7 +39,7 @@ class Film(db.Model):
     screening = db.relationship('Screening', backref = 'film', lazy = 'dynamic')
 
     def __repr__(self):
-        return '' % (self.film_id, self.film_name, self.film_desc,
+        return '' % (self.film_id, self.film_name, self.film_description,
         self.film_runtime, self.film_director, self.film_age_rating)
 
 class Screen(db.Model):
@@ -56,7 +56,6 @@ class Screening(db.Model):
     film_id  = db.Column(db.Integer, db.ForeignKey('film.film_id'))
     screen_id = db.Column(db.Integer, db.ForeignKey('screen.screen_id'))
     screening_time = db.Column(db.Time)
-    screening_time = db.Column(db.String(5))
     screening_date = db.Column(db.Date)
     ticket = db.relationship('Ticket', backref = 'screening', lazy = 'dynamic')
 
@@ -98,7 +97,7 @@ class Staff(db.Model):
         self.staff_postcode, self.staff_nin)
 
 class Ticket(db.Model):
-    ticket_id = db.Column(db.Integer, primary_key=True,autoincrement=True)
-    customer_id  = db.Column(db.Integer, db.ForeignKey('customer.customer_id'))
-    screening_id = db.Column(db.Integer, db.ForeignKey('screening.screening_id'))
-    seat_id      = db.Column(db.Integer, db.ForeignKey('seat.seat_id'))
+    #ticket_id = db.Column(db.Integer, primary_key=True,autoincrement=True )
+    customer_id  = db.Column(db.Integer, db.ForeignKey('customer.customer_id'), primary_key = True)
+    screening_id = db.Column(db.Integer, db.ForeignKey('screening.screening_id'), primary_key = True)
+    seat_id      = db.Column(db.Integer, db.ForeignKey('seat.seat_id'), primary_key = True)
