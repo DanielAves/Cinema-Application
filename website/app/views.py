@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from flask import render_template, flash, make_response, redirect, session, url_for, request
 from app import app, db, admin
 from flask_admin.contrib.sqla import ModelView
@@ -64,7 +65,7 @@ def seatchoice(screeningID):
 
 @app.route('/checkout/<screeningID>/<seatID>',methods=['GET', 'POST'])
 def checkout(screeningID,seatID):
-    message = ""
+    price = ""
     if 'variable' not in session:
         return redirect(url_for('login'))
     value = session['variable']
@@ -73,10 +74,13 @@ def checkout(screeningID,seatID):
         customer = Customer.query.filter_by(customer_id=variableFind.customer_id).first()
         cardFind = Card.query.filter_by(customer_id=variableFind.customer_id).first()
         if cardFind:
-            message = "You can checkout"
             screening = Screening.query.filter_by(screening_id=screeningID).first()
             film = Film.query.filter_by(film_id=screening.film_id).first()
             seatID = int(seatID)
+            if seatID < 10:
+                price = "7.50"
+            else:
+                price = "5.00"
             seat = Seat.query.filter_by(seat_id=seatID).first()
             checkoutform = CheckoutForm()
             if checkoutform.validate_on_submit():
@@ -85,8 +89,8 @@ def checkout(screeningID,seatID):
                 db.session.commit()
                 return redirect(url_for('index'))
         else:
-            message = "You need to enter card details into your account to continue."
-    return render_template('checkout.html', title='Checkout', message=message,customer=customer,film=film, seat=seat, screening=screening, checkoutform=checkoutform)
+            return redirect(url_for('myaccount'))
+    return render_template('checkout.html', title='Checkout', price=price,customer=customer,film=film, seat=seat, screening=screening, checkoutform=checkoutform)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():

@@ -13,13 +13,11 @@
 
 <div class="col-sm-5">
     <h3> Order Details </h3>
-    {% if message %}
-    <p style="color: red; width:100%; text-align:center;">{{ message }} </p>
-    {% endif %}
     <p> Film: {{film.film_name}} </p>
     <p> Screening Date: {{screening.screening_date}} </p>
     <p> Screening Time: {{screening.screening_time.strftime('%H:%M') }} </p>
     <p> Seat Number: {{seat.seat_id}} </p>
+    <p> Price: £{{ price }} </p>
 </div>
 
 <div class="col-sm-1">
