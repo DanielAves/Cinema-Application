@@ -26,7 +26,7 @@
             <p> Rating: <span class="highlight"> {{film.film_age_rating}} </span><p>
             <p> Screen: {{screening.screen_id}}<p>
             <p> Date: {{screening.screening_date}}<p>
-            <p> Time: {{screening.screening_time}}<p>
+            <p> Time: {{screening.screening_time.strftime('%H:%M')}}<p>
         </div>
     </div>
     <br>
@@ -176,17 +176,78 @@
                 </form>
 
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-6 text-center">
                 <h1> Choose <span class="highlight"> Seat(s) </span></h1>
                 <hr>
-                {% for each in seats[1:10] %}
-                    <a href="/checkout/{{screening.screening_id}}/{{each.seat_id}}"><button>{{each.seat_id}}</button><a/>
-                {% endfor %}
+                    {% for each in seats[0:9] %}
+                      <a href="/checkout/{{screening.screening_id}}/{{each.seat_id}}"><button type="button" class="btn btn-primary" > &nbsp;{{each.seat_id}}&nbsp;</button><a/>
+                    {% endfor %}
+
+                    <br>
+                    <br>
+
+                    {% for each in seats[9:19] %}
+                      <a href="/checkout/{{screening.screening_id}}/{{each.seat_id}}"><button type="button" class="btn btn-primary" > {{each.seat_id}}</button><a/>
+                    {% endfor %}
+                    <br>
+                    <br>
+
+                    {% for each in seats[19:29] %}
+                      <a href="/checkout/{{screening.screening_id}}/{{each.seat_id}}"><button type="button" class="btn btn-primary" > {{each.seat_id}}</button><a/>
+                    {% endfor %}
+                    <br>
+                    <br>
+
+                    {% for each in seats[29:39] %}
+                      <a href="/checkout/{{screening.screening_id}}/{{each.seat_id}}"><button type="button" class="btn btn-primary" > {{each.seat_id}}</button><a/>
+                    {% endfor %}
+                    <br>
+                    <br>
+
+                    {% for each in seats[39:49] %}
+                      <a href="/checkout/{{screening.screening_id}}/{{each.seat_id}}"><button type="button" class="btn btn-primary" > {{each.seat_id}}</button><a/>
+                    {% endfor %}
+                    <br>
+                    <br>
+
+                    {% for each in seats[49:59] %}
+                      <a href="/checkout/{{screening.screening_id}}/{{each.seat_id}}"><button type="button" class="btn btn-primary" > {{each.seat_id}}</button><a/>
+                    {% endfor %}
+                    <br>
+                    <br>
+
+                    {% for each in seats[59:69] %}
+                      <a href="/checkout/{{screening.screening_id}}/{{each.seat_id}}"><button type="button" class="btn btn-primary" > {{each.seat_id}}</button><a/>
+                    {% endfor %}
+                    <br>
+                    <br>
+
+                    {% for each in seats[69:79] %}
+                      <a href="/checkout/{{screening.screening_id}}/{{each.seat_id}}"><button type="button" class="btn btn-primary" > {{each.seat_id}}</button><a/>
+                    {% endfor %}
+                    <br>
+                    <br>
+
+                    {% for each in seats[79:89] %}
+                      <a href="/checkout/{{screening.screening_id}}/{{each.seat_id}}"><button type="button" class="btn btn-primary" > {{each.seat_id}}</button><a/>
+                    {% endfor %}
+                    <br>
+                    <br>
+
+                    {% for each in seats[89:99] %}
+                      <a href="/checkout/{{screening.screening_id}}/{{each.seat_id}}"><button type="button" class="btn btn-primary" > {{each.seat_id}}</button><a/>
+                    {% endfor %}
+                    <br>
+                    <br>
+
+                <div class="row">
                 <br><br>
             </div>
         <!-- </div> -->
     </div>
+
     <hr>
     <hr>
+
 
 {% endblock %}

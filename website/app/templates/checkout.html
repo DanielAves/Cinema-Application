@@ -8,7 +8,7 @@
 {% endif %}
 <p>Film: {{film.film_name}}</p>
 <p>Screening Date: {{screening.screening_date}}</p>
-<p>Screening Time: {{screening.screening_time}}</p>
+<p>Screening Time: {{screening.screening_time.strftime('%H:%M') }}</p>
 <p>Seat Number: {{seat.seat_id}}</p>
 
 <div class="col-sm-6">

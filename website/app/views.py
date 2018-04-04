@@ -30,8 +30,7 @@ def myaccount():
         #add validation if there is no card added.
         card = Card.query.filter_by(customer_id=variableFind.customer_id).first()
         tickets = Ticket.query.filter_by(customer_id=variableFind.customer_id).all()
-    # for each in tickets:
-    #         screening = Screening.query.filter_by(screening_id=each.screening_id).all()
+
     return render_template('myaccount.html', title='My Account',customer=customer,tickets=tickets,card=card)
 
 @app.route('/unsetvariable')
