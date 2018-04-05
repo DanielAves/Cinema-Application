@@ -48,3 +48,6 @@ class CardForm(Form):
 
 class CheckoutForm(Form):
     check = BooleanField('Agree?', validators=[DataRequired(), ])
+
+class SearchForm(Form):
+    search = TextField('search', validators=[DataRequired()])

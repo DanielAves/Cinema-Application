@@ -2,9 +2,12 @@
 from flask import render_template, flash, make_response, redirect, session, url_for, request
 from app import app, db, admin
 from flask_admin.contrib.sqla import ModelView
+from flask_mail import Mail, Message
 from .forms import CreateForm, SessionForm, SignupForm, PasswordForm, CardForm, CheckoutForm
 from app.models import Customer,Card,Film,Screen,Screening,Login,Seat,Staff,Ticket
 import datetime
+
+mail=Mail(app)
 
 @app.route('/')
 def index():
@@ -159,6 +162,10 @@ def card():
                 card_expiry=expirydate,card_cvv=cardform.cvv.data)
                 db.session.add(form_thing)
                 db.session.commit()
+                msg = Message('Hello', sender = 'yourId@gmail.com', recipients = ['id1@gmail.com'])
+                msg.body = "Hello Flask message sent from Flask-Mail"
+                mail.send(msg)
+
                 return redirect(url_for('myaccount'))
 
     return render_template('card.html', title='Card', cardform=cardform,message=message)
