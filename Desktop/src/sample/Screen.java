@@ -1,3 +1,4 @@
+package sample;
 import java.util.Map;
 
 public class Screen extends Resource {

@@ -1,3 +1,4 @@
+package sample;
 import java.time.LocalDate ;
 public class Customer {
   private int customer_id ;

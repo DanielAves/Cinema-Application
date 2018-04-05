@@ -18,6 +18,11 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.logging.Logger;
 
+import java.util.List;
+import java.util.*;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.time.LocalDate ;
+
 public class filmScreenController{
 
 
@@ -81,20 +86,23 @@ public class filmScreenController{
     }
 
 
-    public void initialize(){
-        Film db = new Film();
-        dbConnection con = new dbConnection();
-        film1.setText(con.filmList.get(0).getFilmName());
+    public void initialize() throws Exception{
 
-        film2.setText(con.filmList.get(1).getFilmName());
-        film3.setText(con.filmList.get(2).getFilmName());
-        film4.setText(con.filmList.get(3).getFilmName());
-        film5.setText(con.filmList.get(4).getFilmName());
-        film6.setText(con.filmList.get(5).getFilmName());
-        film7.setText(con.filmList.get(6).getFilmName());
-        film8.setText(con.filmList.get(7).getFilmName());
-        film9.setText(con.filmList.get(8).getFilmName());
-        film10.setText(con.filmList.get(9).getFilmName());
+
+
+        // Film db = new Film();
+        // dbConnection con = new dbConnection();
+        // film1.setText(con.filmList.get(0).getFilmName());
+        //
+        // film2.setText(con.filmList.get(1).getFilmName());
+        // film3.setText(con.filmList.get(2).getFilmName());
+        // film4.setText(con.filmList.get(3).getFilmName());
+        // film5.setText(con.filmList.get(4).getFilmName());
+        // film6.setText(con.filmList.get(5).getFilmName());
+        // film7.setText(con.filmList.get(6).getFilmName());
+        // film8.setText(con.filmList.get(7).getFilmName());
+        // film9.setText(con.filmList.get(8).getFilmName());
+        // film10.setText(con.filmList.get(9).getFilmName());
 
     }
 
@@ -106,11 +114,3 @@ public class filmScreenController{
         System.out.println(dtf.format(date));
     }
 }
-
-
-
-
-
-
-
-

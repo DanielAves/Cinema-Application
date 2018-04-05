@@ -1,3 +1,4 @@
+package sample;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Ticket {
   private int ticket_id ;

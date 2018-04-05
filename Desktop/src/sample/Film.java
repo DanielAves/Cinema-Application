@@ -1,94 +1,116 @@
 package sample;
-
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.Collection;
-
-/**
- * Created by sc16da on 26/02/18.
- */
 public class Film {
-
-    private Integer filmID;
-    private String filmName;
-    private String filmDescription;
-    private Integer filmRuntime;
-    private String filmDirector;
-    private Integer filmAgeRating;
-
-
-    public Integer getFilmID() { return filmID; }
-
-    public void setFilmID(Integer film_id) {
-        this.filmID = film_id;
-    }
-
-
-    public String getFilmName() { return filmName; }
-
-    public void setFilmName(String film_name) { this.filmName = film_name; }
-
-
-    public String getFilmDescription() {
-        return filmDescription;
-    }
-
-    public void setFilmDescription(String film_description) {
-        this.filmDescription = film_description;
-    }
-
-
-    public Integer getFilmRuntime() {
-        return filmRuntime;
-    }
-
-    public void setFilmRuntime(Integer film_runtime) {
-        this.filmRuntime = film_runtime;
-    }
-
-
-    public String getFilmDirector() {
-        return filmDirector;
-    }
-
-    public void setFilmDirector(String film_director) {
-        this.filmDirector = film_director;
-    }
-
-
-    public Integer getFilmAgeRating() {
-        return filmAgeRating;
-    }
-
-    public void setFilmAgeRating(Integer film_age_rating) {
-        this.filmAgeRating = film_age_rating;
-    }
+  private int film_id ;
+  private String film_name ;
+  private String film_description ;
+  private int film_runtime ;
+  private String film_director;
+  private String film_age_rating;
 
 
 
+	/**
+	* Returns value of film_id
+	* @return
+	*/
+	public int getFilm_id() {
+		return film_id;
+	}
 
-//    private Connection con;
-//    public void setConnection(Connection con){
-//        this.con=con;
-//    }
-//
-//    public void filmNames() throws ClassNotFoundException {
-//        try {
-//            Statement statement = con.createStatement();
-//            statement.setQueryTimeout(30);  // set timeout to 30 sec.
-//            ResultSet rs = statement.executeQuery("select film_name from Film");
-//
-//            System.out.println("film_name = " + rs.getString("film_name"));
-//        }
-//        catch(SQLException e) {
-//            // if the error message is "out of memory",
-//            // it probably means no database file is found
-//            System.err.println(e.getMessage());
-//        }
-//    }
+	/**
+	* Sets new value of film_id
+	* @param
+	*/
+	public void setFilm_id(int film_id) {
+		this.film_id = film_id;
+	}
 
+	/**
+	* Returns value of film_name
+	* @return
+	*/
+	public String getFilm_name() {
+		return film_name;
+	}
+
+	/**
+	* Sets new value of film_name
+	* @param
+	*/
+	public void setFilm_name(String film_name) {
+		this.film_name = film_name;
+	}
+
+	/**
+	* Returns value of film_description
+	* @return
+	*/
+	public String getFilm_description() {
+		return film_description;
+	}
+
+	/**
+	* Sets new value of film_description
+	* @param
+	*/
+	public void setFilm_description(String film_description) {
+		this.film_description = film_description;
+	}
+
+	/**
+	* Returns value of film_runtime
+	* @return
+	*/
+	public int getFilm_runtime() {
+		return film_runtime;
+	}
+
+	/**
+	* Sets new value of film_runtime
+	* @param
+	*/
+	public void setFilm_runtime(int film_runtime) {
+		this.film_runtime = film_runtime;
+	}
+
+	/**
+	* Returns value of film_director
+	* @return
+	*/
+	public String getFilm_director() {
+		return film_director;
+	}
+
+	/**
+	* Sets new value of film_director
+	* @param
+	*/
+	public void setFilm_director(String film_director) {
+		this.film_director = film_director;
+	}
+
+	/**
+	* Returns value of film_age_rating
+	* @return
+	*/
+	public String getFilm_age_rating() {
+		return film_age_rating;
+	}
+
+	/**
+	* Sets new value of film_age_rating
+	* @param
+	*/
+	public void setFilm_age_rating(String film_age_rating) {
+		this.film_age_rating = film_age_rating;
+	}
+
+	/**
+	* Create string representation of Film for printing
+	* @return
+	*/
+	@Override
+	public String toString() {
+		return "Film [film_id=" + film_id + ", film_name=" + film_name + ", film_description=" + film_description + ", film_runtime=" + film_runtime + ", film_director=" + film_director + ", film_age_rating=" + film_age_rating + "]";
+	}
 }

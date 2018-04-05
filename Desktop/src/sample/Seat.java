@@ -1,4 +1,4 @@
-
+package sample;
 public class Seat{
 
   private int seat_id;

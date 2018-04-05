@@ -12,12 +12,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-
-
 public class Main extends Application {
 
     Stage window;
-    Scene loginScreen,filmScreen,timeTable,tickets,seatSelection;
+    Scene loginScreen;
 
 
 
@@ -36,11 +34,10 @@ public class Main extends Application {
     }
 
 
-    public static void main(String[] args) throws ClassNotFoundException {
+    public static void main(String[] args) throws Exception {
 
-        dbConnection test = new dbConnection();
-        test.Open();
-
+        // dbConnection test = new dbConnection();
+        // test.Open();
 
         launch(args);
     }

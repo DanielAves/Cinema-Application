@@ -1,3 +1,5 @@
+package sample;
+
 import java.util.List;
 import com.fasterxml.jackson.databind.ObjectMapper;
 public interface CinemaApi {
