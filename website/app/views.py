@@ -90,6 +90,17 @@ def checkout(screeningID,seatID):
                 another_form = Ticket(customer_id=customer.customer_id,screening_id=screening.screening_id,seat_id=seatID)
                 db.session.add(another_form)
                 db.session.commit()
+
+                subject = 'Osprey Cinema: Ticket for ' + film.film_name + ' on ' + str(screening.screening_date)
+                content = ("<h1>Ticket Information<h1>" + "<br> <b>Film: </b>" + film.film_name
+                     + "<br> <b>Date: </b>" + str(screening.screening_date) + "<br> <b>Time: </b>"
+                     + str(screening.screening_time) + "<br> <b>Seat: </b>" + str(seat.seat_id) + "<br> <b>Screen: </b>"
+                     + str(screening.screen_id) + "<br> <b>Price:  </b>" + price)
+                msg = Message(subject, sender = 'ospreycinema', recipients = ['teamosprey18@gmail.com'])
+                msg.html = content
+                with app.open_resource("static/img/cocoBanner.jpg") as fp:
+                    msg.attach("Ticket.png", "image/jpg", fp.read())
+                mail.send(msg)
                 return redirect(url_for('index'))
         else:
             return redirect(url_for('myaccount'))
@@ -162,9 +173,6 @@ def card():
                 card_expiry=expirydate,card_cvv=cardform.cvv.data)
                 db.session.add(form_thing)
                 db.session.commit()
-                msg = Message('Hello', sender = 'yourId@gmail.com', recipients = ['id1@gmail.com'])
-                msg.body = "Hello Flask message sent from Flask-Mail"
-                mail.send(msg)
 
                 return redirect(url_for('myaccount'))
 
