@@ -73,59 +73,58 @@ def checkout(screeningID,seatID):
     if variableFind:
         customer = Customer.query.filter_by(customer_id=variableFind.customer_id).first()
         cardFind = Card.query.filter_by(customer_id=variableFind.customer_id).first()
-        if cardFind:
-            screening = Screening.query.filter_by(screening_id=screeningID).first()
-            film = Film.query.filter_by(film_id=screening.film_id).first()
+        screening = Screening.query.filter_by(screening_id=screeningID).first()
+        film = Film.query.filter_by(film_id=screening.film_id).first()
 
-            #checks if user allowed to watch this film
-            ratings = {'U': 4, 'PG': 8, '12': 12,'15': 15,'18': 18}
-            if str(film.film_age_rating) in ratings:
-                print ratings[str(film.film_age_rating)]
-                if (ratings[str(film.film_age_rating)] < agefinder):
-                    print "Correct age"
-            seatID = int(seatID)
-            if seatID < 10 and agefinder(customer.customer_dob) <= 64:
-                price = "7.50"
-            elif seatID < 10 and agefinder(customer.customer_dob) > 64:
-                price = "6.00 (Over 65 Discount)"
-            elif seatID > 10 and agefinder(customer.customer_dob) > 64:
-                price = "3.50 (Over 65 Discount)"
-            else:
-                price = "5.00"
-            seat = Seat.query.filter_by(seat_id=seatID).first()
-            checkoutform = CheckoutForm()
-            if checkoutform.validate_on_submit():
-                another_form = Ticket(customer_id=customer.customer_id,screening_id=screening.screening_id,seat_id=seatID)
-                db.session.add(another_form)
-                db.session.commit()
-
-                info = [film.film_name,str(screening.screening_date),str(screening.screening_time)
-                        ,str(seat.seat_id), str(screening.screen_id),
-                        str(customer.customer_f_name + " " + customer.customer_s_name)]
-                print(info[0], info[1])
-                subject = 'Osprey Cinema: Ticket for ' + info[0] + ' on ' + info[1]
-                content = ("<h1>Ticket Information<h1>" + "<br> <b>Customer: </b>" + info[5]
-                     + "<br> <b>Film: </b>" + info[0]  + "<br> <b>Date: </b>" + info[1]
-                     + "<br> <b>Time: </b>" + info[2] + "<br> <b>Seat: </b>" + info[3]
-                     + "<br> <b>Screen: </b>" + info[4] + "<br> <b>Price:  </b>" + price)
-
-                ticketinfo = ("<Osprey Cinema Valid Ticket> \nCustomer Name: " + info[5]
-                           + "\nScreening Date: " + info[1] + "\nScreening Time: " + info[2]
-                           + "\nScreen Number: " + info[4] + "\nSeat Number: " + info[3]
-                           + "\nPrice: " + price)
-                ticketcode = pyqrcode.create(ticketinfo, error='L', version=8, mode='binary')
-                ticketcode.svg('app/static/img/ticket.svg', scale=8)
-
-                msg = Message(subject, sender = 'ospreycinema', recipients = [value])
-                msg.html = content
-                with app.open_resource("static/img/ticket.svg") as fp:
-                    msg.attach("ticket.svg", "image/svg", fp.read())
-                mail.send(msg)
-
-                return redirect(url_for('index'))
+        #checks if user allowed to watch this film
+        age = ""
+        ratings = {'U': 4, 'PG': 8, '12': 12,'15': 15,'18': 18}
+        if str(film.film_age_rating) in ratings:
+            print ratings[str(film.film_age_rating)]
+            if (agefinder(customer.customer_dob) < (ratings[str(film.film_age_rating)]) ):
+                age = "You are underage to watch this film"
+        seatID = int(seatID)
+        if seatID < 10 and agefinder(customer.customer_dob) <= 64:
+            price = "7.50"
+        elif seatID < 10 and agefinder(customer.customer_dob) > 64:
+            price = "6.00 (Over 65 Discount)"
+        elif seatID > 10 and agefinder(customer.customer_dob) > 64:
+            price = "3.50 (Over 65 Discount)"
         else:
-            return redirect(url_for('myaccount'))
-    return render_template('checkout.html', title='Checkout', price=price,customer=customer,film=film, seat=seat, screening=screening, checkoutform=checkoutform)
+            price = "5.00"
+        seat = Seat.query.filter_by(seat_id=seatID).first()
+        checkoutform = CheckoutForm()
+        cardform = CardForm()
+        if checkoutform.validate_on_submit() and cardform.validate_on_submit:
+            another_form = Ticket(customer_id=customer.customer_id,screening_id=screening.screening_id,seat_id=seatID)
+            db.session.add(another_form)
+            db.session.commit()
+
+            info = [film.film_name,str(screening.screening_date),str(screening.screening_time)
+                    ,str(seat.seat_id), str(screening.screen_id),
+                    str(customer.customer_f_name + " " + customer.customer_s_name)]
+            print(info[0], info[1])
+            subject = 'Osprey Cinema: Ticket for ' + info[0] + ' on ' + info[1]
+            content = ("<h1>Ticket Information<h1>" + "<br> <b>Customer: </b>" + info[5]
+                 + "<br> <b>Film: </b>" + info[0]  + "<br> <b>Date: </b>" + info[1]
+                 + "<br> <b>Time: </b>" + info[2] + "<br> <b>Seat: </b>" + info[3]
+                 + "<br> <b>Screen: </b>" + info[4] + "<br> <b>Price:  </b>" + price)
+
+            ticketinfo = ("<Osprey Cinema Valid Ticket> \nCustomer Name: " + info[5]
+                       + "\nScreening Date: " + info[1] + "\nScreening Time: " + info[2]
+                       + "\nScreen Number: " + info[4] + "\nSeat Number: " + info[3]
+                       + "\nPrice: " + price)
+            ticketcode = pyqrcode.create(ticketinfo, error='L', version=8, mode='binary')
+            ticketcode.svg('app/static/img/ticket.svg', scale=8)
+
+            msg = Message(subject, sender = 'ospreycinema', recipients = [value])
+            msg.html = content
+            with app.open_resource("static/img/ticket.svg") as fp:
+                msg.attach("ticket.svg", "image/svg", fp.read())
+            mail.send(msg)
+
+            return redirect(url_for('index'))
+    return render_template('checkout.html', title='Checkout', price=price,customer=customer,film=film, seat=seat, screening=screening, checkoutform=checkoutform, cardform=cardform, age=age, cardFind=cardFind)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
