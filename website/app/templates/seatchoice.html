@@ -171,18 +171,22 @@
             <div class="col-sm-6 text-center">
                 <h1> Choose <span class="highlight"> Seat(s) </span></h1>
                 <hr>
-
+                    {% set iterated = 1 %}
                     {% for each in seats[0:9] %}
-
                       {% for a in tickets %}
 
-                        {% if each.seat_id == a.seat_id %}
+                        {% if iterated == 2 %}
+                          {{iterated}}
+                        {% elif each.seat_id == a.seat_id %}
                           <button type="button" class="btn btn-danger" >---</button>
-
+                          {% set iterated = 2 %}
+                          {{iterated}}
+                        {% else %}
+                          <a href="/checkout/{{screening.screening_id}}/{{each.seat_id}}"><button type="button" class="btn btn-danger" > &nbsp;{{each.seat_id}}&nbsp;</button><a/>
+                          {{iterated}}
                         {% endif %}
 
                       {% endfor %}
-                      <a href="/checkout/{{screening.screening_id}}/{{each.seat_id}}"><button type="button" class="btn btn-danger" > &nbsp;{{each.seat_id}}&nbsp;</button><a/>
 
                     {% endfor %}
 
