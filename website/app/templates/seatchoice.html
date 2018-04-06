@@ -177,12 +177,12 @@
                       {% for a in tickets %}
 
                         {% if each.seat_id == a.seat_id %}
-                          <button type="button" class="btn btn-primary" >---</button>
+                          <button type="button" class="btn btn-danger" >---</button>
 
                         {% endif %}
 
                       {% endfor %}
-                      <a href="/checkout/{{screening.screening_id}}/{{each.seat_id}}"><button type="button" class="btn btn-primary" > &nbsp;{{each.seat_id}}&nbsp;</button><a/>
+                      <a href="/checkout/{{screening.screening_id}}/{{each.seat_id}}"><button type="button" class="btn btn-danger" > &nbsp;{{each.seat_id}}&nbsp;</button><a/>
 
                     {% endfor %}
 

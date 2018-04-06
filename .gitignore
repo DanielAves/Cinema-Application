@@ -7,4 +7,4 @@ website/app/__pycache__/
 website/db_repository/
 *.db
 
-
+website/app/static/img/ticket.svg

@@ -61,6 +61,8 @@ def seatchoice(screeningID):
         capacity = Screen.query.filter_by(screen_id=screening.screen_id).first()
         seats = Seat.query.all()[0:capacity.screen_capacity]
         tickets = Ticket.query.filter_by(screening_id=screening.screening_id).all()
+    else:
+        return redirect(url_for('whatson'))
     return render_template('seatchoice.html', title='Choose Seat',screening=screening, film=film, seats=seats, tickets=tickets)
 
 @app.route('/checkout/<screeningID>/<seatID>',methods=['GET', 'POST'])
@@ -75,15 +77,21 @@ def checkout(screeningID,seatID):
         cardFind = Card.query.filter_by(customer_id=variableFind.customer_id).first()
         screening = Screening.query.filter_by(screening_id=screeningID).first()
         film = Film.query.filter_by(film_id=screening.film_id).first()
+        seatID = int(seatID)
+        seat = Seat.query.filter_by(seat_id=seatID).first()
+        ticketTaken = Ticket.query.filter_by(seat_id=seat.seat_id).first()
+        if ticketTaken:
+            print ticketTaken.screening.screening_id
+            if ticketTaken.seat_id == seat.seat_id:
+                return redirect(url_for('seatchoice', screeningID=screening.screening_id))
+
 
         #checks if user allowed to watch this film
         age = ""
         ratings = {'U': 4, 'PG': 8, '12': 12,'15': 15,'18': 18}
         if str(film.film_age_rating) in ratings:
-            print ratings[str(film.film_age_rating)]
             if (agefinder(customer.customer_dob) < (ratings[str(film.film_age_rating)]) ):
                 age = "You are underage to watch this film"
-        seatID = int(seatID)
         if seatID < 10 and agefinder(customer.customer_dob) <= 64:
             price = "7.50"
         elif seatID < 10 and agefinder(customer.customer_dob) > 64:
@@ -92,7 +100,7 @@ def checkout(screeningID,seatID):
             price = "3.50 (Over 65 Discount)"
         else:
             price = "5.00"
-        seat = Seat.query.filter_by(seat_id=seatID).first()
+
         checkoutform = CheckoutForm()
         cardform = CardForm()
         if checkoutform.validate_on_submit() and cardform.validate_on_submit:
