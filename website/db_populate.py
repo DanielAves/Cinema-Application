@@ -62,8 +62,8 @@ def populate_customers():
 ]
 	i = 1
 	for d in data:
-		customer = Customer(customer_id=d[0], customer_f_name=d[1], customer_s_name=d[2],customer_dob=datetime.date(2017,1,17),customer_mobile=d[3],customer_address=d[4], customer_postcode=d[5])
-		customer.card.append(Card(card_number=123412341234123 +i, card_expiry=datetime.date(2017,1,17),card_cvv=111))
+		customer = Customer(customer_id=d[0], customer_f_name=d[1], customer_s_name=d[2],customer_dob=datetime.date(1927,1,17),customer_mobile=d[3],customer_address=d[4], customer_postcode=d[5])
+		customer.card.append(Card(card_number=123412341234123 +i, card_expiry=datetime.date(1997,1,17),card_cvv=111))
 		# customer.card.append(Card(card_number = d.card_number, card_expiry = datetime.date(),card_cvv = d.card_cvv))
 		db.session.add(customer)
 		i = i+1

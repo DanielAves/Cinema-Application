@@ -5,8 +5,7 @@ from flask_admin.contrib.sqla import ModelView
 from flask_mail import Mail, Message
 from .forms import CreateForm, SessionForm, SignupForm, PasswordForm, CardForm, CheckoutForm
 from app.models import Customer,Card,Film,Screen,Screening,Login,Seat,Staff,Ticket
-import datetime
-
+import datetime,pyqrcode
 mail=Mail(app)
 
 @app.route('/')
@@ -34,7 +33,6 @@ def myaccount():
         #add validation if there is no card added.
         card = Card.query.filter_by(customer_id=variableFind.customer_id).first()
         tickets = Ticket.query.filter_by(customer_id=variableFind.customer_id).all()
-
     return render_template('myaccount.html', title='My Account',customer=customer,tickets=tickets,card=card)
 
 @app.route('/unsetvariable')
@@ -54,7 +52,6 @@ def movie(movieID):
     screeningplus5 = Screening.query.filter_by(film_id=movieID).filter_by(screening_date=(current + datetime.timedelta(days=5))).all()
     screeningplus6 = Screening.query.filter_by(film_id=movieID).filter_by(screening_date=(current + datetime.timedelta(days=6))).all()
     return render_template('movie.html', title='Movie', film=film, screening=screening, screeningtomorrow=screeningtomorrow,screeningplus2=screeningplus2,screeningplus3=screeningplus3,screeningplus4=screeningplus4,screeningplus5=screeningplus5,screeningplus6=screeningplus6)
-
 
 @app.route('/seatchoice/<screeningID>')
 def seatchoice(screeningID):
@@ -79,9 +76,20 @@ def checkout(screeningID,seatID):
         if cardFind:
             screening = Screening.query.filter_by(screening_id=screeningID).first()
             film = Film.query.filter_by(film_id=screening.film_id).first()
+
+            #checks if user allowed to watch this film
+            ratings = {'U': 4, 'PG': 8, '12': 12,'15': 15,'18': 18}
+            if str(film.film_age_rating) in ratings:
+                print ratings[str(film.film_age_rating)]
+                if (ratings[str(film.film_age_rating)] < agefinder):
+                    print "Correct age"
             seatID = int(seatID)
-            if seatID < 10:
+            if seatID < 10 and agefinder(customer.customer_dob) <= 64:
                 price = "7.50"
+            elif seatID < 10 and agefinder(customer.customer_dob) > 64:
+                price = "6.00 (Over 65 Discount)"
+            elif seatID > 10 and agefinder(customer.customer_dob) > 64:
+                price = "3.50 (Over 65 Discount)"
             else:
                 price = "5.00"
             seat = Seat.query.filter_by(seat_id=seatID).first()
@@ -91,16 +99,29 @@ def checkout(screeningID,seatID):
                 db.session.add(another_form)
                 db.session.commit()
 
-                subject = 'Osprey Cinema: Ticket for ' + film.film_name + ' on ' + str(screening.screening_date)
-                content = ("<h1>Ticket Information<h1>" + "<br> <b>Film: </b>" + film.film_name
-                     + "<br> <b>Date: </b>" + str(screening.screening_date) + "<br> <b>Time: </b>"
-                     + str(screening.screening_time) + "<br> <b>Seat: </b>" + str(seat.seat_id) + "<br> <b>Screen: </b>"
-                     + str(screening.screen_id) + "<br> <b>Price:  </b>" + price)
-                msg = Message(subject, sender = 'ospreycinema', recipients = ['teamosprey18@gmail.com'])
+                info = [film.film_name,str(screening.screening_date),str(screening.screening_time)
+                        ,str(seat.seat_id), str(screening.screen_id),
+                        str(customer.customer_f_name + " " + customer.customer_s_name)]
+                print(info[0], info[1])
+                subject = 'Osprey Cinema: Ticket for ' + info[0] + ' on ' + info[1]
+                content = ("<h1>Ticket Information<h1>" + "<br> <b>Customer: </b>" + info[5]
+                     + "<br> <b>Film: </b>" + info[0]  + "<br> <b>Date: </b>" + info[1]
+                     + "<br> <b>Time: </b>" + info[2] + "<br> <b>Seat: </b>" + info[3]
+                     + "<br> <b>Screen: </b>" + info[4] + "<br> <b>Price:  </b>" + price)
+
+                ticketinfo = ("<Osprey Cinema Valid Ticket> \nCustomer Name: " + info[5]
+                           + "\nScreening Date: " + info[1] + "\nScreening Time: " + info[2]
+                           + "\nScreen Number: " + info[4] + "\nSeat Number: " + info[3]
+                           + "\nPrice: " + price)
+                ticketcode = pyqrcode.create(ticketinfo, error='L', version=8, mode='binary')
+                ticketcode.svg('app/static/img/ticket.svg', scale=8)
+
+                msg = Message(subject, sender = 'ospreycinema', recipients = [value])
                 msg.html = content
-                with app.open_resource("static/img/cocoBanner.jpg") as fp:
-                    msg.attach("Ticket.png", "image/jpg", fp.read())
+                with app.open_resource("static/img/ticket.svg") as fp:
+                    msg.attach("ticket.svg", "image/svg", fp.read())
                 mail.send(msg)
+
                 return redirect(url_for('index'))
         else:
             return redirect(url_for('myaccount'))
@@ -177,3 +198,7 @@ def card():
                 return redirect(url_for('myaccount'))
 
     return render_template('card.html', title='Card', cardform=cardform,message=message)
+
+def agefinder(dob):
+        today = datetime.date.today()
+        return today.year - dob.year - ((today.month, today.day) < (dob.month, dob.day))
