@@ -15,7 +15,7 @@ def populate_seats():
 def populate_films():
 
 	data = [
-(1, u'The Greatest Showman', u'American musical drama film, written by Jenny Bicks and starring Hugh Jackman, Zac Efront, Michelle Williams, Rebecca Ferguson and Zendaya', 120, u'Michael Gracey', u'12',u'showman.jpg'),
+(1, u'The Greatest Showman', u'American musical drama film, written by Jenny Bicks and starring Hugh Jackman, Zac Efront, Michelle Williams, Rebecca Ferguson and Zendaya', 120, u'Michael Gracey', u'12',u'showman2.jpg'),
 (2, u'Black Panther', u'With the King of Wakanda now dead, his son T’Challa must return home to take his rightful place on the throne. But, it’s going to be a bumpy ride, as an evil faction has other plans for the country’s future. | Actors: Chadwick Boseman, Michael B. Jordan, Lupita Nyongo |', 134, u'Ryan Coogler', u'12',u'BlackPanther.jpg'),
 (3, u'Coco', u'Ignoring his family’s baffling ban on music, Miguel embarks on a journey through the enchanting Land of the Dead in search of his dreams of becoming a musician. | Actors:  Anthony Gonzalez, Gael García Bernal, Benjamin Bratt |', 105, u'Adrian Molina', u'U',u'cocoKids.jpg'),
 (4, u'Downsizing', u'A married couple decide to escape the daily humdrum of modern life by downsizing – a procedure which will see their bodies shrink to 5 inches tall, but their modest savings turn into millions of pounds. | Actors: Matt Damon, Christoph Waltz, Hong Chau |', 135, u'Alexander Payne', u'15',u'downsizingTeen.jpg'),
