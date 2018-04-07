@@ -171,78 +171,103 @@
             <div class="col-sm-6 text-center">
                 <h1> Choose <span class="highlight"> Seat(s) </span></h1>
                 <hr>
-                    {% set iterated = 1 %}
                     {% for each in seats[0:9] %}
-                      {% for a in tickets %}
-
-                        {% if iterated == 2 %}
-                          {{iterated}}
-                        {% elif each.seat_id == a.seat_id %}
-                          <button type="button" class="btn btn-danger" >---</button>
-                          {% set iterated = 2 %}
-                          {{iterated}}
-                        {% else %}
+                        {% if seatfinder(each,screening) == True %}
+                          <button type="button" class="btn btn-secondary" >---</button>
+                         {% else %}
                           <a href="/checkout/{{screening.screening_id}}/{{each.seat_id}}"><button type="button" class="btn btn-danger" > &nbsp;{{each.seat_id}}&nbsp;</button><a/>
-                          {{iterated}}
                         {% endif %}
-
-                      {% endfor %}
-
                     {% endfor %}
 
                     <br>
                     <hr>
 
                     {% for each in seats[9:19] %}
-                      <a href="/checkout/{{screening.screening_id}}/{{each.seat_id}}"><button type="button" class="btn btn-primary" > {{each.seat_id}}</button><a/>
+                      {% if seatfinder(each,screening) == True %}
+                        <button type="button" class="btn btn-secondary" >---</button>
+                       {% else %}
+                        <a href="/checkout/{{screening.screening_id}}/{{each.seat_id}}"><button type="button" class="btn btn-primary" >{{each.seat_id}}</button><a/>
+                      {% endif %}
                     {% endfor %}
                     <br>
                     <br>
 
                     {% for each in seats[19:29] %}
-                      <a href="/checkout/{{screening.screening_id}}/{{each.seat_id}}"><button type="button" class="btn btn-primary" > {{each.seat_id}}</button><a/>
+                      {% if seatfinder(each,screening) == True %}
+                        <button type="button" class="btn btn-secondary" >---</button>
+                       {% else %}
+                        <a href="/checkout/{{screening.screening_id}}/{{each.seat_id}}"><button type="button" class="btn btn-primary" >{{each.seat_id}}</button><a/>
+                      {% endif %}
                     {% endfor %}
                     <br>
                     <br>
 
                     {% for each in seats[29:39] %}
-                      <a href="/checkout/{{screening.screening_id}}/{{each.seat_id}}"><button type="button" class="btn btn-primary" > {{each.seat_id}}</button><a/>
+                      {% if seatfinder(each,screening) == True %}
+                        <button type="button" class="btn btn-secondary" >---</button>
+                       {% else %}
+                        <a href="/checkout/{{screening.screening_id}}/{{each.seat_id}}"><button type="button" class="btn btn-primary" >{{each.seat_id}}</button><a/>
+                      {% endif %}
                     {% endfor %}
                     <br>
                     <br>
 
                     {% for each in seats[39:49] %}
-                      <a href="/checkout/{{screening.screening_id}}/{{each.seat_id}}"><button type="button" class="btn btn-primary" > {{each.seat_id}}</button><a/>
+                      {% if seatfinder(each,screening) == True %}
+                        <button type="button" class="btn btn-secondary" >---</button>
+                       {% else %}
+                        <a href="/checkout/{{screening.screening_id}}/{{each.seat_id}}"><button type="button" class="btn btn-primary" >{{each.seat_id}}</button><a/>
+                      {% endif %}
                     {% endfor %}
                     <br>
                     <br>
 
                     {% for each in seats[49:59] %}
-                      <a href="/checkout/{{screening.screening_id}}/{{each.seat_id}}"><button type="button" class="btn btn-primary" > {{each.seat_id}}</button><a/>
+                      {% if seatfinder(each,screening) == True %}
+                        <button type="button" class="btn btn-secondary" >---</button>
+                       {% else %}
+                        <a href="/checkout/{{screening.screening_id}}/{{each.seat_id}}"><button type="button" class="btn btn-primary" >{{each.seat_id}}</button><a/>
+                      {% endif %}
                     {% endfor %}
                     <br>
                     <br>
 
                     {% for each in seats[59:69] %}
-                      <a href="/checkout/{{screening.screening_id}}/{{each.seat_id}}"><button type="button" class="btn btn-primary" > {{each.seat_id}}</button><a/>
+                      {% if seatfinder(each,screening) == True %}
+                        <button type="button" class="btn btn-secondary" >---</button>
+                       {% else %}
+                        <a href="/checkout/{{screening.screening_id}}/{{each.seat_id}}"><button type="button" class="btn btn-primary" >{{each.seat_id}}</button><a/>
+                      {% endif %}
                     {% endfor %}
                     <br>
                     <br>
 
                     {% for each in seats[69:79] %}
-                      <a href="/checkout/{{screening.screening_id}}/{{each.seat_id}}"><button type="button" class="btn btn-primary" > {{each.seat_id}}</button><a/>
+                      {% if seatfinder(each,screening) == True %}
+                        <button type="button" class="btn btn-secondary" >---</button>
+                       {% else %}
+                        <a href="/checkout/{{screening.screening_id}}/{{each.seat_id}}"><button type="button" class="btn btn-primary" >{{each.seat_id}}</button><a/>
+                      {% endif %}
                     {% endfor %}
                     <br>
                     <br>
 
                     {% for each in seats[79:89] %}
-                      <a href="/checkout/{{screening.screening_id}}/{{each.seat_id}}"><button type="button" class="btn btn-primary" > {{each.seat_id}}</button><a/>
+                      {% if seatfinder(each,screening) == True %}
+                        <button type="button" class="btn btn-secondary" >---</button>
+                       {% else %}
+                        <a href="/checkout/{{screening.screening_id}}/{{each.seat_id}}"><button type="button" class="btn btn-primary" >{{each.seat_id}}</button><a/>
+                      {% endif %}
                     {% endfor %}
                     <br>
                     <br>
 
                     {% for each in seats[89:99] %}
-                      <a href="/checkout/{{screening.screening_id}}/{{each.seat_id}}"><button type="button" class="btn btn-primary" > {{each.seat_id}}</button><a/>
+                      {% if seatfinder(each,screening) == True %}
+                        <button type="button" class="btn btn-secondary" >---</button>
+                       {% else %}
+                        <a href="/checkout/{{screening.screening_id}}/{{each.seat_id}}"><button type="button" class="btn btn-primary" >{{each.seat_id}}</button><a/>
+                      {% endif %}
                     {% endfor %}
                     <br>
                     <br>

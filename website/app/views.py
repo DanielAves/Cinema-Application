@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from flask import render_template, flash, make_response, redirect, session, url_for, request
 from app import app, db, admin
+from sqlalchemy import and_
 from flask_admin.contrib.sqla import ModelView
 from flask_mail import Mail, Message
 from .forms import CreateForm, SessionForm, SignupForm, PasswordForm, CardForm, CheckoutForm
@@ -209,3 +210,14 @@ def card():
 def agefinder(dob):
         today = datetime.date.today()
         return today.year - dob.year - ((today.month, today.day) < (dob.month, dob.day))
+
+def seatfinder(seat,screening):
+    ticket = Ticket.query.filter_by(screening_id=screening.screening_id).all()
+    if ticket:
+        for each in ticket:
+            if each.seat_id == seat.seat_id:
+                return True
+    else:
+        return False
+
+app.jinja_env.globals.update(seatfinder=seatfinder)
