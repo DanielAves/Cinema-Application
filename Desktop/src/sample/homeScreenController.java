@@ -21,9 +21,7 @@ public class homeScreenController {
     private DatePicker filmDate;
 
 
-    public void showToday(javafx.event.ActionEvent event) throws IOException{
-
-
+    public void showToday(javafx.event.ActionEvent event) throws Exception{
 
         FXMLLoader Loader = new FXMLLoader();
         Loader.setLocation(getClass().getResource("resources/filmScreen.fxml"));
@@ -36,6 +34,7 @@ public class homeScreenController {
         LocalDate localDate = LocalDate.now();
         filmScreenController display = Loader.getController();
         display.setDate(localDate);
+        display.setScreen(localDate);
 
         Parent p = Loader.getRoot();
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -43,14 +42,9 @@ public class homeScreenController {
         window.show();
     }
 
-    public void showFutureDate(javafx.event.ActionEvent event) throws IOException{
+    public void showFutureDate(javafx.event.ActionEvent event) throws Exception{
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate date = filmDate.getValue();
-
-
-
-
-
 
         FXMLLoader Loader = new FXMLLoader();
         Loader.setLocation(getClass().getResource("resources/filmScreen.fxml"));
@@ -62,22 +56,11 @@ public class homeScreenController {
 
         filmScreenController display = Loader.getController();
         display.setDate(date);
+        display.setScreen(date);
 
         Parent p = Loader.getRoot();
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(new Scene(p));
         window.show();
-
-
-
-
     }
-
-
-
-
-
-
-
-
 }
