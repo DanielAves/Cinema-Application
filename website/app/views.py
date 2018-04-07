@@ -11,8 +11,7 @@ mail=Mail(app)
 
 @app.route('/')
 def index():
-    user = {'name': 'Team Osprey'}
-    return render_template('index.html', title='Home', user=user)
+    return render_template('index.html', title='Home')
 
 @app.route('/whatson')
 def whatson():
@@ -60,11 +59,10 @@ def seatchoice(screeningID):
     if screening:
         film = Film.query.filter_by(film_id=screening.film_id).first()
         capacity = Screen.query.filter_by(screen_id=screening.screen_id).first()
-        seats = Seat.query.all()[0:capacity.screen_capacity]
-        tickets = Ticket.query.filter_by(screening_id=screening.screening_id).all()
+        seats = Seat.query.all()
     else:
         return redirect(url_for('whatson'))
-    return render_template('seatchoice.html', title='Choose Seat',screening=screening, film=film, seats=seats, tickets=tickets)
+    return render_template('seatchoice.html', title='Choose Seat',screening=screening, film=film, seats=seats)
 
 @app.route('/checkout/<screeningID>/<seatID>',methods=['GET', 'POST'])
 def checkout(screeningID,seatID):
