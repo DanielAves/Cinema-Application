@@ -125,7 +125,7 @@ def checkout(screeningID,seatID):
             ticketcode = pyqrcode.create(ticketinfo, error='L', version=8, mode='binary')
             ticketcode.svg('app/static/img/ticket.svg', scale=8)
 
-            msg = Message(subject, sender = 'ospreycinema', recipients = [value])
+            msg = Message(subject, sender = 'Osprey Cinema', recipients = [value])
             msg.html = content
             with app.open_resource("static/img/ticket.svg") as fp:
                 msg.attach("ticket.svg", "image/svg", fp.read())

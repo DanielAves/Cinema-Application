@@ -85,7 +85,7 @@ class Staff(db.Model):
     staff_id = db.Column(db.Integer, primary_key=True)
     staff_f_name = db.Column(db.String(20))
     staff_s_name = db.Column(db.String(30))
-    staff_dob = db.Column(db.DateTime)
+    staff_dob = db.Column(db.Date)
     staff_mobile = db.Column(db.String(13), unique=True)
     staff_address = db.Column(db.String(40))
     staff_postcode = db.Column(db.String(8))
@@ -94,7 +94,7 @@ class Staff(db.Model):
     def __repr__(self):
         return '' % (self.staff_id, self.staff_f_name, self.staff_s_name,
         self.staff_dob, self.staff_mobile, self.staff_address,
-        self.staff_postcode, self.staff_nin)
+        self.staff_postcode, self.staff_ni)
 
 class Ticket(db.Model):
     #ticket_id = db.Column(db.Integer, primary_key=True,autoincrement=True )

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from app import db
-from app.models import Card, Film, Customer, Screen, Screening, Seat, Login
+from app.models import Card, Film, Customer, Screen, Screening, Seat, Login, Staff
 from flask_bcrypt import Bcrypt
 import datetime
 from random import randrange
@@ -90,6 +90,18 @@ def populate_login():
 		db.session.add(login)
 	db.session.commit()
 
+def populate_staff():
+	data = [(u'Joe', u'Bloggs',1998,10,10,u'07400232054',u'12 This Street',u'DE23 6L1',u'QQ123456A'),
+	(u'Jane', u'Doe', 1997,11,11,u'07400232055',u'16 Another Place',u'DE23 6L2',u'QQ123456B'),
+	(u'Ralph', u'Billings',1990,12,12,u'07400232056',u'12 Lovely Place',u'DE23 6L3',u'QQ123456D'),
+	(u'Name', u'McNameface',1992,9,9,u'07400232057',u'36 Great Road',u'DE23 6L4',u'QQ123456C')]
+
+	for d in data:
+		staff = Staff(staff_f_name=d[0], staff_s_name=d[1],staff_dob=datetime.date(d[2],d[3],d[4])
+		,staff_mobile=d[5],staff_address=d[6],staff_postcode=d[7],staff_ni=d[8])
+		db.session.add(staff)
+	db.session.commit()
+
 
 populate_seats()
 populate_films()
@@ -98,3 +110,4 @@ populate_tickets()
 populate_screen()
 populate_screenings()
 populate_login()
+populate_staff()
