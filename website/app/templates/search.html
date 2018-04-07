@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <br>
+    <hr>
+    <hr>
+    <div class="row" id="spaceFiller">
+        <div class="col-sm-12">
+            <h1 class="text-center">Search<span class="highlight"> On </span> </h1>
+        </div>
+        {{ searchform.hidden_tag() }}
+      <form class="form-group" class="searchform">
+        <div class="form-group">
+          {{ searchform.search (type="text",placeholder="Search...",class_="form-control")}}
+        </div>
+      </form>
+    </div>
+        <hr>
+        <hr>
+    </div>
+{% endblock %}

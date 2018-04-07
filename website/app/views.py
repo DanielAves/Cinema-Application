@@ -4,11 +4,21 @@ from app import app, db, admin
 from flask_bcrypt import Bcrypt
 from flask_admin.contrib.sqla import ModelView
 from flask_mail import Mail, Message
-from .forms import CreateForm, SessionForm, SignupForm, PasswordForm, CardForm, CheckoutForm
+from .forms import CreateForm, SessionForm, SignupForm, PasswordForm, CardForm, CheckoutForm, SearchForm
 from app.models import Customer,Card,Film,Screen,Screening,Login,Seat,Staff,Ticket
 import datetime,pyqrcode
 mail=Mail(app)
 bcrypt = Bcrypt(app)
+
+# @app.context_processor
+# def base():
+#     searchform = SearchForm()
+#     return dict(searchform=searchform)
+
+@app.route('/search',)
+def search():
+    searchform = SearchForm()
+    return render_template('search.html', title='Search',searchform=searchform)
 
 @app.route('/')
 def index():
