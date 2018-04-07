@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
 from app import db
 from app.models import Card, Film, Customer, Screen, Screening, Seat, Login
-
+from flask_bcrypt import Bcrypt
 import datetime
 from random import randrange
+from flask import Flask
+app = Flask(__name__)
+bcrypt = Bcrypt(app)
 
 def populate_seats():
 
@@ -55,18 +58,15 @@ def populate_screenings():
 
 def populate_customers():
 	data = [
-(1, u'Ben', u'Ashby',u'+447845775449', u'5 Magna Close', u'AL51RH'),
-(2, u'Taran', u'Bola',  u'+447400832054', u'6 Winfield Place', u'LS23AB'),
-(3, u'Dan', u'Aves',  u'+447803849940', u'15 Beckett Garden', u'AL69JE'),
-(4, u'Matt', u'Cutts',  u'+447908858831', u'6 Alistair Drive', u'CH630LH')
+(1, u'Ben', u'Ashby',u'+447845775449', u'5 Magna Close', u'AL51RH',123412341234121,2018,3,5,121),
+(2, u'Taran', u'Bola',  u'+447400832054', u'6 Winfield Place', u'LS23AB',123412341234122,2021,11,21,134),
+(3, u'Dan', u'Aves',  u'+447803849940', u'15 Beckett Garden', u'AL69JE',123412341234123,2019,6,6,156),
+(4, u'Matt', u'Cutts',  u'+447908858831', u'6 Alistair Drive', u'CH630LH',123412341234124,2020,3,24,987)
 ]
-	i = 1
 	for d in data:
 		customer = Customer(customer_id=d[0], customer_f_name=d[1], customer_s_name=d[2],customer_dob=datetime.date(1927,1,17),customer_mobile=d[3],customer_address=d[4], customer_postcode=d[5])
-		customer.card.append(Card(card_number=123412341234123 +i, card_expiry=datetime.date(1997,1,17),card_cvv=111))
-		# customer.card.append(Card(card_number = d.card_number, card_expiry = datetime.date(),card_cvv = d.card_cvv))
+		customer.card.append(Card(card_number=d[6], card_expiry=datetime.date(d[7],d[8],d[9]),card_cvv=d[10]))
 		db.session.add(customer)
-		i = i+1
 	db.session.commit()
 
 def populate_tickets():
@@ -85,7 +85,8 @@ def populate_login():
 	(4, u'mattycutts@hotmail.com', u'password', u'pd')]
 
 	for d in data:
-		login = Login(customer_id=d[0], login_email=d[1], login_password=d[2],login_hint=d[3])
+		pw_hash = bcrypt.generate_password_hash(d[2])
+		login = Login(customer_id=d[0], login_email=d[1], login_password=pw_hash,login_hint=d[3])
 		db.session.add(login)
 	db.session.commit()
 

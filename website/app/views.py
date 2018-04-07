@@ -1,13 +1,14 @@
 # -*- coding: utf-8 -*-
 from flask import render_template, flash, make_response, redirect, session, url_for, request
 from app import app, db, admin
-from sqlalchemy import and_
+from flask_bcrypt import Bcrypt
 from flask_admin.contrib.sqla import ModelView
 from flask_mail import Mail, Message
 from .forms import CreateForm, SessionForm, SignupForm, PasswordForm, CardForm, CheckoutForm
 from app.models import Customer,Card,Film,Screen,Screening,Login,Seat,Staff,Ticket
 import datetime,pyqrcode
 mail=Mail(app)
+bcrypt = Bcrypt(app)
 
 @app.route('/')
 def index():
@@ -135,12 +136,14 @@ def checkout(screeningID,seatID):
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    if 'variable' in session:
+        return redirect(url_for('myaccount'))
     message=""
     sessionform = SessionForm()
     if sessionform.validate_on_submit():
         variableFind = Login.query.filter_by(login_email=sessionform.login.data).first()
         if variableFind:
-            if variableFind.login_password == sessionform.password.data:					#validation to check user data
+            if (bcrypt.check_password_hash(variableFind.login_password, sessionform.password.data) == True):
                 session['variable'] = sessionform.login.data				#creates the session
                 return redirect(url_for('myaccount'))
         message="Invalid Username or Password"
@@ -168,7 +171,8 @@ def signup():
             db.session.add(form_thing)
             db.session.commit()
 
-            another_form = Login(customer_id=form_thing.customer_id,login_email=signform.email.data,login_password=signform.confirm.data,login_hint=signform.hint.data)
+            pw_hash = bcrypt.generate_password_hash(signform.confirm.data)
+            another_form = Login(customer_id=form_thing.customer_id,login_email=signform.email.data,login_password=pw_hash,login_hint=signform.hint.data)
             db.session.add(another_form)
             db.session.commit()
             return redirect(url_for('login'))
