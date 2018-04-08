@@ -75,15 +75,17 @@
               {{ cardform.cvv (placeholder='CVV or Card Verification Value',class_="form-control")}}<br>              <!--First input box and message if not input -->
           </div>
         </form>
-        <form class ="checkoutform" action="" method="post">
-        {{ checkoutform.hidden_tag() }}
+        <div class="loader">
+            <form class ="checkoutform" action="" method="post">
+                {{ checkoutform.hidden_tag() }}
 
-          <div class="form-group">
-              <p>All values correct. Do you wanna checkout?</p> {{checkoutform.check (class_="checkbox")}}</p><br>
-              <p><input type="submit" class="btn btn" value="Checkout"></p>
-          </div>
+                  <div class="form-group">
+                      <p>All values correct. Do you wanna checkout?</p> {{checkoutform.check (class_="checkbox")}}</p><br>
+                      <p><input type="submit" class="btn btn" value="Checkout"></p>
+                  </div>
 
-        </form>
+              </form>
+        </div>
 
       {% endif %}
 </div>
