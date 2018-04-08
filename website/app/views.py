@@ -10,15 +10,15 @@ import datetime,pyqrcode
 mail=Mail(app)
 bcrypt = Bcrypt(app)
 
-# @app.context_processor
-# def base():
-#     searchform = SearchForm()
-#     return dict(searchform=searchform)
-
-@app.route('/search',)
+@app.route('/search',methods=['GET', 'POST'])
 def search():
-    searchform = SearchForm()
-    return render_template('search.html', title='Search',searchform=searchform)
+    films = Film.query.filter(Film.film_name.like("")).all()
+    screenings = Screening.query.filter(Screening.screening_date.like("")).all()
+    searchform= SearchForm()
+    if searchform.validate_on_submit():
+        films = Film.query.filter(Film.film_name.contains(searchform.search.data)).all()
+        screenings = Screening.query.filter(Screening.screening_date.contains(searchform.search.data)).all()
+    return render_template('search.html', title='Search',searchform=searchform,films=films,screenings=screenings)
 
 @app.route('/')
 def index():

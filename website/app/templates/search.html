@@ -8,14 +8,33 @@
         <div class="col-sm-12">
             <h1 class="text-center">Search<span class="highlight"> On </span> </h1>
         </div>
-        {{ searchform.hidden_tag() }}
-      <form class="form-group" class="searchform">
+    </div>
+    <form class ="searchform" action="" method="post">
+    {{ searchform.hidden_tag() }}
         <div class="form-group">
-          {{ searchform.search (type="text",placeholder="Search...",class_="form-control")}}
+            {{ searchform.search (placeholder='Search....',class_="form-control")}}<br>              <!--First input box and message if not input -->
         </div>
-      </form>
+    </form>
+    <div class="col-sm-5">
+    {% if films %}
+      <h1><u>Films</u></h2>
+      {% for each in films %}
+        <h2>{{each.film_name}}</h1>
+      {% endfor %}
+    {% endif%}
     </div>
-        <hr>
-        <hr>
+    <div class="col-sm-1">
+
     </div>
+
+    <div class="col-sm-5">
+      {% if screenings %}
+        <h1><u>Screenings</u></h2>
+        {% for each in screenings %}
+          <h2>{{each.film.film_name}}</h2> <h3>{{each.screening_date}} {{each.screening_time.strftime('%H:%M')}}</h3>
+        {% endfor %}
+      {% endif%}
+    </div>
+    <hr>
+    <hr>
 {% endblock %}
