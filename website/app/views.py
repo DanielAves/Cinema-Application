@@ -91,7 +91,6 @@ def checkout(screeningID,seatID):
         seat = Seat.query.filter_by(seat_id=seatID).first()
         ticketTaken = Ticket.query.filter_by(seat_id=seat.seat_id).first()
         if ticketTaken:
-            print ticketTaken.screening.screening_id
             if ticketTaken.seat_id == seat.seat_id:
                 return redirect(url_for('seatchoice', screeningID=screening.screening_id))
 
@@ -121,7 +120,6 @@ def checkout(screeningID,seatID):
             info = [film.film_name,str(screening.screening_date),str(screening.screening_time)
                     ,str(seat.seat_id), str(screening.screen_id),
                     str(customer.customer_f_name + " " + customer.customer_s_name)]
-            print(info[0], info[1])
             subject = 'Osprey Cinema: Ticket for ' + info[0] + ' on ' + info[1]
             content = ("<h1>Ticket Information<h1>" + "<br> <b>Customer: </b>" + info[5]
                  + "<br> <b>Film: </b>" + info[0]  + "<br> <b>Date: </b>" + info[1]
