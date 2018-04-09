@@ -21,7 +21,8 @@ import java.util.logging.Logger;
 import java.util.List;
 import java.util.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.time.LocalDate ;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class filmScreenController{
 
@@ -30,6 +31,8 @@ public class filmScreenController{
   @FXML
   public Button film1,film2,film3,film4,film5,film6,film7,film8,film9,film10;
   public Text filmDate;
+
+  LocalDate inputDate;
 
 
 
@@ -40,13 +43,13 @@ public class filmScreenController{
   public LocalDate test;
 
   public void setDate(LocalDate date){
-    test = date;
-    System.out.println(date);
+    inputDate = date;
     //this.timeFor.setText(filmName);
-    filmDate.setText("Showing films for " + dtf.format(date));
+    filmDate.setText("Showing films for " + dtf.format(inputDate));
   }
 
   public void setScreen(LocalDate date) throws Exception{
+    System.out.println("Showing films for " + dtf.format(inputDate));
     RestClient client = new RestClient("localhost", 5000);
 
     List filmList = new ArrayList();
@@ -66,8 +69,9 @@ public class filmScreenController{
     int screeningAmount = screeningsList.size();
 
     //Date passed from user selection
-    //inputDate = date;
-    LocalDate inputDate = LocalDate.of(2018,04,04);
+    // inputDate = date;
+    // LocalDate inputDate = LocalDate.of(2018,04,04);
+
 
     for(int i = 1; i<=screeningAmount; i++){
       Screening s = client.getScreening(i);
@@ -80,31 +84,31 @@ public class filmScreenController{
         }
       }
     }
-
     for(int i =0; i<filmIdList.size() ;i++){ //client.getFilm(i) != null
       int temp = Integer.parseInt(filmIdList.get(i).toString());
       Film f = client.getFilm(temp);
       String filmName = f.getFilm_name();
-      switch (i) {
-        case 0: film1.setText(filmName);
+      int filmId = f.getFilm_id();
+      switch (filmId) {
+        case 1: film1.setText(filmName);
         break;
-        case 1: film2.setText(filmName);
+        case 2: film2.setText(filmName);
         break;
-        case 2: film3.setText(filmName);
+        case 3: film3.setText(filmName);
         break;
-        case 3: film4.setText(filmName);
+        case 4: film4.setText(filmName);
         break;
-        case 4: film5.setText(filmName);
+        case 5: film5.setText(filmName);
         break;
-        case 5: film6.setText(filmName);
+        case 6: film6.setText(filmName);
         break;
-        case 6: film7.setText(filmName);
+        case 7: film7.setText(filmName);
         break;
-        case 7: film8.setText(filmName);
+        case 8: film8.setText(filmName);
         break;
-        case 8: film9.setText(filmName);
+        case 9: film9.setText(filmName);
         break;
-        case 9: film10.setText(filmName);
+        case 10: film10.setText(filmName);
         break;
       }
     }
@@ -130,12 +134,7 @@ public class filmScreenController{
     window.show();
 
   }
-  public void selectFilm1(ActionEvent event) throws IOException{
-    System.out.println(event.getSource());
-
-    if ("".equals(event.getSource())) {
-      System.out.println("test");
-    }
+  public void selectFilm1(ActionEvent event) throws Exception{
 
     String filmName = film1.getText();
 
@@ -147,9 +146,11 @@ public class filmScreenController{
     }catch (IOException ex){
       Logger.getLogger(filmScreenController.class.getName());
     }
+    int test = 1;
 
     timetableController display = Loader.getController();
-    //display.setFilmName(filmName);
+    display.setDate(inputDate);
+    display.setTime(test);
 
     Parent p = Loader.getRoot();
     Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
