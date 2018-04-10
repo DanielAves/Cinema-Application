@@ -19,7 +19,7 @@
     {% if films %}
       <h1><u>Films</u></h2>
       {% for each in films %}
-        <h2>{{each.film_name}}</h1>
+        <a href="/movie/{{each.film_id}}"><h2>{{each.film_name}}</h1></a>
       {% endfor %}
     {% endif%}
     </div>
@@ -31,7 +31,7 @@
       {% if screenings %}
         <h1><u>Screenings</u></h2>
         {% for each in screenings %}
-          <h2>{{each.film.film_name}}</h2> <h3>{{each.screening_date}} {{each.screening_time.strftime('%H:%M')}}</h3>
+            <a href="/seatchoice/{{each.screening_id}}"><h3>{{each.film.film_name}}: {{each.screening_date}} {{each.screening_time.strftime('%H:%M')}}</h3> </a>
         {% endfor %}
       {% endif%}
     </div>
