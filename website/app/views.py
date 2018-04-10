@@ -4,7 +4,7 @@ from app import app, db, admin
 from flask_bcrypt import Bcrypt
 from flask_admin.contrib.sqla import ModelView
 from flask_mail import Mail, Message
-from .forms import SessionForm, SignupForm, PasswordForm, CardForm, CheckoutForm, SearchForm
+from .forms import SessionForm, SignupForm, PasswordForm, CardForm, CheckoutForm, SearchForm, ChangeCustomerForm
 from app.models import Customer,Card,Film,Screen,Screening,Login,Seat,Staff,Ticket
 import datetime,pyqrcode
 mail=Mail(app)
@@ -20,6 +20,18 @@ def search():
         screenings = Screening.query.filter(Screening.screening_time.contains(searchform.search.data)).all()
     return render_template('search.html', title='Search',searchform=searchform,films=films,screenings=screenings)
 
+@app.route('/customer',methods=['GET', 'POST'])
+def customer():
+    customerform= ChangeCustomerForm()
+    message=""
+    if customerform.validate_on_submit():
+        findMobile = Customer.query.filter_by(customer_mobile=customerform.mobile.data).first()
+        if findMobile:
+            message = "Mobile number is already being used"
+        else:
+            return redirect(url_for('myaccount'))
+    return render_template('customer.html', title='Change Customer Details',customerform=customerform,message=message)
+
 @app.route('/changepassword',methods=['GET','POST'])
 def changepassword():
     message = ""
@@ -30,6 +42,7 @@ def changepassword():
             if (bcrypt.check_password_hash(variableFind.login_password, passwordform.changepassword.data) == True):						#validation for user input
                 pw_hash = bcrypt.generate_password_hash(passwordform.newpassword.data)
                 variableFind.login_password = pw_hash
+                variableFind.login_hint = passwordform.hint.data
                 db.session.commit()
                 return redirect(url_for('logout'))
         message="Invalid Username or Password"

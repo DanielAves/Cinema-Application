@@ -22,6 +22,7 @@ class PasswordForm(Form):
     changeusername = TextField('changeusername', validators=[DataRequired()])
     changepassword = PasswordField('changepassword', validators=[DataRequired()]) #Used for changing password
     newpassword = PasswordField('newpassword', validators=[DataRequired()])
+    hint = TextField('hint', validators=[DataRequired()])
 
 def validate_cardnumber(form, field):
         str(field.data).strip()
@@ -47,3 +48,11 @@ class CheckoutForm(Form):
 
 class SearchForm(Form):
     search = TextField('search', validators=[DataRequired()])
+
+class ChangeCustomerForm(Form):
+    firstname = TextField('firstname', validators=[DataRequired()])
+    surname = TextField('surname', validators=[DataRequired()])
+    dob = DateField('dob', validators=[DataRequired()],format='%Y-%m-%d')
+    mobile = TextField('mobile', validators=[DataRequired(),Length(min=9, message="Mobile number not entered")])
+    address = TextField('address', validators=[DataRequired()])
+    postcode = TextField('postcode', validators=[DataRequired()])
