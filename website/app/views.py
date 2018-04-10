@@ -4,7 +4,7 @@ from app import app, db, admin
 from flask_bcrypt import Bcrypt
 from flask_admin.contrib.sqla import ModelView
 from flask_mail import Mail, Message
-from .forms import CreateForm, SessionForm, SignupForm, PasswordForm, CardForm, CheckoutForm, SearchForm
+from .forms import SessionForm, SignupForm, PasswordForm, CardForm, CheckoutForm, SearchForm
 from app.models import Customer,Card,Film,Screen,Screening,Login,Seat,Staff,Ticket
 import datetime,pyqrcode
 mail=Mail(app)
@@ -17,8 +17,24 @@ def search():
     searchform= SearchForm()
     if searchform.validate_on_submit():
         films = Film.query.filter(Film.film_name.contains(searchform.search.data)).all()
-        screenings = Screening.query.filter(Screening.screening_date.contains(searchform.search.data)).all()
+        screenings = Screening.query.filter(Screening.screening_time.contains(searchform.search.data)).all()
     return render_template('search.html', title='Search',searchform=searchform,films=films,screenings=screenings)
+
+@app.route('/changepassword',methods=['GET','POST'])
+def changepassword():
+    message = ""
+    passwordform = PasswordForm()
+    if passwordform.validate_on_submit():
+        variableFind = Login.query.filter_by(login_email=passwordform.changeusername.data).first()
+        if variableFind:
+            if (bcrypt.check_password_hash(variableFind.login_password, passwordform.changepassword.data) == True):						#validation for user input
+                pw_hash = bcrypt.generate_password_hash(passwordform.newpassword.data)
+                variableFind.login_password = pw_hash
+                db.session.commit()
+                return redirect(url_for('logout'))
+        message="Invalid Username or Password"
+    return render_template('changepassword.html', title='Change Password',passwordform=passwordform,message=message)
+
 
 @app.route('/')
 def index():

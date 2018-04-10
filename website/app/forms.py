@@ -1,10 +1,6 @@
 from flask_wtf import Form
-from wtforms import TextAreaField, StringField, TextField,IntegerField, DateField,PasswordField, SelectField, BooleanField
+from wtforms import StringField, TextField,IntegerField, DateField,PasswordField, SelectField, BooleanField
 from wtforms.validators import DataRequired,InputRequired, Length, Email, EqualTo, NumberRange, ValidationError #Imports needed for forms
-# from .models import Task
-
-class CreateForm(Form):
-    number2 = TextAreaField('number2', validators=[DataRequired()]) #The description field
 
 class SessionForm(Form):
     login = TextField('login', validators=[DataRequired()]) #Used for login
@@ -24,8 +20,8 @@ class SignupForm(Form):
 
 class PasswordForm(Form):
     changeusername = TextField('changeusername', validators=[DataRequired()])
-    changepassword = TextField('changepassword', validators=[DataRequired()]) #Used for changing password
-    newpassword = TextField('newpassword', validators=[DataRequired()])
+    changepassword = PasswordField('changepassword', validators=[DataRequired()]) #Used for changing password
+    newpassword = PasswordField('newpassword', validators=[DataRequired()])
 
 def validate_cardnumber(form, field):
         str(field.data).strip()
@@ -47,7 +43,7 @@ class CardForm(Form):
     cvv = IntegerField('cvv', validators=[validate_cvv])
 
 class CheckoutForm(Form):
-    check = BooleanField('Agree?', validators=[DataRequired(), ])
+    check = BooleanField('Agree?', validators=[DataRequired()])
 
 class SearchForm(Form):
     search = TextField('search', validators=[DataRequired()])
