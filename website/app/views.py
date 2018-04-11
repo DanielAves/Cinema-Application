@@ -22,6 +22,12 @@ def search():
 
 @app.route('/customer',methods=['GET', 'POST'])
 def customer():
+    if 'variable' not in session:
+        return redirect(url_for('login'))
+    value = session['variable']
+    variableFind = Login.query.filter_by(login_email=value).first()
+    customer = Customer.query.filter_by(customer_id=variableFind.customer_id).first()
+
     customerform= ChangeCustomerForm()
     message=""
     if customerform.validate_on_submit():
@@ -29,6 +35,15 @@ def customer():
         if findMobile:
             message = "Mobile number is already being used"
         else:
+            variableFind = Login.query.filter_by(login_email=value).first()
+            customer = Customer.query.filter_by(customer_id=variableFind.customer_id).first()
+            customer.customer_f_name = customerform.firstname.data
+            customer.customer_s_name= customerform.surname.data
+            customer.customer_dob = customerform.dob.data
+            customer.customer_mobile = customerform.mobile.data
+            customer.customer_address = customerform.address.data
+            customer.customer_postcode = customerform.postcode.data
+            db.session.commit()
             return redirect(url_for('myaccount'))
     return render_template('customer.html', title='Change Customer Details',customerform=customerform,message=message)
 
