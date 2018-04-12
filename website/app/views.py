@@ -10,6 +10,11 @@ import datetime,pyqrcode
 mail=Mail(app)
 bcrypt = Bcrypt(app)
 
+
+@app.route('/confirm')
+def confirm():
+    return render_template('confirm.html', title='Successful Transaction')
+
 @app.route('/search',methods=['GET', 'POST'])
 def search():
     films = Film.query.filter(Film.film_name.like("")).all()
@@ -184,7 +189,7 @@ def checkout(screeningID,seatID):
                 msg.attach("ticket.svg", "image/svg", fp.read())
             mail.send(msg)
 
-            return redirect(url_for('index'))
+            return redirect(url_for('confirm'))
     return render_template('checkout.html', title='Checkout', price=price,customer=customer,film=film, seat=seat, screening=screening, checkoutform=checkoutform, cardform=cardform, age=age, cardFind=cardFind)
 
 @app.route('/login', methods=['GET', 'POST'])
