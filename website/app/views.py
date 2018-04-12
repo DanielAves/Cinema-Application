@@ -104,14 +104,14 @@ def logout():
 def movie(movieID):
     current = datetime.date.today()
     film = Film.query.filter_by(film_id=movieID).first()
-    screening = Screening.query.filter_by(film_id=movieID).filter_by(screening_date=current).all()
+    screening = Screening.query.filter(film_id=movieID).filter_by(screening_date=current,screening_time=datetime.datetime.now().time()).all()
     screeningtomorrow = Screening.query.filter_by(film_id=movieID).filter_by(screening_date=(current + datetime.timedelta(days=1))).all()
     screeningplus2 = Screening.query.filter_by(film_id=movieID).filter_by(screening_date=(current + datetime.timedelta(days=2))).all()
     screeningplus3 = Screening.query.filter_by(film_id=movieID).filter_by(screening_date=(current + datetime.timedelta(days=3))).all()
     screeningplus4 = Screening.query.filter_by(film_id=movieID).filter_by(screening_date=(current + datetime.timedelta(days=4))).all()
     screeningplus5 = Screening.query.filter_by(film_id=movieID).filter_by(screening_date=(current + datetime.timedelta(days=5))).all()
     screeningplus6 = Screening.query.filter_by(film_id=movieID).filter_by(screening_date=(current + datetime.timedelta(days=6))).all()
-    return render_template('movie.html', title='Movie', film=film, screening=screening, screeningtomorrow=screeningtomorrow,screeningplus2=screeningplus2,screeningplus3=screeningplus3,screeningplus4=screeningplus4,screeningplus5=screeningplus5,screeningplus6=screeningplus6)
+    return render_template('movie.html', title='Movie', film=film, now= datetime.datetime.now().time(), screening=screening, screeningtomorrow=screeningtomorrow,screeningplus2=screeningplus2,screeningplus3=screeningplus3,screeningplus4=screeningplus4,screeningplus5=screeningplus5,screeningplus6=screeningplus6)
 
 @app.route('/seatchoice/<screeningID>')
 def seatchoice(screeningID):

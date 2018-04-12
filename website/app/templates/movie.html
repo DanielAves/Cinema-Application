@@ -22,45 +22,60 @@
         <hr>
         <p> Choose your viewing time: </p>
 
+        <ul class="nav nav-tabs">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#">Menu 1</a></li>
+        </ul>
+
+        <div class="container">
+        <a href="#demo" class="btn btn-info" data-toggle="collapse">Simple collapsible</a>
+        <div id="demo" class="collapse">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </div>
+      </div>
+
         <p>Today:</p>
         {% for each in screening %}
-        <a href="/seatchoice/{{each.screening_id}}"><button type="button" class="btn"> Time: {{each.screening_time.strftime('%H:%M')}}</button> </a>
+        {{now}}
+        <a href="/seatchoice/{{each.screening_id}}"><button type="button" class="btn">{{each.screening_time.strftime('%H:%M')}}</button> </a>
         {%endfor%}
         <hr>
 
         <p>Tomorrow:</p>
         {% for each in screeningtomorrow %}
-        <a href="/seatchoice/{{each.screening_id}}"><button type="button" class="btn"> Time: {{each.screening_time.strftime('%H:%M')}}</button> </a>
+        <a href="/seatchoice/{{each.screening_id}}"><button type="button" class="btn">{{each.screening_time.strftime('%H:%M')}}</button> </a>
         {%endfor%}
         <hr>
 
         <p>Day + 2:</p>
         {% for each in screeningplus2 %}
-        <a href="/seatchoice/{{each.screening_id}}"><button type="button" class="btn"> Time: {{each.screening_time.strftime('%H:%M')}}</button> </a>
+        <a href="/seatchoice/{{each.screening_id}}"><button type="button" class="btn">{{each.screening_time.strftime('%H:%M')}}</button> </a>
         {%endfor%}
         <hr>
 
         <p>Day + 3:</p>
         {% for each in screeningplus3 %}
-        <a href="/seatchoice/{{each.screening_id}}"><button type="button" class="btn"> Time: {{each.screening_time.strftime('%H:%M')}}</button> </a>
+        <a href="/seatchoice/{{each.screening_id}}"><button type="button" class="btn">{{each.screening_time.strftime('%H:%M')}}</button> </a>
         {%endfor%}
         <hr>
 
         <p>Day + 4:</p>
         {% for each in screeningplus4 %}
-        <a href="/seatchoice/{{each.screening_id}}"><button type="button" class="btn"> Time: {{each.screening_time.strftime('%H:%M')}}</button> </a>
+        <a href="/seatchoice/{{each.screening_id}}"><button type="button" class="btn">{{each.screening_time.strftime('%H:%M')}}</button> </a>
         {%endfor%}
         <hr>
 
         <p>Day + 5:</p>
         {% for each in screeningplus5 %}
-        <a href="/seatchoice/{{each.screening_id}}"><button type="button" class="btn"> Time: {{each.screening_time.strftime('%H:%M')}}</button> </a>
+        <a href="/seatchoice/{{each.screening_id}}"><button type="button" class="btn">{{each.screening_time.strftime('%H:%M')}}</button> </a>
         {%endfor%}
         <hr>
 
         <p>Day + 6:</p>
         {% for each in screeningplus6 %}
-        <a href="/seatchoice/{{each.screening_id}}"><button type="button" class="btn"> Time: {{each.screening_time.strftime('%H:%M')}}</button> </a>
+        <a href="/seatchoice/{{each.screening_id}}"><button type="button" class="btn">{{each.screening_time.strftime('%H:%M')}}</button> </a>
         {%endfor%}
 
     </div>
