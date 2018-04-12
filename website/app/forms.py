@@ -1,16 +1,23 @@
 from flask_wtf import Form
 from wtforms import StringField, TextField,IntegerField, DateField,PasswordField, SelectField, BooleanField
 from wtforms.validators import DataRequired,InputRequired, Length, Email, EqualTo, NumberRange, ValidationError #Imports needed for forms
+import re
 
 class SessionForm(Form):
     login = TextField('login', validators=[DataRequired()]) #Used for login
     password = PasswordField('password', validators=[DataRequired()])
 
+def validate_mobile(form, field):
+    rule = re.compile(r'^(\+44\s?7\d{3}|\(?07\d{3}\)?)\s?\d{3}\s?\d{3}$')
+    if not rule.search(str(field.data)):
+        msg = u"Invalid mobile number."
+        raise ValidationError(msg)
+
 class SignupForm(Form):
     firstname = TextField('firstname', validators=[DataRequired()])
     surname = TextField('surname', validators=[DataRequired()])
     dob = DateField('dob', validators=[DataRequired()],format='%Y-%m-%d')
-    mobile = TextField('mobile', validators=[DataRequired(),Length(min=9, message="Mobile number not entered")])
+    mobile = TextField('mobile', validators=[DataRequired(),Length(min=9, message="Mobile number not entered"),validate_mobile])
     address = TextField('address', validators=[DataRequired()])
     postcode = TextField('postcode', validators=[DataRequired()])
     email = TextField('email', validators=[DataRequired(),Email(message="Incorrect email")]) #Used for signing up
