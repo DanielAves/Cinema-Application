@@ -16,6 +16,8 @@ import java.util.logging.Logger;
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class bookingScreenController {
 
@@ -31,6 +33,19 @@ public class bookingScreenController {
   Double grandTotal2 = 0.0;
 
   int selectedChild,selectedStudent,selectedAdult,selectedVip =0;
+
+  LocalDate inputDate;
+  String inputTime;
+
+  public void setDate(LocalDate date){
+    inputDate = date;
+    System.out.println(inputDate);
+  }
+
+  public void setTime(String time){
+    inputTime = time;
+    System.out.println(inputTime);
+  }
 
 
   public void backButtonClicked(ActionEvent event) throws IOException {

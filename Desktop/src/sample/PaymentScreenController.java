@@ -19,6 +19,8 @@ import java.util.logging.Logger;
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class PaymentScreenController {
 
@@ -36,7 +38,8 @@ public class PaymentScreenController {
 
   double grandTotal;
   boolean cashBol = false;
-  //
+
+
   public void setTotal(double totalNew){
     grandTotal = totalNew;
     totalAmount.setText("Total £ " + String.format("%.2f", totalNew));

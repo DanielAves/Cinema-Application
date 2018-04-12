@@ -146,11 +146,11 @@ public class filmScreenController{
     }catch (IOException ex){
       Logger.getLogger(filmScreenController.class.getName());
     }
-    int test = 1;
 
     timetableController display = Loader.getController();
-    display.setDate(inputDate);
-    display.setTime(test);
+    display.setDate(inputDate); //pass date to next controller
+    display.setTime(1); //pass film ID
+    display.setFilmName(film1.getText());
 
     Parent p = Loader.getRoot();
     Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
