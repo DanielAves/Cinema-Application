@@ -136,7 +136,8 @@ def checkout(screeningID,seatID):
         ticketTaken = Ticket.query.filter_by(seat_id=seat.seat_id).first()
         if ticketTaken:
             if ticketTaken.seat_id == seat.seat_id:
-                return redirect(url_for('seatchoice', screeningID=screening.screening_id))
+                if ticketTaken.screening_id == screening.screening_id:
+                    return redirect(url_for('seatchoice', screeningID=screening.screening_id))
 
 
         #checks if user allowed to watch this film
@@ -156,7 +157,7 @@ def checkout(screeningID,seatID):
 
         checkoutform = CheckoutForm()
         cardform = CardForm()
-        if checkoutform.validate_on_submit() and cardform.validate_on_submit:
+        if checkoutform.validate_on_submit() or cardform.validate_on_submit():
             another_form = Ticket(customer_id=customer.customer_id,screening_id=screening.screening_id,seat_id=seatID)
             db.session.add(another_form)
             db.session.commit()
