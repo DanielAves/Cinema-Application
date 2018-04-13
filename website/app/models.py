@@ -97,7 +97,7 @@ class Staff(db.Model):
         self.staff_postcode, self.staff_ni)
 
 class Ticket(db.Model):
-    #ticket_id = db.Column(db.Integer, primary_key=True,autoincrement=True )
-    screening_id = db.Column(db.Integer, db.ForeignKey('screening.screening_id'), primary_key = True)
-    customer_id  = db.Column(db.Integer, db.ForeignKey('customer.customer_id'), primary_key = True)
-    seat_id      = db.Column(db.Integer, db.ForeignKey('seat.seat_id'), primary_key = True)
+    ticket_id = db.Column(db.Integer, primary_key=True,autoincrement=True )
+    screening_id = db.Column(db.Integer, db.ForeignKey('screening.screening_id'))
+    customer_id  = db.Column(db.Integer, db.ForeignKey('customer.customer_id'))
+    seat_id      = db.Column(db.Integer, db.ForeignKey('seat.seat_id'))
