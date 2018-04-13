@@ -58,13 +58,14 @@ def populate_screenings():
 
 def populate_customers():
 	data = [
-(1, u'Ben', u'Ashby',u'+447845775449', u'5 Magna Close', u'AL51RH',123412341234121,2018,3,5,121),
-(2, u'Taran', u'Bola',  u'+447400832054', u'6 Winfield Place', u'LS23AB',123412341234122,2021,11,21,134),
-(3, u'Dan', u'Aves',  u'+447803849940', u'15 Beckett Garden', u'AL69JE',123412341234123,2019,6,6,156),
-(4, u'Matt', u'Cutts',  u'+447908858831', u'6 Alistair Drive', u'CH630LH',123412341234124,2020,3,24,987)
+(1, u'Ben', u'Ashby',u'+447845775449', u'5 Magna Close', u'AL51RH',123412341234121,2018,3,5,121,1999),
+(2, u'Taran', u'Bola',  u'+447400832054', u'6 Winfield Place', u'LS23AB',123412341234122,2021,11,21,134,2005),
+(3, u'Dan', u'Aves',  u'+447803849940', u'15 Beckett Garden', u'AL69JE',123412341234123,2019,6,6,156,2000),
+(4, u'Matt', u'Cutts',  u'+447908858831', u'6 Alistair Drive', u'CH630LH',123412341234124,2020,3,24,987,1956),
+(5, u'Till', u'System',  u'+447999999999', u'Osprey Cinema', u'LS2 9BE',123412341234125,2020,3,24,987,1927)
 ]
 	for d in data:
-		customer = Customer(customer_id=d[0], customer_f_name=d[1], customer_s_name=d[2],customer_dob=datetime.date(1927,1,17),customer_mobile=d[3],customer_address=d[4], customer_postcode=d[5])
+		customer = Customer(customer_id=d[0], customer_f_name=d[1], customer_s_name=d[2],customer_dob=datetime.date(d[11],2,22),customer_mobile=d[3],customer_address=d[4], customer_postcode=d[5])
 		customer.card.append(Card(card_number=d[6], card_expiry=datetime.date(d[7],d[8],d[9]),card_cvv=d[10]))
 		db.session.add(customer)
 	db.session.commit()
