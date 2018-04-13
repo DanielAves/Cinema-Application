@@ -38,8 +38,10 @@
 
         <p>Today:</p>
         {% for each in screening %}
-        {{now}}
-        <a href="/seatchoice/{{each.screening_id}}"><button type="button" class="btn">{{each.screening_time.strftime('%H:%M')}}</button> </a>
+          {% if timepassed(each.screening_time) == True %}
+          {% else %}
+            <a href="/seatchoice/{{each.screening_id}}"><button type="button" class="btn">{{each.screening_time.strftime('%H:%M')}}</button> </a>
+          {% endif %}
         {%endfor%}
         <hr>
 

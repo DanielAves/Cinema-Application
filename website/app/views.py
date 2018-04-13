@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from flask import render_template, flash, make_response, redirect, session, url_for, request
 from app import app, db, admin
+from sqlalchemy.sql import func
 from flask_bcrypt import Bcrypt
 from flask_admin.contrib.sqla import ModelView
 from flask_mail import Mail, Message
@@ -103,14 +104,18 @@ def logout():
 @app.route('/movie/<movieID>') #Consider renaming to 'filmpage'
 def movie(movieID):
     current = datetime.date.today()
+    this_morning = datetime.datetime(2009, 12, 2, 9, 30)
+    last_night = datetime.datetime(2009, 12, 1, 20, 0)
+    print(this_morning.time() < last_night.time())
+
     film = Film.query.filter_by(film_id=movieID).first()
-    screening = Screening.query.filter_by(film_id=movieID).filter_by(screening_date=current,screening_time=datetime.datetime.now().time()).all()
-    screeningtomorrow = Screening.query.filter_by(film_id=movieID).filter_by(screening_date=(current + datetime.timedelta(days=1))).all()
-    screeningplus2 = Screening.query.filter_by(film_id=movieID).filter_by(screening_date=(current + datetime.timedelta(days=2))).all()
-    screeningplus3 = Screening.query.filter_by(film_id=movieID).filter_by(screening_date=(current + datetime.timedelta(days=3))).all()
-    screeningplus4 = Screening.query.filter_by(film_id=movieID).filter_by(screening_date=(current + datetime.timedelta(days=4))).all()
-    screeningplus5 = Screening.query.filter_by(film_id=movieID).filter_by(screening_date=(current + datetime.timedelta(days=5))).all()
-    screeningplus6 = Screening.query.filter_by(film_id=movieID).filter_by(screening_date=(current + datetime.timedelta(days=6))).all()
+    screening = Screening.query.filter_by(film_id=movieID,screening_date=current).order_by(func.Time(Screening.screening_time)).all()
+    screeningtomorrow = Screening.query.filter_by(film_id=movieID).filter_by(screening_date=(current + datetime.timedelta(days=1))).order_by(func.Time(Screening.screening_time)).all()
+    screeningplus2 = Screening.query.filter_by(film_id=movieID).filter_by(screening_date=(current + datetime.timedelta(days=2))).order_by(func.Time(Screening.screening_time)).all()
+    screeningplus3 = Screening.query.filter_by(film_id=movieID).filter_by(screening_date=(current + datetime.timedelta(days=3))).order_by(func.Time(Screening.screening_time)).all()
+    screeningplus4 = Screening.query.filter_by(film_id=movieID).filter_by(screening_date=(current + datetime.timedelta(days=4))).order_by(func.Time(Screening.screening_time)).all()
+    screeningplus5 = Screening.query.filter_by(film_id=movieID).filter_by(screening_date=(current + datetime.timedelta(days=5))).order_by(func.Time(Screening.screening_time)).all()
+    screeningplus6 = Screening.query.filter_by(film_id=movieID).filter_by(screening_date=(current + datetime.timedelta(days=6))).order_by(func.Time(Screening.screening_time)).all()
     return render_template('movie.html', title='Movie', film=film, now= datetime.datetime.now().time(), screening=screening, screeningtomorrow=screeningtomorrow,screeningplus2=screeningplus2,screeningplus3=screeningplus3,screeningplus4=screeningplus4,screeningplus5=screeningplus5,screeningplus6=screeningplus6)
 
 @app.route('/seatchoice/<screeningID>')
@@ -280,4 +285,12 @@ def seatfinder(seat,screening):
     else:
         return False
 
+def timepassed(time):
+    now = datetime.datetime.now().time()
+    if now < time:
+        return False
+    else:
+        return True
+
 app.jinja_env.globals.update(seatfinder=seatfinder)
+app.jinja_env.globals.update(timepassed=timepassed)
