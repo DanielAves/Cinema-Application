@@ -1,4 +1,5 @@
 from app import db
+from sqlalchemy import UniqueConstraint
 
 class Customer(db.Model):
     customer_id = db.Column(db.Integer, primary_key=True)
@@ -101,3 +102,5 @@ class Ticket(db.Model):
     screening_id = db.Column(db.Integer, db.ForeignKey('screening.screening_id'))
     customer_id  = db.Column(db.Integer, db.ForeignKey('customer.customer_id'))
     seat_id      = db.Column(db.Integer, db.ForeignKey('seat.seat_id'))
+
+    UniqueConstraint('customer_id', 'screening_id', 'seat_id')
