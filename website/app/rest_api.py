@@ -16,4 +16,3 @@ manager.create_api(Seat, methods=['GET', 'POST','PUT', 'DELETE'],exclude_columns
 manager.create_api(Staff, methods=['GET', 'POST','PUT', 'DELETE'])
 manager.create_api(Ticket, methods=['GET', 'POST','PUT', 'DELETE'], exclude_columns=['customer','screening','seat'])
 manager.create_api(Login, methods=['GET', 'POST', 'PUT', 'DELETE'])
-
