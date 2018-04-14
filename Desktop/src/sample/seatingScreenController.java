@@ -1,7 +1,7 @@
 package sample;
 
 import java.util.*;
-
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -12,13 +12,15 @@ import javafx.event.ActionEvent;
 import java.io.IOException;
 import java.util.logging.Logger;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import javafx.scene.control.Button;
 
 public class seatingScreenController {
 
   double totalNew;
+  @FXML
+  public Button seat11;
 
   public void setTotal(double grandTotal2){
-    System.out.println(grandTotal2);
     totalNew = grandTotal2;
   }
   public void payClicked(ActionEvent event)throws IOException{
@@ -38,12 +40,12 @@ public class seatingScreenController {
     window.setScene(new Scene(p));
     window.show();
   }
-  public void populateSeats(double test) throws Exception{
+  public void populateSeats(int screeningID) throws Exception{
     RestClient client = new RestClient("localhost", 5000);
     //List<Ticket> tickets;
     List tickets = new ArrayList();
     if (client.getTickets() == null){
-      System.out.println("null");
+      //Do nothing, prevents errors.
     }
     else{
       tickets = client.getTickets();
@@ -51,21 +53,42 @@ public class seatingScreenController {
       List screeningsList = new ArrayList();
       screeningsList = client.getScreenings();
 
-      // for(Ticket ticket: tickets){
-      //   // int id = ticket.getScreening_id();
-      //   //System.out.println(ticket.getScreening_id());
-      //
-      // }
+      System.out.println(ticketAmount);
 
-      for(int i =0; i <=ticketAmount; i++){
+      for(int i =1; i <=ticketAmount; i++){
         //Ticket ticket = (Ticket) ticket.getScreening_id();
 
 
+        Ticket ticket = client.getTicket(i);
+        int ticketScreenID = ticket.getScreening_id();
+        if (screeningID == ticketScreenID){
+          int seat = ticket.getSeat_id();
 
-        //Currently using customer ID to reference ticket
-        Ticket ticket = client.getTicket(1);
-        int screenID = ticket.getScreening_id();
-        System.out.println(screenID);
+          switch (seat) {
+            case 1: seat11.setText("Taken");
+            break;
+            case 2:;
+            break;
+            case 3:;
+            break;
+            case 4:;
+            break;
+            case 5:;
+            break;
+            case 6:;
+            break;
+            case 7: ;
+            break;
+            case 8:;
+            break;
+            case 9: ;
+            break;
+            case 10: seat11.setText("Taken"); ;
+            break;
+          }
+
+        }
+
 
 
       }

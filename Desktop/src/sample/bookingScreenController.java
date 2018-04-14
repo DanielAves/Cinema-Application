@@ -36,15 +36,18 @@ public class bookingScreenController {
 
   LocalDate inputDate;
   String inputTime;
+  int screeningID;
 
   public void setDate(LocalDate date){
     inputDate = date;
-    System.out.println(inputDate);
   }
 
   public void setTime(String time){
     inputTime = time;
-    System.out.println(inputTime);
+  }
+
+  public void setScreeningID(int id){
+    screeningID = id;
   }
 
 
@@ -129,7 +132,7 @@ public class bookingScreenController {
 
     seatingScreenController display = Loader.getController();
     display.setTotal(grandTotal2);
-    display.populateSeats(2);
+    display.populateSeats(screeningID);
 
     Parent p = Loader.getRoot();
     Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();

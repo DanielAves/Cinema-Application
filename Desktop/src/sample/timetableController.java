@@ -26,6 +26,7 @@ public class timetableController{
 
   LocalDate inputDate;
   String filmName;
+  int[] screeningID = new int[10];
 
   DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
   DateTimeFormatter time = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -43,6 +44,7 @@ public class timetableController{
     RestClient client = new RestClient("localhost", 5000);
     List screeningsList = new ArrayList();
     List timeList = new ArrayList();
+    int j = 0; //Used for storing screeningID for specific time
 
     //Populate screeningsList
     screeningsList = client.getScreenings();
@@ -51,6 +53,7 @@ public class timetableController{
     int screeningAmount = screeningsList.size();
 
     for(int i =1; i<=screeningAmount; i++){
+
       //int temp2 = Integer.parseInt(filmIdList.get(1).toString());
       Screening s = client.getScreening(i);
       LocalTime screenTime = s.getScreening_time();
@@ -58,7 +61,8 @@ public class timetableController{
       int screenID = s.getScreen_id();
       if(s.getFilm_id() == filmID && dateScreening.equals(inputDate)){
         timeList.add(screenTime);
-
+        screeningID[j] = s.getScreening_id();
+        j++;
         switch (screenID) {
           case 1: film1.setText(dtf.format(screenTime));
           break;
@@ -154,6 +158,9 @@ public class timetableController{
     String time = film1.getText();
     display.setDate(inputDate); //pass date to next controller
     display.setTime(time); //pass film ID
+    display.setScreeningID(screeningID[0]);
+    //System.out.println(screeningID[0]);
+
 
     Parent p = Loader.getRoot();
     Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
