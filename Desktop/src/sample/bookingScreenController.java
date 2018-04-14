@@ -118,7 +118,7 @@ public class bookingScreenController {
   }
 
 
-  public void selectSeats(ActionEvent event) throws IOException{
+  public void selectSeats(ActionEvent event) throws Exception{
     FXMLLoader Loader = new FXMLLoader();
     Loader.setLocation(getClass().getResource("resources/seatingScreen.fxml"));
     try{
@@ -129,6 +129,7 @@ public class bookingScreenController {
 
     seatingScreenController display = Loader.getController();
     display.setTotal(grandTotal2);
+    display.populateSeats(2);
 
     Parent p = Loader.getRoot();
     Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();

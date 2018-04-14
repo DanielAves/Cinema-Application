@@ -84,7 +84,7 @@ public interface CinemaApi {
 
     public Ticket getTicket(int id) throws Exception;
 
-    public List<Ticket> getTickets();
+    public List<Ticket> getTickets() throws Exception;
 
       /*****/
 

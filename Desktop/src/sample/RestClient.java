@@ -173,8 +173,10 @@ public class RestClient implements CinemaApi {
         return ticket;
       }
 
-      public List<Ticket> getTickets(){
-        return null;
+      public List<Ticket> getTickets() throws Exception{
+        String json = this.client.get("ticket");
+        GenericWrapper<Ticket> myObjects = mapper.readValue(json, GenericWrapper.class);
+        return myObjects.getObjects();
       }
 
 }
