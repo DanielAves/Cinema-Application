@@ -12,10 +12,12 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.LocalDateTime;
 import java.util.logging.Logger;
 import javafx.scene.control.Button;
 import java.time.format.DateTimeFormatter;
 import javafx.scene.text.Text;
+
 
 
 public class timetableController{
@@ -27,6 +29,7 @@ public class timetableController{
   LocalDate inputDate;
   String filmName;
   int[] screeningID = new int[10];
+  int[] screenID = new int[10];
 
   DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
   DateTimeFormatter time = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -54,71 +57,74 @@ public class timetableController{
 
     for(int i =1; i<=screeningAmount; i++){
 
-      //int temp2 = Integer.parseInt(filmIdList.get(1).toString());
+      LocalDateTime currentTime = LocalDateTime.now();
       Screening s = client.getScreening(i);
       LocalTime screenTime = s.getScreening_time();
       LocalDate dateScreening = s.getScreening_date();
       int screenID = s.getScreen_id();
+
       if(s.getFilm_id() == filmID && dateScreening.equals(inputDate)){
         timeList.add(screenTime);
-        screeningID[j] = s.getScreening_id();
-        j++;
-        switch (screenID) {
-          case 1: film1.setText(dtf.format(screenTime));
-          break;
-          case 2: film2.setText(dtf.format(screenTime));
-          break;
-          case 3: film3.setText(dtf.format(screenTime));
-          break;
-          case 4: film4.setText(dtf.format(screenTime));
-          break;
-          case 5: film5.setText(dtf.format(screenTime));
-          break;
-          case 6: film6.setText(dtf.format(screenTime));
-          break;
-          case 7: film7.setText(dtf.format(screenTime));
-          break;
-          case 8: film8.setText(dtf.format(screenTime));
-          break;
-          case 9: film9.setText(dtf.format(screenTime));
-          break;
-          case 10: film10.setText(dtf.format(screenTime));
-          break;
-        }
       }
     }
-    // Collections.sort(timeList);
-    // int size = timeList.size();
-    // if (size > 0 && timeList.get(0) != null){
-    //   film1.setText(timeList.get(0).toString());
-    // }
-    // if (size > 1 && timeList.get(1) != null){
-    //   film2.setText(timeList.get(1).toString());
-    // }
-    // if (size > 2 && timeList.get(2) != null){
-    //   film3.setText(timeList.get(2).toString());
-    // }
-    // if (size > 3 && timeList.get(3) != null){
-    //   film4.setText(timeList.get(3).toString());
-    // }
-    // if (size > 4 && timeList.get(4) != null){
-    //   film5.setText(timeList.get(4).toString());
-    // }
-    // if (size > 5 && timeList.get(5) != null){
-    //   film6.setText(timeList.get(5).toString());
-    // }
-    // if (size > 6 && timeList.get(6) != null){
-    //   film7.setText(timeList.get(6).toString());
-    // }
-    // if (size > 7 && timeList.get(7) != null){
-    //   film8.setText(timeList.get(7).toString());
-    // }
-    // if (size > 8 && timeList.get(8) != null){
-    //   film9.setText(timeList.get(8).toString());
-    // }
-    // if (size > 9 && timeList.get(9) != null){
-    //   film10.setText(timeList.get(9).toString());
-    // }
+    Collections.sort(timeList);
+    for(int i =1; i<=screeningAmount; i++){
+
+      Screening s = client.getScreening(i);
+      LocalTime screenTime = s.getScreening_time();
+      LocalDate dateScreening = s.getScreening_date();
+      int size = timeList.size();
+      if(size > 0 && s.getFilm_id() == filmID && screenTime.equals(timeList.get(0)) && dateScreening.equals(inputDate)){
+        screeningID[0] = s.getScreening_id();
+        screenID[0] = s.getScreen_id();
+        film1.setText(timeList.get(0).toString());
+      }
+      if(size > 1 && s.getFilm_id() == filmID && screenTime.equals(timeList.get(1)) && dateScreening.equals(inputDate)){
+        screeningID[1] = s.getScreening_id();
+        screenID[1] = s.getScreen_id();
+        film2.setText(timeList.get(1).toString());
+      }
+      if(size > 2 && s.getFilm_id() == filmID && screenTime.equals(timeList.get(2)) && dateScreening.equals(inputDate)){
+        screeningID[2] = s.getScreening_id();
+        screenID[2] = s.getScreen_id();
+        film3.setText(timeList.get(2).toString());
+      }
+      if(size > 3 && s.getFilm_id() == filmID && screenTime.equals(timeList.get(3)) && dateScreening.equals(inputDate)){
+        screeningID[3] = s.getScreening_id();
+        screenID[3] = s.getScreen_id();
+        film4.setText(timeList.get(3).toString());
+      }
+      if(size > 4 && s.getFilm_id() == filmID && screenTime.equals(timeList.get(4)) && dateScreening.equals(inputDate)){
+        screeningID[4] = s.getScreening_id();
+        screenID[4] = s.getScreen_id();
+        film5.setText(timeList.get(4).toString());
+      }
+      if(size > 5 && s.getFilm_id() == filmID && screenTime.equals(timeList.get(5)) && dateScreening.equals(inputDate)){
+        screeningID[5] = s.getScreening_id();
+        screenID[5] = s.getScreen_id();
+        film6.setText(timeList.get(5).toString());
+      }
+      if(size > 6 && s.getFilm_id() == filmID && screenTime.equals(timeList.get(6)) && dateScreening.equals(inputDate)){
+        screeningID[6] = s.getScreening_id();
+        screenID[6] = s.getScreen_id();
+        film7.setText(timeList.get(6).toString());
+      }
+      if(size > 7 && s.getFilm_id() == filmID && screenTime.equals(timeList.get(7)) && dateScreening.equals(inputDate)){
+        screeningID[7] = s.getScreening_id();
+        screenID[7] = s.getScreen_id();
+        film8.setText(timeList.get(7).toString());
+      }
+      if(size > 8 && s.getFilm_id() == filmID && screenTime.equals(timeList.get(8)) && dateScreening.equals(inputDate)){
+        screeningID[8] = s.getScreening_id();
+        screenID[8] = s.getScreen_id();
+        film9.setText(timeList.get(8).toString());
+      }
+      if(size > 9 && s.getFilm_id() == filmID && screenTime.equals(timeList.get(9)) && dateScreening.equals(inputDate)){
+        screeningID[9] = s.getScreening_id();
+        screenID[9] = s.getScreen_id();
+        film10.setText(timeList.get(9).toString());
+      }
+    }
   }
 
 
@@ -144,8 +150,6 @@ public class timetableController{
 
   public void time1Clicked(javafx.event.ActionEvent event) throws IOException{
 
-
-
     FXMLLoader Loader = new FXMLLoader();
     Loader.setLocation(getClass().getResource("resources/bookingScreen.fxml"));
     try{
@@ -159,8 +163,6 @@ public class timetableController{
     display.setDate(inputDate); //pass date to next controller
     display.setTime(time); //pass film ID
     display.setScreeningID(screeningID[0]);
-    //System.out.println(screeningID[0]);
-
 
     Parent p = Loader.getRoot();
     Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -168,6 +170,49 @@ public class timetableController{
     window.show();
   }
 
+  public void time2Clicked(javafx.event.ActionEvent event) throws IOException{
+
+    FXMLLoader Loader = new FXMLLoader();
+    Loader.setLocation(getClass().getResource("resources/bookingScreen.fxml"));
+    try{
+      Loader.load();
+    }catch (IOException ex){
+      Logger.getLogger(filmScreenController.class.getName());
+    }
+
+    bookingScreenController display = Loader.getController();
+    String time = film1.getText();
+    display.setDate(inputDate); //pass date to next controller
+    display.setTime(time); //pass film ID
+    display.setScreeningID(screeningID[1]);
+
+    Parent p = Loader.getRoot();
+    Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    window.setScene(new Scene(p));
+    window.show();
+  }
+
+  public void time9Clicked(javafx.event.ActionEvent event) throws IOException{
+
+    FXMLLoader Loader = new FXMLLoader();
+    Loader.setLocation(getClass().getResource("resources/bookingScreen.fxml"));
+    try{
+      Loader.load();
+    }catch (IOException ex){
+      Logger.getLogger(filmScreenController.class.getName());
+    }
+
+    bookingScreenController display = Loader.getController();
+    String time = film9.getText();
+    display.setDate(inputDate); //pass date to next controller
+    display.setTime(time); //pass film ID
+    display.setScreeningID(screeningID[8]);
+
+    Parent p = Loader.getRoot();
+    Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    window.setScene(new Scene(p));
+    window.show();
+  }
 
 
 

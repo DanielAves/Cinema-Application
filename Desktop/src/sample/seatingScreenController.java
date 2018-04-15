@@ -18,7 +18,7 @@ public class seatingScreenController {
 
   double totalNew;
   @FXML
-  public Button seat11;
+  public Button seat1, seat10;
 
   public void setTotal(double grandTotal2){
     totalNew = grandTotal2;
@@ -53,19 +53,22 @@ public class seatingScreenController {
       List screeningsList = new ArrayList();
       screeningsList = client.getScreenings();
 
-      System.out.println(ticketAmount);
+      //System.out.println(ticketAmount);
 
       for(int i =1; i <=ticketAmount; i++){
         //Ticket ticket = (Ticket) ticket.getScreening_id();
 
+        // System.out.println(screeningID);
 
         Ticket ticket = client.getTicket(i);
         int ticketScreenID = ticket.getScreening_id();
+
         if (screeningID == ticketScreenID){
           int seat = ticket.getSeat_id();
+          // System.out.println(seat);
 
           switch (seat) {
-            case 1: seat11.setText("Taken");
+            case 1: seat1.setText("Taken");
             break;
             case 2:;
             break;
@@ -83,7 +86,7 @@ public class seatingScreenController {
             break;
             case 9: ;
             break;
-            case 10: seat11.setText("Taken"); ;
+            case 10: seat10.setText("Taken"); ;
             break;
           }
 

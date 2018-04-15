@@ -47,7 +47,7 @@
       <Button fx:id="film3" mnemonicParsing="false" prefHeight="125.0" prefWidth="600.0" styleClass="Button" stylesheets="@darkTheme.css" text="" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
       <Button fx:id="film5" mnemonicParsing="false" prefHeight="125.0" prefWidth="600.0" styleClass="Button" stylesheets="@darkTheme.css" text="" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
       <Button fx:id="film7" mnemonicParsing="false" prefHeight="125.0" prefWidth="600.0" styleClass="Button" stylesheets="@darkTheme.css" text="" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
-      <Button fx:id="film2" mnemonicParsing="false" prefHeight="125.0" prefWidth="600.0" styleClass="Button" stylesheets="@darkTheme.css" text="" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+      <Button fx:id="film2" mnemonicParsing="false" onAction="#time2Clicked" prefHeight="125.0" prefWidth="600.0" styleClass="Button" stylesheets="@darkTheme.css" text="" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1" />
       <Button fx:id="film4" mnemonicParsing="false" prefHeight="125.0" prefWidth="600.0" styleClass="Button" stylesheets="@darkTheme.css" text="" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="2" />
       <Button fx:id="film6" mnemonicParsing="false" prefHeight="125.0" prefWidth="600.0" styleClass="Button" stylesheets="@darkTheme.css" text="" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="3" />
       <Button fx:id="film8" mnemonicParsing="false" prefHeight="125.0" prefWidth="600.0" styleClass="Button" stylesheets="@darkTheme.css" text="" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="4" />
@@ -56,7 +56,7 @@
             <Insets top="30.0" />
          </GridPane.margin>
       </Text>
-      <Button fx:id="film9" mnemonicParsing="false" prefHeight="125.0" prefWidth="600.0" styleClass="Button" stylesheets="@darkTheme.css" text="" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+      <Button fx:id="film9" mnemonicParsing="false" onAction="#time9Clicked" prefHeight="125.0" prefWidth="600.0" styleClass="Button" stylesheets="@darkTheme.css" text="" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
       <Button fx:id="film10" mnemonicParsing="false" prefHeight="125.0" prefWidth="600.0" styleClass="Button" stylesheets="@darkTheme.css" text="" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="5" />
    </children>
 </GridPane>
