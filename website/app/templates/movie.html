@@ -49,7 +49,7 @@
         <hr>
 
         {% if screeningplus2 %}
-          <p>{{screeningplus2[0].screening_date}}</p>
+          <p>{{screeningplus2[0].screening_date}}:</p>
           {% for each in screeningplus2 %}
           <a href="/seatchoice/{{each.screening_id}}"><button type="button" class="btn">{{each.screening_time.strftime('%H:%M')}}</button> </a>
           {%endfor%}
@@ -57,7 +57,7 @@
         {% endif %}
 
         {% if screeningplus3 %}
-          <p>{{screeningplus3[0].screening_date}}</p>
+          <p>{{screeningplus3[0].screening_date}}:</p>
           {% for each in screeningplus3 %}
           <a href="/seatchoice/{{each.screening_id}}"><button type="button" class="btn">{{each.screening_time.strftime('%H:%M')}}</button> </a>
           {%endfor%}
@@ -67,7 +67,7 @@
 
       <div class="col-sm-6" >
         {% if screeningplus4 %}
-          <p>{{screeningplus4[0].screening_date}}</p>
+          <p>{{screeningplus4[0].screening_date}}:</p>
           {% for each in screeningplus4 %}
           <a href="/seatchoice/{{each.screening_id}}"><button type="button" class="btn">{{each.screening_time.strftime('%H:%M')}}</button> </a>
           {%endfor%}
@@ -75,7 +75,7 @@
         {% endif %}
 
         {% if screeningplus5 %}
-          <p>{{screeningplus5[0].screening_date}}</p>
+          <p>{{screeningplus5[0].screening_date}}:</p>
           {% for each in screeningplus5 %}
           <a href="/seatchoice/{{each.screening_id}}"><button type="button" class="btn">{{each.screening_time.strftime('%H:%M')}}</button> </a>
           {%endfor%}
@@ -83,7 +83,7 @@
         {% endif %}
 
         {% if screeningplus6 %}
-          <p>{{screeningplus6[0].screening_date}}</p>
+          <p>{{screeningplus6[0].screening_date}}:</p>
           {% for each in screeningplus6 %}
             <a href="/seatchoice/{{each.screening_id}}"><button type="button" class="btn">{{each.screening_time.strftime('%H:%M')}}</button> </a>
           {%endfor%}
