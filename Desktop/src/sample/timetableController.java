@@ -152,14 +152,27 @@ public class timetableController{
 
 
 
-  public void backButtonClicked(ActionEvent event) throws IOException {
-    Parent secondaryroot = FXMLLoader.load(getClass().getResource("resources/filmScreen.fxml"));
-    Scene filmScreen = new Scene(secondaryroot);
-    Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    window.setScene(filmScreen);
-    window.show();
+  public void backButtonClicked(ActionEvent event) throws Exception {
+    FXMLLoader Loader = new FXMLLoader();
+    Loader.setLocation(getClass().getResource("resources/filmScreen.fxml"));
+    try{
+      Loader.load();
+    }catch (IOException ex){
+      Logger.getLogger(filmScreenController.class.getName());
+    }
 
+    LocalDate localDate = LocalDate.now();
+    filmScreenController display = Loader.getController();
+    display.setDate(inputDate);
+    display.setScreen(inputDate);
+
+    Parent p = Loader.getRoot();
+    Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    window.setScene(new Scene(p));
+    window.show();
   }
+
+
 
   public void logoutButtonClicked(ActionEvent event) throws IOException{
     Parent secondaryroot = FXMLLoader.load(getClass().getResource("resources/loginScreen.fxml"));
