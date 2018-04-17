@@ -17,6 +17,7 @@ import java.util.logging.Logger;
 import javafx.scene.control.Button;
 import java.time.format.DateTimeFormatter;
 import javafx.scene.text.Text;
+import javafx.scene.control.Label;
 
 
 
@@ -24,12 +25,14 @@ public class timetableController{
 
   @FXML
   public Button film1,film2,film3,film4,film5,film6,film7,film8,film9,film10;
+  public Label screen1,screen2,screen3,screen4,screen5,screen6,screen7,screen8,screen9,screen10;
   public Text filmDate;
 
   LocalDate inputDate;
   String filmName;
   int[] screeningID = new int[10];
   int[] screenID = new int[10];
+  boolean time1,time2,time3,time4,time5,time6,time7,time8,time9,time10 = false;
 
   DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
   DateTimeFormatter time = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -74,55 +77,74 @@ public class timetableController{
       LocalTime screenTime = s.getScreening_time();
       LocalDate dateScreening = s.getScreening_date();
       int size = timeList.size();
-      if(size > 0 && s.getFilm_id() == filmID && screenTime.equals(timeList.get(0)) && dateScreening.equals(inputDate)){
+      if(size > 0 && time1 == false && s.getFilm_id() == filmID && screenTime.equals(timeList.get(0)) && dateScreening.equals(inputDate)){
         screeningID[0] = s.getScreening_id();
         screenID[0] = s.getScreen_id();
         film1.setText(timeList.get(0).toString());
+        screen1.setText("Screen " + Integer.toString(s.getScreen_id()));
+        time1 = true;
       }
-      if(size > 1 && s.getFilm_id() == filmID && screenTime.equals(timeList.get(1)) && dateScreening.equals(inputDate)){
+      else if(size > 1 && time2 == false && s.getFilm_id() == filmID && screenTime.equals(timeList.get(1)) && dateScreening.equals(inputDate)){
         screeningID[1] = s.getScreening_id();
-        screenID[1] = s.getScreen_id();
         film2.setText(timeList.get(1).toString());
+        screen2.setText("Screen " + Integer.toString(s.getScreen_id()));
+        time2 = true;
       }
-      if(size > 2 && s.getFilm_id() == filmID && screenTime.equals(timeList.get(2)) && dateScreening.equals(inputDate)){
+      else if(size > 2 && time3 == false && s.getFilm_id() == filmID && screenTime.equals(timeList.get(2)) && dateScreening.equals(inputDate)){
         screeningID[2] = s.getScreening_id();
         screenID[2] = s.getScreen_id();
         film3.setText(timeList.get(2).toString());
+        screen3.setText("Screen " + Integer.toString(s.getScreen_id()));
+        time3 = true;
       }
-      if(size > 3 && s.getFilm_id() == filmID && screenTime.equals(timeList.get(3)) && dateScreening.equals(inputDate)){
+      else if(size > 3 && time4 == false && s.getFilm_id() == filmID && screenTime.equals(timeList.get(3)) && dateScreening.equals(inputDate)){
         screeningID[3] = s.getScreening_id();
         screenID[3] = s.getScreen_id();
         film4.setText(timeList.get(3).toString());
+        screen4.setText("Screen " + Integer.toString(s.getScreen_id()));
+        time4 = true;
       }
-      if(size > 4 && s.getFilm_id() == filmID && screenTime.equals(timeList.get(4)) && dateScreening.equals(inputDate)){
+      else if(size > 4 && time5 == false && s.getFilm_id() == filmID && screenTime.equals(timeList.get(4)) && dateScreening.equals(inputDate)){
         screeningID[4] = s.getScreening_id();
         screenID[4] = s.getScreen_id();
         film5.setText(timeList.get(4).toString());
+        screen5.setText("Screen " + Integer.toString(s.getScreen_id()));
+        time5 = true;
       }
-      if(size > 5 && s.getFilm_id() == filmID && screenTime.equals(timeList.get(5)) && dateScreening.equals(inputDate)){
+      else if(size > 5 && time6 == false && s.getFilm_id() == filmID && screenTime.equals(timeList.get(5)) && dateScreening.equals(inputDate)){
         screeningID[5] = s.getScreening_id();
         screenID[5] = s.getScreen_id();
         film6.setText(timeList.get(5).toString());
+        screen6.setText("Screen " + Integer.toString(s.getScreen_id()));
+        time6 = true;
       }
-      if(size > 6 && s.getFilm_id() == filmID && screenTime.equals(timeList.get(6)) && dateScreening.equals(inputDate)){
+      else if(size > 6 && time7 == false && s.getFilm_id() == filmID && screenTime.equals(timeList.get(6)) && dateScreening.equals(inputDate)){
         screeningID[6] = s.getScreening_id();
         screenID[6] = s.getScreen_id();
         film7.setText(timeList.get(6).toString());
+        screen7.setText("Screen " + Integer.toString(s.getScreen_id()));
+        time7 = true;
       }
-      if(size > 7 && s.getFilm_id() == filmID && screenTime.equals(timeList.get(7)) && dateScreening.equals(inputDate)){
+      else if(size > 7 && time8 == false && s.getFilm_id() == filmID && screenTime.equals(timeList.get(7)) && dateScreening.equals(inputDate)){
         screeningID[7] = s.getScreening_id();
         screenID[7] = s.getScreen_id();
         film8.setText(timeList.get(7).toString());
+        screen8.setText("Screen " + Integer.toString(s.getScreen_id()));
+        time8 = true;
       }
-      if(size > 8 && s.getFilm_id() == filmID && screenTime.equals(timeList.get(8)) && dateScreening.equals(inputDate)){
+      else if(size > 8 && time9 == false && s.getFilm_id() == filmID && screenTime.equals(timeList.get(8)) && dateScreening.equals(inputDate)){
         screeningID[8] = s.getScreening_id();
         screenID[8] = s.getScreen_id();
         film9.setText(timeList.get(8).toString());
+        screen9.setText("Screen " + Integer.toString(s.getScreen_id()));
+        time9 = true;
       }
-      if(size > 9 && s.getFilm_id() == filmID && screenTime.equals(timeList.get(9)) && dateScreening.equals(inputDate)){
+      else if(size > 9 && time10 == false && s.getFilm_id() == filmID && screenTime.equals(timeList.get(9)) && dateScreening.equals(inputDate)){
         screeningID[9] = s.getScreening_id();
         screenID[9] = s.getScreen_id();
         film10.setText(timeList.get(9).toString());
+        screen10.setText("Screen " + Integer.toString(s.getScreen_id()));
+        time10 = true;
       }
     }
   }
