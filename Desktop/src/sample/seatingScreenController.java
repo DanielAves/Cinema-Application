@@ -58,7 +58,7 @@ public class seatingScreenController {
       for(int i =1; i <=ticketAmount; i++){
         //Ticket ticket = (Ticket) ticket.getScreening_id();
 
-        // System.out.println(screeningID);
+        System.out.println(screeningID);
 
         Ticket ticket = client.getTicket(i);
         int ticketScreenID = ticket.getScreening_id();
@@ -97,7 +97,18 @@ public class seatingScreenController {
       }
     }
   }
+  public void seatSelection(ActionEvent event) throws Exception {
+    //Pass ticket total to here and define array based on the amount of seats to be selected based on tickets
+    int counter = 0;
+    List seats = new ArrayList();
+    seats.add(((Button)event.getSource()).getText());
+    ((Button)event.getSource()).setText("Selected");
+
+    // RestClient client = new RestClient("localhost", 5000);
+    // Customer s = client.getCustomers();
+    // client.createTicket(s);
 
 
 
+}
 }
