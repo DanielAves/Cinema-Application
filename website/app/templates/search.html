@@ -4,27 +4,38 @@
     <br>
     <hr>
     <hr>
+
+    <br> <br> <br> <br> <br> <br> <br> <br><br> <br> <br>
     <div class="row" id="spaceFiller">
         <div class="col-sm-12">
-            <h1 class="text-center">Search<span class="highlight"> On </span> </h1>
+            <h1 class="text-center">Search<span class="highlight"> Website </span> </h1>
         </div>
     </div>
-    <form class ="searchform" action="" method="post">
-    {{ searchform.hidden_tag() }}
-        <div class="form-group">
-            {{ searchform.search (placeholder='Search....',class_="form-control")}}<br>              <!--First input box and message if not input -->
-        </div>
-    </form>
-    <div class="col-sm-5">
-    {% if films %}
-      <h1><u>Films</u></h2>
-      {% for each in films %}
-        <a href="/movie/{{each.film_id}}"><h2>{{each.film_name}}</h1></a>
-      {% endfor %}
-    {% endif%}
-    </div>
-    <div class="col-sm-1">
+    <br> <br>
 
+    <div class="row" id="search">
+        <div class="col-sm-2">
+        </div>
+
+        <div class="col-sm-8">
+            <form class ="searchform" action="" method="post">
+            {{ searchform.hidden_tag() }}
+                <div class="form-group">
+                    {{ searchform.search (placeholder='Search....',class_="form-control")}}<br>              <!--First input box and message if not input -->
+                </div>
+            </form>
+            <div class="col-sm-5">
+            {% if films %}
+              <h1><u>Films</u></h2>
+              {% for each in films %}
+                <a href="/movie/{{each.film_id}}"><h2>{{each.film_name}}</h1></a>
+              {% endfor %}
+            {% endif%}
+            </div>
+        </div>
+        
+        <div class="col-sm-2">
+        </div>
     </div>
 
     <div class="col-sm-5">
@@ -35,6 +46,10 @@
         {% endfor %}
       {% endif%}
     </div>
+
+
+
+    <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br><br><br>
     <hr>
     <hr>
 {% endblock %}
