@@ -34,7 +34,7 @@
 
     <div class="row" id="ticketseat">
         <!-- <div class="panel panel-default"> -->
-            <div class="col-sm-6">
+            <div class="col-sm-4">
                 <h1> Choose <span class="highlight"> Ticket </span></h1>
                 <hr>
 
@@ -59,29 +59,7 @@
                             <option>14</option>
                             <option>15</option>
                         </select>
-
-                        <a href="#myModal" role="button" class="btn btn-warning" data-toggle="modal"><span class="glyphicon glyphicon-hand-up"></span> Click</a>
-                        <div class="modal fade" id="myModal">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button class="close" data-dismiss="modal">&times;</button>
-
-                                        <h4 class="modal-title">Further Information</h4>
-                                    </div><!-- end modal-header -->
-                                    <div class="modal-body">
-                                        <h1>Further Information</h4>
-                                        <h3> Price: <h3>
-                                        <h3> Age: 19 to 65 years old <h3>
-                                    </div><!-- end modal-body -->
-
-                                    <div class="modal-footer">
-                                        <button class="btn btn-default" data-dismiss="modal" type="button">Close</button> <button class="btn btn-primary" type="button">Save changes</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
+                        <br>
                         <label for="sel2">Teen (17-19 years):</label>
                         <select class="form-control" id="sel2">
                             <option>0</option>
@@ -101,7 +79,7 @@
                             <option>14</option>
                             <option>15</option>
                         </select>
-
+                        <br>
                         <label for="sel3">Child (16 years and below):</label>
                         <select class="form-control" id="sel3">
                             <option>0</option>
@@ -122,7 +100,7 @@
                             <option>15</option>
 
                         </select>
-
+                        <br>
                         <label for="sel4">Pensioner (65+ years):</label>
                         <select class="form-control" id="sel4">
                             <option>0</option>
@@ -142,7 +120,7 @@
                             <option>14</option>
                             <option>15</option>
                         </select>
-
+                        <br>
                         <label for="sel5">Student:</label>
                         <p> Provide your valid student ID upon entry. </p>
                         <select class="form-control" id="sel5">
@@ -190,7 +168,45 @@
                 </form>
 
             </div>
-            <div class="col-sm-6 text-center">
+
+            <div class="col-sm-3">
+                <h1> Further <span class="highlight"> Details </span></h1>
+
+                <hr>
+                <label> Adults: </label>
+                <p> Price: £5.00</p>
+                <hr>
+
+                <label> Teen: </label>
+                <p> Price: £5.00</p>
+                <hr>
+
+                <label> Children: </label>
+                <p> Price: £5.00</p>
+                <hr>
+
+                <label> Pensioner: </label>
+                <p> Price VIP: £6.00</p>
+                <p> Price Normal: £3.50</p>
+                <hr>
+
+                <label> Student: </label>
+                <p> Price: £5.00</p>
+
+                <hr>
+                <label> VIP: </label>
+                <p> Price: £7.50</p>
+                <li> Relax in super spacious seats </li>
+                <li> Extra room to stretch out </li>
+                <li> Enjoy the optimum viewing location </li>
+                <hr>
+
+
+
+
+            </div>
+
+            <div class="col-sm-5 text-center">
                 <h1> Choose <span class="highlight"> Seat </span></h1>
                 <hr>
                     {% for each in seats[0:9] %}
