@@ -21,7 +21,7 @@
         <p>Length: {{ film.film_runtime}} minutes</p>
         <p>Director: {{ film.film_director}} </p>
         <hr>
-        <p> Choose your viewing time: </p>
+        <!-- <p> Choose your viewing time: </p> -->
 
         <!-- <ul class="nav nav-tabs">
           <li class="active"><a href="#">Home</a></li>
@@ -31,8 +31,24 @@
       <br>
     </div>
 </div>
+<br>
+
+<hr>
+<div class="row" id="ticketseatTitle">
+    <div class="col-sm-2">
+    </div>
+    <div class="col-sm-4">
+        <h1> Choose <span class="highlight"> Time </span></h1>
+    </div>
+    <div class="col-sm-6">
+    </div>
+</div>
+<hr>
 <div class="row" id="ticketseat">
-    <div class="col-sm-6" >
+    <div class="col-sm-2">
+    </div>
+
+    <div class="col-sm-4" >
         <p>Today:</p>
         {% for each in screening %}
           {% if timepassed(each.screening_time) == True %}
@@ -56,16 +72,17 @@
           <hr>
         {% endif %}
 
-        {% if screeningplus3 %}
-          <p>{{screeningplus3[0].screening_date}}:</p>
-          {% for each in screeningplus3 %}
-          <a href="/seatchoice/{{each.screening_id}}"><button type="button" class="btn">{{each.screening_time.strftime('%H:%M')}}</button> </a>
-          {%endfor%}
-          <hr>
-        {% endif %}
       </div>
 
-      <div class="col-sm-6" >
+      <div class="col-sm-4" >
+          {% if screeningplus3 %}
+            <p>{{screeningplus3[0].screening_date}}:</p>
+            {% for each in screeningplus3 %}
+            <a href="/seatchoice/{{each.screening_id}}"><button type="button" class="btn">{{each.screening_time.strftime('%H:%M')}}</button> </a>
+            {%endfor%}
+            <hr>
+          {% endif %}
+
         {% if screeningplus4 %}
           <p>{{screeningplus4[0].screening_date}}:</p>
           {% for each in screeningplus4 %}
@@ -88,6 +105,9 @@
             <a href="/seatchoice/{{each.screening_id}}"><button type="button" class="btn">{{each.screening_time.strftime('%H:%M')}}</button> </a>
           {%endfor%}
         {% endif %}
+    </div>
+
+    <div class="col-sm-2">
     </div>
 
   </div>
