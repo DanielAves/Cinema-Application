@@ -16,9 +16,9 @@
             <br>
             <a href="/customer"><button type="button" class="btn">Change Personal Details</button> </a>
             <h1>Card <span class="highlight"> Details </span></h1>
-                <h3>Card Number: {{card.card_number}}</h3>
-                <h3>Card Expiry Date: {{card.card_expiry}}</h3>
-                <h3>Card CVV : {{card.card_cvv}}</h3>
+                <h3>Card Number: {{'%0.0f'|format(decode(card.card_number)|float)}}</h3>
+                <h3>Card Expiry Date: {{'%0.0f'|format(decode(card.card_expiry)|float)}}</h3>
+                <h3>Card CVV : {{'%0.0f'|format(decode(card.card_cvv)|float)}}</h3>
             <br>
             <a href="/card"><button type="button" class="btn">Change Card Details</button> </a>
         </div>

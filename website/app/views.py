@@ -247,21 +247,21 @@ def card():
     variableFind = Login.query.filter_by(login_email=value).first()
     cardform = CardForm()
     if cardform.validate_on_submit():
-        numberFind = Card.query.filter_by(card_number=cardform.number.data).first()
+        numberFind = Card.query.filter_by(card_number=decode(cardform.number.data)).first()
         if numberFind:
             message = "Card Number is already being used"
         else:
             cardFind = Card.query.filter_by(customer_id=variableFind.customer_id).first()
             expirydate = int(str(cardform.expirymonth.data) + str(cardform.expiryyear.data))
             if cardFind:
-                cardFind.card_number=cardform.number.data
-                cardFind.card_expiry=expirydate
-                cardFind.card_cvv=cardform.cvv.data
+                cardFind.card_number=encode(cardform.number.data)
+                cardFind.card_expiry=encode(expirydate)
+                cardFind.card_cvv=encode(cardform.cvv.data)
                 db.session.commit()
                 return redirect(url_for('myaccount'))
             else:
-                form_thing = Card(customer_id=variableFind.customer_id,card_number=cardform.number.data,
-                card_expiry=expirydate,card_cvv=cardform.cvv.data)
+                form_thing = Card(customer_id=variableFind.customer_id,card_number=encode(cardform.number.data),
+                card_expiry=encode(expirydate),card_cvv=encode(cardform.cvv.data))
                 db.session.add(form_thing)
                 db.session.commit()
 
@@ -289,5 +289,18 @@ def timepassed(time):
     else:
         return True
 
+def encode(number):
+	encoded = number * 2
+	encoded = encoded + 40
+	encoded = encoded / 4
+	return encoded
+
+def decode(number):
+    decoded = number * 4
+    decoded = decoded - 40
+    decoded = decoded / 2
+    return decoded
+
 app.jinja_env.globals.update(seatfinder=seatfinder)
 app.jinja_env.globals.update(timepassed=timepassed)
+app.jinja_env.globals.update(decode=decode)
