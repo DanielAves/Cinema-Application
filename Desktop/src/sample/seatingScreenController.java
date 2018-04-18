@@ -104,17 +104,18 @@ public class seatingScreenController {
     //Pass ticket total to here and define array based on the amount of seats to be selected based on tickets
     int counter = 0;
     List seats = new ArrayList();
-    //seats.add(((Button)event.getSource()).getText());
-    int seatNum = Integer.parseInt((((Button)event.getSource()).getText()));
+    seats.add(((Button)event.getSource()).getText());
+    //int seatNum = Integer.parseInt((((Button)event.getSource()).getText()));
     //String seatNum = (((Button)event.getSource()).getId());
-  
+    //int seats2 = Integer.parseInt(seats.get(0).toString());
+
     ((Button)event.getSource()).setText("Selected");
 
     RestClient client = new RestClient("localhost", 5000);
     // create screening onj for appropriate screening
     Screening screening = client.getScreening(screenID);
     //create seat obj for appropraite seat
-    Seat seat = client.getSeat(seatNum);
+    Seat seat = client.getSeat(Integer.parseInt(seats.get(0).toString()));
     //till is customer 5
     Customer c = new Customer(5);
 
