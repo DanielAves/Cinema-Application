@@ -18,7 +18,7 @@ public class seatingScreenController {
 
   double totalNew;
   @FXML
-  public Button seat1, seat10;
+  public Button seat1, seat2, seat3, seat4, seat5, seat6 ,seat7, seat8, seat9, seat10;
 
   int screenID;
 
@@ -73,23 +73,23 @@ public class seatingScreenController {
           switch (seat) {
             case 1: seat1.setText("Taken");
             break;
-            case 2:;
+            case 2: seat2.setText("Taken");
             break;
-            case 3:;
+            case 3: seat3.setText("Taken");
             break;
-            case 4:;
+            case 4: seat4.setText("Taken");
             break;
-            case 5:;
+            case 5: seat5.setText("Taken");
             break;
-            case 6:;
+            case 6: seat6.setText("Taken");
             break;
-            case 7: ;
+            case 7: seat7.setText("Taken");
             break;
-            case 8:;
+            case 8: seat8.setText("Taken");
             break;
-            case 9: ;
+            case 9: seat9.setText("Taken");
             break;
-            case 10: seat10.setText("Taken"); ;
+            case 10: seat10.setText("Taken");
             break;
           }
 
@@ -106,6 +106,8 @@ public class seatingScreenController {
     List seats = new ArrayList();
     //seats.add(((Button)event.getSource()).getText());
     int seatNum = Integer.parseInt((((Button)event.getSource()).getText()));
+    //String seatNum = (((Button)event.getSource()).getId());
+  
     ((Button)event.getSource()).setText("Selected");
 
     RestClient client = new RestClient("localhost", 5000);
@@ -116,7 +118,7 @@ public class seatingScreenController {
     //till is customer 5
     Customer c = new Customer(5);
 
-     client.createTicket(c,screening,seat);
+    client.createTicket(c,screening,seat);
 
 
 
