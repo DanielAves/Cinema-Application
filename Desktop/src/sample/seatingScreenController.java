@@ -20,6 +20,8 @@ public class seatingScreenController {
   @FXML
   public Button seat1, seat10;
 
+  int screenID;
+
   public void setTotal(double grandTotal2){
     totalNew = grandTotal2;
   }
@@ -42,6 +44,7 @@ public class seatingScreenController {
   }
   public void populateSeats(int screeningID) throws Exception{
     RestClient client = new RestClient("localhost", 5000);
+    screenID = screeningID;
     //List<Ticket> tickets;
     List tickets = new ArrayList();
     if (client.getTickets() == null){
@@ -101,12 +104,19 @@ public class seatingScreenController {
     //Pass ticket total to here and define array based on the amount of seats to be selected based on tickets
     int counter = 0;
     List seats = new ArrayList();
-    seats.add(((Button)event.getSource()).getText());
+    //seats.add(((Button)event.getSource()).getText());
+    int seatNum = Integer.parseInt((((Button)event.getSource()).getText()));
     ((Button)event.getSource()).setText("Selected");
 
-    // RestClient client = new RestClient("localhost", 5000);
-    // Customer s = client.getCustomers();
-    // client.createTicket(s);
+    RestClient client = new RestClient("localhost", 5000);
+    // create screening onj for appropriate screening
+    Screening screening = client.getScreening(screenID);
+    //create seat obj for appropraite seat
+    Seat seat = client.getSeat(seatNum);
+    //till is customer 5
+    Customer c = new Customer(5);
+
+     client.createTicket(c,screening,seat);
 
 
 

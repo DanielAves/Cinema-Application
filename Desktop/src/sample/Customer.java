@@ -33,7 +33,17 @@ public class Customer {
 		this.customer_address = customer_address;
 		this.customer_postcode = customer_postcode;
 	}
-
+  public Customer(int customer_id) {
+    super();
+    this.customer_id = 5 ;
+    this.customer_f_name = "till" ;
+    this.customer_s_name = "till" ;
+    LocalDate inputDate = LocalDate.of(2017,10,10);
+    this.customer_dob = inputDate ;
+    this.customer_mobile = "till" ;
+    this.customer_address = "till" ;
+    this.customer_postcode = "till" ;
+  }
 	/**
 	* Returns value of customer_id
 	* @return
