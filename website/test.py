@@ -2,6 +2,7 @@ import os
 import unittest
 import tempfile
 from app import *
+from app.models import *
 
 
 class TestCase(unittest.TestCase):
@@ -27,7 +28,7 @@ class TestCase(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_checkout(self):
-        response = self.app.get('/checkout',follow_redirects=True, content_type='html/text')     #tests the /checkout page loads
+        response = self.app.get('/checkout/1/1',follow_redirects=True, content_type='html/text')     #tests the /checkout page loads
         self.assertEqual(response.status_code, 200)
 
     def test_login(self):
@@ -35,15 +36,15 @@ class TestCase(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_movie(self):
-        response = self.app.get('/moviepage',follow_redirects=True, content_type='html/text')     #tests the /movie page loads
-        self.assertEqual(response.status_code, 200)
+        response = self.app.get('/movie/1',follow_redirects=True, content_type='html/text')     #tests the /movie page loads
+        self.assertTrue(b'Movie' in response.data)
 
     def test_myaccount(self):
         response = self.app.get('/myaccount',follow_redirects=True, content_type='html/text')     #tests the /myaccount page loads
-        self.assertEqual(response.status_code, 200)
+        self.assertTrue(b'Login' in response.data)
 
     def test_seat(self):
-        response = self.app.get('/seatchoice',follow_redirects=True, content_type='html/text')     #tests the /seatchoice page loads
+        response = self.app.get('/seatchoice/1',follow_redirects=True, content_type='html/text')     #tests the /seatchoice page loads
         self.assertEqual(response.status_code, 200)
 
     def test_signup(self):
@@ -52,7 +53,19 @@ class TestCase(unittest.TestCase):
 
     def test_whatson(self):
         response = self.app.get('/whatson',follow_redirects=True, content_type='html/text')     #tests the /test page loads
-        self.assertEqual(response.status_code, 200)
+        self.assertTrue(b'What is on?' in response.data)
+
+    def test_invalid_login(self):
+        response = self.app.post('/login', data=dict(login="sdfdsfsd", password="dsfdsf"), follow_redirects=True)
+        print(response.data)
+        self.assertIn(b'Login', response.data)
+
+    def test_valid_login(self):
+        response = self.app.post('/login', data=dict(login="taran.s.bola@gmail.com",password="yellow"), follow_redirects=True)
+        #print(response.data)
+        # is doing login not password
+        self.assertIn(b'My Account', response.data)
+
 
 if __name__ == '__main__':
     unittest.main()
