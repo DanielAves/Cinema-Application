@@ -183,7 +183,7 @@ public class timetableController{
 
   }
 
-  public void time1Clicked(javafx.event.ActionEvent event) throws IOException{
+  public void timeClicked(javafx.event.ActionEvent event) throws IOException{
 
     FXMLLoader Loader = new FXMLLoader();
     Loader.setLocation(getClass().getResource("resources/bookingScreen.fxml"));
@@ -194,32 +194,46 @@ public class timetableController{
     }
 
     bookingScreenController display = Loader.getController();
-    String time = film1.getText();
-    display.setDate(inputDate); //pass date to next controller
-    display.setTime(time); //pass film ID
-    display.setScreeningID(screeningID[0]);
+    String time = (((Button)event.getSource()).getText());
+    String buttonID = (((Button)event.getSource()).getId());
 
-    Parent p = Loader.getRoot();
-    Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    window.setScene(new Scene(p));
-    window.show();
-  }
+    int filmID =0;
 
-  public void time2Clicked(javafx.event.ActionEvent event) throws IOException{
 
-    FXMLLoader Loader = new FXMLLoader();
-    Loader.setLocation(getClass().getResource("resources/bookingScreen.fxml"));
-    try{
-      Loader.load();
-    }catch (IOException ex){
-      Logger.getLogger(filmScreenController.class.getName());
+    if (buttonID.equals("film1")){
+      filmID = 0;
+    }
+    if (buttonID.equals("film2")){
+      filmID = 1;
+    }
+    if (buttonID.equals("film3")){
+      filmID = 2;
+    }
+    if (buttonID.equals("film4")){
+      filmID = 3;
+    }
+    if (buttonID.equals("film5")){
+      filmID = 4;
+    }
+    if (buttonID.equals("film6")){
+      filmID = 5;
+    }
+    if (buttonID.equals("film7")){
+      filmID = 6;
+    }
+    if (buttonID.equals("film8")){
+      filmID = 7;
+    }
+    if (buttonID.equals("film9")){
+      filmID = 8;
+    }
+    if (buttonID.equals("film10")){
+      filmID = 9;
     }
 
-    bookingScreenController display = Loader.getController();
-    String time = film1.getText();
     display.setDate(inputDate); //pass date to next controller
     display.setTime(time); //pass film ID
-    display.setScreeningID(screeningID[1]);
+    display.setScreeningID(screeningID[filmID]);
 
     Parent p = Loader.getRoot();
     Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -227,27 +241,49 @@ public class timetableController{
     window.show();
   }
 
-  public void time9Clicked(javafx.event.ActionEvent event) throws IOException{
-
-    FXMLLoader Loader = new FXMLLoader();
-    Loader.setLocation(getClass().getResource("resources/bookingScreen.fxml"));
-    try{
-      Loader.load();
-    }catch (IOException ex){
-      Logger.getLogger(filmScreenController.class.getName());
-    }
-
-    bookingScreenController display = Loader.getController();
-    String time = film9.getText();
-    display.setDate(inputDate); //pass date to next controller
-    display.setTime(time); //pass film ID
-    display.setScreeningID(screeningID[8]);
-
-    Parent p = Loader.getRoot();
-    Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    window.setScene(new Scene(p));
-    window.show();
-  }
+  // public void time2Clicked(javafx.event.ActionEvent event) throws IOException{
+  //
+  //   FXMLLoader Loader = new FXMLLoader();
+  //   Loader.setLocation(getClass().getResource("resources/bookingScreen.fxml"));
+  //   try{
+  //     Loader.load();
+  //   }catch (IOException ex){
+  //     Logger.getLogger(filmScreenController.class.getName());
+  //   }
+  //
+  //   bookingScreenController display = Loader.getController();
+  //   String time = film1.getText();
+  //   display.setDate(inputDate); //pass date to next controller
+  //   display.setTime(time); //pass film ID
+  //   display.setScreeningID(screeningID[1]);
+  //
+  //   Parent p = Loader.getRoot();
+  //   Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+  //   window.setScene(new Scene(p));
+  //   window.show();
+  // }
+  //
+  // public void time9Clicked(javafx.event.ActionEvent event) throws IOException{
+  //
+  //   FXMLLoader Loader = new FXMLLoader();
+  //   Loader.setLocation(getClass().getResource("resources/bookingScreen.fxml"));
+  //   try{
+  //     Loader.load();
+  //   }catch (IOException ex){
+  //     Logger.getLogger(filmScreenController.class.getName());
+  //   }
+  //
+  //   bookingScreenController display = Loader.getController();
+  //   String time = film9.getText();
+  //   display.setDate(inputDate); //pass date to next controller
+  //   display.setTime(time); //pass film ID
+  //   display.setScreeningID(screeningID[8]);
+  //
+  //   Parent p = Loader.getRoot();
+  //   Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+  //   window.setScene(new Scene(p));
+  //   window.show();
+  // }
 
 
 

@@ -15,9 +15,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import java.text.DecimalFormat;
 import java.util.logging.Logger;
-
+import java.util.*;
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -46,6 +47,13 @@ public class PaymentScreenController {
     // grandTotal = Double.toString(totalNew);
     // totalAmount.setText(grandTotal);
   }
+
+  public void setSeats(List seats)
+  {
+    System.out.println(seats.get(0));
+
+  }
+
 
   public void backButtonClicked(ActionEvent event) throws IOException {
     Parent secondaryroot = FXMLLoader.load(getClass().getResource("resources/filmScreen.fxml"));

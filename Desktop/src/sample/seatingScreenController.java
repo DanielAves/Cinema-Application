@@ -21,6 +21,8 @@ public class seatingScreenController {
   public Button seat1, seat2, seat3, seat4, seat5, seat6 ,seat7, seat8, seat9, seat10;
 
   int screenID;
+  List seats = new ArrayList();
+  int counter =0;
 
   public void setTotal(double grandTotal2){
     totalNew = grandTotal2;
@@ -34,8 +36,9 @@ public class seatingScreenController {
       Logger.getLogger(filmScreenController.class.getName());
     }
 
-    PaymentScreenController total = Loader.getController();
-    total.setTotal(totalNew);
+    PaymentScreenController display = Loader.getController();
+    display.setTotal(totalNew);
+    display.setSeats(seats);
 
     Parent p = Loader.getRoot();
     Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -102,8 +105,7 @@ public class seatingScreenController {
   }
   public void seatSelection(ActionEvent event) throws Exception {
     //Pass ticket total to here and define array based on the amount of seats to be selected based on tickets
-    int counter = 0;
-    List seats = new ArrayList();
+
     seats.add(((Button)event.getSource()).getText());
     //int seatNum = Integer.parseInt((((Button)event.getSource()).getText()));
     //String seatNum = (((Button)event.getSource()).getId());
@@ -115,11 +117,13 @@ public class seatingScreenController {
     // create screening onj for appropriate screening
     Screening screening = client.getScreening(screenID);
     //create seat obj for appropraite seat
-    Seat seat = client.getSeat(Integer.parseInt(seats.get(0).toString()));
+    Seat seat = client.getSeat(Integer.parseInt(seats.get(counter).toString()));
     //till is customer 5
     Customer c = new Customer(5);
 
     client.createTicket(c,screening,seat);
+
+    counter++;
 
 
 
