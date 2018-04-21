@@ -97,6 +97,14 @@ class TestCase(unittest.TestCase):
         response = self.app.get('/confirm',follow_redirects=True, content_type='html/text')     #tests the /confirm page goes to the correct page
         self.assertTrue(b'Enjoy ;)' in response.data)
 
+    def test_changepassword(self):
+        response = self.app.get('/changepassword',follow_redirects=True, content_type='html/text')     #tests the /confirm page loads
+        self.assertEqual(response.status_code, 200)
+
+    def test_changepassword_correct(self):
+        response = self.app.get('/changepassword',follow_redirects=True, content_type='html/text')     #tests the /confirm page goes to the correct page
+        self.assertTrue(b'Change Password' in response.data)
+
     def test_invalid_login(self):
         response = self.app.post('/login', data=dict(login="sdfdsfsd", password="dsfdsf"), follow_redirects=True)
         self.assertIn(b'Login', response.data)                                                 #tries to login with an Invalid login
