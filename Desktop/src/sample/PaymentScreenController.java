@@ -1,13 +1,12 @@
 package sample;
-
+import javafx.scene.*;
+import javafx.scene.layout.*;
+import javafx.scene.control.*;
+import java.util.*;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
@@ -20,8 +19,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.LocalTime;
+
+
+
+
 
 public class PaymentScreenController {
 
@@ -44,13 +45,11 @@ public class PaymentScreenController {
   public void setTotal(double totalNew){
     grandTotal = totalNew;
     totalAmount.setText("Total £ " + String.format("%.2f", totalNew));
-    // grandTotal = Double.toString(totalNew);
-    // totalAmount.setText(grandTotal);
   }
 
   public void setSeats(List seats)
   {
-    System.out.println(seats.get(0));
+    //System.out.println(seats.get(0));
 
   }
 
@@ -73,8 +72,17 @@ public class PaymentScreenController {
 
   }
 
-  public void cardClicked(ActionEvent event) throws IOException{
-    System.out.println("Processing payment");
+  public void cardClicked(ActionEvent event) throws InterruptedException{
+
+
+
+
+    AlertBox.display("Please wait", "Processing payment");
+
+
+    //System.out.println("Processing payment");
+    // Thread.sleep(5000);
+    // System.out.println("Test");
   }
 
   public void cashClicked(ActionEvent event) throws IOException{
@@ -137,6 +145,9 @@ public class PaymentScreenController {
       grandTotal = Math.abs(grandTotal);
       totalAmount.setText("Total £ " + ("0.00"));
       changeDue.setText("Change £ " + String.format("%.2f", grandTotal));
+
+
+
     }
     else{
       totalAmount.setText("Total £ " + String.format("%.2f", grandTotal));
