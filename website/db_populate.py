@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from app import db
-from app.models import Card, Film, Customer, Screen, Screening, Seat, Login, Staff
+from app.models import Card, Film, Customer, Screen, Screening, Seat, Login, Staff, Ticket
 from flask_bcrypt import Bcrypt
 import datetime
 from random import randrange
@@ -71,7 +71,14 @@ def populate_customers():
 	db.session.commit()
 
 def populate_tickets():
-	pass
+	for each in Screening.query.all():
+		ticket1 = Ticket(customer_id=1,screening_id=each.screening_id,seat_id=7)
+		ticket2 = Ticket(customer_id=2,screening_id=each.screening_id,seat_id=22)
+		ticket3 = Ticket(customer_id=3,screening_id=each.screening_id,seat_id=45)
+		db.session.add(ticket1)
+		db.session.add(ticket2)
+		db.session.add(ticket3)
+	db.session.commit()
 
 def populate_screen():
 	for i in range(1,11):
@@ -112,8 +119,8 @@ def encode(number):
 populate_seats()
 populate_films()
 populate_customers()
-populate_tickets()
 populate_screen()
 populate_screenings()
 populate_login()
 populate_staff()
+populate_tickets()
