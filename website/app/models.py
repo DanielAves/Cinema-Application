@@ -1,10 +1,11 @@
 from app import db
+from sqlalchemy import UniqueConstraint
 
 class Customer(db.Model):
     customer_id = db.Column(db.Integer, primary_key=True)
     customer_f_name = db.Column(db.String(20))
     customer_s_name = db.Column(db.String(30))
-    customer_dob = db.Column(db.DateTime)
+    customer_dob = db.Column(db.Date)
     customer_mobile = db.Column(db.String(13), unique=True)
     customer_address = db.Column(db.String(40))
     customer_postcode = db.Column(db.String(8))
@@ -39,7 +40,7 @@ class Film(db.Model):
     screening = db.relationship('Screening', backref = 'film', lazy = 'dynamic')
 
     def __repr__(self):
-        return '' % (self.film_id, self.film_name, self.film_desc,
+        return '' % (self.film_id, self.film_name, self.film_description,
         self.film_runtime, self.film_director, self.film_age_rating)
 
 class Screen(db.Model):
@@ -56,7 +57,6 @@ class Screening(db.Model):
     film_id  = db.Column(db.Integer, db.ForeignKey('film.film_id'))
     screen_id = db.Column(db.Integer, db.ForeignKey('screen.screen_id'))
     screening_time = db.Column(db.Time)
-    screening_time = db.Column(db.String(5))
     screening_date = db.Column(db.Date)
     ticket = db.relationship('Ticket', backref = 'screening', lazy = 'dynamic')
 
@@ -86,7 +86,7 @@ class Staff(db.Model):
     staff_id = db.Column(db.Integer, primary_key=True)
     staff_f_name = db.Column(db.String(20))
     staff_s_name = db.Column(db.String(30))
-    staff_dob = db.Column(db.DateTime)
+    staff_dob = db.Column(db.Date)
     staff_mobile = db.Column(db.String(13), unique=True)
     staff_address = db.Column(db.String(40))
     staff_postcode = db.Column(db.String(8))
@@ -95,10 +95,12 @@ class Staff(db.Model):
     def __repr__(self):
         return '' % (self.staff_id, self.staff_f_name, self.staff_s_name,
         self.staff_dob, self.staff_mobile, self.staff_address,
-        self.staff_postcode, self.staff_nin)
+        self.staff_postcode, self.staff_ni)
 
 class Ticket(db.Model):
-    ticket_id = db.Column(db.Integer, primary_key=True,autoincrement=True)
-    customer_id  = db.Column(db.Integer, db.ForeignKey('customer.customer_id'))
+    ticket_id = db.Column(db.Integer, primary_key=True,autoincrement=True )
     screening_id = db.Column(db.Integer, db.ForeignKey('screening.screening_id'))
+    customer_id  = db.Column(db.Integer, db.ForeignKey('customer.customer_id'))
     seat_id      = db.Column(db.Integer, db.ForeignKey('seat.seat_id'))
+
+    UniqueConstraint('customer_id', 'screening_id', 'seat_id')

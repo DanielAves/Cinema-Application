@@ -14,4 +14,7 @@ pip install flask-whooshalchemy
 pip install flask-wtf
 pip install coverage
 pip install flask-admin
+pip install pyqrcode
+pip install cairosvg
+pip install flask-bcrypt
 pip install flask-restless

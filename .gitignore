@@ -8,6 +8,7 @@ website/app/__pycache__/
 website/db_repository/
 *.db
 
+
 # .gitignore file
 
 
@@ -34,4 +35,6 @@ Desktop/bin
 app.db
 
 
+website/app/static/img/ticket.svg
+website/app/static/img/ticket.pdf
 
