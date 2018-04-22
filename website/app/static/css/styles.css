@@ -46,9 +46,20 @@ Carousel
 	height: 400px;
 }
 
+/* --------------------------------------
+Search
+-------------------------------------- */
+
+#searchBar{
+	width: 600px;
+}
+#searchButton button{
+	width: 45px;
+	height: 38px;
+}
 
 /* --------------------------------------
-Global Styles
+Global
 -------------------------------------- */
 
 #chosenFilm img{
