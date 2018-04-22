@@ -48,6 +48,7 @@ public class seatingScreenController {
     PaymentScreenController display = Loader.getController();
     display.setTotal(totalNew);
     display.setSeats(seats);
+    display.setScreenID(screenID);
 
     Parent p = Loader.getRoot();
     Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -57,7 +58,6 @@ public class seatingScreenController {
   public void populateSeats(int screeningID) throws Exception{
     RestClient client = new RestClient("localhost", 5000);
     screenID = screeningID;
-    //List<Ticket> tickets;
     List tickets = new ArrayList();
     if (client.getTickets() == null){
       //Do nothing, prevents errors.
@@ -93,15 +93,7 @@ public class seatingScreenController {
       seats.add(seatText);
       ((Button)event.getSource()).setText("Selected");
 
-      RestClient client = new RestClient("localhost", 5000);
-      // create screening onj for appropriate screening
-      Screening screening = client.getScreening(screenID);
-      //create seat obj for appropraite seat
-      Seat seat = client.getSeat(Integer.parseInt(seats.get(counter).toString()));
-      //till is customer 5
-      Customer c = new Customer(5);
 
-      client.createTicket(c,screening,seat);
 
     }
 

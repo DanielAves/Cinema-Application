@@ -42,12 +42,24 @@ public class bookingScreenController {
     inputDate = date;
   }
 
+  public LocalDate getDate(){
+    return inputDate;
+  }
+
   public void setTime(String time){
     inputTime = time;
   }
 
+  public String getTime(){
+    return inputTime;
+  }
+
   public void setScreeningID(int id){
     screeningID = id;
+  }
+
+  public int getScreeningID(){
+    return screeningID;
   }
 
 
