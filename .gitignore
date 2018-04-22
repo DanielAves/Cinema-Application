@@ -1,3 +1,4 @@
+
 # Compiled bytecode
 *.class
 
@@ -6,5 +7,31 @@ website/app/__pycache__/
 *.pyc
 website/db_repository/
 *.db
+
+# .gitignore file
+
+
+
+# Compiled bytecode
+*.class
+
+#Intellij
+/out
+*.idea
+
+# Zip archives
+*.zip
+
+# Doc comments 
+/doc
+
+*out
+
+films.db
+
+Desktop/bin
+
+app.db
+
 
 
