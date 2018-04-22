@@ -110,6 +110,7 @@ public class PaymentScreenController {
 
   public void cardClicked(ActionEvent event) throws Exception{
     AlertBox.display("Please wait", "Processing payment");
+    totalAmount.setText("Total £ " + ("0.00"));
     bookSeats();
   }
 
