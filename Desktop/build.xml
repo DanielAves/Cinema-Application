@@ -23,6 +23,7 @@
     <pathelement location="${lib.dir}/jackson-annotations-2.9.0.jar"/>
     <pathelement location="${lib.dir}/jackson-core-2.9.0.jar"/>
     <pathelement location="${lib.dir}/jackson-databind-2.9.0.jar"/>
+    <pathelement location="${lib.dir}/itext.jar"/>
   </path>
 
   <target name="init">
