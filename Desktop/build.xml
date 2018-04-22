@@ -4,11 +4,11 @@
   xmlns:fx="javafx:com.sun.javafx.tools.ant">
 
   <!--Windows-->
-  <!--\usr\lib\jvm\java-8-openjdk-amd64-->
+  <property name="JAVA_HOME" value="\usr\lib\jvm\jdk-9.0.4"/>
   <!--Ubuntu-->
-  <property name="JAVA_HOME" value="/usr/lib/jvm/java-8-oracle"/>
+  <!--<property name="JAVA_HOME" value="/usr/lib/jvm/java-8-oracle"/> -->
   <!--Dec10-->
-  <!--<property name="JAVA_HOME" value="/usr/java/jdk1.8.0_141"/>--> 
+  <!--<property name="JAVA_HOME" value="/usr/java/jdk1.8.0_141"/>-->
   <property name="src.dir" value="src"/>
   <property name="scripts.dir" value="scripts"/>
   <property name="lib.dir" value="lib"/>
@@ -84,8 +84,7 @@
       <junit fork="true">
         <classpath refid="project.classpath"/>
         <formatter type="plain" usefile="false"/>
-        <test name="MainTest"/>
-        <test name="BookingScreenControllerTest"/>
+        <test name="sample.FilmTest"/>
       </junit>
     </target>
 
