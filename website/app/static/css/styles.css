@@ -50,11 +50,8 @@ Carousel
 Search
 -------------------------------------- */
 
-#searchBar{
-	width: 600px;
-}
 #searchButton button{
-	width: 45px;
+	width: 80px;
 	height: 38px;
 }
 
