@@ -162,17 +162,17 @@ public class PaymentScreenController {
     }
   }
 
-  public void createPdf(String dest) throws IOException
-  {
-      PdfDocument pdfDocument = new PdfDocument(new PdfWriter(dest));
-      pdfDocument.setDefaultPageSize(PageSize.A4.rotate());
-      Document document = new Document(pdfDocument);
-      document.add(
-          new Paragraph()
-              .setFontSize(20)
-              .add(new Text("This is your Reciept")));
-      document.close();
-  }
+  // public void createPdf(String dest) throws IOException
+  // {
+  //     PdfDocument pdfDocument = new PdfDocument(new PdfWriter(dest));
+  //     pdfDocument.setDefaultPageSize(PageSize.A4.rotate());
+  //     Document document = new Document(pdfDocument);
+  //     document.add(
+  //         new Paragraph()
+  //             .setFontSize(20)
+  //             .add(new Text("This is your Reciept")));
+  //     document.close();
+  // }
 
 
 }
