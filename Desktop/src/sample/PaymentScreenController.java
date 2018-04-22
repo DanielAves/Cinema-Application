@@ -20,22 +20,15 @@ import java.awt.*;
 import java.util.List;
 import java.io.IOException;
 
-// import java.io.File;
-//
-<<<<<<< HEAD
+
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.*;
-=======
-// import com.itextpdf.text.DocumentException;
-// import com.itextpdf.layout.element.Paragraph;
-// import com.itextpdf.layout.element.Text;
-// import com.itextpdf.kernel.pdf.PdfDocument;
-// import com.itextpdf.kernel.pdf.PdfWriter;
-// import com.itextpdf.layout.Document;
+
+
 
 
 /**
@@ -48,7 +41,7 @@ import com.itextpdf.text.pdf.*;
 * @author Dan Aves,Matt Cutts
 * @version 1.1 (2018-04-22)
 */
->>>>>>> d3e27fae0bed8c0b8cf6c3643652057aaff22a0d
+
 
 
 public class PaymentScreenController {
@@ -208,17 +201,17 @@ public class PaymentScreenController {
     }
   }
 
-  public void createPdf(String dest) throws IOException
-  {
-      PdfDocument pdfDocument = new PdfDocument(new PdfWriter(dest));
-      pdfDocument.setDefaultPageSize(PageSize.A4.rotate());
-      Document document = new Document(pdfDocument);
-      document.add(
-          new Paragraph()
-              .setFontSize(20)
-              .add(new Text("This is your Reciept")));
-      document.close();
-  }
+  // public void createPdf(String dest) throws IOException
+  // {
+  //     PdfDocument pdfDocument = new PdfDocument(new PdfWriter(dest));
+  //     pdfDocument.setDefaultPageSize(PageSize.A4.rotate());
+  //     Document document = new Document(pdfDocument);
+  //     document.add(
+  //         new Paragraph()
+  //             .setFontSize(20)
+  //             .add(new Text("This is your Reciept")));
+  //     document.close();
+  // }
 
 
 }
