@@ -8,3 +8,4 @@ website/db_repository/
 *.db
 
 website/app/static/img/ticket.svg
+website/app/static/img/ticket.pdf

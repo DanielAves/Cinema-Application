@@ -7,7 +7,7 @@ from flask_admin.contrib.sqla import ModelView
 from flask_mail import Mail, Message
 from .forms import SessionForm, SignupForm, PasswordForm, CardForm, CheckoutForm, SearchForm, ChangeCustomerForm
 from app.models import Customer,Card,Film,Screen,Screening,Login,Seat,Staff,Ticket
-import datetime,pyqrcode
+import datetime,pyqrcode,cairosvg
 mail=Mail(app)
 bcrypt = Bcrypt(app)
 
@@ -68,7 +68,6 @@ def changepassword():
                 return redirect(url_for('logout'))
         message="Invalid Username or Password"
     return render_template('changepassword.html', title='Change Password',passwordform=passwordform,message=message)
-
 
 @app.route('/')
 def index():
@@ -184,11 +183,12 @@ def checkout(screeningID,seatID):
                        + "\nPrice: " + price)
             ticketcode = pyqrcode.create(ticketinfo, error='L', version=8, mode='binary')
             ticketcode.svg('app/static/img/ticket.svg', scale=8)
+            cairosvg.svg2pdf(url='app/static/img/ticket.svg', write_to='app/static/img/ticket.pdf')
 
             msg = Message(subject, sender = 'Osprey Cinema', recipients = [value])
             msg.html = content
-            with app.open_resource("static/img/ticket.svg") as fp:
-                msg.attach("ticket.svg", "image/svg", fp.read())
+            with app.open_resource("static/img/ticket.pdf") as fp:
+                msg.attach("ticket.pdf", "application/pdf", fp.read())
             mail.send(msg)
 
             return redirect(url_for('confirm'))
