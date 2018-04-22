@@ -3,26 +3,27 @@ import unittest
 import tempfile
 from app import *
 from app.models import *
-
+import subprocess
+#subprocess.call(['website/./dbcreate.sh'])
 
 class TestCase(unittest.TestCase):
     def setUp(self):
         app.config['TESTING'] = True
         app.config['WTF_CSRF_ENABLED'] = False
         app.config['DEBUG'] = False
-        self.db_fd, app.config['DATABASE'] = tempfile.mkstemp()                                              #initial set up of the testing
+        self.db_fd, app.config['DATABASE'] = tempfile.mkstemp()         #initial set up of the testing
         self.app = app.test_client()
 
     def tearDown(self):
         os.close(self.db_fd)                                #what it gets rid of at the end
         os.unlink(app.config['DATABASE'])
 
-    def login(self,pass,name):
-        return self.app.post('/login', data=dict(login="taran.s.bola@gmail.com",password="yellow"), follow_redirects=True)
+    def login(self,name,passcode):
+        return self.app.post('/login', data=dict(login=name,password=passcode), follow_redirects=True)
         #logs in with a valid login
 
     def logout(self):
-        return self.app.get('/logout', follow_redirects=True)      #logs you out
+        return self.app.get('/unsetvariable', follow_redirects=True)      #logs you out
 
     def test_index(self):
         response = self.app.get('/',follow_redirects=True, content_type='html/text')        #test the index page loads
@@ -114,10 +115,21 @@ class TestCase(unittest.TestCase):
 
     def test_login_logout(self):
         response = self.login('taran.s.bola@gmail.com', 'yellow')
-        assert b'My account' in response.data
+        # print(response.data)
+        self.assertIn(b'My Account',response.data)
         response = self.logout()
-        assert b'' in response.data
+        self.assertIn(b'myCarousel',response.data)
 
+    def test_login_checkout(self):
+        response = self.login('taran.s.bola@gmail.com', 'yellow')
+        self.assertIn(b'My Account',response.data)
+        response = self.app.post('/checkout/1/1',data=dict(check=False),follow_redirects=True, content_type='html/text')
+        response = self.logout()
+        self.assertIn(b'myCarousel',response.data)
+
+    def test_changepassword_details(self):
+        response= self.app.post('/changepassword', data=dict(changeusername="taran.s.bola@gmail.com",changepassword="yellow",newpassword="yellow",hint="new colour"), follow_redirects=True)
+        self.assertIn(b'myCarousel',response.data)
 
     def test_valid_search(self):
         response = self.app.post('/search', data=dict(search="the"), follow_redirects=True)             #will test if the correct search results
