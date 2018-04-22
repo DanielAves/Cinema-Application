@@ -17,6 +17,13 @@ class TestCase(unittest.TestCase):
         os.close(self.db_fd)                                #what it gets rid of at the end
         os.unlink(app.config['DATABASE'])
 
+    def login(self,pass,name):
+        return self.app.post('/login', data=dict(login="taran.s.bola@gmail.com",password="yellow"), follow_redirects=True)
+        #logs in with a valid login
+
+    def logout(self):
+        return self.app.get('/logout', follow_redirects=True)      #logs you out
+
     def test_index(self):
         response = self.app.get('/',follow_redirects=True, content_type='html/text')        #test the index page loads
         self.assertEqual(response.status_code, 200)
@@ -105,17 +112,12 @@ class TestCase(unittest.TestCase):
         response = self.app.get('/changepassword',follow_redirects=True, content_type='html/text')     #tests the /confirm page goes to the correct page
         self.assertTrue(b'Change Password' in response.data)
 
-    def test_invalid_login(self):
-        response = self.app.post('/login', data=dict(login="sdfdsfsd", password="dsfdsf"), follow_redirects=True)
-        self.assertIn(b'Login', response.data)                                                 #tries to login with an Invalid login
+    def test_login_logout(self):
+        response = self.login('taran.s.bola@gmail.com', 'yellow')
+        assert b'My account' in response.data
+        response = self.logout()
+        assert b'' in response.data
 
-    def test_valid_login(self):
-        response = self.app.post('/login', data=dict(login="taran.s.bola@gmail.com",password="yellow"), follow_redirects=True)
-        self.assertIn(b'6 Winfield Place', response.data)                                     #logs in with a valid login
-
-    def test_logout(self):
-        response = self.app.get('/unsetvariable', follow_redirects=True, content_type='html/text')      #logs you out
-        self.assertTrue(b'myCarousel' in response.data)
 
     def test_valid_search(self):
         response = self.app.post('/search', data=dict(search="the"), follow_redirects=True)             #will test if the correct search results
