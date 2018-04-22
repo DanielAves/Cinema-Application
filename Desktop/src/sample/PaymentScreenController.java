@@ -20,6 +20,14 @@ import java.awt.*;
 import java.util.List;
 import java.io.IOException;
 
+// import java.io.File;
+//
+// import com.itextpdf.text.DocumentException;
+// import com.itextpdf.layout.element.Paragraph;
+// import com.itextpdf.layout.element.Text;
+// import com.itextpdf.kernel.pdf.PdfDocument;
+// import com.itextpdf.kernel.pdf.PdfWriter;
+// import com.itextpdf.layout.Document;
 
 
 
@@ -153,6 +161,18 @@ public class PaymentScreenController {
       totalAmount.setText("Total £ " + String.format("%.2f", grandTotal));
     }
   }
+
+  // public void createPdf(String dest) throws IOException
+  // {
+  //     PdfDocument pdfDocument = new PdfDocument(new PdfWriter(dest));
+  //     pdfDocument.setDefaultPageSize(PageSize.A4.rotate());
+  //     Document document = new Document(pdfDocument);
+  //     document.add(
+  //         new Paragraph()
+  //             .setFontSize(20)
+  //             .add(new Text("This is your Reciept")));
+  //     document.close();
+  // }
 
 
 }

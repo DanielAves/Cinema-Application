@@ -84,25 +84,38 @@ public class seatingScreenController {
   }
   public void seatSelection(ActionEvent event) throws Exception {
     //Pass ticket total to here and define array based on the amount of seats to be selected based on tickets
+    String seatText = (((Button)event.getSource()).getText());
 
-    seats.add(((Button)event.getSource()).getText());
+    if(seatText.equals("Taken")){
+      System.out.println("Seat is already taken");
+    }
+    else{
+      seats.add(seatText);
+      ((Button)event.getSource()).setText("Selected");
+
+      RestClient client = new RestClient("localhost", 5000);
+      // create screening onj for appropriate screening
+      Screening screening = client.getScreening(screenID);
+      //create seat obj for appropraite seat
+      Seat seat = client.getSeat(Integer.parseInt(seats.get(counter).toString()));
+      //till is customer 5
+      Customer c = new Customer(5);
+
+      client.createTicket(c,screening,seat);
+
+    }
+
     //int seatNum = Integer.parseInt((((Button)event.getSource()).getText()));
     //String seatNum = (((Button)event.getSource()).getId());
     //int seats2 = Integer.parseInt(seats.get(0).toString());
 
-    ((Button)event.getSource()).setText("Selected");
 
-    RestClient client = new RestClient("localhost", 5000);
-    // create screening onj for appropriate screening
-    Screening screening = client.getScreening(screenID);
-    //create seat obj for appropraite seat
-    Seat seat = client.getSeat(Integer.parseInt(seats.get(counter).toString()));
-    //till is customer 5
-    Customer c = new Customer(5);
 
-    client.createTicket(c,screening,seat);
 
-    counter++;
+
+
+
+
 
   }
 
@@ -121,6 +134,8 @@ public class seatingScreenController {
       case 6: seat6.setText("Taken");
       break;
       case 7: seat7.setText("Taken");
+              seat7.setStyle("-fx-background-color: #4286f4");
+
       break;
       case 8: seat8.setText("Taken");
       break;
