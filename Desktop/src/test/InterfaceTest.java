@@ -10,10 +10,8 @@ import static org.hamcrest.CoreMatchers.*;
  */
 
 
- public Class interfaceTest{
+ public class InterfaceTest{
 
-
-   @Before
 
 
 
