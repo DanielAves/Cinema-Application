@@ -123,9 +123,14 @@ class TestCase(unittest.TestCase):
     def test_login_checkout(self):
         response = self.login('taran.s.bola@gmail.com', 'yellow')
         self.assertIn(b'My Account',response.data)
-        response = self.app.post('/checkout/1/1',data=dict(check=False),follow_redirects=True, content_type='html/text')
+        response = self.app.post('/checkout/1/1',data=dict(firstname="y"),follow_redirects=True, content_type='html/text')
         response = self.logout()
         self.assertIn(b'myCarousel',response.data)
+
+    def test_signup_valid(self):
+        response = self.app.post('/signup',data=dict(firstname="Taran",surname="Bola",dob="1997-01-02",mobile="07400732054",address="36 Pen Av",postcode="DE23 6LA",email="taran.s.bola@hotmail.co.uk",password="hello",confirm="hello",hint="hint"),follow_redirects=True)
+        print(response.data)
+        self.assertIn(b'Login',response.data)
 
     def test_changepassword_details(self):
         response= self.app.post('/changepassword', data=dict(changeusername="taran.s.bola@gmail.com",changepassword="yellow",newpassword="yellow",hint="new colour"), follow_redirects=True)
