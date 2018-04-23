@@ -3,8 +3,6 @@ import unittest
 import tempfile
 from app import *
 from app.models import *
-import subprocess
-#subprocess.call(['website/./dbcreate.sh'])
 
 class TestCase(unittest.TestCase):
     def setUp(self):
@@ -32,6 +30,14 @@ class TestCase(unittest.TestCase):
     def test_index_correct(self):
         response = self.app.get('/',follow_redirects=True, content_type='html/text')        #test the index page goes to the correct page
         self.assertTrue(b'myCarousel' in response.data)
+
+    def test_search(self):
+        response = self.app.get('/search',follow_redirects=True, content_type='html/text')        #test the search page loads
+        self.assertEqual(response.status_code, 200)
+
+    def test_search_correct(self):
+        response = self.app.get('/search',follow_redirects=True, content_type='html/text')        #test the search page goes to the correct page
+        self.assertTrue(b'Search ' in response.data)
 
     def test_card(self):
         response = self.app.get('/card',follow_redirects=True, content_type='html/text')     #tests the /card page loads
@@ -115,30 +121,56 @@ class TestCase(unittest.TestCase):
 
     def test_login_logout(self):
         response = self.login('taran.s.bola@gmail.com', 'yellow')
-        # print(response.data)
         self.assertIn(b'My Account',response.data)
+        #test that will log you in and then logout straight away.
         response = self.logout()
         self.assertIn(b'myCarousel',response.data)
 
     def test_login_checkout(self):
+        #test that logs in creates a ticket for screening 1, seat 1
         response = self.login('taran.s.bola@gmail.com', 'yellow')
         self.assertIn(b'My Account',response.data)
-        response = self.app.post('/checkout/1/1',data=dict(firstname="y"),follow_redirects=True, content_type='html/text')
+        response = self.app.post('/checkout/1/1',data=dict(check=True),follow_redirects=True)
+        self.assertIn(b'Enjoy ;)',response.data)
         response = self.logout()
         self.assertIn(b'myCarousel',response.data)
 
     def test_signup_valid(self):
-        response = self.app.post('/signup',data=dict(firstname="Taran",surname="Bola",dob="1997-01-02",mobile="07400732054",address="36 Pen Av",postcode="DE23 6LA",email="taran.s.bola@hotmail.co.uk",password="hello",confirm="hello",hint="hint"),follow_redirects=True)
-        print(response.data)
+        #test that will sign you up and make you a customer.
+        response = self.app.post('/signup',data=dict(firstname="Taran",surname="Bola",
+        dob="1997-01-02",mobile="07400732054",address="36 Pen Av",
+        postcode="DE23 6LA",email="taran.s.bola@hotmail.co.uk",password="hello",
+        confirm="hello",hint="hello"),follow_redirects=True)
         self.assertIn(b'Login',response.data)
 
     def test_changepassword_details(self):
-        response= self.app.post('/changepassword', data=dict(changeusername="taran.s.bola@gmail.com",changepassword="yellow",newpassword="yellow",hint="new colour"), follow_redirects=True)
+        #test that will change the password details of a user
+        response= self.app.post('/changepassword', data=dict(changeusername="ben19feb@hotmail.co.uk",
+        changepassword="password",newpassword="newcode",hint="new passcode"), follow_redirects=True)
         self.assertIn(b'myCarousel',response.data)
 
     def test_valid_search(self):
         response = self.app.post('/search', data=dict(search="the"), follow_redirects=True)             #will test if the correct search results
         self.assertIn(b'The Greatest Showman', response.data)                                           #come when searched
+
+    def test_add_card(self):
+        #test tha will add/change a card details to a customer.
+        response = self.login('taran.s.bola@gmail.com','yellow')
+        self.assertIn(b'My Account',response.data)
+        response = self.app.post('/card',data=dict(number=7777888899991111,expirymonth=1,expiryyear=2018,cvv=123),follow_redirects=True)
+        self.assertIn(b'My Account',response.data)
+        response = self.logout()
+        self.assertIn(b'myCarousel',response.data)
+
+    def test_change_customer(self):
+        #test that will add/change customer details to a customer.
+        response = self.login('taran.s.bola@gmail.com', 'yellow')
+        self.assertIn(b'My Account',response.data)
+        response = self.app.post('/customer',data=dict(firstname="Taran",surname="Bola",dob="1997-01-02",
+        mobile="07400732032",address="36 Pen Av",postcode="DE23 6LA"),follow_redirects=True)
+        self.assertIn(b'My Account',response.data)
+        response = self.logout()
+        self.assertIn(b'myCarousel',response.data)
 
 if __name__ == '__main__':
     unittest.main()
