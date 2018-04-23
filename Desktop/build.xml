@@ -4,11 +4,11 @@
   xmlns:fx="javafx:com.sun.javafx.tools.ant">
 
   <!--Windows-->
-  <property name="JAVA_HOME" value="\usr\lib\jvm\jdk-9.0.4"/>
+  <!--<property name="JAVA_HOME" value="\usr\lib\jvm\jdk-9.0.4"/> -->
   <!--Ubuntu-->
   <!--<property name="JAVA_HOME" value="/usr/lib/jvm/java-8-oracle"/> -->
   <!--Dec10-->
-  <!--<property name="JAVA_HOME" value="/usr/java/jdk1.8.0_141"/>-->
+  <property name="JAVA_HOME" value="/usr/java/jdk1.8.0_141"/>
   <property name="src.dir" value="src"/>
   <property name="scripts.dir" value="scripts"/>
   <property name="lib.dir" value="lib"/>
@@ -23,7 +23,7 @@
     <pathelement location="${lib.dir}/jackson-annotations-2.9.0.jar"/>
     <pathelement location="${lib.dir}/jackson-core-2.9.0.jar"/>
     <pathelement location="${lib.dir}/jackson-databind-2.9.0.jar"/>
-    <pathelement location="${lib.dir}/itext.jar"/>
+    <pathelement location="${lib.dir}/itextpdf-5.0.6.jar"/>
   </path>
 
   <target name="init">
