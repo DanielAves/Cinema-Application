@@ -48,8 +48,7 @@ import com.itextpdf.text.*;
 public class PaymentScreenController {
 
     /** Path to the resulting PDF file. */
-        public static final String RESULT1 = "cardReciept.pdf";
-        public static final String RESULT2 = "cashReciept.pdf";
+        public static final String RESULT = "/reciept.pdf";
 
     //FXML element importing
     @FXML
@@ -62,8 +61,7 @@ public class PaymentScreenController {
     boolean cashBol = false;              //Used to determine if user selects "cash"
     List seatsPayment = new ArrayList();  //Local list to store seats passed to method
     int screenIDLocal;                    //Stores passed screenID
-    String  cardReciept = "cardReciept.pdf";
-    String  cashReciept = "cashReciept.pdf";
+    String  filename = "reciept.pdf";
 
     /**
     * This method sets the local variable grandTotal to the passed total from
@@ -120,7 +118,6 @@ public class PaymentScreenController {
         AlertBox.display("Please wait", "Processing payment");
         totalAmount.setText("Total £ " + ("0.00"));
         bookSeats();
-        createCardPDF(cardReciept);
     }
 
     public void bookSeats() throws Exception{
@@ -202,7 +199,7 @@ public class PaymentScreenController {
             totalAmount.setText("Total £ " + ("0.00"));
             changeDue.setText("Change £ " + String.format("%.2f", grandTotal));
             bookSeats();
-            createCashPDF(cashReceipt);
+            createCardPDF(filename);
 
 
         }
@@ -211,16 +208,17 @@ public class PaymentScreenController {
         }
     }
 
-    private void createCardPDF(String cardReciept) throws DocumentException, IOException {
+    private void createCardPDF(String filename) throws DocumentException, IOException {
         System.out.println("Entered");
 
-        File file = new File(RESULT1);
+        File file = new File(RESULT);
         file.getParentFile().mkdirs();
+        //Creates a PDF file: reciept.pdf
+        // new PaymentScreenController().createPDF(RESULT);
         //create a document
         Document document = new Document();
-
         //create an instance for it to be generated
-        PdfWriter.getInstance(document, new FileOutputStream(cardReciept));
+        PdfWriter.getInstance(document, new FileOutputStream(filename));
         document.open();
         document.add(new Paragraph("Osprey Cinema"));
         document.add(new Paragraph("University Of Leeds Union"));
@@ -236,38 +234,6 @@ public class PaymentScreenController {
         document.add(new Paragraph("Please keep this reciept for your records. \n\n"));
         document.add(new Paragraph("CUSTOMER COPY \n\n"));
         document.add(new Paragraph("T O T A L " + "           " + grandTotal + "\n\n"));
-        document.add(new Paragraph("Thank you for visiting Britains Best Value and Cinema Cinema"));
-        document.add(new Paragraph("#OspreyCinemaWhereExcitingHappens\n\n"));
-        document.add(new Paragraph("Tell us how we did by sending us an email\n with the chance to win £100. \n Eamil: ukoc@OSPREYCinema.com \n Eamil: ukoc@OSPREYCinema.com"));
-        document.close();
-    }
-
-    private void createCashPDF(String cashReciept) throws DocumentException, IOException {
-        System.out.println("Entered");
-
-        File file = new File(RESULT1);
-        file.getParentFile().mkdirs();
-        //create a document
-        Document document = new Document();
-
-        //create an instance for it to be generated
-        PdfWriter.getInstance(document, new FileOutputStream(cardReciept));
-        document.open();
-        document.add(new Paragraph("Osprey Cinema"));
-        document.add(new Paragraph("University Of Leeds Union"));
-        document.add(new Paragraph("Leeds\n\n"));
-        document.add(new Paragraph(" Ticket " + "Price £ \n\n"));
-        document.add(new Paragraph("CASH"));
-        document.add(new Paragraph("Merchant ID: **12345 \n Terminal ID: ****1234  \n\n"));
-        document.add(new Paragraph("SALE \n\n"));
-        document.add(new Paragraph("Your account will be debited with the total amount shown: \n Total: " + "AMOUNT \n\n"));
-        document.add(new Paragraph("SOURCE:     CASH PAYMENT \n\n"));
-        document.add(new Paragraph("Authorisation Code: 12387 \n\n"));
-        document.add(new Paragraph("Please keep this reciept for your records. \n\n"));
-        document.add(new Paragraph("CUSTOMER COPY \n\n"));
-        document.add(new Paragraph("T O T A L " + "           " + "amount" + "\n"));
-        document.add(new Paragraph("Payed " + "           " + "amount" + "\n\n"));
-        document.add(new Paragraph("Change " + "           " + "amount" + "\n\n"));
         document.add(new Paragraph("Thank you for visiting Britains Best Value and Cinema Cinema"));
         document.add(new Paragraph("#OspreyCinemaWhereExcitingHappens\n\n"));
         document.add(new Paragraph("Tell us how we did by sending us an email\n with the chance to win £100. \n Eamil: ukoc@OSPREYCinema.com \n Eamil: ukoc@OSPREYCinema.com"));
