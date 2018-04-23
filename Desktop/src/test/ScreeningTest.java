@@ -2,6 +2,9 @@ package sample;
 import org.junit.*;
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.Month;
 
 public class ScreeningTest {
 
@@ -26,35 +29,35 @@ public class ScreeningTest {
     public void tearDown() {
 
     }
-/*
+
     @Test
     public void testScreeningIDSet() {
 
       Integer testScreeningID = 123;
 
-      //testScreening.setScreeningID(testScreeningID);
+      testScreening.setScreening_id(testScreeningID);
 
-      //assertThat(testScreening.getScreeningID(), is(testScreeningID));
+      assertThat(testScreening.getScreening_id(), is(testScreeningID));
     }
 
     @Test
     public void testScreeningTimeSet() {
 
-      String testTime = "18:00";
+      LocalTime testTime = LocalTime.of(12,30,45,50);
 
-      //testScreening.setScreeningTime(testTime);
+      testScreening.setScreening_time(testTime);
 
-      //assertThat(testScreening.getScreeningTime(), is(testTime));
+      assertThat(testScreening.getScreening_time(), is(testTime));
     }
 
     @Test
     public void testScreeningDateSet() {
 
-      String testDate = "01/01/2018";
+      LocalDate testDate = LocalDate.of(2018, Month.JANUARY, 1);
 
-      //testScreening.setScreeningDate(testDate);
+      testScreening.setScreening_date(testDate);
 
-      //assertThat(testScreening.getScreeningDate(), is(testDate));
+      assertThat(testScreening.getScreening_date(), is(testDate));
     }
 
     @Test
@@ -62,9 +65,9 @@ public class ScreeningTest {
 
       Integer testFilmID = 456;
 
-      //testScreening.setFilmID(testFilmID);
+      testScreening.setFilm_id(testFilmID);
 
-      //assertThat(testScreening.getFilmID(), is(testFilmID));
+      assertThat(testScreening.getFilm_id(), is(testFilmID));
     }
 
     @Test
@@ -72,11 +75,34 @@ public class ScreeningTest {
 
       Integer testScreenID = 789;
 
-      //testScreening.setScreenID(testScreenID);
+      testScreening.setScreen_id(testScreenID);
 
-      //assertThat(testScreening.getScreenID(), is(testScreenID));
+      assertThat(testScreening.getScreen_id(), is(testScreenID));
     }
 
-*/
+    @Test
+    public void testToString() {
+
+      Integer testScreeningID = 123;
+      testScreening.setScreening_id(testScreeningID);
+
+      LocalTime testTime = LocalTime.of(12,30,45,50);
+      testScreening.setScreening_time(testTime);
+
+      LocalDate testDate = LocalDate.of(2018, Month.JANUARY, 1);
+      testScreening.setScreening_date(testDate);
+
+      Integer testFilmID = 456;
+      testScreening.setFilm_id(testFilmID);
+
+      Integer testScreenID = 789;
+      testScreening.setScreen_id(testScreenID);
+
+      String expectedOut = "Screening [screening_id=" + testScreeningID + ", film_id=" + testFilmID + ", screening_time=" + testTime + ", screening_date=" + testDate + ", screen_id=" + testScreenID + "]";
+
+      assertThat(testScreening.toString(), is(expectedOut));
+    }
+
+
 
 }

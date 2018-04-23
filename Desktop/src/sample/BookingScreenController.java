@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-public class bookingScreenController {
+public class BookingScreenController {
 
   @FXML
   private ComboBox child,student,adult,vip;
@@ -132,6 +132,9 @@ public class bookingScreenController {
     grandTotal.setText("Grand total   £ " + String.format("%.2f", grandTotal2));
   }
 
+  public Double getGrandTotal(){
+    return grandTotal2;
+  }
 
   public void selectSeats(ActionEvent event) throws Exception{
     FXMLLoader Loader = new FXMLLoader();

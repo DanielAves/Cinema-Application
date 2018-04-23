@@ -1,8 +1,14 @@
+package sample;
 import org.junit.*;
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.Month;
 
 public class BookingScreenControllerTest {
+
+  private BookingScreenController testBSC;
 
     /**
      * Sets up the test fixture.
@@ -11,6 +17,7 @@ public class BookingScreenControllerTest {
     @Before
     public void setUp() {
 
+      testBSC = new BookingScreenController();
     }
 
     /**
@@ -23,8 +30,33 @@ public class BookingScreenControllerTest {
     }
 
     @Test
-    public void testSomeBehavior() {
+    public void testDateSet() {
 
+      LocalDate testDate = LocalDate.of(2018, Month.JANUARY, 1);
+
+      testBSC.setDate(testDate);
+
+      assertThat(testBSC.getDate(), is(testDate));
+    }
+
+    @Test
+    public void testTimeSet() {
+
+      String testTime = "12:30";
+
+      testBSC.setTime(testTime);
+
+      assertThat(testBSC.getTime(), is(testTime));
+    }
+
+    @Test
+    public void testScreeningIDSet() {
+
+      int testScreeningID = 123;
+
+      testBSC.setScreeningID(testScreeningID);
+
+      assertThat(testBSC.getScreeningID(), is(testScreeningID));
     }
 
 }
