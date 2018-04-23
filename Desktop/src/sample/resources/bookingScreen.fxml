@@ -72,7 +72,7 @@
                 <Font size="25.0" />
             </font>
         </Label>
-        <Label alignment="CENTER_RIGHT" prefHeight="36.0" prefWidth="329.0" text="VIP Pensioner - £5.00" GridPane.halignment="CENTER" GridPane.rowIndex="6">
+        <Label alignment="CENTER_RIGHT" prefHeight="36.0" prefWidth="329.0" text="VIP Pensioner - £6.00" GridPane.halignment="CENTER" GridPane.rowIndex="6">
             <padding>
                 <Insets left="20.0" />
             </padding>
@@ -105,7 +105,7 @@
                 <Insets right="10.0" />
             </GridPane.margin>
         </ComboBox>
-        <ComboBox fx:id="vipPensioner" nodeOrientation="LEFT_TO_RIGHT" onAction="#comboBoxVip" prefHeight="81.0" prefWidth="212.0" promptText="Quantity" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
+        <ComboBox fx:id="vipPensioner" nodeOrientation="LEFT_TO_RIGHT" onAction="#comboBoxPensionerVip" prefHeight="81.0" prefWidth="212.0" promptText="Quantity" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
             <effect>
                 <Blend />
             </effect>
@@ -207,7 +207,7 @@
             <Insets right="10.0" />
          </GridPane.margin>
       </ComboBox>
-      <ComboBox fx:id="teen" nodeOrientation="LEFT_TO_RIGHT" onAction="#comboBoxVip" prefHeight="81.0" prefWidth="212.0" promptText="Quantity" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+      <ComboBox fx:id="teen" nodeOrientation="LEFT_TO_RIGHT" onAction="#comboBoxTeen" prefHeight="81.0" prefWidth="212.0" promptText="Quantity" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
          <effect>
             <Blend />
          </effect>
@@ -218,7 +218,7 @@
             <Insets right="10.0" />
          </GridPane.margin>
       </ComboBox>
-      <ComboBox fx:id="pensioner" nodeOrientation="LEFT_TO_RIGHT" onAction="#comboBoxVip" prefHeight="81.0" prefWidth="212.0" promptText="Quantity" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+      <ComboBox fx:id="pensioner" nodeOrientation="LEFT_TO_RIGHT" onAction="#comboBoxPensioner" prefHeight="81.0" prefWidth="212.0" promptText="Quantity" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
          <effect>
             <Blend />
          </effect>

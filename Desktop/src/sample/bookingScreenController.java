@@ -22,17 +22,17 @@ import java.time.LocalTime;
 public class bookingScreenController {
 
   @FXML
-  private ComboBox child,student,adult,vip;
+  private ComboBox child,student,adult,vip,vipPensioner,teen,pensioner;
   @FXML
-  private Label childTotal,studentTotal,adultTotal,vipTotal,grandTotal;
+  private Label childTotal,studentTotal,adultTotal,vipTotal,grandTotal,teenTotal,pensionerTotal,vipPensionerTotal;
 
   //private static DecimalFormat df2 = new DecimalFormat(".##");
 
-  double childTotal2,studentTotal2,adultTotal2,vipTotal2;
+  double childTotal2,studentTotal2,adultTotal2,vipTotal2,teenTotal2,pensionerTotal2,vipPensionerTotal2;
 
   Double grandTotal2 = 0.0;
 
-  int selectedChild,selectedStudent,selectedAdult,selectedVip =0;
+  int selectedChild,selectedStudent,selectedAdult,selectedVip,selectedTeen,selectedPensioner,selectedVipPensioner =0;
 
   LocalDate inputDate;
   String inputTime;
@@ -86,18 +86,29 @@ public class bookingScreenController {
       grandTotal2 += -childTotal2;
     }
     String amount = child.getValue().toString();
-    childTotal2 = Double.parseDouble(amount) *6.00;
+    childTotal2 = Double.parseDouble(amount) *5.00;
     childTotal.setText("Total   £ "+ String.format("%.2f",childTotal2));
     grandTotal2 +=childTotal2;
     grandTotal();
     selectedChild++;
+  }
+  public void comboBoxTeen(ActionEvent event) throws IOException{
+    if (selectedTeen > 0){
+      grandTotal2 += -teenTotal2;
+    }
+    String amount = teen.getValue().toString();
+    teenTotal2 = Double.parseDouble(amount) *5.00;
+    teenTotal.setText("Total   £ "+ String.format("%.2f",teenTotal2));
+    grandTotal2 +=teenTotal2;
+    grandTotal();
+    selectedTeen++;
   }
   public void comboBoxStudent(ActionEvent event) throws IOException {
     if (selectedStudent > 0){
       grandTotal2 += -studentTotal2;
     }
     String amount = student.getValue().toString();
-    studentTotal2 = Double.parseDouble(amount) *7.50;
+    studentTotal2 = Double.parseDouble(amount) *5.00;
     studentTotal.setText("Total   £ "+ String.format("%.2f",studentTotal2));
     grandTotal2 +=studentTotal2;
     grandTotal();
@@ -108,19 +119,41 @@ public class bookingScreenController {
       grandTotal2 += -adultTotal2;
     }
     String amount = adult.getValue().toString();
-    adultTotal2 = Double.parseDouble(amount) *8.00;
+    adultTotal2 = Double.parseDouble(amount) *5.00;
     adultTotal.setText("Total   £ "+ String.format("%.2f",adultTotal2));
     grandTotal2 += adultTotal2;
     grandTotal();
     selectedChild++;
-
   }
+  public void comboBoxPensioner(ActionEvent event) throws IOException{
+    if (selectedChild > 0){
+      grandTotal2 += -pensionerTotal2;
+    }
+    String amount = pensioner.getValue().toString();
+    pensionerTotal2 = Double.parseDouble(amount) *3.50;
+    pensionerTotal.setText("Total   £ "+ String.format("%.2f",pensionerTotal2));
+    grandTotal2 +=pensionerTotal2;
+    grandTotal();
+    selectedPensioner++;
+  }
+  public void comboBoxPensionerVip(ActionEvent event) throws IOException{
+    if (selectedChild > 0){
+      grandTotal2 += -vipPensionerTotal2;
+    }
+    String amount = vipPensioner.getValue().toString();
+    vipPensionerTotal2 = Double.parseDouble(amount) *6.00;
+    vipPensionerTotal.setText("Total   £ "+ String.format("%.2f",vipPensionerTotal2));
+    grandTotal2 +=vipPensionerTotal2;
+    grandTotal();
+    selectedVipPensioner++;
+  }
+
   public void comboBoxVip(ActionEvent event) throws IOException{
     if (selectedVip > 0){
       grandTotal2 += -vipTotal2;
     }
     String amount = vip.getValue().toString();
-    vipTotal2 = Double.parseDouble(amount) *10.00;
+    vipTotal2 = Double.parseDouble(amount) *7.50;
     vipTotal.setText("Total   £ "+ String.format("%.2f",vipTotal2));
     grandTotal2 += vipTotal2;
     grandTotal();
@@ -157,6 +190,9 @@ public class bookingScreenController {
     student.getItems().addAll(0,1,2,3,4);
     adult.getItems().addAll(0,1,2,3,4);
     vip.getItems().addAll(0,1,2,3,4);
+    vipPensioner.getItems().addAll(0,1,2,3,4);
+    teen.getItems().addAll(0,1,2,3,4);
+    pensioner.getItems().addAll(0,1,2,3,4);
 
 
 
