@@ -2,6 +2,7 @@ package sample;
 
 import java.util.List;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.time.LocalDate ;
 public interface CinemaApi {
 
     /**
@@ -52,10 +53,13 @@ public interface CinemaApi {
     public boolean deleteScreening(Screening screening);
 
     public boolean updateScreening(Screening screening);
+
+
     /********/
 
     public Screening getScreening(int id) throws Exception ;
     public List<Screening> getScreenings() throws Exception;
+    public List<Screening> getScreeningsByDate(LocalDate date) throws Exception;
 
     /********/
     /**

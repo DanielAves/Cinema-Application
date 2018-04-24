@@ -36,6 +36,10 @@ public class Main extends Application {
 
     public static void main(String[] args) throws Exception {
 
+        //RestClient client = new RestClient("localhost", 5000);
+        //for(Screening s :client.getScreenings()){
+        //  System.out.println(s);
+        //}
         // dbConnection test = new dbConnection();
         // test.Open();
 

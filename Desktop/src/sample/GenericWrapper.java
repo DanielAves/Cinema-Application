@@ -14,11 +14,6 @@ public class GenericWrapper<T> {
 
   private int page;
 
-
-
-
-
-
 	/**
 	* Returns value of objects
 	* @return

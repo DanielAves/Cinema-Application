@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.util.logging.Logger;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.scene.control.Button;
+import java.time.LocalDate ;
 
 public class seatingScreenController {
 
@@ -101,14 +102,6 @@ public class seatingScreenController {
     //String seatNum = (((Button)event.getSource()).getId());
     //int seats2 = Integer.parseInt(seats.get(0).toString());
 
-
-
-
-
-
-
-
-
   }
 
   public void takenSeats(int seat){
@@ -126,8 +119,7 @@ public class seatingScreenController {
       case 6: seat6.setText("Taken");
       break;
       case 7: seat7.setText("Taken");
-              seat7.setStyle("-fx-background-color: #4286f4");
-
+      seat7.setStyle("-fx-background-color: #4286f4");
       break;
       case 8: seat8.setText("Taken");
       break;

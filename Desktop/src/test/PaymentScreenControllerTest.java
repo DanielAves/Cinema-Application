@@ -1,3 +1,7 @@
+/**
+ * PaymentScreenControllerTest.java
+ */
+
 package sample;
 import org.junit.*;
 import static org.junit.Assert.*;

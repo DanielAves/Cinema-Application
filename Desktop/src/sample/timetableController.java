@@ -48,12 +48,116 @@ public class timetableController{
   }
   public void setTime(int filmID) throws Exception{
     RestClient client = new RestClient("localhost", 5000);
-    List screeningsList = new ArrayList();
+    //List screeningsList = new ArrayList();
     List timeList = new ArrayList();
     int j = 0; //Used for storing screeningID for specific time
 
+  List<Screening> screeningsList = new ArrayList<Screening>();
+  screeningsList = client.getScreeningsByDate(inputDate);
+  List<Screening> usedScreeningsList = new ArrayList<Screening>();
+  List<LocalTime> filmTimes = new ArrayList<LocalTime>();
+
+
+  for (Screening s : screeningsList){
+    int id = s.getFilm_id();
+    if (id == filmID){
+      filmTimes.add(s.getScreening_time());
+      usedScreeningsList.add(s);
+    }
+  }
+
+
+  Collections.sort(filmTimes);
+  for(int i=0;i<filmTimes.size();i++){
+    System.out.println(filmTimes.get(i));
+  }
+
+
+  for(int i=0;i<usedScreeningsList.size();i++){
+   System.out.println(usedScreeningsList.get(i));
+   }
+
+
+
+  List<Integer> orderedFilmIds = new ArrayList<Integer>();
+  List<Integer> orderedScreeningIds = new ArrayList<Integer>();
+
+  for (int i= 0 ; i< filmTimes.size();i++){
+    for (Screening s : usedScreeningsList){
+      if (s.getScreening_time() == filmTimes.get(i)){
+        int fid = s.getFilm_id();
+        int sid = s.getScreening_id();
+        orderedFilmIds.add(fid);
+        orderedScreeningIds.add(sid);
+      }
+
+    }
+
+}
+
+for(int i=0;i<orderedFilmIds.size();i++){
+  System.out.println(orderedFilmIds.get(i));
+}
+ System.out.println("SCREENING IDS");
+for(int i=0;i<orderedScreeningIds.size();i++){
+  System.out.println(orderedScreeningIds.get(i));
+}
+
+/**  for (Screening s : usedScreeningsList){
+
+        screenTime = s.getScreening_time();
+        int screenID = s.getScreen_id();
+        int size = filmTime.size();
+
+        if(size > 0 && time1 == false && s.getFilm_id() == filmID && screenTime.equals(filmTimes.get(0))){
+          screeningID[0] = s.getScreening_id();
+          screenID[0] = s.getScreen_id();
+          film1.setText(timeList.get(0).toString());
+          screen1.setText("Screen " + Integer.toString(s.getScreen_id()));
+          time1 = true;
+
+        }
+
+
+
+  }*/
+
+
+
+
+  // int size = filmTimes.size();
+  // if(size > 0 && time1 == false && usedScreeningsList.getFilm_id() == filmID && screenTime.equals(timeList.get(0)) && dateScreening.equals(inputDate)){
+  //   screeningID[0] = s.getScreening_id();
+  //   screenID[0] = s.getScreen_id();
+  //   film1.setText(timeList.get(0).toString());
+  //   screen1.setText("Screen " + Integer.toString(s.getScreen_id()));
+  //   time1 = true;
+  //
+  // }
+  //
+  //
+  // for(int i =1; i<=screeningAmount; i++){
+  //
+  //   Screening s = client.getScreening(i);
+  //   LocalTime screenTime = s.getScreening_time();
+  //   LocalDate dateScreening = s.getScreening_date();
+  //   int size = timeList.size();
+  //   if(size > 0 && time1 == false && s.getFilm_id() == filmID && screenTime.equals(timeList.get(0)) && dateScreening.equals(inputDate)){
+  //     screeningID[0] = s.getScreening_id();
+  //     screenID[0] = s.getScreen_id();
+  //     film1.setText(timeList.get(0).toString());
+  //     screen1.setText("Screen " + Integer.toString(s.getScreen_id()));
+  //     time1 = true;
+  //   }
+  //
+
+
+
+
+
+
     //Populate screeningsList
-    screeningsList = client.getScreenings();
+    /**screeningsList = client.getScreenings();
 
     //Check amount of screenings in db
     int screeningAmount = screeningsList.size();
@@ -84,6 +188,7 @@ public class timetableController{
         screen1.setText("Screen " + Integer.toString(s.getScreen_id()));
         time1 = true;
       }
+
       else if(size > 1 && time2 == false && s.getFilm_id() == filmID && screenTime.equals(timeList.get(1)) && dateScreening.equals(inputDate)){
         screeningID[1] = s.getScreening_id();
         film2.setText(timeList.get(1).toString());
@@ -146,7 +251,7 @@ public class timetableController{
         screen10.setText("Screen " + Integer.toString(s.getScreen_id()));
         time10 = true;
       }
-    }
+    }*/
   }
 
 
@@ -284,10 +389,6 @@ public class timetableController{
   //   window.setScene(new Scene(p));
   //   window.show();
   // }
-
-
-
-
 
 
 
