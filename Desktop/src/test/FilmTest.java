@@ -12,10 +12,11 @@ import static org.hamcrest.CoreMatchers.*;
  */
 public class FilmTest {
 
+  /** Film test object. */
   private Film testFilm;
 
   /**
-   * Sets up the test fixture. (Called before every test case method)
+   * Sets up the test fixture (called before every test case method).
    */
   @Before
   public void setUp() {
@@ -23,7 +24,7 @@ public class FilmTest {
   }
 
   /**
-   * Tears down the test fixture. (Called after every test case method)
+   * Tears down the test fixture (called after every test case method).
    */
   @After
   public void tearDown() {
@@ -31,78 +32,59 @@ public class FilmTest {
   }
 
   @Test
-  public void testFilmIDSet() {
-
-    Integer testID = 123;
-
+  public void testFilmID() {
+    int testID = 123;
     testFilm.setFilm_id(testID);
-
     assertThat(testFilm.getFilm_id(), is(testID));
   }
 
   @Test
-  public void testFilmNameSet() {
-
+  public void testFilmName() {
     String testFilmName = "alpha";
-
     testFilm.setFilm_name(testFilmName);
-
     assertThat(testFilm.getFilm_name(), is(testFilmName));
   }
 
   @Test
-  public void testFilmDescriptionSet() {
-
+  public void testFilmDescription() {
     String testFilmDesc = "Lorem Ipsum";
-
     testFilm.setFilm_description(testFilmDesc);
-
     assertThat(testFilm.getFilm_description(), is(testFilmDesc));
   }
 
   @Test
-  public void testFilmRuntimeSet() {
-
-    Integer testFilmRuntime = 100;
-
+  public void testFilmRuntime() {
+    int testFilmRuntime = 100;
     testFilm.setFilm_runtime(testFilmRuntime);
-
     assertThat(testFilm.getFilm_runtime(), is(testFilmRuntime));
   }
 
   @Test
-  public void testFilmDirectorSet() {
-
+  public void testFilmDirector() {
     String testFilmDirector = "spielberg";
-
     testFilm.setFilm_director(testFilmDirector);
-
     assertThat(testFilm.getFilm_director(), is(testFilmDirector));
   }
 
   @Test
-  public void testFilmAgeRatingSet() {
-
+  public void testFilmAgeRating() {
     String testFilmAgeRating = "18";
-
     testFilm.setFilm_age_rating(testFilmAgeRating);
-
     assertThat(testFilm.getFilm_age_rating(), is(testFilmAgeRating));
   }
 
   @Test
   public void testToString() {
-
     String testFilmAgeRating = "18";
     testFilm.setFilm_age_rating(testFilmAgeRating);
 
     String testFilmDirector = "spielberg";
     testFilm.setFilm_director(testFilmDirector);
 
-    Integer testFilmRuntime = 100;
+    int testFilmRuntime = 100;
     testFilm.setFilm_runtime(testFilmRuntime);
 
-    Integer testID = 123;
+    int testID = 123;
 
     testFilm.setFilm_id(testID);
     String testFilmName = "alpha";
@@ -116,5 +98,4 @@ public class FilmTest {
 
     assertThat(testFilm.toString(), is(expectedOut));
   }
-
 }

@@ -19,7 +19,7 @@ public class BookingScreenControllerTest {
   private BookingScreenController testBSC;
 
   /**
-   * Sets up the test fixture. (Called before every test case method)
+   * Sets up the test fixture (called before every test case method).
    */
   @Before
   public void setUp() {
@@ -27,7 +27,7 @@ public class BookingScreenControllerTest {
   }
 
   /**
-   * Tears down the test fixture. (Called after every test case method)
+   * Tears down the test fixture (called after every test case method).
    */
   @After
   public void tearDown() {
