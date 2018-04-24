@@ -103,7 +103,6 @@ public class PaymentScreenController {
   */
   public void setScreenID(int screenID){
     screenIDLocal = screenID; //Update local version for access in other functions
-    System.out.println(screenIDLocal);
   }
 
 
@@ -148,6 +147,18 @@ public class PaymentScreenController {
       client.createTicket(c,screening,seat);
     }
 
+  }
+
+
+  public List getSeats(){
+
+    return seatsPayment;
+  }
+
+
+  public int getScreenID(){
+
+    return screenIDLocal;
   }
 
   public void cashClicked(ActionEvent event) throws Exception{
