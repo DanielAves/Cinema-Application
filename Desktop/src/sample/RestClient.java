@@ -1,8 +1,12 @@
 package sample;
 
 import java.util.List;
+import java.util.ArrayList;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonNode;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate ;
 
 public class RestClient implements CinemaApi {
 
@@ -93,7 +97,6 @@ public class RestClient implements CinemaApi {
         GenericWrapper<Screen> myObjects = mapper.readValue(json, GenericWrapper.class);
         return myObjects.getObjects();
       }
-
       /**
       * Screenings methods
       */
@@ -115,12 +118,33 @@ public class RestClient implements CinemaApi {
         return screening;
       }
 
+
+
       public List<Screening> getScreenings() throws Exception {
         String json = this.client.get("screening");
-        GenericWrapper<Screening> myObjects = mapper.readValue(json, GenericWrapper.class);
-        return myObjects.getObjects();
+        JsonNode jsonNode = mapper.readTree(json).get("objects");
+        String foo = jsonNode.toString();
+
+        TypeReference<List<Screening>> mapType = new TypeReference<List<Screening>>() {};
+        List<Screening> jsonToList = mapper.readValue(foo, mapType);
+
+
+        return jsonToList;
       }
 
+      public List<Screening> getScreeningsByDate(LocalDate date) throws Exception {
+        String filter =  "{%22filters%22:[{%22name%22:%22screening_date%22,%22op%22:%22eq%22,%22val%22:%22" +date.toString()+"%22}]}" ;
+        String json = this.client.get("screening?q="+filter);
+
+        JsonNode jsonNode = mapper.readTree(json).get("objects");
+        String foo = jsonNode.toString();
+
+        TypeReference<List<Screening>> mapType = new TypeReference<List<Screening>>() {};
+        List<Screening> jsonToList = mapper.readValue(foo, mapType);
+
+
+        return jsonToList;
+      }
       /**
       * Seat methods
       */

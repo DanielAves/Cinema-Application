@@ -47,38 +47,49 @@ public class filmScreenController{
     RestClient client = new RestClient("localhost", 5000);
 
     List filmList = new ArrayList();
-    List screeningsList = new ArrayList();
+    List<Screening> screeningsList = new ArrayList<Screening>();
     List filmIdList = new ArrayList();
 
     //Populate filmlist
-    filmList = client.getFilms();
+    //filmList = client.getFilms();
 
     //Check amount of films in db
-    int filmAmount = filmList.size();
+    //int filmAmount = filmList.size();
 
     //Populate screeningsList
-    screeningsList = client.getScreenings();
+    screeningsList = client.getScreeningsByDate(inputDate);
+
 
     //Check amount of screenings in db
-    int screeningAmount = screeningsList.size();
-
+   System.out.println("Size of screeningsList" + screeningsList.size());
     //Date passed from user selection
     // inputDate = date;
     // LocalDate inputDate = LocalDate.of(2018,04,04);
 
 
-    for(int i = 1; i<=screeningAmount; i++){
-      Screening s = client.getScreening(i);
-      LocalDate dateScreening = s.getScreening_date();
-      if(dateScreening.equals(inputDate)){
-        if(filmIdList.contains(s.getFilm_id())){
-        }
-        else{
-          filmIdList.add(s.getFilm_id());
-        }
-      }
-    }
-    for(int i =0; i<filmIdList.size() ;i++){ //client.getFilm(i) != null
+  //  for(int i = 1; i<=screeningAmount; i++){
+  //     Screening s = client.getScreening(i);
+  //     LocalDate dateScreening = s.getScreening_date();
+  //     if(dateScreening.equals(inputDate)){
+  //       if(filmIdList.contains(s.getFilm_id())){
+  //       }
+  //       else{
+  //         filmIdList.add(s.getFilm_id());
+  //       }
+  //     }
+  //   }
+   //
+
+  for (int i = 0 ; i <screeningsList.size(); i++){
+    int fid= screeningsList.get(i).getFilm_id();
+      filmIdList.add(fid);
+     }
+
+
+
+
+
+   for(int i =0; i<filmIdList.size() ;i++){ //client.getFilm(i) != null
       int temp = Integer.parseInt(filmIdList.get(i).toString());
       Film f = client.getFilm(temp);
       String filmName = f.getFilm_name();
