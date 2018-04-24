@@ -24,7 +24,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-public class filmScreenController{
+public class FilmScreenController{
 
 
 

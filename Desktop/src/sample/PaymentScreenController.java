@@ -73,9 +73,14 @@ public class PaymentScreenController {
   * @param seats.
   * @return Nothing.
   */
-  public void setSeats(List seats)
-  {
+  public void setSeats(List seats){
+
     seatsPayment = seats;
+  }
+
+  public List getSeats(){
+
+    return seatsPayment;
   }
 
   /**
@@ -89,6 +94,10 @@ public class PaymentScreenController {
     System.out.println(screenIDLocal);
   }
 
+  public int getScreenID(){
+
+    return screenIDLocal;
+  }
 
   public void backButtonClicked(ActionEvent event) throws IOException {
     Parent secondaryroot = FXMLLoader.load(getClass().getResource("resources/filmScreen.fxml"));
