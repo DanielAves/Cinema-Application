@@ -19,6 +19,15 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+/**
+*
+* Allows selection of particular ticket types.
+* A running total price is displayed dependent on selection
+*
+* @author Dan Aves
+* @version 1.2 (2018-04-22
+*/
+
 public class BookingScreenController {
 
   @FXML
@@ -26,9 +35,8 @@ public class BookingScreenController {
   @FXML
   private Label childTotal,studentTotal,adultTotal,vipTotal,grandTotal,teenTotal,pensionerTotal,vipPensionerTotal;
 
-  //private static DecimalFormat df2 = new DecimalFormat(".##");
 
-  double childTotal2,studentTotal2,adultTotal2,vipTotal2,teenTotal2,pensionerTotal2,vipPensionerTotal2;
+  Double childTotal2,studentTotal2,adultTotal2,vipTotal2,teenTotal2,pensionerTotal2,vipPensionerTotal2;
 
   Double grandTotal2 = 0.0;
 
@@ -38,26 +46,56 @@ public class BookingScreenController {
   String inputTime;
   int screeningID;
 
+  /**
+  * Sets the local variable inputDate to the passed date from
+  * TimeTableController.
+  * @param date.
+  * @return Nothing.
+  */
   public void setDate(LocalDate date){
     inputDate = date;
   }
 
+  /**
+  * Returns passed inputDate
+  * @return inputDate.
+  */
   public LocalDate getDate(){
     return inputDate;
   }
 
+  /**
+  * Sets the local variable inputTime to the passed time from
+  * TimeTableController.
+  * @param time.
+  * @return Nothing.
+  */
   public void setTime(String time){
     inputTime = time;
   }
 
+  /**
+  * Returns passed time
+  * @return inputTime.
+  */
   public String getTime(){
     return inputTime;
   }
 
+  /**
+  * Sets the local variable screeningID to the passed screening id from
+  * TimeTableController.
+  * @param time.
+  * @return Nothing.
+  */
   public void setScreeningID(int id){
     screeningID = id;
   }
 
+  /**
+  * Returns passed screeningID
+  * @return screeningID.
+  */
   public int getScreeningID(){
     return screeningID;
   }
@@ -81,6 +119,10 @@ public class BookingScreenController {
 
   }
 
+  /**
+  * Calculates the childTotal and displays on screen & and appends grandTotal
+  * @param event.
+  */
   public void comboBoxChild(ActionEvent event) throws IOException{
     if (selectedChild > 0){
       grandTotal2 += -childTotal2;
@@ -92,6 +134,11 @@ public class BookingScreenController {
     grandTotal();
     selectedChild++;
   }
+
+  /**
+  * Calculates the teenTotal and displays on screen & and appends grandTotal
+  * @param event.
+  */
   public void comboBoxTeen(ActionEvent event) throws IOException{
     if (selectedTeen > 0){
       grandTotal2 += -teenTotal2;
@@ -103,6 +150,11 @@ public class BookingScreenController {
     grandTotal();
     selectedTeen++;
   }
+
+  /**
+  * Calculates the Student and displays on screen & and appends grandTotal
+  * @param event.
+  */
   public void comboBoxStudent(ActionEvent event) throws IOException {
     if (selectedStudent > 0){
       grandTotal2 += -studentTotal2;
@@ -114,6 +166,11 @@ public class BookingScreenController {
     grandTotal();
     selectedStudent++;
   }
+
+  /**
+  * Calculates the AdultTotal and displays on screen & and appends grandTotal
+  * @param event.
+  */
   public void comboBoxAdult(ActionEvent event) throws IOException{
     if (selectedChild > 0){
       grandTotal2 += -adultTotal2;
@@ -125,6 +182,11 @@ public class BookingScreenController {
     grandTotal();
     selectedChild++;
   }
+
+  /**
+  * Calculates the pensionerTotal and displays on screen & and appends grandTotal
+  * @param event.
+  */
   public void comboBoxPensioner(ActionEvent event) throws IOException{
     if (selectedChild > 0){
       grandTotal2 += -pensionerTotal2;
@@ -136,6 +198,11 @@ public class BookingScreenController {
     grandTotal();
     selectedPensioner++;
   }
+
+  /**
+  * Calculates the PensionerVipTotal and displays on screen & and appends grandTotal
+  * @param event.
+  */
   public void comboBoxPensionerVip(ActionEvent event) throws IOException{
     if (selectedChild > 0){
       grandTotal2 += -vipPensionerTotal2;
@@ -148,6 +215,10 @@ public class BookingScreenController {
     selectedVipPensioner++;
   }
 
+  /**
+  * Calculates the vipTotal and displays on screen & and appends grandTotal
+  * @param event.
+  */
   public void comboBoxVip(ActionEvent event) throws IOException{
     if (selectedVip > 0){
       grandTotal2 += -vipTotal2;
@@ -161,14 +232,27 @@ public class BookingScreenController {
 
   }
 
+  /**
+  * Sets the grandTotal text based on the updated 'grandTotal2'
+  */
   public void grandTotal(){
     grandTotal.setText("Grand total   £ " + String.format("%.2f", grandTotal2));
   }
 
+  /**
+  * Returns grandTotal2
+  * @return grandTotal2.
+  */
   public Double getGrandTotal(){
     return grandTotal2;
   }
 
+  /**
+  * Once 'selectSeats' is clicked, seatingScreen is loaded.
+  *
+  * @param event clicking 'selectSeats' button
+  * @return Nothing.
+  */
   public void selectSeats(ActionEvent event) throws Exception{
     FXMLLoader Loader = new FXMLLoader();
     Loader.setLocation(getClass().getResource("resources/seatingScreen.fxml"));
@@ -188,6 +272,9 @@ public class BookingScreenController {
     window.show();
   }
 
+  /**
+  * Sets up the comboBoxes with values.
+  */
   public void initialize() {
     child.getItems().addAll(0,1,2,3,4);
     student.getItems().addAll(0,1,2,3,4);
@@ -196,18 +283,5 @@ public class BookingScreenController {
     vipPensioner.getItems().addAll(0,1,2,3,4);
     teen.getItems().addAll(0,1,2,3,4);
     pensioner.getItems().addAll(0,1,2,3,4);
-
-
-
-
-
-
-
-
-
-
-
   }
-
-
 }

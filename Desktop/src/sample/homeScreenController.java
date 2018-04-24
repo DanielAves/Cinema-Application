@@ -7,7 +7,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;
 import javafx.stage.Stage;
-
 import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.time.LocalDate;
@@ -15,52 +14,73 @@ import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.logging.Logger;
 
+/**
+*
+* The HomeScreenController is the start of the film booking process.
+* A user is able to select films for todays date or a future date.
+*
+* @author Dan Aves
+* @version 1.2 (2018-04-24)
+*/
+
 public class homeScreenController {
 
-    @FXML
-    private DatePicker filmDate;
+  @FXML
+  private DatePicker filmDate;
 
+  /**
+  * When 'showToday' button is clicked the film screen is loaded showing films
+  * for todays date
+  * @param event clicking 'showToday' button
+  * @return Nothing.
+  */
+  public void showToday(javafx.event.ActionEvent event) throws Exception{
 
-    public void showToday(javafx.event.ActionEvent event) throws Exception{
+    FXMLLoader Loader = new FXMLLoader();
+    Loader.setLocation(getClass().getResource("resources/filmScreen.fxml"));
+    try{
+      Loader.load();
+    }catch (IOException ex){
+      Logger.getLogger(filmScreenController.class.getName());
+    }
+    //Get todays date
+    LocalDate localDate = LocalDate.now();
+    //Pass date to next film screen
+    filmScreenController display = Loader.getController();
+    display.setDate(localDate);
+    display.setScreen(localDate);
 
-        FXMLLoader Loader = new FXMLLoader();
-        Loader.setLocation(getClass().getResource("resources/filmScreen.fxml"));
-        try{
-            Loader.load();
-        }catch (IOException ex){
-            Logger.getLogger(filmScreenController.class.getName());
-        }
+    Parent p = Loader.getRoot();
+    Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    window.setScene(new Scene(p));
+    window.show();
+  }
 
-        LocalDate localDate = LocalDate.now();
-        filmScreenController display = Loader.getController();
-        display.setDate(localDate);
-        display.setScreen(localDate);
+  /**
+  * When 'showFutureDate' button is clicked the film screen is loaded showing films
+  * for the selected date,
+  * @param event clicking 'showFutureDate' button
+  * @return Nothing.
+  */
+  public void showFutureDate(javafx.event.ActionEvent event) throws Exception{
+    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    LocalDate date = filmDate.getValue();
 
-        Parent p = Loader.getRoot();
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(new Scene(p));
-        window.show();
+    FXMLLoader Loader = new FXMLLoader();
+    Loader.setLocation(getClass().getResource("resources/filmScreen.fxml"));
+    try{
+      Loader.load();
+    }catch (IOException ex){
+      Logger.getLogger(filmScreenController.class.getName());
     }
 
-    public void showFutureDate(javafx.event.ActionEvent event) throws Exception{
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        LocalDate date = filmDate.getValue();
+    filmScreenController display = Loader.getController();
+    display.setDate(date);
+    display.setScreen(date);
 
-        FXMLLoader Loader = new FXMLLoader();
-        Loader.setLocation(getClass().getResource("resources/filmScreen.fxml"));
-        try{
-            Loader.load();
-        }catch (IOException ex){
-            Logger.getLogger(filmScreenController.class.getName());
-        }
-
-        filmScreenController display = Loader.getController();
-        display.setDate(date);
-        display.setScreen(date);
-
-        Parent p = Loader.getRoot();
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(new Scene(p));
-        window.show();
-    }
+    Parent p = Loader.getRoot();
+    Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    window.setScene(new Scene(p));
+    window.show();
+  }
 }

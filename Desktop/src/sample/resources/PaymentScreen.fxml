@@ -59,12 +59,12 @@
             <Insets />
          </GridPane.margin>
       </TextField>
-      <Button fx:id="five" mnemonicParsing="false" onAction="#fiveClicked" opacity="0.5" prefHeight="100.0" prefWidth="200.0" text="£10" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
-      <Button fx:id="ten" mnemonicParsing="false" onAction="#tenClicked" opacity="0.5" prefHeight="100.0" prefWidth="200.0" text="£5" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-      <Button fx:id="fithteen" mnemonicParsing="false" onAction="#fithteenClicked" opacity="0.5" prefHeight="100.0" prefWidth="200.0" text="£20" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
-      <Button fx:id="twenty" mnemonicParsing="false" onAction="#twentyClicked" opacity="0.5" prefHeight="100.0" prefWidth="200.0" text="£15" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-      <Button fx:id="thirty" mnemonicParsing="false" onAction="#thirtyClicked" opacity="0.5" prefHeight="100.0" prefWidth="200.0" text="40" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
-      <Button fx:id="forty" mnemonicParsing="false" onAction="#fortyClicked" opacity="0.5" prefHeight="100.0" prefWidth="200.0" text="£30" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+      <Button fx:id="ten" mnemonicParsing="false" onAction="#tenClicked" opacity="0.5" prefHeight="100.0" prefWidth="200.0" text="£10" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
+      <Button fx:id="five" mnemonicParsing="false" onAction="#fiveClicked" opacity="0.5" prefHeight="100.0" prefWidth="200.0" text="£5" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <Button fx:id="twenty" mnemonicParsing="false" onAction="#twentyClicked" opacity="0.5" prefHeight="100.0" prefWidth="200.0" text="£20" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
+      <Button fx:id="fithteen" mnemonicParsing="false" onAction="#fithteenClicked" opacity="0.5" prefHeight="100.0" prefWidth="200.0" text="£15" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+      <Button fx:id="forty" mnemonicParsing="false" onAction="#fortyClicked" opacity="0.5" prefHeight="100.0" prefWidth="200.0" text="£40" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
+      <Button fx:id="thirty" mnemonicParsing="false" onAction="#thirtyClicked" opacity="0.5" prefHeight="100.0" prefWidth="200.0" text="£30" GridPane.columnIndex="1" GridPane.rowIndex="5" />
       <Label fx:id="changeDue" text="Change due" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6">
          <font>
             <Font size="25.0" />

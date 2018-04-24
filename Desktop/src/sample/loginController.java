@@ -7,48 +7,53 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
-import java.io.IOException;
-
 import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import java.io.IOException;
+
+
+/**
+*
+*
+* The loginController is the first screen the user sees.
+* The user logs in with their credentials here.
+*
+* @author Dan Aves
+* @version 1.2 (2018-04-24)
+*/
 
 public class loginController{
 
   @FXML
-  private TextField username;
-  @FXML
-  private TextField password;
-  @FXML
+  private TextField username,password;
   private  Button loginButton;
   @FXML
   private Label invalidDetails;
 
-  String test = "user";
-  String passwordStore = "password";
+  String username1 = "user";
+  String password1 = "password";
 
-
-
-
+  /**
+  * Checks if credentials and loads homescreen or displays erros message
+  * @param event clicking loginButton
+  * @return Nothing.
+  */
 
   public void loginButtonClicked(ActionEvent event) throws IOException {
-    String uname = username.getText();
-    String pass = password.getText();
-    System.out.println(uname);
-    System.out.println(pass);
+    String usernameEntered = username.getText();
+    String passwordEntered = password.getText();
 
-    if (test.equals(uname) && passwordStore.equals(pass)) {
-    Parent secondaryroot = FXMLLoader.load(getClass().getResource("resources/homeScreen.fxml"));
-    Scene filmScreen = new Scene(secondaryroot);
-    Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    window.setScene(filmScreen);
-    window.show();
+    if (usernameEntered.equals(username1) && passwordEntered.equals(password1)) {
+      Parent secondaryroot = FXMLLoader.load(getClass().getResource("resources/homeScreen.fxml"));
+      Scene filmScreen = new Scene(secondaryroot);
+      Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+      window.setScene(filmScreen);
+      window.show();
 
-       } else {
-         invalidDetails.setText("Invalid details entered, try again");
+    } else {
+      invalidDetails.setText("Invalid details entered, try again");
 
-       }
-
+    }
   }
 }

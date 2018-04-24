@@ -12,17 +12,25 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.logging.Logger;
-
 import java.util.List;
 import java.util.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.time.LocalDate;
 import java.time.LocalTime;
+
+/**
+*
+* Fetches film names for a selected date and
+* outputs the names to the UI for user selection.
+*
+*
+* @author Dan Aves
+* @version 1.4 (2018-04-24)
+*/
 
 public class filmScreenController{
 
@@ -37,36 +45,52 @@ public class filmScreenController{
   DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
   public LocalDate test;
 
+  /**
+  * Sets the local variable inputDate to the passed date from
+  * HomeScreenController, dependent on user selection. Also sets text
+  * on the UI.
+  * @param date.
+  * @return Nothing.
+  */
   public void setDate(LocalDate date){
     inputDate = date;
     filmDate.setText("Showing films for " + dtf.format(inputDate));
   }
 
+  /**
+  * This method fetches the correct film names dependent on the previously selected
+  * date.
+  * @param date Used to find all film names
+  * @return Nothing.
+  */
   public void setScreen(LocalDate date) throws Exception{
     System.out.println("Showing films for " + dtf.format(inputDate));
     RestClient client = new RestClient("localhost", 5000);
 
     List filmList = new ArrayList();
     List<Screening> screeningsList = new ArrayList<Screening>();
-    List filmIdList = new ArrayList();
+    List<Integer> filmIdList = new ArrayList<Integer>();
 
+    //Fetch all screenings for particular date
     screeningsList = client.getScreeningsByDate(inputDate);
 
 
 
-
+    //Get the film ids and add to a new list
     for (int i = 0 ; i <screeningsList.size(); i++){
       int fid= screeningsList.get(i).getFilm_id();
-      filmIdList.add(fid);
+      if (filmIdList.contains(fid)){
+        //Do nothing - prvents duplicates
+      }
+      else{
+        filmIdList.add(fid);
+      }
     }
 
-
-
-
-
-    for(int i =0; i<filmIdList.size() ;i++){ //client.getFilm(i) != null
-      int temp = Integer.parseInt(filmIdList.get(i).toString());
-      Film f = client.getFilm(temp);
+    //Gets the filmname for a particular filmID and displays to ui.
+    for(int i =0; i<filmIdList.size() ;i++){
+      int fid = Integer.parseInt(filmIdList.get(i).toString());
+      Film f = client.getFilm(fid);
       String filmName = f.getFilm_name();
       int filmId = f.getFilm_id();
       switch (filmId) {
@@ -95,8 +119,6 @@ public class filmScreenController{
   }
 
 
-
-
   public void logoutButtonClicked(ActionEvent event) throws IOException{
     Parent secondaryroot = FXMLLoader.load(getClass().getResource("resources/loginScreen.fxml"));
     Scene filmScreen = new Scene(secondaryroot);
@@ -106,14 +128,26 @@ public class filmScreenController{
 
   }
 
+  /**
+  * Takes user back a page to homescreen
+  * @param event clicking back button
+  * @return Nothing.
+  */
   public void backButtonClicked(ActionEvent event) throws IOException{
     Parent secondaryroot = FXMLLoader.load(getClass().getResource("resources/homeScreen.fxml"));
     Scene filmScreen = new Scene(secondaryroot);
     Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
     window.setScene(filmScreen);
     window.show();
-
   }
+
+  /**
+  * When a film is selected the timetableScreen is loaded showing times
+  * for that particular film.
+  *
+  * @param event clicking a filmName
+  * @return Nothing.
+  */
   public void selectFilm(ActionEvent event) throws Exception{
 
     FXMLLoader Loader = new FXMLLoader();
@@ -125,12 +159,12 @@ public class filmScreenController{
     }
 
     timetableController display = Loader.getController();
+    //Determine what button is clicked
     String filmName = (((Button)event.getSource()).getText());
     String buttonID = (((Button)event.getSource()).getId());
 
     int filmID =0;
-
-
+    //Enables correct ID to be passed to next screen dependent on film selected
     if (buttonID.equals("film1")){
       filmID = 1;
     }
