@@ -35,7 +35,11 @@ public class Film {
 	 * @param film_id ID number of film.
 	 */
 	public void setFilm_id(int film_id) {
-		this.film_id = film_id;
+    if(film_id < 0) {
+      throw new IllegalArgumentException("ID must NOT be negative.");
+    } else {
+      this.film_id = film_id;
+    }
 	}
 
 	/**

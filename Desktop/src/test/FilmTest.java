@@ -28,14 +28,20 @@ public class FilmTest {
    */
   @After
   public void tearDown() {
-
+    testFilm = null;
   }
 
   @Test
-  public void testFilmID() {
-    int testID = 123;
+  public void testPosFilmID() {
+    int testID = 64;
     testFilm.setFilm_id(testID);
     assertThat(testFilm.getFilm_id(), is(testID));
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testNegFilmID() {
+    int testID = -64;
+    testFilm.setFilm_id(testID);
   }
 
   @Test
