@@ -48,7 +48,8 @@ import com.itextpdf.text.*;
 public class PaymentScreenController {
 
     /** Path to the resulting PDF file. */
-        public static final String RESULT = "/reciept.pdf";
+        public static final String CARD = "/cardReciept.pdf";
+        public static final String CASH = "/cashReciept.pdf";
 
     //FXML element importing
     @FXML
@@ -61,7 +62,17 @@ public class PaymentScreenController {
     boolean cashBol = false;              //Used to determine if user selects "cash"
     List seatsPayment = new ArrayList();  //Local list to store seats passed to method
     int screenIDLocal;                    //Stores passed screenID
-    String  filename = "reciept.pdf";
+    String  cardReciept = "cardReciept.pdf";
+    String  cashReciept = "cashReciept.pdf";
+
+    String filmname;        //name of the film
+    String ticketType = "adult";      //i.e child, adult etc
+    int ticktPrice = 12 ;         //price of individual ticket
+    int transTotal = 12;        //totl of all tickets
+    int items = 1;              //number of tickets sold
+    String screen = "Screen 12";    //screen
+    int screenTime;                 //time of viewing
+
 
     /**
     * This method sets the local variable grandTotal to the passed total from
@@ -118,6 +129,7 @@ public class PaymentScreenController {
         AlertBox.display("Please wait", "Processing payment");
         totalAmount.setText("Total £ " + ("0.00"));
         bookSeats();
+        createCardPDF(cardReciept);
     }
 
     public void bookSeats() throws Exception{
@@ -199,8 +211,7 @@ public class PaymentScreenController {
             totalAmount.setText("Total £ " + ("0.00"));
             changeDue.setText("Change £ " + String.format("%.2f", grandTotal));
             bookSeats();
-            createCardPDF(filename);
-
+            createCashPDF(cashReciept);
 
         }
         else{
@@ -208,33 +219,60 @@ public class PaymentScreenController {
         }
     }
 
-    private void createCardPDF(String filename) throws DocumentException, IOException {
-        System.out.println("Entered");
+    private void createCardPDF(String cardReciept) throws DocumentException, IOException {
 
-        File file = new File(RESULT);
+        File file = new File(CARD);
         file.getParentFile().mkdirs();
-        //Creates a PDF file: reciept.pdf
-        // new PaymentScreenController().createPDF(RESULT);
         //create a document
         Document document = new Document();
         //create an instance for it to be generated
-        PdfWriter.getInstance(document, new FileOutputStream(filename));
+        PdfWriter.getInstance(document, new FileOutputStream(cardReciept));
         document.open();
         document.add(new Paragraph("Osprey Cinema"));
         document.add(new Paragraph("University Of Leeds Union"));
         document.add(new Paragraph("Leeds\n\n"));
-        document.add(new Paragraph(" Ticket " + "Price £ \n\n"));
+        document.add(new Paragraph(filmname + "                  " + "£" + ticktPrice + "\n\n"));
         document.add(new Paragraph("**** **** **** 6190"));
         document.add(new Paragraph("Visa Debit "));
         document.add(new Paragraph("Merchant ID: **12345 \n Terminal ID: ****1234  \n\n"));
         document.add(new Paragraph("SALE \n\n"));
-        document.add(new Paragraph("Your account will be debited with the total amount shown: \n Total: " + "AMOUNT \n\n"));
+        document.add(new Paragraph("Your account will be debited with the total amount shown: \n Total: " + "AMOUNT \n"));
+        document.add(new Paragraph("Number of items: " + items + "\n\n"));
         document.add(new Paragraph("SOURCE:     CONTACTLESS \n\n"));
         document.add(new Paragraph("Authorisation Code: 12387 \n\n"));
         document.add(new Paragraph("Please keep this reciept for your records. \n\n"));
         document.add(new Paragraph("CUSTOMER COPY \n\n"));
         document.add(new Paragraph("T O T A L " + "           " + grandTotal + "\n\n"));
-        document.add(new Paragraph("Thank you for visiting Britains Best Value and Cinema Experience"));
+        document.add(new Paragraph("Thank you for visiting Britains Best Cinema Experience"));
+        document.add(new Paragraph("#OspreyCinemaWhereExcitingHappens\n\n"));
+        document.add(new Paragraph("Tell us how we did by sending us an email\n with the chance to win £100. \n Eamil: ukoc@OSPREYCinema.com \n"));
+        document.close();
+    }
+
+    private void createCashPDF(String cashReciept) throws DocumentException, IOException {
+
+        File file = new File(CASH);
+        file.getParentFile().mkdirs();
+        //create a document
+        Document document = new Document();
+        //create an instance for it to be generated
+        PdfWriter.getInstance(document, new FileOutputStream(cashReciept));
+        document.open();
+        document.add(new Paragraph("Osprey Cinema"));
+        document.add(new Paragraph("University Of Leeds Union"));
+        document.add(new Paragraph("Leeds\n\n"));
+        document.add(new Paragraph(filmname + "                  " + "£" + ticktPrice + "\n\n"));
+        document.add(new Paragraph("Cash Payment "));
+        document.add(new Paragraph("Merchant ID: **12345 \n Terminal ID: ****1234  \n\n"));
+        document.add(new Paragraph("SALE \n\n"));
+        document.add(new Paragraph("You have been charged: \n Total: " + "AMOUNT \n"));
+        document.add(new Paragraph("Number of items: " + items + "\n\n"));
+        document.add(new Paragraph("SOURCE:     CASH\n\n"));
+        document.add(new Paragraph("Authorisation Code: 12387 \n\n"));
+        document.add(new Paragraph("Please keep this reciept for your records. \n\n"));
+        document.add(new Paragraph("CUSTOMER COPY \n\n"));
+        document.add(new Paragraph("T O T A L " + "           " + transTotal + "\n\n"));
+        document.add(new Paragraph("Thank you for visiting Britains Best Cinema Experience"));
         document.add(new Paragraph("#OspreyCinemaWhereExcitingHappens\n\n"));
         document.add(new Paragraph("Tell us how we did by sending us an email\n with the chance to win £100. \n Eamil: ukoc@OSPREYCinema.com \n"));
         document.close();
