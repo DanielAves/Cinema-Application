@@ -18,15 +18,17 @@ import java.util.*;
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
+
 import java.io.IOException;
-
-
+import java.io.*;
+import java.io.FileOutputStream;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.*;
+import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.text.*;
+
 
 
 
@@ -43,176 +45,236 @@ import com.itextpdf.text.pdf.*;
 */
 
 
-
 public class PaymentScreenController {
-  //FXML element importing
-  @FXML
-  private Label changeDue;
-  public Text totalAmount;
-  private Button five,ten,fithteen,twenty,thirty,forty,cash,card;
-  private TextField quantity;
 
-  double grandTotal;                    //Used to store passed total
-  boolean cashBol = false;              //Used to determine if user selects "cash"
-  List seatsPayment = new ArrayList();  //Local list to store seats passed to method
-  int screenIDLocal;                    //Stores passed screenID
+    /** Path to the resulting PDF file. */
+        public static final String CARD = "/cardReciept.pdf";
+        public static final String CASH = "/cashReciept.pdf";
 
-  /**
-  * This method sets the local variable grandTotal to the passed total from
-  * seatingScreenController.
-  * @param totalNew.
-  * @return Nothing.
-  */
-  public void setTotal(double total){
-    grandTotal = total;
-    totalAmount.setText("Total £ " + String.format("%.2f", total));
-  }
+    //FXML element importing
+    @FXML
+    private Label changeDue;
+    public Text totalAmount;
+    private Button five,ten,fithteen,twenty,thirty,forty,cash,card;
+    private TextField quantity;
 
-  /**
-  * This method updates the local list for the passed seats
-  * @param seats.
-  * @return Nothing.
-  */
-  public void setSeats(List seats)
-  {
-    seatsPayment = seats;
-  }
+    double grandTotal;                    //Used to store passed total
+    boolean cashBol = false;              //Used to determine if user selects "cash"
+    List seatsPayment = new ArrayList();  //Local list to store seats passed to method
+    int screenIDLocal;                    //Stores passed screenID
+    String  cardReciept = "cardReciept.pdf";
+    String  cashReciept = "cashReciept.pdf";
 
-  /**
-  * This method updates the local screenID for the passed ID dependent on
-  * previous selections.
-  * @param screenID.
-  * @return Nothing.
-  */
-  public void setScreenID(int screenID){
-    screenIDLocal = screenID; //Update local version for access in other functions
-    System.out.println(screenIDLocal);
-  }
+    String filmname;        //name of the film
+    String ticketType = "adult";      //i.e child, adult etc
+    int ticktPrice = 12 ;         //price of individual ticket
+    int transTotal = 12;        //totl of all tickets
+    int items = 1;              //number of tickets sold
+    String screen = "Screen 12";    //screen
+    int screenTime;                 //time of viewing
 
 
-  public void backButtonClicked(ActionEvent event) throws IOException {
-    Parent secondaryroot = FXMLLoader.load(getClass().getResource("resources/filmScreen.fxml"));
-    Scene filmScreen = new Scene(secondaryroot);
-    Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    window.setScene(filmScreen);
-    window.show();
+    /**
+    * This method sets the local variable grandTotal to the passed total from
+    * seatingScreenController.
+    * @param totalNew.
+    * @return Nothing.
+    */
+    public void setTotal(double total){
+        grandTotal = total;
+        totalAmount.setText("Total £ " + String.format("%.2f", total));
+    }
 
-  }
-
-  public void logoutButtonClicked(ActionEvent event) throws IOException{
-    Parent secondaryroot = FXMLLoader.load(getClass().getResource("resources/loginScreen.fxml"));
-    Scene filmScreen = new Scene(secondaryroot);
-    Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    window.setScene(filmScreen);
-    window.show();
-
-  }
-
-  public void cardClicked(ActionEvent event) throws Exception{
-    AlertBox.display("Please wait", "Processing payment");
-    totalAmount.setText("Total £ " + ("0.00"));
-    bookSeats();
-  }
-
-  public void bookSeats() throws Exception{
-    RestClient client = new RestClient("localhost", 5000);
-    // create screening obj for appropriate screening
-    int seatsPaymentSize = seatsPayment.size();
-    //Loop through seat array
-    for(int i =0; i<seatsPaymentSize; i++)
+    /**
+    * This method updates the local list for the passed seats
+    * @param seats.
+    * @return Nothing.
+    */
+    public void setSeats(List seats)
     {
-      Screening screening = client.getScreening(screenIDLocal);
-      //create seat obj for appropraite seat
-      Seat seat = client.getSeat(Integer.parseInt(seatsPayment.get(i).toString()));
-      //till is customer 5
-      Customer c = new Customer(5);
-      //Create a ticket for each seat
-      client.createTicket(c,screening,seat);
+        seatsPayment = seats;
     }
 
-  }
-
-  public void cashClicked(ActionEvent event) throws Exception{
-    cashBol = true;
-    System.out.println(cashBol);
-  }
-
-  public void quantityEntered(ActionEvent event) throws Exception{
-    String input = quantity.getText();
-    if (cashBol = true){
-      grandTotal -= Double.parseDouble(input);
-      change();
+    /**
+    * This method updates the local screenID for the passed ID dependent on
+    * previous selections.
+    * @param screenID.
+    * @return Nothing.
+    */
+    public void setScreenID(int screenID){
+        screenIDLocal = screenID; //Update local version for access in other functions
+        System.out.println(screenIDLocal);
     }
-  }
-
-  public void fiveClicked(ActionEvent event) throws Exception{
-    if (cashBol = true){
-      grandTotal -=5;
-      change();
-    }
-  }
-
-  public void tenClicked(ActionEvent event) throws Exception{
-    if (cashBol = true){
-      grandTotal -=10;
-      change();
-    }
-  }
-
-  public void fithteenClicked(ActionEvent event) throws Exception{
-    if (cashBol = true){
-      grandTotal -=15;
-      change();
-    }
-  }
-
-  public void twentyClicked(ActionEvent event) throws Exception{
-    if (cashBol = true){
-      grandTotal -=20;
-      change();
-    }
-  }
-
-  public void thirtyClicked(ActionEvent event) throws Exception{
-    if (cashBol = true){
-      grandTotal -=30;
-      change();
-    }
-  }
-
-  public void fortyClicked(ActionEvent event) throws Exception{
-    if (cashBol = true){
-      grandTotal -=40;
-      change();
-    }
-  }
-
-  public void change() throws Exception{
-    if (grandTotal < 0){
-      grandTotal = Math.abs(grandTotal);
-      totalAmount.setText("Total £ " + ("0.00"));
-      changeDue.setText("Change £ " + String.format("%.2f", grandTotal));
-      bookSeats();
 
 
+    public void backButtonClicked(ActionEvent event) throws IOException {
+        Parent secondaryroot = FXMLLoader.load(getClass().getResource("resources/filmScreen.fxml"));
+        Scene filmScreen = new Scene(secondaryroot);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(filmScreen);
+        window.show();
 
     }
-    else{
-      totalAmount.setText("Total £ " + String.format("%.2f", grandTotal));
+
+    public void logoutButtonClicked(ActionEvent event) throws IOException{
+        Parent secondaryroot = FXMLLoader.load(getClass().getResource("resources/loginScreen.fxml"));
+        Scene filmScreen = new Scene(secondaryroot);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(filmScreen);
+        window.show();
+
     }
-  }
 
-  // public void createPdf(String dest) throws IOException
-  // {
-  //     PdfDocument pdfDocument = new PdfDocument(new PdfWriter(dest));
-  //     pdfDocument.setDefaultPageSize(PageSize.A4.rotate());
-  //     Document document = new Document(pdfDocument);
-  //     document.add(
-  //         new Paragraph()
-  //             .setFontSize(20)
-  //             .add(new Text("This is your Reciept")));
-  //     document.close();
-  // }
+    public void cardClicked(ActionEvent event) throws Exception{
+        AlertBox.display("Please wait", "Processing payment");
+        totalAmount.setText("Total £ " + ("0.00"));
+        bookSeats();
+        createCardPDF(cardReciept);
+    }
 
+    public void bookSeats() throws Exception{
+        RestClient client = new RestClient("localhost", 5000);
+        // create screening obj for appropriate screening
+        int seatsPaymentSize = seatsPayment.size();
+        //Loop through seat array
+        for(int i =0; i<seatsPaymentSize; i++)
+        {
+            Screening screening = client.getScreening(screenIDLocal);
+            //create seat obj for appropraite seat
+            Seat seat = client.getSeat(Integer.parseInt(seatsPayment.get(i).toString()));
+            //till is customer 5
+            Customer c = new Customer(5);
+            //Create a ticket for each seat
+            client.createTicket(c,screening,seat);
+        }
 
+    }
+
+    public void cashClicked(ActionEvent event) throws Exception{
+        cashBol = true;
+        System.out.println(cashBol);
+    }
+
+    public void quantityEntered(ActionEvent event) throws Exception{
+        String input = quantity.getText();
+        if (cashBol = true){
+            grandTotal -= Double.parseDouble(input);
+            change();
+        }
+    }
+
+    public void fiveClicked(ActionEvent event) throws Exception{
+        if (cashBol = true){
+            grandTotal -=5;
+            change();
+        }
+    }
+
+    public void tenClicked(ActionEvent event) throws Exception{
+        if (cashBol = true){
+            grandTotal -=10;
+            change();
+        }
+    }
+
+    public void fithteenClicked(ActionEvent event) throws Exception{
+        if (cashBol = true){
+            grandTotal -=15;
+            change();
+        }
+    }
+
+    public void twentyClicked(ActionEvent event) throws Exception{
+        if (cashBol = true){
+            grandTotal -=20;
+            change();
+        }
+    }
+
+    public void thirtyClicked(ActionEvent event) throws Exception{
+        if (cashBol = true){
+            grandTotal -=30;
+            change();
+        }
+    }
+
+    public void fortyClicked(ActionEvent event) throws Exception{
+        if (cashBol = true){
+            grandTotal -=40;
+            change();
+        }
+    }
+
+    public void change() throws Exception{
+        if (grandTotal <= 0){
+            grandTotal = Math.abs(grandTotal);
+            totalAmount.setText("Total £ " + ("0.00"));
+            changeDue.setText("Change £ " + String.format("%.2f", grandTotal));
+            bookSeats();
+            createCashPDF(cashReciept);
+
+        }
+        else{
+            totalAmount.setText("Total £ " + String.format("%.2f", grandTotal));
+        }
+    }
+
+    private void createCardPDF(String cardReciept) throws DocumentException, IOException {
+
+        File file = new File(CARD);
+        file.getParentFile().mkdirs();
+        //create a document
+        Document document = new Document();
+        //create an instance for it to be generated
+        PdfWriter.getInstance(document, new FileOutputStream(cardReciept));
+        document.open();
+        document.add(new Paragraph("Osprey Cinema"));
+        document.add(new Paragraph("University Of Leeds Union"));
+        document.add(new Paragraph("Leeds\n\n"));
+        document.add(new Paragraph(filmname + "                  " + "£" + ticktPrice + "\n\n"));
+        document.add(new Paragraph("**** **** **** 6190"));
+        document.add(new Paragraph("Visa Debit "));
+        document.add(new Paragraph("Merchant ID: **12345 \n Terminal ID: ****1234  \n\n"));
+        document.add(new Paragraph("SALE \n\n"));
+        document.add(new Paragraph("Your account will be debited with the total amount shown: \n Total: " + "AMOUNT \n"));
+        document.add(new Paragraph("Number of items: " + items + "\n\n"));
+        document.add(new Paragraph("SOURCE:     CONTACTLESS \n\n"));
+        document.add(new Paragraph("Authorisation Code: 12387 \n\n"));
+        document.add(new Paragraph("Please keep this reciept for your records. \n\n"));
+        document.add(new Paragraph("CUSTOMER COPY \n\n"));
+        document.add(new Paragraph("T O T A L " + "           " + grandTotal + "\n\n"));
+        document.add(new Paragraph("Thank you for visiting Britains Best Cinema Experience"));
+        document.add(new Paragraph("#OspreyCinemaWhereExcitingHappens\n\n"));
+        document.add(new Paragraph("Tell us how we did by sending us an email\n with the chance to win £100. \n Eamil: ukoc@OSPREYCinema.com \n"));
+        document.close();
+    }
+
+    private void createCashPDF(String cashReciept) throws DocumentException, IOException {
+
+        File file = new File(CASH);
+        file.getParentFile().mkdirs();
+        //create a document
+        Document document = new Document();
+        //create an instance for it to be generated
+        PdfWriter.getInstance(document, new FileOutputStream(cashReciept));
+        document.open();
+        document.add(new Paragraph("Osprey Cinema"));
+        document.add(new Paragraph("University Of Leeds Union"));
+        document.add(new Paragraph("Leeds\n\n"));
+        document.add(new Paragraph(filmname + "                  " + "£" + ticktPrice + "\n\n"));
+        document.add(new Paragraph("Cash Payment "));
+        document.add(new Paragraph("Merchant ID: **12345 \n Terminal ID: ****1234  \n\n"));
+        document.add(new Paragraph("SALE \n\n"));
+        document.add(new Paragraph("You have been charged: \n Total: " + "AMOUNT \n"));
+        document.add(new Paragraph("Number of items: " + items + "\n\n"));
+        document.add(new Paragraph("SOURCE:     CASH\n\n"));
+        document.add(new Paragraph("Authorisation Code: 12387 \n\n"));
+        document.add(new Paragraph("Please keep this reciept for your records. \n\n"));
+        document.add(new Paragraph("CUSTOMER COPY \n\n"));
+        document.add(new Paragraph("T O T A L " + "           " + transTotal + "\n\n"));
+        document.add(new Paragraph("Thank you for visiting Britains Best Cinema Experience"));
+        document.add(new Paragraph("#OspreyCinemaWhereExcitingHappens\n\n"));
+        document.add(new Paragraph("Tell us how we did by sending us an email\n with the chance to win £100. \n Eamil: ukoc@OSPREYCinema.com \n"));
+        document.close();
+    }
 }

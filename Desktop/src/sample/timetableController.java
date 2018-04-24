@@ -193,7 +193,7 @@ public class timetableController{
       Logger.getLogger(filmScreenController.class.getName());
     }
 
-    bookingScreenController display = Loader.getController();
+    BookingScreenController display = Loader.getController();
     String time = (((Button)event.getSource()).getText());
     String buttonID = (((Button)event.getSource()).getId());
 
@@ -251,7 +251,7 @@ public class timetableController{
   //     Logger.getLogger(filmScreenController.class.getName());
   //   }
   //
-  //   bookingScreenController display = Loader.getController();
+  //   BookingScreenController display = Loader.getController();
   //   String time = film1.getText();
   //   display.setDate(inputDate); //pass date to next controller
   //   display.setTime(time); //pass film ID
@@ -273,7 +273,7 @@ public class timetableController{
   //     Logger.getLogger(filmScreenController.class.getName());
   //   }
   //
-  //   bookingScreenController display = Loader.getController();
+  //   BookingScreenController display = Loader.getController();
   //   String time = film9.getText();
   //   display.setDate(inputDate); //pass date to next controller
   //   display.setTime(time); //pass film ID

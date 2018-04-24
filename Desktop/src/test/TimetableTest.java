@@ -1,5 +1,5 @@
 /**
- * MainTest.java
+ * TimetableTest.java
  */
 
 package sample;
@@ -10,6 +10,6 @@ import static org.hamcrest.CoreMatchers.*;
  /**
   * Test class for ...
   */
- public class MainTest {
+ public class TimetableTest {
 
  }
