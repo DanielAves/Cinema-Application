@@ -29,21 +29,21 @@ public class FilmTest {
     @Test
     public void testFilmIDSet() {
 
-      //Integer testID = 123;
+      Integer testID = 123;
 
-      //testFilm.setFilmID(testID);
+      testFilm.setFilm_id(testID);
 
-      //assertThat(testFilm.getFilmID(), is(testID));
+      assertThat(testFilm.getFilm_id(), is(testID));
     }
-/*
+
     @Test
     public void testFilmNameSet() {
 
       String testFilmName = "alpha";
 
-      //testFilm.setFilmName(testFilmName);
+      testFilm.setFilm_name(testFilmName);
 
-      //assertThat(testFilm.getFilmName(), is(testFilmName));
+      assertThat(testFilm.getFilm_name(), is(testFilmName));
     }
 
     @Test
@@ -51,9 +51,9 @@ public class FilmTest {
 
       String testFilmDesc = "Lorem Ipsum";
 
-      //testFilm.setFilmDescription(testFilmDesc);
+      testFilm.setFilm_description(testFilmDesc);
 
-      //assertThat(testFilm.getFilmDescription(), is(testFilmDesc));
+      assertThat(testFilm.getFilm_description(), is(testFilmDesc));
     }
 
     @Test
@@ -61,9 +61,9 @@ public class FilmTest {
 
       Integer testFilmRuntime = 100;
 
-      //testFilm.setFilmRuntime(testFilmRuntime);
+      testFilm.setFilm_runtime(testFilmRuntime);
 
-      //assertThat(testFilm.getFilmRuntime(), is(testFilmRuntime));
+      assertThat(testFilm.getFilm_runtime(), is(testFilmRuntime));
     }
 
     @Test
@@ -71,19 +71,46 @@ public class FilmTest {
 
       String testFilmDirector = "spielberg";
 
-      //testFilm.setFilmDirector(testFilmDirector);
+      testFilm.setFilm_director(testFilmDirector);
 
-      //assertThat(testFilm.getFilmDirector(), is(testFilmDirector));
+      assertThat(testFilm.getFilm_director(), is(testFilmDirector));
     }
 
     @Test
     public void testFilmAgeRatingSet() {
 
-      Integer testFilmAgeRating = 18;
+      String testFilmAgeRating = "18";
 
-      //testFilm.setFilmAgeRating(testFilmAgeRating);
+      testFilm.setFilm_age_rating(testFilmAgeRating);
 
-      //assertThat(testFilm.getFilmAgeRating(), is(testFilmAgeRating));
+      assertThat(testFilm.getFilm_age_rating(), is(testFilmAgeRating));
     }
-*/
+
+    @Test
+    public void testToString() {
+
+      String testFilmAgeRating = "18";
+      testFilm.setFilm_age_rating(testFilmAgeRating);
+
+      String testFilmDirector = "spielberg";
+      testFilm.setFilm_director(testFilmDirector);
+
+      Integer testFilmRuntime = 100;
+      testFilm.setFilm_runtime(testFilmRuntime);
+
+      Integer testID = 123;
+
+      testFilm.setFilm_id(testID);
+      String testFilmName = "alpha";
+
+      testFilm.setFilm_name(testFilmName);
+      String testFilmDesc = "Lorem Ipsum";
+
+      testFilm.setFilm_description(testFilmDesc);
+
+      String expectedOut = "Film [film_id=" + testID + ", film_name=" + testFilmName + ", film_description=" + testFilmDesc + ", film_runtime=" + testFilmRuntime + ", film_director=" + testFilmDirector + ", film_age_rating=" + testFilmAgeRating + "]";
+
+      assertThat(testFilm.toString(), is(expectedOut));
+    }
+
 }

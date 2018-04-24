@@ -85,7 +85,9 @@
       <junit fork="true">
         <classpath refid="project.classpath"/>
         <formatter type="plain" usefile="false"/>
+        <test name="sample.BookingScreenControllerTest"/>
         <test name="sample.FilmTest"/>
+        <test name="sample.ScreeningTest"/>
       </junit>
     </target>
 

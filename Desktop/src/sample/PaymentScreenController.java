@@ -234,9 +234,9 @@ public class PaymentScreenController {
         document.add(new Paragraph("Please keep this reciept for your records. \n\n"));
         document.add(new Paragraph("CUSTOMER COPY \n\n"));
         document.add(new Paragraph("T O T A L " + "           " + grandTotal + "\n\n"));
-        document.add(new Paragraph("Thank you for visiting Britains Best Value and Cinema Cinema"));
+        document.add(new Paragraph("Thank you for visiting Britains Best Value and Cinema Experience"));
         document.add(new Paragraph("#OspreyCinemaWhereExcitingHappens\n\n"));
-        document.add(new Paragraph("Tell us how we did by sending us an email\n with the chance to win £100. \n Eamil: ukoc@OSPREYCinema.com \n Eamil: ukoc@OSPREYCinema.com"));
+        document.add(new Paragraph("Tell us how we did by sending us an email\n with the chance to win £100. \n Eamil: ukoc@OSPREYCinema.com \n"));
         document.close();
     }
 }
