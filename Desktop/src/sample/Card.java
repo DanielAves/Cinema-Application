@@ -1,5 +1,14 @@
-package sample;
-public class Card {
+/**
+ * Card.java
+ */
 
+package sample;
+
+/**
+ * Class for ...
+ *
+ * @author
+ */
+public class Card {
 
 }

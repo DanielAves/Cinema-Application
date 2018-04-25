@@ -138,7 +138,7 @@ public class Film {
 	}
 
 	/**
-	 * @return String representation of Film for printing
+	 * @return String representation of Film for printing.
 	 */
 	@Override
 	public String toString() {
