@@ -231,7 +231,11 @@ public class PaymentScreenController {
       changeDue.setText("Change £ " + String.format("%.2f", grandTotal));
       bookSeats();
       createCashPDF(cashReciept);
-
+    }
+    else if (grandTotal == 0.0){
+        totalAmount.setText("Total £ " + ("0.00"));
+        changeDue.setText("");
+        bookSeats();
     }
     else{
       totalAmount.setText("Total £ " + String.format("%.2f", grandTotal));
