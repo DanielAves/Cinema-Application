@@ -11,14 +11,18 @@ import java.time.LocalTime;
 import java.time.Month;
 
 /**
- * Test class for ...
+ * Test class for Screening.java. Used to ensure class is working as
+ * intended and appropriate validation has been used.
+ *
+ * @author Ben Ashby & Qasim Hussain
  */
 public class ScreeningTest {
 
+  /** Screening test object. */
   private Screening testScreening;
 
   /**
-   * Sets up the test fixture. (Called before every test case method)
+   * Sets up the test fixture (called before every test case method).
    */
   @Before
   public void setUp() {
@@ -26,83 +30,122 @@ public class ScreeningTest {
   }
 
   /**
-   * Tears down the test fixture. (Called after every test case method)
+   * Tears down the test fixture (called after every test case method).
    */
   @After
   public void tearDown() {
-
+    testScreening = null;
   }
 
+  /**
+   * Test screening_id can be set.
+   */
   @Test
-  public void testScreeningIDSet() {
-    Integer testScreeningID = 123;
+  public void testPosScreeningID() {
+    int testScreeningID = 1;
     testScreening.setScreening_id(testScreeningID);
     assertThat(testScreening.getScreening_id(), is(testScreeningID));
   }
 
-  @Test
-  public void testScreeningTimeSet() {
-
-    LocalTime testTime = LocalTime.of(12,30,45,50);
-
-    testScreening.setScreening_time(testTime);
-
-    assertThat(testScreening.getScreening_time(), is(testTime));
+  /**
+   * Test screening_id cannot be set to a negative integer.
+   * @param IllegalArgumentException.class Expected if negative value used.
+   */
+  @Test(expected = IllegalArgumentException.class)
+  public void testNegScreeningID() {
+    int testScreeningID = -1;
+    testScreening.setScreening_id(testScreeningID);
   }
 
+  /**
+   * Test film_id can be set.
+   */
   @Test
-  public void testScreeningDateSet() {
-
-    LocalDate testDate = LocalDate.of(2018, Month.JANUARY, 1);
-
-    testScreening.setScreening_date(testDate);
-
-    assertThat(testScreening.getScreening_date(), is(testDate));
-  }
-
-  @Test
-  public void testFilmIDSet() {
-
-    Integer testFilmID = 456;
-
+  public void testPosFilmID() {
+    int testFilmID = 2;
     testScreening.setFilm_id(testFilmID);
-
     assertThat(testScreening.getFilm_id(), is(testFilmID));
   }
 
+  /**
+   * Test film_id cannot be set to a negative integer.
+   * @param IllegalArgumentException.class Expected if negative value used.
+   */
+  @Test(expected = IllegalArgumentException.class)
+  public void testNegFilmID() {
+    int testFilmID = -2;
+    testScreening.setFilm_id(testFilmID);
+  }
+
+  /**
+   * Test screening_time can be set.
+   */
   @Test
-  public void testScreenIDSet() {
+  public void testScreeningTime() {
+    LocalTime testScreeningTime = LocalTime.of(12,30,45,50);
+    testScreening.setScreening_time(testScreeningTime);
+    assertThat(testScreening.getScreening_time(), is(testScreeningTime));
+  }
 
-    Integer testScreenID = 789;
+  /**
+   * Test screening_date can be set.
+   */
+  @Test
+  public void testScreeningDate() {
+    LocalDate testScreeningDate = LocalDate.of(2018, Month.JANUARY, 1);
+    testScreening.setScreening_date(testScreeningDate);
+    assertThat(testScreening.getScreening_date(), is(testScreeningDate));
+  }
 
+  /**
+   * Test screening_date cannot be in the future.
+   * @param IllegalArgumentException.class Expected if SD is in the future.
+   */
+  @Test(expected = IllegalArgumentException.class)
+  public void testFutureScreeningDate() {
+    LocalDate testScreeningDate = LocalDate.of(3018, Month.JANUARY, 1);
+    testScreening.setScreening_date(testScreeningDate);
+  }
+
+  /**
+   * Test screen_id can be set.
+   */
+  @Test
+  public void testPosScreenID() {
+    int testScreenID = 3;
     testScreening.setScreen_id(testScreenID);
-
     assertThat(testScreening.getScreen_id(), is(testScreenID));
   }
 
+  /**
+   * Test screen_id cannot be set to a negative integer.
+   * @param IllegalArgumentException.class Expected if negative value used.
+   */
+  @Test(expected = IllegalArgumentException.class)
+  public void testNegScreenID() {
+    int testScreenID = -3;
+    testScreening.setScreen_id(testScreenID);
+  }
+
+  /**
+   * Test Screening.java toString method.
+   */
   @Test
   public void testToString() {
-
-    Integer testScreeningID = 123;
-    testScreening.setScreening_id(testScreeningID);
-
+    int testScreeningID = 1;
+    int testFilmID = 2;
     LocalTime testTime = LocalTime.of(12,30,45,50);
-    testScreening.setScreening_time(testTime);
-
     LocalDate testDate = LocalDate.of(2018, Month.JANUARY, 1);
-    testScreening.setScreening_date(testDate);
-
-    Integer testFilmID = 456;
-    testScreening.setFilm_id(testFilmID);
-
-    Integer testScreenID = 789;
-    testScreening.setScreen_id(testScreenID);
+    int testScreenID = 3;
 
     String expectedOut = "Screening [screening_id=" + testScreeningID + ", film_id=" + testFilmID + ", screening_time=" + testTime + ", screening_date=" + testDate + ", screen_id=" + testScreenID + "]";
 
+    testScreening.setScreening_id(testScreeningID);
+    testScreening.setFilm_id(testFilmID);
+    testScreening.setScreening_time(testTime);
+    testScreening.setScreening_date(testDate);
+    testScreening.setScreen_id(testScreenID);
+
     assertThat(testScreening.toString(), is(expectedOut));
   }
-
-
-
 }
