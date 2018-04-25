@@ -38,10 +38,61 @@ public class SeatingScreenController {
   int screenID;
   List seats = new ArrayList();
   int counter =0;
+  LocalDate inputDate;
+  String inputTime;
+  int inputFilmID;
+  String inputFilmName;
+  int screeningID;
+
+
 
   public void setTotal(double grandTotal2){
     totalNew = grandTotal2;
   }
+
+  /**
+  * Sets the local variable inputDate to the passed date from
+  * BookingScreenController.
+  * @param date.
+  */
+  public void setDate(LocalDate date){
+    inputDate = date;
+  }
+
+  /**
+  * Sets the local variable screeningID to the passed screening id from
+  * TimeTableController.
+  * @param time.
+  */
+  public void setScreeningID(int id){
+    screeningID = id;
+  }
+
+  /**
+  * Returns passed filmID used for back function
+  * @param id
+  */
+  public void setFilmID(int id){
+    inputFilmID = id;
+  }
+
+  /**
+  * Returns passed filmName used for back function
+  * @param name
+  */
+  public void setFilmName(String name){
+    inputFilmName = name;
+  }
+
+  /**
+  * Sets the local variable inputTime to the passed time from
+  * BookingScreenController.
+  * @param time.
+  */
+  public void setTime(String time){
+    inputTime = time;
+  }
+
   public void payClicked(ActionEvent event)throws IOException{
     FXMLLoader Loader = new FXMLLoader();
     Loader.setLocation(getClass().getResource("resources/PaymentScreen.fxml"));
@@ -74,11 +125,10 @@ public class SeatingScreenController {
     else{
       for(Ticket t : ticketsSold){
         //Ticket ticket = (Ticket) ticket.getScreening_id();
-          int seat = t.getSeat_id();
-          takenSeats(seat);
-        }
+        int seat = t.getSeat_id();
+        takenSeats(seat);
       }
-
+    }
   }
   public void seatSelection(ActionEvent event) throws Exception {
     //Pass ticket total to here and define array based on the amount of seats to be selected based on tickets
@@ -90,17 +140,60 @@ public class SeatingScreenController {
     else{
       seats.add(seatText);
       ((Button)event.getSource()).setText("X");
-    //   ((Button)event.getSource()).setStyle("fx-background-color: #565656");
-
-
     }
-
-    //int seatNum = Integer.parseInt((((Button)event.getSource()).getText()));
-    //String seatNum = (((Button)event.getSource()).getId());
-    //int seats2 = Integer.parseInt(seats.get(0).toString());
-
   }
 
+
+  public void backButtonClicked(ActionEvent event) throws Exception {
+    FXMLLoader Loader = new FXMLLoader();
+    Loader.setLocation(getClass().getResource("resources/bookingScreen.fxml"));
+    try{
+      Loader.load();
+    }catch (IOException ex){
+      Logger.getLogger(BookingScreenController.class.getName());
+    }
+
+    BookingScreenController display = Loader.getController();
+    //Get information from clicked button
+    String time = (((Button)event.getSource()).getText());
+    String buttonID = (((Button)event.getSource()).getId());
+
+    display.setDate(inputDate); //pass date to next controller
+    display.setTime(inputTime); //pass time
+    display.setScreeningID(screeningID);
+    display.setFilmID(inputFilmID);
+    display.setFilmName(inputFilmName);
+
+    Parent p = Loader.getRoot();
+    Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    window.setScene(new Scene(p));
+    window.show();
+  }
+
+  public void refreshScreen(ActionEvent event) throws Exception{
+    FXMLLoader Loader = new FXMLLoader();
+    Loader.setLocation(getClass().getResource("resources/seatingScreen.fxml"));
+    try{
+      Loader.load();
+    }catch (IOException ex){
+      Logger.getLogger(SeatingScreenController.class.getName());
+    }
+
+    SeatingScreenController display = Loader.getController();
+    display.setTotal(totalNew);
+    display.populateSeats(screeningID);
+    display.setTime(inputTime);
+    display.setDate(inputDate);
+    display.setScreeningID(screeningID);
+    display.setFilmID(inputFilmID);
+    display.setFilmName(inputFilmName);
+
+
+    Parent p = Loader.getRoot();
+    Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    window.setScene(new Scene(p));
+    window.show();
+  }
   public void takenSeats(int seat){
     switch (seat) {
       case 1: seat1.setText("Taken");
@@ -122,7 +215,7 @@ public class SeatingScreenController {
       seat6.setStyle("-fx-background-color: #4286f4");
       break;
       case 7: seat7.setText("Taken");
-    //   seat7.setStyle("-fx-background-color: ##1200dd");
+      //   seat7.setStyle("-fx-background-color: ##1200dd");
       seat7.setStyle("-fx-background-color: #4286f4");
       break;
       case 8: seat8.setText("Taken");

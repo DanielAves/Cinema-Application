@@ -123,7 +123,7 @@ public class PaymentScreenController {
   }
 
   public void logoutButtonClicked(ActionEvent event) throws IOException{
-    Parent secondaryroot = FXMLLoader.load(getClass().getResource("resources/loginScreen.fxml"));
+    Parent secondaryroot = FXMLLoader.load(getClass().getResource("resources/homeScreen.fxml"));
     Scene filmScreen = new Scene(secondaryroot);
     Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
     window.setScene(filmScreen);

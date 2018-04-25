@@ -57,24 +57,8 @@
     </copy>
   </target>
 
-  <target name="compile2" depends="init" description="Compile RestClient">
-    <javac srcdir="${RestClient.dir}" destdir="${build.dir}"
-      includeantruntime="false"
-      fork="yes"
-      executable="${JAVA_HOME}/bin/javac"
-      source="1.8">
-      <classpath refid="project.classpath"/>
-    </javac>
-  </target>
-
   <target name="main" depends="compile" description="Run Main">
     <java classname="sample.Main" fork="true" jvm="java">
-      <classpath refid="project.classpath"/>
-    </java>
-  </target>
-
-  <target name="api" depends="compile2" description="Run API">
-    <java classname="Harness" fork="true" jvm="java">
       <classpath refid="project.classpath"/>
     </java>
   </target>

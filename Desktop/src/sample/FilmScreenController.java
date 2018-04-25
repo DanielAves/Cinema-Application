@@ -115,15 +115,6 @@ public class FilmScreenController{
   }
 
 
-  public void logoutButtonClicked(ActionEvent event) throws IOException{
-    Parent secondaryroot = FXMLLoader.load(getClass().getResource("resources/loginScreen.fxml"));
-    Scene filmScreen = new Scene(secondaryroot);
-    Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    window.setScene(filmScreen);
-    window.show();
-
-  }
-
   /**
   * Takes user back a page to homescreen
   * @param event clicking back button
