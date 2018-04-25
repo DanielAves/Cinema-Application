@@ -168,17 +168,6 @@ public class TimeTableController{
     window.show();
   }
 
-
-
-  public void logoutButtonClicked(ActionEvent event) throws IOException{
-    Parent secondaryroot = FXMLLoader.load(getClass().getResource("resources/loginScreen.fxml"));
-    Scene filmScreen = new Scene(secondaryroot);
-    Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    window.setScene(filmScreen);
-    window.show();
-
-  }
-
   /**
   * Loads bookingScreen and passes filmID to the corresponding getController
   * dependent on what button the user clicks
@@ -234,8 +223,10 @@ public class TimeTableController{
     }
 
     display.setDate(inputDate); //pass date to next controller
-    display.setTime(time); //pass film ID
+    display.setTime(time); //pass time
     display.setScreeningID(orderedScreeningIds.get(filmID));
+    display.setFilmID(filmID+1);
+    display.setFilmName(filmName);
 
     Parent p = Loader.getRoot();
     Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();

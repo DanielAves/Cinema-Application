@@ -46,6 +46,8 @@ public class BookingScreenController {
   LocalDate inputDate;
   String inputTime;
   int screeningID;
+  int inputFilmID;
+  String inputFilmName;
 
   /**
   * Sets the local variable inputDate to the passed date from
@@ -64,6 +66,19 @@ public class BookingScreenController {
     return inputDate;
   }
 
+  /**
+  * Returns passed filmID used for back function
+  */
+  public void setFilmID(int id){
+    inputFilmID = id;
+  }
+
+  /**
+  * Returns passed filmName used for back function
+  */
+  public void setFilmName(String name){
+    inputFilmName = name;
+  }
   /**
   * Sets the local variable inputTime to the passed time from
   * TimeTableController.
@@ -99,20 +114,26 @@ public class BookingScreenController {
   }
 
 
-  public void backButtonClicked(ActionEvent event) throws IOException {
-    Parent secondaryroot = FXMLLoader.load(getClass().getResource("resources/filmScreen.fxml"));
-    Scene filmScreen = new Scene(secondaryroot);
-    Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    window.setScene(filmScreen);
-    window.show();
+  public void backButtonClicked(ActionEvent event) throws Exception {
+    FXMLLoader Loader = new FXMLLoader();
+    Loader.setLocation(getClass().getResource("resources/timetableScreen.fxml"));
+    try{
+      Loader.load();
+    }catch (IOException ex){
+      Logger.getLogger(TimeTableController.class.getName());
+    }
 
-  }
+    TimeTableController display = Loader.getController();
+    display.setDate(inputDate); //pass date to next controller
+    System.out.println(inputDate);
+    System.out.println(inputFilmID);
+    System.out.println(inputFilmName);
+    display.calculateShowingTimes(inputFilmID); //pass film ID
+    display.setFilmName(inputFilmName);
 
-  public void logoutButtonClicked(ActionEvent event) throws IOException{
-    Parent secondaryroot = FXMLLoader.load(getClass().getResource("resources/loginScreen.fxml"));
-    Scene filmScreen = new Scene(secondaryroot);
+    Parent p = Loader.getRoot();
     Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    window.setScene(filmScreen);
+    window.setScene(new Scene(p));
     window.show();
 
   }
@@ -262,6 +283,12 @@ public class BookingScreenController {
     SeatingScreenController display = Loader.getController();
     display.setTotal(grandTotal2);
     display.populateSeats(screeningID);
+    display.setTime(inputTime);
+    display.setDate(inputDate);
+    display.setScreeningID(screeningID);
+    display.setFilmID(inputFilmID);
+    display.setFilmName(inputFilmName);
+
 
     Parent p = Loader.getRoot();
     Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
