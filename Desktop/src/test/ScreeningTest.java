@@ -14,7 +14,7 @@ import java.time.Month;
  * Test class for Screening.java. Used to ensure class is working as
  * intended and appropriate validation has been used.
  *
- * @author Ben Ashby & Qasim Hussain
+ * @author Ben Ashby and Qasim Hussain
  */
 public class ScreeningTest {
 
@@ -49,7 +49,6 @@ public class ScreeningTest {
 
   /**
    * Test screening_id cannot be set to a negative integer.
-   * @param IllegalArgumentException.class Expected if negative value used.
    */
   @Test(expected = IllegalArgumentException.class)
   public void testNegScreeningID() {
@@ -69,7 +68,6 @@ public class ScreeningTest {
 
   /**
    * Test film_id cannot be set to a negative integer.
-   * @param IllegalArgumentException.class Expected if negative value used.
    */
   @Test(expected = IllegalArgumentException.class)
   public void testNegFilmID() {
@@ -99,7 +97,6 @@ public class ScreeningTest {
 
   /**
    * Test screening_date cannot be in the future.
-   * @param IllegalArgumentException.class Expected if SD is in the future.
    */
   @Test(expected = IllegalArgumentException.class)
   public void testFutureScreeningDate() {
@@ -119,7 +116,6 @@ public class ScreeningTest {
 
   /**
    * Test screen_id cannot be set to a negative integer.
-   * @param IllegalArgumentException.class Expected if negative value used.
    */
   @Test(expected = IllegalArgumentException.class)
   public void testNegScreenID() {

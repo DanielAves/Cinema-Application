@@ -14,7 +14,7 @@ import java.util.*;
  * Test class for PaymentScreenController.java. Used to ensure class is working as
  * intended and appropriate validation has been used.
  *
- * @author Ben Ashby & Qasim Hussain
+ * @author Ben Ashby and Qasim Hussain
  */
 public class PaymentScreenControllerTest {
 
@@ -66,7 +66,6 @@ public class PaymentScreenControllerTest {
 
     /**
      * Test ScreenID cannot be set to a negative integer.
-     * @param IllegalArgumentException.class Expected if negative value used.
      */
     @Test(expected = IllegalArgumentException.class)
     public void testNegScreenID() {

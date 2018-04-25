@@ -46,7 +46,6 @@ public class ScreenTest {
 
   /**
    * Test screen_id cannot be set to a negative integer.
-   * @param IllegalArgumentException.class Expected if negative value used.
    */
   @Test(expected = IllegalArgumentException.class)
   public void testNegScreenID() {
@@ -66,7 +65,6 @@ public class ScreenTest {
 
   /**
    * Test screen_capacity cannot be set to a negative integer.
-   * @param IllegalArgumentException.class Expected if negative value used.
    */
   @Test(expected = IllegalArgumentException.class)
   public void testNegScreenCapacity() {

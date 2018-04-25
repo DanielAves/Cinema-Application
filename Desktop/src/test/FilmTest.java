@@ -11,7 +11,7 @@ import static org.hamcrest.CoreMatchers.*;
  * Test class for Film.java. Used to ensure class is working as
  * intended and appropriate validation has been used.
  *
- * @author Ben Ashby & Qasim Hussain
+ * @author Ben Ashby and Qasim Hussain
  */
 public class FilmTest {
 
@@ -46,7 +46,6 @@ public class FilmTest {
 
   /**
    * Test film_id cannot be set to a negative integer.
-   * @param IllegalArgumentException.class Expected if negative value used.
    */
   @Test(expected = IllegalArgumentException.class)
   public void testNegFilmID() {
@@ -66,7 +65,6 @@ public class FilmTest {
 
   /**
    * Test film_name cannot be an empty string.
-   * @param IllegalArgumentException.class Expected if no name is given.
    */
   @Test(expected = IllegalArgumentException.class)
   public void testNoFilmName() {
@@ -76,7 +74,6 @@ public class FilmTest {
 
   /**
    * Test film_name cannot be null.
-   * @param IllegalArgumentException.class Expected if null string is given.
    */
   @Test(expected = IllegalArgumentException.class)
   public void testNullFilmName() {
@@ -96,7 +93,6 @@ public class FilmTest {
 
   /**
    * Test film_description cannot be an empty string.
-   * @param IllegalArgumentException.class Expected if no desc is given.
    */
   @Test(expected = IllegalArgumentException.class)
   public void testNoFilmDescription() {
@@ -106,7 +102,6 @@ public class FilmTest {
 
   /**
    * Test film_description cannot be null.
-   * @param IllegalArgumentException.class Expected if null string is given.
    */
   @Test(expected = IllegalArgumentException.class)
   public void testNullFilmDescription() {
@@ -126,7 +121,6 @@ public class FilmTest {
 
   /**
    * Test film_runtime cannot be set to a negative integer.
-   * @param IllegalArgumentException.class Expected if negative value used.
    */
   @Test(expected = IllegalArgumentException.class)
   public void testNegFilmRuntime() {
@@ -146,7 +140,6 @@ public class FilmTest {
 
   /**
    * Test film_director cannot be an empty string.
-   * @param IllegalArgumentException.class Expected if no director is given.
    */
   @Test(expected = IllegalArgumentException.class)
   public void testNoFilmDirector() {
@@ -156,7 +149,6 @@ public class FilmTest {
 
   /**
    * Test film_director cannot be null.
-   * @param IllegalArgumentException.class Expected if null string is given.
    */
   @Test(expected = IllegalArgumentException.class)
   public void testNullFilmDirector() {
@@ -176,7 +168,6 @@ public class FilmTest {
 
   /**
    * Test film_age_rating cannot be an empty string.
-   * @param IllegalArgumentException.class Expected if no age rating is given.
    */
   @Test(expected = IllegalArgumentException.class)
   public void testNoFilmAgeRating() {
@@ -186,7 +177,6 @@ public class FilmTest {
 
   /**
    * Test film_age_rating cannot be null.
-   * @param IllegalArgumentException.class Expected if null string is given.
    */
   @Test(expected = IllegalArgumentException.class)
   public void testNullFilmAgeRating() {

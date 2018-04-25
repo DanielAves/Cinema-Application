@@ -14,7 +14,7 @@ import java.util.*;
  * Test class for GenericWrapper.java. Used to ensure class is working as
  * intended and appropriate validation has been used.
  *
- * @author Ben Ashby & Qasim Hussain
+ * @author Ben Ashby and Qasim Hussain
  */
 public class GenericWrapperTest {
 
@@ -66,7 +66,6 @@ public class GenericWrapperTest {
 
     /**
      * Test Num_results cannot be set to a negative integer.
-     * @param IllegalArgumentException.class Expected if negative value used.
      */
     @Test(expected = IllegalArgumentException.class)
     public void testNegNumResults() {
@@ -86,7 +85,6 @@ public class GenericWrapperTest {
 
     /**
      * Test Total_pages cannot be set to a negative integer.
-     * @param IllegalArgumentException.class Expected if negative value used.
      */
     @Test(expected = IllegalArgumentException.class)
     public void testNegTotalPages() {
@@ -106,7 +104,6 @@ public class GenericWrapperTest {
 
     /**
      * Test Page cannot be set to a negative integer.
-     * @param IllegalArgumentException.class Expected if negative value used.
      */
     @Test(expected = IllegalArgumentException.class)
     public void testNegPage() {

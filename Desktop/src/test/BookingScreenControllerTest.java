@@ -13,7 +13,7 @@ import java.time.Month;
  * Test class for BookingScreenController.java. Used to ensure class is working as
  * intended and appropriate validation has been used.
  *
- * @author Ben Ashby & Qasim Hussain
+ * @author Ben Ashby and Qasim Hussain
  */
 public class BookingScreenControllerTest {
 
@@ -48,7 +48,6 @@ public class BookingScreenControllerTest {
 
   /**
    * Test date cannot be in the future.
-   * @param IllegalArgumentException.class Expected if date is in the future.
    */
   @Test(expected = IllegalArgumentException.class)
   public void testFutureDate() {
@@ -68,7 +67,6 @@ public class BookingScreenControllerTest {
 
   /**
    * Test time cannot be an empty string.
-   * @param IllegalArgumentException.class Expected if no time is given.
    */
   @Test (expected = IllegalArgumentException.class)
   public void testNoTime() {
@@ -78,7 +76,6 @@ public class BookingScreenControllerTest {
 
   /**
    * Test time cannot be null.
-   * @param IllegalArgumentException.class Expected if null string is given.
    */
   @Test (expected = IllegalArgumentException.class)
   public void testNullTime() {
@@ -98,7 +95,6 @@ public class BookingScreenControllerTest {
 
   /**
    * Test ScreeningID cannot be set to a negative integer.
-   * @param IllegalArgumentException.class Expected if negative value is used.
    */
   @Test (expected = IllegalArgumentException.class)
   public void testNegScreeningID() {
