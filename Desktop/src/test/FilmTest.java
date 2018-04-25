@@ -8,7 +8,8 @@ import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 
 /**
- * Test class for ...
+ * Test class for Film.java. Used to ensure class is working as
+ * intended and appropriate validation has been used.
  */
 public class FilmTest {
 

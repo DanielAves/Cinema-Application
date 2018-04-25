@@ -7,7 +7,7 @@ package sample;
 /**
  * Class for ...
  *
- * @author Dan Aves
+ * @author Dan Aves & Mitchell Gladstone
  */
 public class Film {
   /** ID number of the film. */
