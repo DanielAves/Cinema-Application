@@ -1,3 +1,7 @@
+/**
+ * BookingScreenController.java
+ */
+
 package sample;
 
 import javafx.application.Platform;
@@ -20,14 +24,11 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 /**
-*
-* Allows selection of particular ticket types.
-* A running total price is displayed dependent on selection
-*
-* @author Dan Aves
-* @version 1.2 (2018-04-22
-*/
-
+ * Class for selection of particular ticket types. A running total price
+ * is displayed dependent on selection
+ *
+ * @author Dan Aves
+ */
 public class BookingScreenController {
 
   @FXML
