@@ -37,7 +37,7 @@ public class BookingScreenControllerTest {
   }
 
   /**
-   * Test Date can be set.
+   * Test date can be set.
    */
   @Test
   public void testDate() {
@@ -47,17 +47,17 @@ public class BookingScreenControllerTest {
   }
 
   /**
-   * Test Date can be set in the future.
+   * Test date cannot be in the future.
+   * @param IllegalArgumentException.class Expected if date is in the future.
    */
-  @Test
+  @Test(expected = IllegalArgumentException.class)
   public void testFutureDate() {
     LocalDate testDate = LocalDate.of(3018, Month.JANUARY, 1);
     testBSC.setDate(testDate);
-    assertThat(testBSC.getDate(), is(testDate));
   }
 
   /**
-   * Test Time can be set.
+   * Test time can be set.
    */
   @Test
   public void testTime() {
@@ -67,7 +67,7 @@ public class BookingScreenControllerTest {
   }
 
   /**
-   * Test Time cannot be an empty string.
+   * Test time cannot be an empty string.
    * @param IllegalArgumentException.class Expected if no time is given.
    */
   @Test (expected = IllegalArgumentException.class)
@@ -77,7 +77,7 @@ public class BookingScreenControllerTest {
   }
 
   /**
-   * Test Time cannot be null.
+   * Test time cannot be null.
    * @param IllegalArgumentException.class Expected if null string is given.
    */
   @Test (expected = IllegalArgumentException.class)
@@ -85,7 +85,6 @@ public class BookingScreenControllerTest {
     String testTime = null;
     testBSC.setTime(testTime);
   }
-
 
   /**
    * Test ScreeningID can be set.
@@ -106,5 +105,4 @@ public class BookingScreenControllerTest {
     int testScreeningID = -123;
     testBSC.setScreeningID(testScreeningID);
   }
-
 }
