@@ -67,8 +67,14 @@ public class RestClient implements CinemaApi {
 
       public List<Film> getFilms() throws Exception{
         String json = this.client.get("film");
-        GenericWrapper<Film> myObjects = mapper.readValue(json, GenericWrapper.class);
-        return myObjects.getObjects();
+        JsonNode jsonNode = mapper.readTree(json).get("objects");
+        String foo = jsonNode.toString();
+
+        TypeReference<List<Film>> mapType = new TypeReference<List<Film>>() {};
+        List<Film> jsonToList = mapper.readValue(foo, mapType);
+
+
+        return jsonToList;
       }
 
       /**
@@ -94,8 +100,16 @@ public class RestClient implements CinemaApi {
 
       public List<Screen> getScreens() throws Exception{
         String json = this.client.get("screen");
-        GenericWrapper<Screen> myObjects = mapper.readValue(json, GenericWrapper.class);
-        return myObjects.getObjects();
+        //GenericWrapper<Screen> myObjects = mapper.readValue(json, GenericWrapper.class);
+      //  return myObjects.getObjects();
+      JsonNode jsonNode = mapper.readTree(json).get("objects");
+      String foo = jsonNode.toString();
+
+      TypeReference<List<Screen>> mapType = new TypeReference<List<Screen>>() {};
+      List<Screen> jsonToList = mapper.readValue(foo, mapType);
+
+
+      return jsonToList;
       }
       /**
       * Screenings methods
@@ -168,8 +182,14 @@ public class RestClient implements CinemaApi {
 
       public List<Seat> getSeats() throws Exception{
         String json = this.client.get("seat");
-        GenericWrapper<Seat> myObjects = mapper.readValue(json, GenericWrapper.class);
-        return myObjects.getObjects();
+        JsonNode jsonNode = mapper.readTree(json).get("objects");
+        String foo = jsonNode.toString();
+
+        TypeReference<List<Seat>> mapType = new TypeReference<List<Seat>>() {};
+        List<Seat> jsonToList = mapper.readValue(foo, mapType);
+
+
+        return jsonToList;
       }
 
       /**
@@ -199,8 +219,29 @@ public class RestClient implements CinemaApi {
 
       public List<Ticket> getTickets() throws Exception{
         String json = this.client.get("ticket");
-        GenericWrapper<Ticket> myObjects = mapper.readValue(json, GenericWrapper.class);
-        return myObjects.getObjects();
+        JsonNode jsonNode = mapper.readTree(json).get("objects");
+        String foo = jsonNode.toString();
+
+        TypeReference<List<Ticket>> mapType = new TypeReference<List<Ticket>>() {};
+        List<Ticket> jsonToList = mapper.readValue(foo, mapType);
+
+
+        return jsonToList;
       }
+
+      public List<Ticket> getTicketsByScreening(int screeningID) throws Exception {
+        String filter =  "{%22filters%22:[{%22name%22:%22screening_id%22,%22op%22:%22eq%22,%22val%22:%22" +screeningID+"%22}]}" ;
+        String json = this.client.get("ticket?q="+filter);
+
+        JsonNode jsonNode = mapper.readTree(json).get("objects");
+        String foo = jsonNode.toString();
+
+        TypeReference<List<Ticket>> mapType = new TypeReference<List<Ticket>>() {};
+        List<Ticket> jsonToList = mapper.readValue(foo, mapType);
+
+
+        return jsonToList;
+      }
+
 
 }

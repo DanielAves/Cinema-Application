@@ -60,28 +60,20 @@ public class SeatingScreenController {
     RestClient client = new RestClient("localhost", 5000);
     screenID = screeningID;
     List tickets = new ArrayList();
-    if (client.getTickets() == null){
+    List<Ticket> ticketsSold = new ArrayList<Ticket>();
+    ticketsSold = client.getTicketsByScreening(screenID) ;
+
+    if (ticketsSold.size()== 0 ){
       //Do nothing, prevents errors.
     }
     else{
-      tickets = client.getTickets();
-      int ticketAmount = tickets.size();
-      List screeningsList = new ArrayList();
-      screeningsList = client.getScreenings();
-
-      for(int i =1; i <=ticketAmount; i++){
+      for(Ticket t : ticketsSold){
         //Ticket ticket = (Ticket) ticket.getScreening_id();
-
-        Ticket ticket = client.getTicket(i);
-        int ticketScreenID = ticket.getScreening_id();
-
-        if (screeningID == ticketScreenID){
-          int seat = ticket.getSeat_id();
-
+          int seat = t.getSeat_id();
           takenSeats(seat);
         }
       }
-    }
+
   }
   public void seatSelection(ActionEvent event) throws Exception {
     //Pass ticket total to here and define array based on the amount of seats to be selected based on tickets
