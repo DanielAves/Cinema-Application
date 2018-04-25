@@ -50,7 +50,6 @@ public class BookingScreenController {
   * Sets the local variable inputDate to the passed date from
   * TimeTableController.
   * @param date.
-  * @return Nothing.
   */
   public void setDate(LocalDate date){
     inputDate = date;
@@ -68,7 +67,6 @@ public class BookingScreenController {
   * Sets the local variable inputTime to the passed time from
   * TimeTableController.
   * @param time.
-  * @return Nothing.
   */
   public void setTime(String time){
     inputTime = time;
@@ -86,7 +84,6 @@ public class BookingScreenController {
   * Sets the local variable screeningID to the passed screening id from
   * TimeTableController.
   * @param time.
-  * @return Nothing.
   */
   public void setScreeningID(int id){
     screeningID = id;
@@ -251,7 +248,6 @@ public class BookingScreenController {
   * Once 'selectSeats' is clicked, seatingScreen is loaded.
   *
   * @param event clicking 'selectSeats' button
-  * @return Nothing.
   */
   public void selectSeats(ActionEvent event) throws Exception{
     FXMLLoader Loader = new FXMLLoader();

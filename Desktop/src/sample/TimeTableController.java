@@ -55,7 +55,6 @@ public class TimeTableController{
   * Sets the local variable inputDate to the passed date from
   * FilmScreenController, dependent on user selection.
   * @param date.
-  * @return Nothing.
   */
   public void setDate(LocalDate date){
     inputDate = date;
@@ -65,7 +64,6 @@ public class TimeTableController{
   * Updates the local variable filmName, from the passed name which is dependent on
   * previous selections.
   * @param name.
-  * @return Nothing.
   */
   public void setFilmName(String name){
     filmName = name;
@@ -76,7 +74,6 @@ public class TimeTableController{
   * This method fetches the correct film times dependent on the previously selected
   * date and film (filmID)
   * @param filmID Used to find all times specific to that film
-  * @return Nothing.
   */
   public void calculateShowingTimes(int filmID) throws Exception{
     RestClient client = new RestClient("localhost", 5000);
@@ -150,7 +147,6 @@ public class TimeTableController{
   /**
   * Loads previous screen when back button is clicked
   * @param event.
-  * @return Nothing.
   */
   public void backButtonClicked(ActionEvent event) throws Exception {
     FXMLLoader Loader = new FXMLLoader();
@@ -187,7 +183,6 @@ public class TimeTableController{
   * Loads bookingScreen and passes filmID to the corresponding getController
   * dependent on what button the user clicks
   * @param event.
-  * @return Nothing.
   */
   public void timeClicked(javafx.event.ActionEvent event) throws IOException{
 

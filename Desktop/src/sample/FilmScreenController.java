@@ -29,7 +29,6 @@ import java.time.LocalTime;
 *
 *
 * @author Dan Aves
-* @version 1.4 (2018-04-24)
 */
 
 public class FilmScreenController{
@@ -50,7 +49,6 @@ public class FilmScreenController{
   * HomeScreenController, dependent on user selection. Also sets text
   * on the UI.
   * @param date.
-  * @return Nothing.
   */
   public void setDate(LocalDate date){
     inputDate = date;
@@ -61,7 +59,6 @@ public class FilmScreenController{
   * This method fetches the correct film names dependent on the previously selected
   * date.
   * @param date Used to find all film names
-  * @return Nothing.
   */
   public void setScreen(LocalDate date) throws Exception{
     RestClient client = new RestClient("localhost", 5000);
@@ -130,7 +127,6 @@ public class FilmScreenController{
   /**
   * Takes user back a page to homescreen
   * @param event clicking back button
-  * @return Nothing.
   */
   public void backButtonClicked(ActionEvent event) throws IOException{
     Parent secondaryroot = FXMLLoader.load(getClass().getResource("resources/homeScreen.fxml"));
@@ -145,7 +141,6 @@ public class FilmScreenController{
   * for that particular film.
   *
   * @param event clicking a filmName
-  * @return Nothing.
   */
   public void selectFilm(ActionEvent event) throws Exception{
 
