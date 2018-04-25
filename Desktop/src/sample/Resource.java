@@ -6,6 +6,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.Map;
 import java.util.HashMap;
 
+/**
+*Class used for object mapping 
+* @author Mitchell Gladstone
+*/
+
 public abstract class Resource {
 
   protected static HttpClient client;
