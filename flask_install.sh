@@ -4,7 +4,7 @@ module add anaconda3/5.0.1
 
 conda create -n flask python
 source activate flask
-
+#activates flask and installs any relevent libraries
 pip install flask
 pip install flask-login
 pip install flask-mail

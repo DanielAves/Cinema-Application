@@ -10,20 +10,23 @@ from app.models import Customer,Card,Film,Screen,Screening,Login,Seat,Staff,Tick
 import datetime,pyqrcode,cairosvg
 mail=Mail(app)
 bcrypt = Bcrypt(app)
-
+#specified imports are for qrcode, pdf creator, email and encryption
 
 @app.route('/confirm')
 def confirm():
+    #will simply load the confirm page in html
     return render_template('confirm.html', title='Successful Transaction')
 
 @app.route('/search',methods=['GET', 'POST'])
 def search():
+    #This will create empty film queries.
     films = Film.query.filter(Film.film_name.like("")).all()
     screenings = Screening.query.filter(Screening.screening_date.like("")).all()
     searchform= SearchForm()
     if searchform.validate_on_submit():
+        #This will search the queries for searchform data as a substring
         films = Film.query.filter(Film.film_name.contains(searchform.search.data)).all()
-        screenings = Screening.query.filter(Screening.screening_time.contains(searchform.search.data)).all()
+        screenings = Screening.query.filter(Screening.screening_date.contains(searchform.search.data)).all()
     return render_template('search.html', title='Search',searchform=searchform,films=films,screenings=screenings)
 
 @app.route('/customer',methods=['GET', 'POST'])
@@ -31,11 +34,13 @@ def customer():
     if 'variable' not in session:
         return redirect(url_for('login'))
     value = session['variable']
+    #if someone is logged in they can't access this and will go to /login
     variableFind = Login.query.filter_by(login_email=value).first()
     customer = Customer.query.filter_by(customer_id=variableFind.customer_id).first()
-
+    #it will find the customer id
     customerform= ChangeCustomerForm()
     message=""
+    #if customer enters valid details it will change the values in db
     if customerform.validate_on_submit():
         findMobile = Customer.query.filter_by(customer_mobile=customerform.mobile.data).first()
         if findMobile:
@@ -57,6 +62,8 @@ def customer():
 def changepassword():
     message = ""
     passwordform = PasswordForm()
+    #if the username/old password are valid it will change the password
+    #and will hash it as well. Else it will say it is an invalid username.
     if passwordform.validate_on_submit():
         variableFind = Login.query.filter_by(login_email=passwordform.changeusername.data).first()
         if variableFind:
@@ -71,26 +78,25 @@ def changepassword():
 
 @app.route('/')
 def index():
+    #This will render the homepage of the site.
     return render_template('index.html', title='Home')
 
 @app.route('/whatson')
 def whatson():
+    #This will display all the films in the db.
     film = Film.query.all()
     return render_template('whatson.html', title='What is on?',film=film)
-
-@app.route('/aboutus')
-def aboutus():
-    return render_template('aboutus.html', title='About us')
 
 @app.route('/myaccount')
 def myaccount():
     if 'variable' not in session:
         return redirect(url_for('login'))
     value = session['variable']
+    #redirects to /login if not logged in.
     variableFind = Login.query.filter_by(login_email=value).first()
     if variableFind:
+        #It will output this data on the myaccount page.
         customer = Customer.query.filter_by(customer_id=variableFind.customer_id).first()
-        #add validation if there is no card added.
         card = Card.query.filter_by(customer_id=variableFind.customer_id).first()
         tickets = Ticket.query.filter_by(customer_id=variableFind.customer_id).all()
     return render_template('myaccount.html', title='My Account',customer=customer,tickets=tickets,card=card)
@@ -100,10 +106,10 @@ def logout():
 	session.pop('variable', None)					#gets rid of the session
 	return redirect(url_for('index'))
 
-@app.route('/movie/<movieID>') #Consider renaming to 'filmpage'
+@app.route('/movie/<movieID>')
 def movie(movieID):
     current = datetime.date.today()
-
+    #will send 7 days worth of data to the movie page
     film = Film.query.filter_by(film_id=movieID).first()
     screening = Screening.query.filter_by(film_id=movieID,screening_date=current).order_by(func.Time(Screening.screening_time)).all()
     screeningtomorrow = Screening.query.filter_by(film_id=movieID).filter_by(screening_date=(current + datetime.timedelta(days=1))).order_by(func.Time(Screening.screening_time)).all()
@@ -116,6 +122,9 @@ def movie(movieID):
 
 @app.route('/seatchoice/<screeningID>')
 def seatchoice(screeningID):
+    #access by the url of screeningID.
+    #uses that to display the screening ID information.
+    #If it is an invalid screening it will redirect to whatson.
     screening = Screening.query.filter_by(screening_id=screeningID).first()
     if screening:
         film = Film.query.filter_by(film_id=screening.film_id).first()
@@ -131,6 +140,9 @@ def checkout(screeningID,seatID):
     if 'variable' not in session:
         return redirect(url_for('login'))
     value = session['variable']
+
+    #This will get the customer information and will then redirect if
+    #the seat has alread been taken.
     variableFind = Login.query.filter_by(login_email=value).first()
     if variableFind:
         customer = Customer.query.filter_by(customer_id=variableFind.customer_id).first()
@@ -146,7 +158,8 @@ def checkout(screeningID,seatID):
                     return redirect(url_for('seatchoice', screeningID=screening.screening_id))
 
 
-        #checks if user allowed to watch this film
+        #checks if user allowed to watch this film and will set the price
+        #structure if over 65.
         age = ""
         ratings = {'U': 4, 'PG': 8, '12': 12,'15': 15,'18': 18}
         if str(film.film_age_rating) in ratings:
@@ -163,6 +176,9 @@ def checkout(screeningID,seatID):
 
         checkoutform = CheckoutForm()
         cardform = CardForm()
+        #if either of the forms are valid it will create the ticket
+        #it will then create the email with some data and a specific qr code.
+        #It converts the svg ticket to a pdf, which is sent with the email.
         if checkoutform.validate_on_submit() or cardform.validate_on_submit():
             another_form = Ticket(customer_id=customer.customer_id,screening_id=screening.screening_id,seat_id=seatID)
             db.session.add(another_form)
@@ -198,8 +214,11 @@ def checkout(screeningID,seatID):
 def login():
     if 'variable' in session:
         return redirect(url_for('myaccount'))
+    #redirects to the myaccount page if logged in
     message=""
     sessionform = SessionForm()
+    #checks the username and the password to allow you to login.
+    #It will decrypt the hash of the password to see.
     if sessionform.validate_on_submit():
         variableFind = Login.query.filter_by(login_email=sessionform.login.data).first()
         if variableFind:
@@ -215,6 +234,8 @@ def signup():
     message1 = ""
     message2 = ""
     signform = SignupForm()
+    #some extra validation to check email and mobile number aren't already
+    #being used if you attempt to signup.
     if signform.validate_on_submit():
         variableFind = Login.query.filter_by(login_email=signform.email.data).first()
         findMobile = Customer.query.filter_by(customer_mobile=signform.mobile.data).first()
@@ -230,7 +251,7 @@ def signup():
             form_thing = Customer(customer_f_name=signform.firstname.data,customer_s_name=signform.surname.data,customer_dob=signform.dob.data,customer_mobile=signform.mobile.data,customer_address=signform.address.data,customer_postcode=signform.postcode.data)
             db.session.add(form_thing)
             db.session.commit()
-
+            #this will hash the password in the db.
             pw_hash = bcrypt.generate_password_hash(signform.confirm.data)
             another_form = Login(customer_id=form_thing.customer_id,login_email=signform.email.data,login_password=pw_hash,login_hint=signform.hint.data)
             db.session.add(another_form)
@@ -244,22 +265,27 @@ def card():
     if 'variable' not in session:
         return redirect(url_for('login'))
     value = session['variable']
+    #have to be logged in to access page.
     variableFind = Login.query.filter_by(login_email=value).first()
     cardform = CardForm()
     if cardform.validate_on_submit():
+        #this will ensure the card number isn't already being used.
         numberFind = Card.query.filter_by(card_number=decode(cardform.number.data)).first()
         if numberFind:
             message = "Card Number is already being used"
         else:
+            #if it isn't it will add the card to a customer.
             cardFind = Card.query.filter_by(customer_id=variableFind.customer_id).first()
             expirydate = int(str(cardform.expirymonth.data) + str(cardform.expiryyear.data))
             if cardFind:
+                #it will replace a previous card.
                 cardFind.card_number=encode(cardform.number.data)
                 cardFind.card_expiry=encode(expirydate)
                 cardFind.card_cvv=encode(cardform.cvv.data)
                 db.session.commit()
                 return redirect(url_for('myaccount'))
             else:
+                #or it will add a brand new card.
                 form_thing = Card(customer_id=variableFind.customer_id,card_number=encode(cardform.number.data),
                 card_expiry=encode(expirydate),card_cvv=encode(cardform.cvv.data))
                 db.session.add(form_thing)
@@ -270,10 +296,12 @@ def card():
     return render_template('card.html', title='Card', cardform=cardform,message=message)
 
 def agefinder(dob):
-        today = datetime.date.today()
-        return today.year - dob.year - ((today.month, today.day) < (dob.month, dob.day))
+    #will find an age from a dob
+    today = datetime.date.today()
+    return today.year - dob.year - ((today.month, today.day) < (dob.month, dob.day))
 
 def seatfinder(seat,screening):
+    #will find if a seat has been taken.
     ticket = Ticket.query.filter_by(screening_id=screening.screening_id).all()
     if ticket:
         for each in ticket:
@@ -283,6 +311,7 @@ def seatfinder(seat,screening):
         return False
 
 def timepassed(time):
+    #will see if the screening time has passed.s
     now = datetime.datetime.now().time()
     if now < time:
         return False
@@ -290,12 +319,14 @@ def timepassed(time):
         return True
 
 def encode(number):
+    #encodes card information
 	encoded = number * 2
 	encoded = encoded + 40
 	encoded = encoded / 4
 	return encoded
 
 def decode(number):
+    #decodes card information.
     decoded = number * 4
     decoded = decoded - 40
     decoded = decoded / 2
@@ -304,3 +335,4 @@ def decode(number):
 app.jinja_env.globals.update(seatfinder=seatfinder)
 app.jinja_env.globals.update(timepassed=timepassed)
 app.jinja_env.globals.update(decode=decode)
+#these functions are used in jinja2

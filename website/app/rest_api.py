@@ -6,7 +6,7 @@ from .models import Card, Customer, Film, Screen, Screening, Seat, Staff, Ticket
 
 manager = flask_restless.APIManager(app, flask_sqlalchemy_db=db)
 
-
+#Defining get put and post for all models and ignoring back referencing.
 manager.create_api(Card, methods=['GET', 'POST','PUT', 'DELETE'])
 manager.create_api(Customer, methods=['GET', 'POST','PUT', 'DELETE'])
 manager.create_api(Film, methods=['GET', 'POST','PUT', 'DELETE'],exclude_columns=['screening', 'film_poster'])

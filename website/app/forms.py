@@ -8,12 +8,14 @@ class SessionForm(Form):
     password = PasswordField('password', validators=[DataRequired()])
 
 def validate_mobile(form, field):
+    #used to validate a correct uk mobile is entered.
     rule = re.compile(r'^(\+44\s?7\d{3}|\(?07\d{3}\)?)\s?\d{3}\s?\d{3}$')
     if not rule.search(str(field.data)):
         msg = u"Invalid mobile number."
         raise ValidationError(msg)
 
 class SignupForm(Form):
+    #fields used to signup as a new customer
     firstname = TextField('firstname', validators=[DataRequired()])
     surname = TextField('surname', validators=[DataRequired()])
     dob = DateField('dob', validators=[DataRequired()],format='%Y-%m-%d')
@@ -26,37 +28,44 @@ class SignupForm(Form):
     hint = TextField('hint', validators=[DataRequired()])
 
 class PasswordForm(Form):
+    #fielsd used to allow you to change password
     changeusername = TextField('changeusername', validators=[DataRequired()])
     changepassword = PasswordField('changepassword', validators=[DataRequired()]) #Used for changing password
     newpassword = PasswordField('newpassword', validators=[DataRequired()])
     hint = TextField('hint', validators=[DataRequired()])
 
 def validate_cardnumber(form, field):
-        str(field.data).strip()
-        if len(str(field.data)) != 16:
-            if len(str(field.data)) != 15:
-                if len(str(field.data)) != 14:
-                    raise ValidationError('Card Number must be 14-16 characters long')
+    #will make sure the card number is correct
+    str(field.data).strip()
+    if len(str(field.data)) != 16:
+        if len(str(field.data)) != 15:
+            if len(str(field.data)) != 14:
+                raise ValidationError('Card Number must be 14-16 characters long')
 
 def validate_cvv(form, field):
-        str(field.data).strip()
-        if len(str(field.data)) != 3:
-            if len(str(field.data)) != 4:
-                raise ValidationError('CVV must be 3 or 4 characters')
+    #makes sure the cvv is correct
+    str(field.data).strip()
+    if len(str(field.data)) != 3:
+        if len(str(field.data)) != 4:
+            raise ValidationError('CVV must be 3 or 4 characters')
 
 class CardForm(Form):
+    #form to allow you to add a card
     number = IntegerField('number',validators=[validate_cardnumber])
     expirymonth = SelectField(choices=[(1,1),(2,2),(3,3),(4,4),(5,5),(6,6),(7,7),(8,8),(9,9),(10,10),(11,11),(12,12)],coerce=int)
     expiryyear = SelectField(choices=[(2018,2018),(2019,2019),(2020,2020),(2021,2021),(2022,2022),(2023,2023),(2024,2024),(2025,2025)],coerce=int)
     cvv = IntegerField('cvv', validators=[validate_cvv])
 
 class CheckoutForm(Form):
+    #tick box to make sure you can tick if you wanna checkout
     check = BooleanField('Agree?', validators=[DataRequired()])
 
 class SearchForm(Form):
+    #search field on the search page
     search = TextField('search', validators=[DataRequired()])
 
 class ChangeCustomerForm(Form):
+    #if you want to change any of your customer details this form used
     firstname = TextField('firstname', validators=[DataRequired()])
     surname = TextField('surname', validators=[DataRequired()])
     dob = DateField('dob', validators=[DataRequired()],format='%Y-%m-%d')
