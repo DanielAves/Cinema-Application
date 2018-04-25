@@ -35,11 +35,8 @@ public class ScreeningTest {
 
   @Test
   public void testScreeningIDSet() {
-
     Integer testScreeningID = 123;
-
     testScreening.setScreening_id(testScreeningID);
-
     assertThat(testScreening.getScreening_id(), is(testScreeningID));
   }
 
