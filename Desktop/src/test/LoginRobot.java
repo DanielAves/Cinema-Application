@@ -19,11 +19,18 @@ import org.junit.*;
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 import static org.testfx.api.FxAssert.verifyThat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
+/**
+*
+* A robot checks the login screen for invalid login details and correct login details.
+* Tests are passed if all ok.
+*
+* @author Dan Aves
+*/
 
-
-public class InterfaceTest extends ApplicationTest{
-
+public class LoginRobot extends ApplicationTest{
 
   @Override
   public void start (Stage stage) throws Exception {
@@ -44,6 +51,10 @@ public class InterfaceTest extends ApplicationTest{
     release(new MouseButton[]{});
   }
 
+  /**
+  * Checks if message is displayed for invalid credentials
+  */
+
   @Test
   public void Test1InvalidLogin () {
     clickOn("#username");
@@ -53,10 +64,17 @@ public class InterfaceTest extends ApplicationTest{
     clickOn("#loginButton");
     verifyThat("#invalidDetails", hasText("Invalid details entered, try again"));
   }
+  /**
+  * Simply checks the text of button
+  */
   @Test
   public void Test2LoginButton() {
     verifyThat("#loginButton", hasText("Login"));
   }
+
+  /**
+  * Tries to log into system
+  */
   @Test
   public void Test3CorrectLogin() {
     clickOn("#username");
@@ -64,9 +82,7 @@ public class InterfaceTest extends ApplicationTest{
     clickOn("#passwordField");
     write("password");
     clickOn("#loginButton");
-    sleep(1000);
-    clickOn("#viewToday");
-    sleep(7000);
+
   }
 
 }

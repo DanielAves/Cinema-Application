@@ -38,7 +38,7 @@ public class FilmScreenController{
 
   @FXML
   public Button film1,film2,film3,film4,film5,film6,film7,film8,film9,film10;
-  public Text filmDate;
+  public Label filmDate;
 
   LocalDate inputDate;
 
@@ -64,7 +64,6 @@ public class FilmScreenController{
   * @return Nothing.
   */
   public void setScreen(LocalDate date) throws Exception{
-    System.out.println("Showing films for " + dtf.format(inputDate));
     RestClient client = new RestClient("localhost", 5000);
 
     List filmList = new ArrayList();

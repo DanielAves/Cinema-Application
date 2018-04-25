@@ -6,7 +6,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-
+/**
+*Class that represents screening
+* @author Mitchell Gladstone
+*/
 public class Screening {
   private int screening_id ;
   private int film_id;

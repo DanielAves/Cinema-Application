@@ -43,7 +43,7 @@
             <Insets left="10.0" top="20.0" />
          </GridPane.margin>
       </Label>
-      <Button mnemonicParsing="false" onAction="#showFutureDate" opacity="0.5" prefHeight="100.0" prefWidth="300.0" styleClass="Button" stylesheets="@darkTheme.css" text="Submit" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" GridPane.vgrow="ALWAYS">
+      <Button fx:id="submitButton" mnemonicParsing="false" onAction="#showFutureDate" opacity="0.5" prefHeight="100.0" prefWidth="300.0" styleClass="Button" stylesheets="@darkTheme.css" text="Submit" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" GridPane.vgrow="ALWAYS">
          <font>
             <Font size="25.0" />
          </font>

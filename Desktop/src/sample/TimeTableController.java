@@ -26,7 +26,7 @@ import javafx.scene.control.Label;
 * outputs the times to the UI for user selection.
 *
 *
-* @author Dan Aves
+* @author Dan Aves , Mitchell Gladstone
 * @version 1.4 (2018-04-24)
 */
 
