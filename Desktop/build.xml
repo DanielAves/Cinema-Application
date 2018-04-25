@@ -6,10 +6,10 @@
   <!--Windows-->
   <!--<property name="JAVA_HOME" value="\usr\lib\jvm\jdk-9.0.4"/>-->
   <!--Ubuntu-->
- <!-- <property name="JAVA_HOME" value="/usr/lib/jvm/java-8-oracle"/>-->
+  <!--<property name="JAVA_HOME" value="/usr/lib/jvm/java-8-oracle"/>-->
   <!--Dec10-->
   <property name="JAVA_HOME" value="/usr/java/jdk1.8.0_141"/>
-  <property name="lib.dir" value="lib"/>
+	<property name="lib.dir" value="lib"/>
   <property name="build.dir" value="bin"/>
   <property name="src.dir" value="src"/>
   <property name="scripts.dir" value="scripts"/>
@@ -92,11 +92,13 @@
       <test name="sample.SeatTest"/>
       <test name="sample.GenericWrapperTest"/>
       <test name="sample.PaymentScreenControllerTest"/>
-
-      <!-- Failing Tests -->
       <test name="sample.BookingScreenControllerTest"/>
       <test name="sample.CustomerTest"/>
       <test name="sample.ScreeningTest"/>
+
+
+	<test name="sample.LoginRobot"/>
+	<test name="sample.HomeScreenRobot"/>
 
     </junit>
   </target>
