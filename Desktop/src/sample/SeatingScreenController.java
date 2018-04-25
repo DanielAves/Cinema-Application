@@ -84,8 +84,8 @@ public class SeatingScreenController {
     }
     else{
       seats.add(seatText);
-      ((Button)event.getSource()).setText("Selected");
-
+      ((Button)event.getSource()).setText("X");
+    //   ((Button)event.getSource()).setStyle("fx-background-color: #565656");
 
 
     }
@@ -99,33 +99,47 @@ public class SeatingScreenController {
   public void takenSeats(int seat){
     switch (seat) {
       case 1: seat1.setText("Taken");
+      seat1.setStyle("-fx-background-color: #4286f4");
       break;
       case 2: seat2.setText("Taken");
+      seat2.setStyle("-fx-background-color: #4286f4");
       break;
       case 3: seat3.setText("Taken");
+      seat3.setStyle("-fx-background-color: #4286f4");
       break;
       case 4: seat4.setText("Taken");
+      seat4.setStyle("-fx-background-color: #4286f4");
       break;
       case 5: seat5.setText("Taken");
+      seat5.setStyle("-fx-background-color: #4286f4");
       break;
       case 6: seat6.setText("Taken");
+      seat6.setStyle("-fx-background-color: #4286f4");
       break;
       case 7: seat7.setText("Taken");
+    //   seat7.setStyle("-fx-background-color: ##1200dd");
       seat7.setStyle("-fx-background-color: #4286f4");
       break;
       case 8: seat8.setText("Taken");
+      seat8.setStyle("-fx-background-color: #4286f4");
       break;
       case 9: seat9.setText("Taken");
+      seat9.setStyle("-fx-background-color: #4286f4");
       break;
       case 10: seat10.setText("Taken");
+      seat10.setStyle("-fx-background-color: #4286f4");
       break;
       case 11: seat11.setText("Taken");
+      seat11.setStyle("-fx-background-color: #4286f4");
       break;
       case 12: seat12.setText("Taken");
+      seat12.setStyle("-fx-background-color: #4286f4");
       break;
       case 13: seat13.setText("Taken");
+      seat13.setStyle("-fx-background-color: #4286f4");
       break;
       case 14: seat14.setText("Taken");
+      seat14.setStyle("-fx-background-color: #4286f4");
       break;
       case 15: seat15.setText("Taken");
       break;
