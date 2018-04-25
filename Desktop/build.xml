@@ -93,12 +93,10 @@
       <test name="sample.TicketTest"/>
       <test name="sample.GenericWrapperTest"/>
       <test name="sample.PaymentScreenControllerTest"/>
-
       <!-- Failing Tests -->
       <test name="sample.BookingScreenControllerTest"/>
       <test name="sample.CustomerTest"/>
       <test name="sample.ScreeningTest"/>
-
     </junit>
   </target>
 
