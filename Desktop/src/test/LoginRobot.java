@@ -34,7 +34,7 @@ public class LoginRobot extends ApplicationTest{
 
   @Override
   public void start (Stage stage) throws Exception {
-    Parent mainNode = FXMLLoader.load(Main.class.getResource("resources/loginScreen.fxml"));
+    Parent mainNode = FXMLLoader.load(getClass().getResource("resources/loginScreen.fxml"));
     stage.setScene(new Scene(mainNode));
     stage.show();
     stage.toFront();

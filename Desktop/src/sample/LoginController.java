@@ -20,7 +20,6 @@ import java.io.IOException;
 * The user logs in with their credentials here.
 *
 * @author Dan Aves
-* @version 1.2 (2018-04-24)
 */
 
 public class LoginController{
@@ -37,7 +36,6 @@ public class LoginController{
   /**
   * Checks if credentials and loads homescreen or displays erros message
   * @param event clicking loginButton
-  * @return Nothing.
   */
 
   public void loginButtonClicked(ActionEvent event) throws IOException {
