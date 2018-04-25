@@ -58,9 +58,12 @@ public class PaymentScreenController {
   //FXML element importing
   @FXML
   private Label changeDue;
+  @FXML
   public Text totalAmount;
+  @FXML
   private Button five,ten,fithteen,twenty,thirty,forty,cash,card;
-  private TextField quantity;
+  @FXML
+  private TextField tender;
 
   double grandTotal;                    //Used to store passed total
   boolean cashBol = false;              //Used to determine if user selects "cash"
@@ -130,6 +133,7 @@ public class PaymentScreenController {
 
   public void cardClicked(ActionEvent event) throws Exception{
     AlertBox.display("Please wait", "Processing payment");
+    card.setStyle("-fx-background-color: #4286f4");
     totalAmount.setText("Total £ " + ("0.00"));
     bookSeats();
     createCardPDF(cardReciept);
@@ -167,53 +171,54 @@ public class PaymentScreenController {
 
   public void cashClicked(ActionEvent event) throws Exception{
     cashBol = true;
+    cash.setStyle("-fx-background-color: #4286f4");
   }
 
-  public void quantityEntered(ActionEvent event) throws Exception{
-    String input = quantity.getText();
-    if (cashBol = true){
+  public void tenderEntered(ActionEvent event) throws Exception{
+    String input = tender.getText();
+    if (cashBol == true){
       grandTotal -= Double.parseDouble(input);
       change();
     }
   }
 
   public void fiveClicked(ActionEvent event) throws Exception{
-    if (cashBol = true){
+    if (cashBol == true){
       grandTotal -=5;
       change();
     }
   }
 
   public void tenClicked(ActionEvent event) throws Exception{
-    if (cashBol = true){
+    if (cashBol == true){
       grandTotal -=10;
       change();
     }
   }
 
   public void fithteenClicked(ActionEvent event) throws Exception{
-    if (cashBol = true){
+    if (cashBol == true){
       grandTotal -=15;
       change();
     }
   }
 
   public void twentyClicked(ActionEvent event) throws Exception{
-    if (cashBol = true){
+    if (cashBol == true){
       grandTotal -=20;
       change();
     }
   }
 
   public void thirtyClicked(ActionEvent event) throws Exception{
-    if (cashBol = true){
+    if (cashBol == true){
       grandTotal -=30;
       change();
     }
   }
 
   public void fortyClicked(ActionEvent event) throws Exception{
-    if (cashBol = true){
+    if (cashBol == true){
       grandTotal -=40;
       change();
     }
