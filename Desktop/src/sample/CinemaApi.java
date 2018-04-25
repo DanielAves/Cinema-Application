@@ -1,5 +1,10 @@
 package sample;
-
+/**
+*CinemaApi.java
+*A file that creates an intrerface
+*Declarees all possible api functions
+* @author Mitchell Gladstone
+*/
 import java.util.List;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.time.LocalDate ;

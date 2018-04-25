@@ -7,6 +7,10 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+/**
+*Used for serialising LocalDate objects
+* @author Mitchell Gladstone
+*/
 public class LocalDateSerializer extends StdSerializer<LocalDate> {
 
     public LocalDateSerializer() {
