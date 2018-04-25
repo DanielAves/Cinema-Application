@@ -32,7 +32,7 @@ import java.time.LocalTime;
 * @version 1.4 (2018-04-24)
 */
 
-public class filmScreenController{
+public class FilmScreenController{
 
 
 
@@ -155,10 +155,10 @@ public class filmScreenController{
     try{
       Loader.load();
     }catch (IOException ex){
-      Logger.getLogger(filmScreenController.class.getName());
+      Logger.getLogger(FilmScreenController.class.getName());
     }
 
-    timetableController display = Loader.getController();
+    TimeTableController display = Loader.getController();
     //Determine what button is clicked
     String filmName = (((Button)event.getSource()).getText());
     String buttonID = (((Button)event.getSource()).getId());

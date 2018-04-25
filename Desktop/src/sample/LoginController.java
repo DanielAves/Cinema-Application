@@ -23,7 +23,7 @@ import java.io.IOException;
 * @version 1.2 (2018-04-24)
 */
 
-public class loginController{
+public class LoginController{
 
   @FXML
   private TextField username,password;

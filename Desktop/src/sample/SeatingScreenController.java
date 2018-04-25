@@ -15,7 +15,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.scene.control.Button;
 import java.time.LocalDate ;
 
-public class seatingScreenController {
+public class SeatingScreenController {
 
   double totalNew;
   @FXML
@@ -43,7 +43,7 @@ public class seatingScreenController {
     try{
       Loader.load();
     }catch (IOException ex){
-      Logger.getLogger(filmScreenController.class.getName());
+      Logger.getLogger(SeatingScreenController.class.getName());
     }
 
     PaymentScreenController display = Loader.getController();

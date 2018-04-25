@@ -30,7 +30,7 @@ import javafx.scene.control.Label;
 * @version 1.4 (2018-04-24)
 */
 
-public class timetableController{
+public class TimeTableController{
 
   //Provide access to buttons and labels within timetableScreen.fxml
   @FXML
@@ -158,11 +158,11 @@ public class timetableController{
     try{
       Loader.load();
     }catch (IOException ex){
-      Logger.getLogger(filmScreenController.class.getName());
+      Logger.getLogger(TimeTableController.class.getName());
     }
 
     LocalDate localDate = LocalDate.now();
-    filmScreenController display = Loader.getController();
+    FilmScreenController display = Loader.getController();
     display.setDate(inputDate);
     display.setScreen(inputDate);
 
@@ -196,7 +196,7 @@ public class timetableController{
     try{
       Loader.load();
     }catch (IOException ex){
-      Logger.getLogger(filmScreenController.class.getName());
+      Logger.getLogger(TimeTableController.class.getName());
     }
 
     BookingScreenController display = Loader.getController();

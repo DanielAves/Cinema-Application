@@ -23,7 +23,7 @@ import java.util.logging.Logger;
 * @version 1.2 (2018-04-24)
 */
 
-public class homeScreenController {
+public class HomeScreenController {
 
   @FXML
   private DatePicker filmDate;
@@ -41,12 +41,12 @@ public class homeScreenController {
     try{
       Loader.load();
     }catch (IOException ex){
-      Logger.getLogger(filmScreenController.class.getName());
+      Logger.getLogger(FilmScreenController.class.getName());
     }
     //Get todays date
     LocalDate localDate = LocalDate.now();
     //Pass date to next film screen
-    filmScreenController display = Loader.getController();
+    FilmScreenController display = Loader.getController();
     display.setDate(localDate);
     display.setScreen(localDate);
 
@@ -71,10 +71,10 @@ public class homeScreenController {
     try{
       Loader.load();
     }catch (IOException ex){
-      Logger.getLogger(filmScreenController.class.getName());
+      Logger.getLogger(FilmScreenController.class.getName());
     }
 
-    filmScreenController display = Loader.getController();
+    FilmScreenController display = Loader.getController();
     display.setDate(date);
     display.setScreen(date);
 

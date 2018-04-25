@@ -172,7 +172,7 @@ public class BookingScreenController {
   * @param event.
   */
   public void comboBoxAdult(ActionEvent event) throws IOException{
-    if (selectedChild > 0){
+    if (selectedAdult > 0){
       grandTotal2 += -adultTotal2;
     }
     String amount = adult.getValue().toString();
@@ -188,7 +188,7 @@ public class BookingScreenController {
   * @param event.
   */
   public void comboBoxPensioner(ActionEvent event) throws IOException{
-    if (selectedChild > 0){
+    if (selectedPensioner > 0){
       grandTotal2 += -pensionerTotal2;
     }
     String amount = pensioner.getValue().toString();
@@ -204,7 +204,7 @@ public class BookingScreenController {
   * @param event.
   */
   public void comboBoxPensionerVip(ActionEvent event) throws IOException{
-    if (selectedChild > 0){
+    if (selectedVipPensioner > 0){
       grandTotal2 += -vipPensionerTotal2;
     }
     String amount = vipPensioner.getValue().toString();
@@ -259,10 +259,10 @@ public class BookingScreenController {
     try{
       Loader.load();
     }catch (IOException ex){
-      Logger.getLogger(seatingScreenController.class.getName());
+      Logger.getLogger(SeatingScreenController.class.getName());
     }
 
-    seatingScreenController display = Loader.getController();
+    SeatingScreenController display = Loader.getController();
     display.setTotal(grandTotal2);
     display.populateSeats(screeningID);
 
