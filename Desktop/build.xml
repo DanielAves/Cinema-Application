@@ -90,6 +90,7 @@
       <test name="sample.FilmTest"/>
       <test name="sample.ScreenTest"/>
       <test name="sample.SeatTest"/>
+      <test name="sample.TicketTest"/>
       <test name="sample.GenericWrapperTest"/>
       <test name="sample.PaymentScreenControllerTest"/>
       <!-- Failing Tests -->
