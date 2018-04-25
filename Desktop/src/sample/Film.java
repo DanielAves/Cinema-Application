@@ -54,7 +54,11 @@ public class Film {
 	 * @param film_name Name of film.
 	 */
 	public void setFilm_name(String film_name) {
-		this.film_name = film_name;
+    if(film_name == null || film_name == "") {
+      throw new IllegalArgumentException("Film must have a name.");
+    } else {
+      this.film_name = film_name;
+    }
 	}
 
 	/**
@@ -69,7 +73,11 @@ public class Film {
 	 * @param film_description Description of film.
 	 */
 	public void setFilm_description(String film_description) {
-		this.film_description = film_description;
+    if(film_description == null || film_description == "") {
+      throw new IllegalArgumentException("Film must have a description.");
+    } else {
+		  this.film_description = film_description;
+    }
 	}
 
 	/**
@@ -84,7 +92,11 @@ public class Film {
 	 * @param film_runtime Runtime of film.
 	 */
 	public void setFilm_runtime(int film_runtime) {
-		this.film_runtime = film_runtime;
+    if(film_runtime < 0) {
+      throw new IllegalArgumentException("Runtime must NOT be negative.");
+    } else {
+		  this.film_runtime = film_runtime;
+    }
 	}
 
 	/**
@@ -99,7 +111,11 @@ public class Film {
 	 * @param film_director Director of film.
 	 */
 	public void setFilm_director(String film_director) {
-		this.film_director = film_director;
+    if(film_director == null || film_director == "") {
+      throw new IllegalArgumentException("Film must have a director.");
+    } else {
+		  this.film_director = film_director;
+    }
 	}
 
 	/**
@@ -114,7 +130,11 @@ public class Film {
 	 * @param film_age_rating Age rating of film.
 	 */
 	public void setFilm_age_rating(String film_age_rating) {
-		this.film_age_rating = film_age_rating;
+    if(film_age_rating == null || film_age_rating == "") {
+      throw new IllegalArgumentException("Film must have an age rating.");
+    } else {
+		  this.film_age_rating = film_age_rating;
+    }
 	}
 
 	/**
