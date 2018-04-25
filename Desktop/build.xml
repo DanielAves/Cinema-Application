@@ -8,7 +8,7 @@
   <!--Ubuntu-->
  <!-- <property name="JAVA_HOME" value="/usr/lib/jvm/java-8-oracle"/>-->
   <!--Dec10-->
-  <property name="JAVA_HOME" value="/usr/java/jdk1.8.0_141"/> 
+  <property name="JAVA_HOME" value="/usr/java/jdk1.8.0_141"/>
   <property name="lib.dir" value="lib"/>
   <property name="build.dir" value="bin"/>
   <property name="src.dir" value="src"/>
@@ -26,6 +26,7 @@
     <pathelement location="${lib.dir}/sqlite-jdbc-3.21.0.jar"/>
     <pathelement location="${lib.dir}/testfx-core-4.0.6-alpha.jar"/>
     <pathelement location="${lib.dir}/testfx-junit-4.0.6-alpha.jar"/>
+    <pathelement location="${lib.dir}/core-3.3.0.jar"/>
     <pathelement location="${build.dir}"/>
   </path>
 

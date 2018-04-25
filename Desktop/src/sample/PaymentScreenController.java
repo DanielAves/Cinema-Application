@@ -30,9 +30,12 @@ import com.itextpdf.text.pdf.*;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.*;
 
-
-
-
+import com.google.zxing.qrcode.QRCodeWriter;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
+import com.google.zxing.EncodeHintType;
+import com.google.zxing.WriterException;
 
 /**
 *
