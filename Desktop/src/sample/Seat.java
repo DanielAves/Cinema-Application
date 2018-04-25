@@ -1,4 +1,9 @@
 package sample;
+
+/**
+*Class that represents Seat
+* @author Mitchell Gladstone
+*/
 public class Seat{
 
   private int seat_id;
