@@ -179,7 +179,7 @@ public class PaymentScreenController {
   }
 
   public void cardClicked(ActionEvent event) throws Exception{
-    AlertBox.display("Please wait", "Processing payment");
+    AlertBox.display("Please wait", "Processing payment", "card");
     card.setStyle("-fx-background-color: #4286f4");
     totalAmount.setText("Total £ " + ("0.00"));
     bookSeats();
