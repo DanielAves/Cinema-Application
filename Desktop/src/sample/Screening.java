@@ -130,7 +130,12 @@ public class Screening {
 	 * @param screening_date [description]
 	 */
 	public void setScreening_date(LocalDate screening_date) {
-		this.screening_date = screening_date;
+    LocalDate current = LocalDate.now();
+    if(current.isBefore(screening_date)) {
+      throw new IllegalArgumentException("Date must be in the past.");
+    } else {
+		  this.screening_date = screening_date;
+    }
 	}
 
 	/**
