@@ -10,14 +10,14 @@ app = Flask(__name__)
 bcrypt = Bcrypt(app)
 
 def populate_seats():
-
+	#This will be used to populate the seats table of the db
 	for i in range(1,100):
 		s = Seat(seat_id=i)
 		db.session.add(s)
 	db.session.commit()
 
 def populate_films():
-
+	#This will put data in the film table of the db
 	data = [
 (1, u'The Greatest Showman', u'American musical drama film, written by Jenny Bicks and starring Hugh Jackman, Zac Efront, Michelle Williams, Rebecca Ferguson and Zendaya', 120, u'Michael Gracey', u'12',u'showman2.jpg'),
 (2, u'Black Panther', u'With the King of Wakanda now dead, his son T’Challa must return home to take his rightful place on the throne. But, it’s going to be a bumpy ride, as an evil faction has other plans for the country’s future. | Actors: Chadwick Boseman, Michael B. Jordan, Lupita Nyongo |', 134, u'Ryan Coogler', u'12',u'BlackPanther.jpg'),
@@ -36,6 +36,8 @@ def populate_films():
 	db.session.commit()
 
 def populate_screenings():
+	#This will populate the screenings for the next 7 days after creation
+	#It will make sure there are multiple random screenings of a film.
 	for screen in Screen.query.all():
 		current = datetime.datetime.today()
 		counter = 1
@@ -58,6 +60,7 @@ def populate_screenings():
 	db.session.commit()
 
 def populate_customers():
+	#This will populate the customers and the cards of them.
 	data = [
 (1, u'Ben', u'Ashby',u'+447845775449', u'5 Magna Close', u'AL51RH',123412341234121,2018,3,121,1999),
 (2, u'Taran', u'Bola',  u'+447400832054', u'6 Winfield Place', u'LS23AB',123412341234122,2021,21,134,2005),
@@ -72,6 +75,7 @@ def populate_customers():
 	db.session.commit()
 
 def populate_tickets():
+	#This will make every screening have 7,22 and 44 seats taken.
 	for each in Screening.query.all():
 		ticket1 = Ticket(customer_id=1,screening_id=each.screening_id,seat_id=7)
 		ticket2 = Ticket(customer_id=2,screening_id=each.screening_id,seat_id=22)
@@ -82,12 +86,14 @@ def populate_tickets():
 	db.session.commit()
 
 def populate_screen():
+	#Makes sure every screen has a capacity of 100
 	for i in range(1,11):
 		screen = Screen(screen_capacity=100)
 		db.session.add(screen)
 	db.session.commit()
 
 def populate_login():
+	#This will create the logins and hash the password.
 	data = [(1, u'ben19feb@hotmail.co.uk', u'password', u'Mwhahahahaha'),
 	(2, u'taran.s.bola@gmail.com', u'yellow', u'colour'),
 	(3, u'danaves@outlook.com', u'1234', u'123456789'),
@@ -100,6 +106,7 @@ def populate_login():
 	db.session.commit()
 
 def populate_staff():
+	#This will populate the db with the staff.
 	data = [(u'Joe', u'Bloggs',1998,10,10,u'07400232054',u'12 This Street',u'DE23 6L1',u'QQ123456A'),
 	(u'Jane', u'Doe', 1997,11,11,u'07400232055',u'16 Another Place',u'DE23 6L2',u'QQ123456B'),
 	(u'Ralph', u'Billings',1990,12,12,u'07400232056',u'12 Lovely Place',u'DE23 6L3',u'QQ123456D'),
@@ -112,6 +119,7 @@ def populate_staff():
 	db.session.commit()
 
 def encode(number):
+	#This will encode the card numbers, cvv and expiry date
 	encoded = number * 2
 	encoded = encoded + 40
 	encoded = encoded / 4

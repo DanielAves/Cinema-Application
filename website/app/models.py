@@ -2,6 +2,7 @@ from app import db
 from sqlalchemy import UniqueConstraint
 
 class Customer(db.Model):
+    #This will create the customer table of the db
     customer_id = db.Column(db.Integer, primary_key=True)
     customer_f_name = db.Column(db.String(20))
     customer_s_name = db.Column(db.String(30))
@@ -19,6 +20,7 @@ class Customer(db.Model):
             self.customer_address, self.customer_postcode)
 
 class Card(db.Model):
+    #This will create the card table of the db
     card_id = db.Column(db.Integer, primary_key=True)
     customer_id = db.Column(db.Integer, db.ForeignKey('customer.customer_id'))
     card_number = db.Column(db.Integer, unique=True)
@@ -30,6 +32,7 @@ class Card(db.Model):
             self.card_cvv, self.customer_id)
 
 class Film(db.Model):
+    #This will create the film table of the db
     film_id = db.Column(db.Integer, primary_key=True)
     film_name = db.Column(db.String(30), unique=True)
     film_description = db.Column(db.String(500))
@@ -44,6 +47,7 @@ class Film(db.Model):
         self.film_runtime, self.film_director, self.film_age_rating)
 
 class Screen(db.Model):
+    #This will create the screen table of the screens
     screen_id = db.Column(db.Integer, primary_key=True)
     screen_capacity = db.Column(db.Integer)
     screening = db.relationship('Screening', backref = 'screen', lazy = 'dynamic')
@@ -53,6 +57,7 @@ class Screen(db.Model):
 
 
 class Screening(db.Model):
+    #This will create the screenings table with a particular film and screen
     screening_id = db.Column(db.Integer, primary_key=True)
     film_id  = db.Column(db.Integer, db.ForeignKey('film.film_id'))
     screen_id = db.Column(db.Integer, db.ForeignKey('screen.screen_id'))
@@ -65,6 +70,7 @@ class Screening(db.Model):
         self.screening_time, self.screening_date)
 
 class Login(db.Model):
+    #This will create a login for a particular customer
     customer_id  = db.Column(db.Integer, db.ForeignKey('customer.customer_id'),
                      primary_key=True)
     login_email = db.Column(db.String(30), unique=True)
@@ -76,6 +82,7 @@ class Login(db.Model):
         self.login_hint)
 
 class Seat(db.Model):
+    #Will create a seat from 1 to the seat capacity of a screen
     seat_id = db.Column(db.Integer, primary_key=True)
     ticket = db.relationship('Ticket', backref = 'seat', lazy = 'dynamic')
 
@@ -83,6 +90,7 @@ class Seat(db.Model):
         return '' % (self.seat_id)
 
 class Staff(db.Model):
+    #creates the staff members and a login
     staff_id = db.Column(db.Integer, primary_key=True)
     staff_f_name = db.Column(db.String(20))
     staff_s_name = db.Column(db.String(30))
@@ -98,6 +106,7 @@ class Staff(db.Model):
         self.staff_postcode, self.staff_ni)
 
 class Ticket(db.Model):
+    #The ticket with an id and all the other fields are a composite key
     ticket_id = db.Column(db.Integer, primary_key=True,autoincrement=True )
     screening_id = db.Column(db.Integer, db.ForeignKey('screening.screening_id'))
     customer_id  = db.Column(db.Integer, db.ForeignKey('customer.customer_id'))

@@ -5,7 +5,7 @@ from flask_mail import Mail
 
 app = Flask(__name__)
 mail = Mail(app)
-
+#This is the config of the email for the
 app.config['MAIL_SERVER']='smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
 app.config['MAIL_USERNAME'] = 'teamosprey18@gmail.com'
