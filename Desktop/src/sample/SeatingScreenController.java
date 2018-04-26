@@ -112,7 +112,7 @@ public class SeatingScreenController {
 
   /**
   * Returns passed Screen number for the film selected
-  * @param num
+  * @param screen
   */
   public void setScreenNumber(String screen){
     inputScreenNumber = screen;

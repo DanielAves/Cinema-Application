@@ -41,7 +41,6 @@ public class Main extends Application {
   * This is the main method for the desktop app.
   *
   * @param args Standard input arguments.
-  * @return Nothing returned.
   */
 
   public static void main(String[] args) throws Exception {

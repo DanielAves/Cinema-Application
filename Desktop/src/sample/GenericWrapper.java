@@ -29,7 +29,7 @@ public class GenericWrapper<T> {
 
 	/**
 	* Sets new value of objects
-	* @param
+	* @param objects.
 	*/
 	public void setObjects(List<T> objects) {
 		this.objects = objects;
@@ -45,7 +45,7 @@ public class GenericWrapper<T> {
 
 	/**
 	* Sets new value of num_results
-	* @param
+	* @param num_results
 	*/
 	public void setNum_results(int num_results) {
 		this.num_results = num_results;
@@ -61,7 +61,7 @@ public class GenericWrapper<T> {
 
 	/**
 	* Sets new value of total_pages
-	* @param
+	* @param total_pages
 	*/
 	public void setTotal_pages(int total_pages) {
 		this.total_pages = total_pages;
@@ -77,7 +77,7 @@ public class GenericWrapper<T> {
 
 	/**
 	* Sets new value of page
-	* @param
+	* @param page
 	*/
 	public void setPage(int page) {
 		this.page = page;

@@ -32,7 +32,6 @@ public class HomeScreenController {
   * When 'showToday' button is clicked the film screen is loaded showing films
   * for todays date
   * @param event clicking 'showToday' button
-  * @return Nothing.
   */
   public void showToday(javafx.event.ActionEvent event) throws Exception{
 
@@ -60,7 +59,6 @@ public class HomeScreenController {
   * When 'showFutureDate' button is clicked the film screen is loaded showing films
   * for the selected date,
   * @param event clicking 'showFutureDate' button
-  * @return Nothing.
   */
   public void showFutureDate(javafx.event.ActionEvent event) throws Exception{
     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");

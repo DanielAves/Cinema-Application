@@ -49,7 +49,7 @@ public class BookingScreenController {
   int inputFilmID;
   String inputFilmName;
   String inputScreenNumber;
-  int ticketQuanity; 
+  int ticketQuanity;
 
   /**
   * Sets the local variable inputDate to the passed date from
@@ -101,7 +101,7 @@ public class BookingScreenController {
   /**
   * Sets the local variable screeningID to the passed screening id from
   * TimeTableController.
-  * @param time.
+  * @param id.
   */
   public void setScreeningID(int id){
     screeningID = id;
@@ -117,7 +117,7 @@ public class BookingScreenController {
 
   /**
   * Returns passed Screen number for the film selected
-  * @param num
+  * @param screen
   */
   public void setScreenNumber(String screen){
     inputScreenNumber = screen;

@@ -100,8 +100,7 @@ public class PaymentScreenController {
   /**
   * This method sets the local variable grandTotal to the passed total from
   * seatingScreenController.
-  * @param totalNew.
-  * @return Nothing.
+  * @param total.
   */
   public void setTotal(double total){
     grandTotal = total;
@@ -120,7 +119,6 @@ public class PaymentScreenController {
   /**
   * This method updates the local list for the passed seats
   * @param seats.
-  * @return Nothing.
   */
   public void setSeats(List seats)
   {
@@ -131,7 +129,6 @@ public class PaymentScreenController {
   * This method updates the local screenID for the passed ID dependent on
   * previous selections.
   * @param screenID.
-  * @return Nothing.
   */
   public void setScreenID(int screenID){
     screenIDLocal = screenID; //Update local version for access in other functions
@@ -156,7 +153,7 @@ public class PaymentScreenController {
 
   /**
   * Returns passed Screen number for the film selected
-  * @param num
+  * @param screen
   */
   public void setScreenNumber(String screen){
     inputScreenNumber = screen;
