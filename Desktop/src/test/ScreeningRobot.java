@@ -59,13 +59,8 @@ public class ScreeningRobot extends ApplicationTest {
         clickOn("#viewToday");
         clickOn("#film1");
         clickOn("#screen1");
-    }
-
-    /**
-    * Test to see if we can go back to the previous screen.
-    */
-    @Test
-    public void Test2back(){
         clickOn("#backButton");
     }
+
+
 }
