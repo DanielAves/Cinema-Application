@@ -1,3 +1,7 @@
+/**
+ * AlertBox.java
+ */
+
 package sample;
 
 import javafx.stage.*;
@@ -11,6 +15,12 @@ import javafx.scene.text.Font;
 
 import javafx.animation.*;
 
+/**
+ * This class is used to create an alertBox, based on passed values
+ *
+ * @author Dan Aves
+ */
+
 public class AlertBox {
 
 
@@ -18,11 +28,10 @@ public class AlertBox {
 
     Stage window = new Stage();
 
+    //Setup windows for error messages
     window.initModality(Modality.APPLICATION_MODAL);
     window.setTitle(title);
     window.setMinWidth(350);
-
-
 
     Label label = new Label();
     label.setText(message);
@@ -37,6 +46,8 @@ public class AlertBox {
     window.setScene(scene);
 
     window.show();
+
+    //Used for showing card delay
 
     if(error.equals("card")){
       PauseTransition delay = new PauseTransition(Duration.seconds(1));
@@ -56,9 +67,5 @@ public class AlertBox {
       delayClose.setOnFinished( event -> window.close() );
       delayClose.play();
     }
-
-
-
-
   }
 }

@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 /**
  * Class for ...
  *
- * @author
+ * @author Mitchell Gladstone
  */
 public class Ticket {
   /** ID number of the ticket. */

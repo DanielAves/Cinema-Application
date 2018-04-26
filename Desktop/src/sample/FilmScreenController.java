@@ -32,14 +32,14 @@ import java.time.LocalTime;
  */
 public class FilmScreenController{
 
+  //Declaring FXML elements
   @FXML
   public Button film1,film2,film3,film4,film5,film6,film7,film8,film9,film10;
-  public Label filmDate;
+  public Label filmDateText;
 
   LocalDate inputDate;
 
   DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-  public LocalDate test;
 
   /**
   * Sets the local variable inputDate to the passed date from
@@ -49,7 +49,7 @@ public class FilmScreenController{
   */
   public void setDate(LocalDate date){
     inputDate = date;
-    filmDate.setText("Showing films for " + dtf.format(inputDate));
+    filmDateText.setText("Showing films for " + dtf.format(inputDate));
   }
 
   /**
@@ -176,6 +176,7 @@ public class FilmScreenController{
       filmID = 10;
     }
 
+    //Pass relevant information to next screen
     display.setDate(inputDate); //pass date to next controller
     display.calculateShowingTimes(filmID); //pass film ID
     display.setFilmName(filmName);

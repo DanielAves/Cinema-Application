@@ -20,7 +20,7 @@ import javafx.scene.control.Button;
 import java.time.LocalDate ;
 
 /**
-* Class for ...
+* Class for selecting seats within the Cinema
 *
 * @author Dan Aves
 */
@@ -91,7 +91,7 @@ public class SeatingScreenController {
   }
 
   /**
-  * Returns passed filmID used for back function.
+  * Sets passed filmID used for back function.
   * @param id ID number of film.
   */
   public void setFilmID(int id){
@@ -99,7 +99,7 @@ public class SeatingScreenController {
   }
 
   /**
-  * Returns passed filmName used for back function
+  * Sets passed filmName used for back function
   * @param name Name of film.
   */
   public void setFilmName(String name){
@@ -116,7 +116,7 @@ public class SeatingScreenController {
   }
 
   /**
-  * Returns passed Screen number for the film selected
+  * Sets passed Screen number for the film selected
   * @param screen
   */
   public void setScreenNumber(String screen){
@@ -155,8 +155,6 @@ public class SeatingScreenController {
     display.setFilmName(inputFilmName); //FilmName
     display.setScreenNumber(inputScreenNumber);
 
-
-
     Parent p = Loader.getRoot();
     Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
     window.setScene(new Scene(p));
@@ -164,9 +162,9 @@ public class SeatingScreenController {
   }
 
   /**
-  * [populateSeats description]
-  * @param  screeningID [description]
-  * @throws Exception   [description]
+  * Run when screen is open to display what screens are taken based on ticket data
+  * @param  screeningID Used to find tickets
+  * @throws Exception
   */
   public void populateSeats(int screeningID) throws Exception{
     RestClient client = new RestClient("localhost", 5000);
@@ -174,13 +172,12 @@ public class SeatingScreenController {
     List tickets = new ArrayList();
     List<Ticket> ticketsSold = new ArrayList<Ticket>();
     ticketsSold = client.getTicketsByScreening(inputScreeningID) ;
-
+    //Tickets sold represent the tickets for a specific film
     if (ticketsSold.size()== 0 ){
       //Do nothing, prevents errors.
     }
-    else{
+    else{ //Loop through tickets and populate screen
       for(Ticket t : ticketsSold){
-        //Ticket ticket = (Ticket) ticket.getScreening_id();
         int seat = t.getSeat_id();
         takenSeats(seat);
       }
@@ -188,9 +185,10 @@ public class SeatingScreenController {
   }
 
   /**
-  * [seatSelection description]
-  * @param  event     [description]
-  * @throws Exception [description]
+  * Allows a user to select a seat. Once selected the seat text is updated,
+  * error handling is carried out to check if too many seats are selected
+  * @param  event     user click
+  * @throws Exception
   */
   public void seatSelection(ActionEvent event) throws Exception {
     seatSelectionCount++;
@@ -199,9 +197,6 @@ public class SeatingScreenController {
       AlertBox.display("Error", "Too many seats selected!", "seat");
     }
     else{
-
-
-
       //Pass ticket total to here and define array based on the amount of seats to be selected based on tickets
       String seatText = (((Button)event.getSource()).getText());
 
@@ -218,9 +213,9 @@ public class SeatingScreenController {
   }
 
   /**
-  * [backButtonClicked description]
-  * @param  event     [description]
-  * @throws Exception [description]
+  * Takes user back to previous page
+  * @param  event user click
+  * @throws Exception
   */
   public void backButtonClicked(ActionEvent event) throws Exception {
     FXMLLoader Loader = new FXMLLoader();
@@ -250,9 +245,9 @@ public class SeatingScreenController {
   }
 
   /**
-  * [refreshScreen description]
-  * @param  event     [description]
-  * @throws Exception [description]
+  * Reloads the page and clears the selection of any seats
+  * @param  event user click
+  * @throws Exception
   */
   public void refreshScreen(ActionEvent event) throws Exception{
     FXMLLoader Loader = new FXMLLoader();
@@ -262,7 +257,7 @@ public class SeatingScreenController {
     }catch (IOException ex){
       Logger.getLogger(SeatingScreenController.class.getName());
     }
-
+    //Variables are passed back to class to refresh
     SeatingScreenController display = Loader.getController();
     display.setTotal(totalNew);
     display.populateSeats(screeningID);
@@ -282,8 +277,8 @@ public class SeatingScreenController {
   }
 
   /**
-  * [takenSeats description]
-  * @param seat [description]
+  * Update seats which are taken with appropraite text and colour
+  * @param seat seat ID
   */
   public void takenSeats(int seat){
     switch (seat) {
