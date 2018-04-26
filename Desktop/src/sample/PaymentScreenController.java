@@ -73,6 +73,7 @@ public class PaymentScreenController {
   List seatsPayment = new ArrayList();  //Local list to store seats passed to method
   String  cardReciept = "cardReciept.pdf";
   String  cashReciept = "cashReciept.pdf";
+  double fixedTotal;  //Unaltered total for recipt
 
   //Variables for Pdf
   double grandTotal;    //Used to store transaction total
@@ -93,6 +94,7 @@ public class PaymentScreenController {
   */
   public void setTotal(double total){
     grandTotal = total;
+    fixedTotal = total;
     totalAmount.setText("Total £ " + String.format("%.2f", total));
   }
 
@@ -369,13 +371,13 @@ public class PaymentScreenController {
     document.add(new Paragraph("\n\nCash Payment "));
     document.add(new Paragraph("Merchant ID: **12345 \n Terminal ID: ****1234  \n\n"));
     document.add(new Paragraph("SALE \n\n"));
-    document.add(new Paragraph("You have been charged: \n Total: " + grandTotal + "\n"));
+    document.add(new Paragraph("You have been charged: \n Total: " + fixedTotal + "\n"));
     // document.add(new Paragraph("Number of items: " + items + "\n\n"));
     document.add(new Paragraph("\nSOURCE:     CASH\n\n"));
     document.add(new Paragraph("Authorisation Code: 12387 \n\n"));
     document.add(new Paragraph("Please keep this reciept for your records. \n\n"));
     document.add(new Paragraph("CUSTOMER COPY \n\n"));
-    document.add(new Paragraph("Total: £" + grandTotal + "\n\n"));
+    document.add(new Paragraph("Total: £" + fixedTotal + "\n\n"));
     document.add(new Paragraph(changeDue.getText() + "\n\n"));
     document.add(new Paragraph("Thank you for visiting Britains Best Cinema Experience"));
     document.add(new Paragraph("#OspreyCinemaWhereExcitingHappens\n\n"));
