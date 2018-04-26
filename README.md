@@ -8,6 +8,7 @@ In this repository there are files to run a website, server and a till system.
 ./run.sh = Run the website
 ./test.sh = Test the website
 cd Desktop then ant main = Run the till system
+        Login - 'user' Password - 'password'
 cd Desktop then ant docs = Create the Java docs
 cd Desktop then ant test = Test the Till System
 
