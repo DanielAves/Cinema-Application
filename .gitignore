@@ -26,6 +26,9 @@ app.db
 cashReciept.pdf
 cardReciept.pdf
 
+${doc.dir}
+ticket.png
+
 
 
 

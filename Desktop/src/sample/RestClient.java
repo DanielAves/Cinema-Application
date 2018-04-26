@@ -1,3 +1,7 @@
+/**
+ * RestClient.java
+ */
+
 package sample;
 
 import java.util.List;
@@ -9,26 +13,23 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate ;
 
 /**
-*RestClient.java
-*A file that creates a client for the http server
-*Also has methods that implements CinemaApi interface
-* @author Mitchell Gladstone
-*/
-
+ * Class for creating a client for the http server.
+ * Also has methods that implements CinemaApi interface.
+ * @author Mitchell Gladstone
+ */
 public class RestClient implements CinemaApi {
 
-      private HttpClient client;
-      private ObjectMapper mapper;
+  /**  */
+  private HttpClient client;
+  /**  */
+  private ObjectMapper mapper;
 
       /**
-      *
-      *Method that initates an instence of rest client
-      *when passed host info and port number a connection to server is created
-      * @param host string that is host info
-      * @param port port number on which to connect
-      *
-      */
-
+       * Initiates an instance of rest client when passed host info
+       * and port number a connection to server is created.
+       * @param host String that is host info.
+       * @param port Port number on which to connect.
+       */
       public RestClient(String host, int port){
         super();
         this.client = new HttpClient(host, port);
@@ -37,9 +38,6 @@ public class RestClient implements CinemaApi {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss");
         mapper.setDateFormat(df);
       }
-      /**
-      * Customers methods
-      */
 
       /**
       * method that when called posts a new customer to database through the server
@@ -324,17 +322,6 @@ public class RestClient implements CinemaApi {
 
         return jsonToList;
       }
-
-      /**
-      * Ticket methods
-      */
-
-      /**
-      * method that when called posts a new ticket to database through the server
-      * @param Customer - custromer object that represents customer making booking
-      * @param Screening - screening object that represents the screening ticket is for
-      * @param Seat - represents seat that ticket is for
-      */
 
       public Ticket createTicket(Customer customer, Screening screening, Seat seat) throws Exception{
         Ticket t = new Ticket(customer.getCustomer_id(), screening.getScreening_id(),seat.getSeat_id());
