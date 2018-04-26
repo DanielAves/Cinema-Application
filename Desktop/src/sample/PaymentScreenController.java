@@ -79,6 +79,7 @@ public class PaymentScreenController {
   int items = 1;              //number of tickets sold
   String screen = "Screen 12";    //screen
   int screenTime;                 //time of viewing
+  int seatNum = 12;
 
 
   /**
