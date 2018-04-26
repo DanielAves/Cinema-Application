@@ -80,9 +80,9 @@ public class SeatRobot extends ApplicationTest {
         clickOn("#selectSeats");
         clickOn("#seat22");
         clickOn("#seat7");
+        verifyThat("#seat22", hasText("Taken"));
+        verifyThat("#seat7", hasText("Taken"));
         clickOn("#payButton");
-        verifyThat("#seat22", hasText("Seat is already taken, choose another!"));
-        verifyThat("#seat7", hasText("Seat is already taken, choose another!"));
     }
 
     /**

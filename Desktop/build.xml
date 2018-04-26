@@ -75,7 +75,6 @@
       <test name="sample.ScreenTest"/>
       <test name="sample.SeatTest"/>
       <test name="sample.TicketTest"/>
-      <!-- Failing Tests -->
       <test name="sample.CustomerTest"/>
       <test name="sample.ScreeningTest"/>
       <test name="sample.GenericWrapperTest"/>
@@ -86,7 +85,8 @@
 	    <test name="sample.ScreeningRobot"/>
       <test name="sample.TicketRobot"/>
       <test name="sample.SeatRobot"/>
-      <test name="sample.Payment"/>
+      <test name="sample.PaymentRobot"/>
+
 
 
     </junit>
