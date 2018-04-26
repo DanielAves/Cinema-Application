@@ -18,6 +18,7 @@ import java.util.*;
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
+import java.time.LocalDate ;
 
 import java.io.IOException;
 import java.io.*;
@@ -65,10 +66,9 @@ public class PaymentScreenController {
   @FXML
   private TextField tender;
 
-  double grandTotal;                    //Used to store passed total
+
   boolean cashBol = false;              //Used to determine if user selects "cash"
   List seatsPayment = new ArrayList();  //Local list to store seats passed to method
-  int screenIDLocal;                    //Stores passed screenID
   String  cardReciept = "cardReciept.pdf";
   String  cashReciept = "cashReciept.pdf";
 
@@ -80,6 +80,17 @@ public class PaymentScreenController {
   String screen = "Screen 12";    //screen
   int screenTime;                 //time of viewing
 
+  //Variables for Pdf
+  double grandTotal;    //Used to store transaction total
+  String seatNum;       //Stores the seat numbers as a String
+  int screenIDLocal;    //Stores passed screenID
+  LocalDate inputDate;  //Date of film
+  String inputTime;     //Time of film
+  String inputFilmName; //Specific filmname
+  String inputScreenNumber; //Selected screen number for film
+
+
+
 
   /**
   * This method sets the local variable grandTotal to the passed total from
@@ -90,6 +101,15 @@ public class PaymentScreenController {
   public void setTotal(double total){
     grandTotal = total;
     totalAmount.setText("Total £ " + String.format("%.2f", total));
+  }
+
+  /**
+  * Sets the local variable inputDate to the passed date from
+  * SeatingScreenController.
+  * @param date.
+  */
+  public void setDate(LocalDate date){
+    inputDate = date;
   }
 
   /**
@@ -112,9 +132,34 @@ public class PaymentScreenController {
     screenIDLocal = screenID; //Update local version for access in other functions
   }
 
+  /**
+  * Fetches passed filmName used for back function and pdf
+  * @param name
+  */
+  public void setFilmName(String name){
+    inputFilmName = name;
+  }
+
+  /**
+  * Sets the local variable inputTime to the passed time from
+  * SeatingScreenController.
+  * @param time.
+  */
+  public void setTime(String time){
+    inputTime = time;
+  }
+
+  /**
+  * Returns passed Screen number for the film selected
+  * @param num
+  */
+  public void setScreenNumber(String screen){
+    inputScreenNumber = screen;
+  }
+
 
   public void backButtonClicked(ActionEvent event) throws IOException {
-    Parent secondaryroot = FXMLLoader.load(getClass().getResource("resources/filmScreen.fxml"));
+    Parent secondaryroot = FXMLLoader.load(getClass().getResource("resources/homeScreen.fxml"));
     Scene filmScreen = new Scene(secondaryroot);
     Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
     window.setScene(filmScreen);
@@ -137,6 +182,15 @@ public class PaymentScreenController {
     totalAmount.setText("Total £ " + ("0.00"));
     bookSeats();
     createCardPDF(cardReciept);
+
+
+      System.out.println(grandTotal);
+      System.out.println(seatsPayment);
+      System.out.println(screenIDLocal);
+      System.out.println(inputDate);
+      System.out.println(inputTime);
+      System.out.println(inputFilmName);
+      System.out.println(inputScreenNumber);
   }
 
   public void bookSeats() throws Exception{

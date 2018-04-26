@@ -35,7 +35,7 @@ public class SeatingScreenController {
   public Button seat81, seat82, seat83, seat84, seat85, seat86, seat87, seat88, seat89, seat90;
   public Button seat91, seat92, seat93, seat94, seat95, seat96 ,seat97, seat98, seat99, seat100;
 
-  int screenID;
+  int inputScreeningID;
   List seats = new ArrayList();
   int counter =0;
   LocalDate inputDate;
@@ -43,6 +43,7 @@ public class SeatingScreenController {
   int inputFilmID;
   String inputFilmName;
   int screeningID;
+  String inputScreenNumber;
 
 
 
@@ -93,6 +94,14 @@ public class SeatingScreenController {
     inputTime = time;
   }
 
+  /**
+  * Returns passed Screen number for the film selected
+  * @param num
+  */
+  public void setScreenNumber(String screen){
+    inputScreenNumber = screen;
+  }
+
   public void payClicked(ActionEvent event)throws IOException{
     FXMLLoader Loader = new FXMLLoader();
     Loader.setLocation(getClass().getResource("resources/PaymentScreen.fxml"));
@@ -105,7 +114,13 @@ public class SeatingScreenController {
     PaymentScreenController display = Loader.getController();
     display.setTotal(totalNew);
     display.setSeats(seats);
-    display.setScreenID(screenID);
+    display.setScreenID(inputScreeningID);
+    display.setTime(inputTime); //Time of film
+    display.setDate(inputDate); //Date of film
+    display.setFilmName(inputFilmName); //FilmName
+    display.setScreenNumber(inputScreenNumber);
+
+
 
     Parent p = Loader.getRoot();
     Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -114,10 +129,10 @@ public class SeatingScreenController {
   }
   public void populateSeats(int screeningID) throws Exception{
     RestClient client = new RestClient("localhost", 5000);
-    screenID = screeningID;
+    inputScreeningID = screeningID;
     List tickets = new ArrayList();
     List<Ticket> ticketsSold = new ArrayList<Ticket>();
-    ticketsSold = client.getTicketsByScreening(screenID) ;
+    ticketsSold = client.getTicketsByScreening(inputScreeningID) ;
 
     if (ticketsSold.size()== 0 ){
       //Do nothing, prevents errors.
@@ -163,6 +178,7 @@ public class SeatingScreenController {
     display.setScreeningID(screeningID);
     display.setFilmID(inputFilmID);
     display.setFilmName(inputFilmName);
+    display.setScreenNumber(inputScreenNumber);
 
     Parent p = Loader.getRoot();
     Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -187,6 +203,7 @@ public class SeatingScreenController {
     display.setScreeningID(screeningID);
     display.setFilmID(inputFilmID);
     display.setFilmName(inputFilmName);
+    display.setScreenNumber(inputScreenNumber);
 
 
     Parent p = Loader.getRoot();

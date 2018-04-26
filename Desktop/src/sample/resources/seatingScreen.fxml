@@ -49,7 +49,7 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </GridPane.margin>
             </Button>
-            <Button fx:id="refresh" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#refreshScreen" prefHeight="50.0" prefWidth="327.0" stylesheets="@darkTheme.css" text="Clear selection / Refresh" GridPane.columnIndex="11" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
+            <Button fx:id="refresh" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#refreshScreen" prefHeight="50.0" prefWidth="376.0" stylesheets="@darkTheme.css" text="Clear selection / Refresh" GridPane.columnIndex="11" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
                <GridPane.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </GridPane.margin>

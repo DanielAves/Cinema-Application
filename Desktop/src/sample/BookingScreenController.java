@@ -48,6 +48,8 @@ public class BookingScreenController {
   int screeningID;
   int inputFilmID;
   String inputFilmName;
+  String inputScreenNumber;
+  int ticketQuanity; 
 
   /**
   * Sets the local variable inputDate to the passed date from
@@ -113,6 +115,14 @@ public class BookingScreenController {
     return screeningID;
   }
 
+  /**
+  * Returns passed Screen number for the film selected
+  * @param num
+  */
+  public void setScreenNumber(String screen){
+    inputScreenNumber = screen;
+  }
+
 
   public void backButtonClicked(ActionEvent event) throws Exception {
     FXMLLoader Loader = new FXMLLoader();
@@ -125,11 +135,9 @@ public class BookingScreenController {
 
     TimeTableController display = Loader.getController();
     display.setDate(inputDate); //pass date to next controller
-    System.out.println(inputDate);
-    System.out.println(inputFilmID);
-    System.out.println(inputFilmName);
     display.calculateShowingTimes(inputFilmID); //pass film ID
     display.setFilmName(inputFilmName);
+
 
     Parent p = Loader.getRoot();
     Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -281,13 +289,16 @@ public class BookingScreenController {
     }
 
     SeatingScreenController display = Loader.getController();
-    display.setTotal(grandTotal2);
-    display.populateSeats(screeningID);
-    display.setTime(inputTime);
-    display.setDate(inputDate);
-    display.setScreeningID(screeningID);
-    display.setFilmID(inputFilmID);
-    display.setFilmName(inputFilmName);
+    display.setTotal(grandTotal2); //Total price of tickets
+    display.populateSeats(screeningID); //ScreenID
+    display.setTime(inputTime); //Time of film
+    display.setDate(inputDate); //Date of film
+    display.setScreeningID(screeningID); //ScreenID
+    display.setFilmID(inputFilmID); //FilmID
+    display.setFilmName(inputFilmName); //FilmName
+    display.setScreenNumber(inputScreenNumber);
+
+    //screentime
 
 
     Parent p = Loader.getRoot();

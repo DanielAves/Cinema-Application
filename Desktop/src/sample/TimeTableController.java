@@ -189,44 +189,56 @@ public class TimeTableController{
     String buttonID = (((Button)event.getSource()).getId());
 
     int filmID =0;
+    String screenNumberSelected = null; // Used to store what
 
 
     if (buttonID.equals("film1")){
       filmID = 0;
+      screenNumberSelected = screen1.getText();
     }
     if (buttonID.equals("film2")){
       filmID = 1;
+      screenNumberSelected = screen2.getText();
     }
     if (buttonID.equals("film3")){
       filmID = 2;
+      screenNumberSelected = screen3.getText();
     }
     if (buttonID.equals("film4")){
       filmID = 3;
+      screenNumberSelected = screen4.getText();
     }
     if (buttonID.equals("film5")){
       filmID = 4;
+      screenNumberSelected = screen5.getText();
     }
     if (buttonID.equals("film6")){
       filmID = 5;
+      screenNumberSelected = screen6.getText();
     }
     if (buttonID.equals("film7")){
       filmID = 6;
+      screenNumberSelected = screen7.getText();
     }
     if (buttonID.equals("film8")){
       filmID = 7;
+      screenNumberSelected = screen1.getText();
     }
     if (buttonID.equals("film9")){
       filmID = 8;
+      screenNumberSelected = screen8.getText();
     }
     if (buttonID.equals("film10")){
       filmID = 9;
+      screenNumberSelected = screen9.getText();
     }
 
     display.setDate(inputDate); //pass date to next controller
     display.setTime(time); //pass time
-    display.setScreeningID(orderedScreeningIds.get(filmID));
-    display.setFilmID(filmID+1);
+    display.setScreeningID(orderedScreeningIds.get(filmID)); //Used to find screeningID
+    display.setFilmID(filmID+1); //Actual film ID
     display.setFilmName(filmName);
+    display.setScreenNumber(screenNumberSelected);
 
     Parent p = Loader.getRoot();
     Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
