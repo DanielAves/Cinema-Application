@@ -58,7 +58,7 @@ public class SeatRobot extends ApplicationTest {
     public void Test1SeatChoice1 () {
         clickOn("#viewToday");
         clickOn("#film1");
-        clickOn("#screen1");
+        clickOn("#film1");;
         clickOn("#adult");
         write("2");
         clickOn("#selectSeats");
@@ -74,7 +74,7 @@ public class SeatRobot extends ApplicationTest {
     public void Test1SeatChoice2() {
         clickOn("#viewToday");
         clickOn("#film1");
-        clickOn("#screen1");
+        clickOn("#film1");
         clickOn("#adult");
         write("2");
         clickOn("#selectSeats");

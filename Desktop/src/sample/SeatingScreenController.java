@@ -138,27 +138,37 @@ public class SeatingScreenController {
   * @throws IOException
   */
   public void payClicked(ActionEvent event)throws IOException{
-    FXMLLoader Loader = new FXMLLoader();
-    Loader.setLocation(getClass().getResource("resources/PaymentScreen.fxml"));
-    try{
-      Loader.load();
-    }catch (IOException ex){
-      Logger.getLogger(SeatingScreenController.class.getName());
+    if(seatSelectionCount != ticketQuantity)
+    {
+      AlertBox.display("Error", "Not enough seats selected!  ", "ticket");
     }
+    else if(ticketQuantity == 0){
+      AlertBox.display("Error", "You need to select a ticket  ", "ticket");
+    }
+    else{ //If validation passes proceed to next screen
 
-    PaymentScreenController display = Loader.getController();
-    display.setTotal(totalNew);
-    display.setSeats(seats);
-    display.setScreenID(inputScreeningID);
-    display.setTime(inputTime); //Time of film
-    display.setDate(inputDate); //Date of film
-    display.setFilmName(inputFilmName); //FilmName
-    display.setScreenNumber(inputScreenNumber);
+      FXMLLoader Loader = new FXMLLoader();
+      Loader.setLocation(getClass().getResource("resources/PaymentScreen.fxml"));
+      try{
+        Loader.load();
+      }catch (IOException ex){
+        Logger.getLogger(SeatingScreenController.class.getName());
+      }
 
-    Parent p = Loader.getRoot();
-    Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    window.setScene(new Scene(p));
-    window.show();
+      PaymentScreenController display = Loader.getController();
+      display.setTotal(totalNew);
+      display.setSeats(seats);
+      display.setScreenID(inputScreeningID);
+      display.setTime(inputTime); //Time of film
+      display.setDate(inputDate); //Date of film
+      display.setFilmName(inputFilmName); //FilmName
+      display.setScreenNumber(inputScreenNumber);
+
+      Parent p = Loader.getRoot();
+      Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+      window.setScene(new Scene(p));
+      window.show();
+    }
   }
 
   /**
@@ -193,15 +203,14 @@ public class SeatingScreenController {
   public void seatSelection(ActionEvent event) throws Exception {
     seatSelectionCount++;
     if (seatSelectionCount > ticketQuantity){
-      System.out.println("Too many seats selected");
       AlertBox.display("Error", "Too many seats selected!", "seat");
+      seatSelectionCount--;
     }
     else{
       //Pass ticket total to here and define array based on the amount of seats to be selected based on tickets
       String seatText = (((Button)event.getSource()).getText());
 
       if(seatText.equals("Taken")){
-        System.out.println("Seat is already taken");
         AlertBox.display("Error", "Seat is already taken, choose another!", "seat");
         seatSelectionCount--;
       }

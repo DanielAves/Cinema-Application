@@ -58,7 +58,7 @@ public class TicketRobot extends ApplicationTest {
     public void Test1Ticket1 () {
         clickOn("#viewToday");
         clickOn("#film1");
-        clickOn("#screen1");
+        clickOn("#film1");
         clickOn("#adult");
         write("2");
         clickOn("#selectSeats");

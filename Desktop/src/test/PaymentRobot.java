@@ -58,51 +58,51 @@ public class PaymentRobot extends ApplicationTest {
     public void Test1Cash () {
         clickOn("#viewToday");
         clickOn("#film1");
-        clickOn("#screen1");
+        clickOn("#film1");
         clickOn("#adult");
         write("2");
         clickOn("#selectSeats");
-        clickOn("#seat20");
-        clickOn("#seat21");
+        clickOn("#seat50");
+        clickOn("#seat51");
         clickOn("#payButton");
         clickOn("#cash");
         clickOn("#forty");
     }
 
-    /**
-    * Test to see if we can pay using Card.
-    */
-    @Test
-    public void Test1Card() {
-        clickOn("#viewToday");
-        clickOn("#film1");
-        clickOn("#screen1");
-        clickOn("#adult");
-        write("2");
-        clickOn("#selectSeats");
-        clickOn("#seat99");
-        clickOn("#seat98");
-        clickOn("#payButton");
-        clickOn("#card");
-    }
-
-    /**
-    * Test to see if we can pay by enetering the amount of cash the customer
-    * has given the staff.
-    */
-    @Test
-    public void Test1EnterTender() {
-        clickOn("#viewToday");
-        clickOn("#film1");
-        clickOn("#screen1");
-        clickOn("#adult");
-        write("2");
-        clickOn("#selectSeats");
-        clickOn("#seat68");
-        clickOn("#seat67");
-        clickOn("#payButton");
-        clickOn("#tender");
-        write("50");
-
-    }
+    // /**
+    // * Test to see if we can pay using Card.
+    // */
+    // @Test
+    // public void Test1Card() {
+    //     clickOn("#viewToday");
+    //     clickOn("#film1");
+    //     clickOn("#film1");
+    //     clickOn("#adult");
+    //     write("2");
+    //     clickOn("#selectSeats");
+    //     clickOn("#seat99");
+    //     clickOn("#seat98");
+    //     clickOn("#payButton");
+    //     clickOn("#card");
+    // }
+    //
+    // /**
+    // * Test to see if we can pay by enetering the amount of cash the customer
+    // * has given the staff.
+    // */
+    // @Test
+    // public void Test1EnterTender() {
+    //     clickOn("#viewToday");
+    //     clickOn("#film1");
+    //     clickOn("#film1");
+    //     clickOn("#adult");
+    //     write("2");
+    //     clickOn("#selectSeats");
+    //     clickOn("#seat68");
+    //     clickOn("#seat67");
+    //     clickOn("#payButton");
+    //     clickOn("#tender");
+    //     write("50");
+    //
+    // }
 }
