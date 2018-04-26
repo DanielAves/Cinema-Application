@@ -82,4 +82,12 @@ public class HomeScreenController {
     window.setScene(new Scene(p));
     window.show();
   }
+
+  public void logoutButtonClicked(javafx.event.ActionEvent event) throws Exception{
+      Parent secondaryroot = FXMLLoader.load(getClass().getResource("resources/loginScreen.fxml"));
+      Scene filmScreen = new Scene(secondaryroot);
+      Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+      window.setScene(filmScreen);
+      window.show();
+  }
 }
