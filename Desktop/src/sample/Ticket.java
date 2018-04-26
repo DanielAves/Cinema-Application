@@ -1,25 +1,38 @@
+/**
+ * Ticket.java
+ */
+
 package sample;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
+/**
+ * Class for ...
+ *
+ * @author Mitchell Gladstone
+ */
 public class Ticket {
-  private int ticket_id ;
-  private int customer_id ;
-  private int screening_id ;
+  /** ID number of the ticket. */
+  private int ticket_id;
+  /** ID number of the customer.  */
+  private int customer_id;
+  /** ID number of the screening. */
+  private int screening_id;
+  /** ID number of the seat. */
   private int seat_id;
 
-
-
-
-
 	/**
-	* Default empty Ticket constructor
-	*/
+	 * Default Ticket constructor.
+	 */
 	public Ticket() {
 		super();
 	}
 
 	/**
-	* Default Ticket constructor
-	*/
+	 * Ticket constructor.
+	 * @param customer_id  ID number of customer.
+	 * @param screening_id ID number of screening.
+	 * @param seat_id      ID number of seat.
+	 */
 	public Ticket(int customer_id, int screening_id, int seat_id) {
 		super();
 		this.ticket_id = 0;
@@ -28,77 +41,87 @@ public class Ticket {
 		this.seat_id = seat_id;
 	}
 
-
 	/**
-	* Returns value of ticket_id
-	* @return
-	*/
+	 * @return ID number of ticket.
+	 */
   @JsonIgnore
 	public int getTicket_id() {
 		return ticket_id;
 	}
 
-	/**
-	* Sets new value of ticket_id
-	* @param
-	*/
+  /**
+   * Sets new value of this.ticket_id.
+   * @param ticket_id ID number of ticket.
+   */
   @JsonIgnore
 	public void setTicket_id(int ticket_id) {
-		this.ticket_id = ticket_id;
+    if(ticket_id < 0) {
+      throw new IllegalArgumentException("ID must NOT be negative.");
+    } else {
+		  this.ticket_id = ticket_id;
+    }
 	}
 
 	/**
-	* Returns value of customer_id
-	* @return
-	*/
+	 * @return ID number of customer.
+	 */
 	public int getCustomer_id() {
 		return customer_id;
 	}
 
 	/**
-	* Sets new value of customer_id
-	* @param
-	*/
+	 * Sets new value of this.customer_id.
+	 * @param customer_id ID number of customer.
+	 */
 	public void setCustomer_id(int customer_id) {
-		this.customer_id = customer_id;
+    if(customer_id < 0) {
+      throw new IllegalArgumentException("ID must NOT be negative.");
+    } else {
+		  this.customer_id = customer_id;
+    }
 	}
 
 	/**
-	* Returns value of screening_id
-	* @return
-	*/
+	 * @return ID number of screening.
+	 */
 	public int getScreening_id() {
 		return screening_id;
 	}
 
 	/**
-	* Sets new value of screening_id
-	* @param
-	*/
+	 * Sets new value of this.screening_id.
+	 * @param screening_id ID number of screening.
+	 */
 	public void setScreening_id(int screening_id) {
-		this.screening_id = screening_id;
+    if(screening_id < 0) {
+      throw new IllegalArgumentException("ID must NOT be negative.");
+    } else {
+		  this.screening_id = screening_id;
+    }
 	}
 
 	/**
-	* Returns value of seat_id
-	* @return
-	*/
+	 * @return ID number of seat.
+	 */
 	public int getSeat_id() {
 		return seat_id;
 	}
 
 	/**
-	* Sets new value of seat_id
-	* @param
-	*/
+	 * Sets new value of this.seat_id.
+	 * @param seat_id ID number of seat.
+	 */
 	public void setSeat_id(int seat_id) {
-		this.seat_id = seat_id;
+    if(seat_id < 0) {
+      throw new IllegalArgumentException("ID must NOT be negative.");
+    } else {
+		  this.seat_id = seat_id;
+    }
 	}
 
 	/**
-	* Create string representation of Ticket for printing
-	* @return
-	*/
+	 * @return String representation of Ticket for printing.
+	 */
 	@Override
 	public String toString() {
 		return "Ticket [ticket_id=" + ticket_id + ", customer_id=" + customer_id + ", screening_id=" + screening_id + ", seat_id=" + seat_id + "]";

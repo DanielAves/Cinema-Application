@@ -34,6 +34,12 @@ Desktop/bin
 
 app.db
 
+cashReciept.pdf
+cardReciept.pdf
+
+${doc.dir}
+ticket.png
+
 
 website/app/static/img/ticket.svg
 website/app/static/img/ticket.pdf

@@ -1,3 +1,7 @@
+/**
+ * LocalTimeSerializer.java
+ */
+
 package sample;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;
@@ -7,14 +11,19 @@ import java.io.IOException;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
-
+/**
+ * Used for serialising LocalTime objects
+ *
+ * @author Mitchell Gladstone
+ */
 public class LocalTimeSerializer extends StdSerializer<LocalTime> {
-    public LocalTimeSerializer() {
-        super(LocalTime.class);
-    }
 
-    @Override
-    public void serialize(LocalTime value, JsonGenerator generator, SerializerProvider provider) throws IOException {
-        generator.writeString(value.format(DateTimeFormatter.ISO_LOCAL_TIME));
-    }
+  public LocalTimeSerializer() {
+    super(LocalTime.class);
+  }
+
+  @Override
+  public void serialize(LocalTime value, JsonGenerator generator, SerializerProvider provider) throws IOException {
+    generator.writeString(value.format(DateTimeFormatter.ISO_LOCAL_TIME));
+  }
 }

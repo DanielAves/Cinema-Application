@@ -1,30 +1,16 @@
+/**
+ * LoginControllerTest.java
+ */
+
+package sample;
 import org.junit.*;
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 
-public class LoginControllerTest {
-
-    /**
-     * Sets up the test fixture.
-     * (Called before every test case method.)
-     */
-    @Before
-    public void setUp() {
-
-    }
-
-    /**
-     * Tears down the test fixture.
-     * (Called after every test case method.)
-     */
-    @After
-    public void tearDown() {
-
-    }
-
-    @Test
-    public void testSomeBehavior() {
-
-    }
+/**
+ * Test class for LoginController.java. Used to ensure class is working as
+ * intended and appropriate validation has been used.
+ */
+public class LoginControllerTest{
 
 }

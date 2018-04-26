@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1050.0" prefWidth="1680.0" stylesheets="@mainStyle.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.timetableController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1050.0" prefWidth="1680.0" stylesheets="@mainStyle.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TimeTableController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="866.0" minWidth="10.0" prefWidth="356.6666564941406" />
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="600.0" minWidth="10.0" prefWidth="470.3333435058594" />
@@ -29,12 +29,7 @@
       <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
    </padding>
    <children>
-      <Button fx:id="logOut" mnemonicParsing="false" onAction="#logoutButtonClicked" prefHeight="50.0" prefWidth="150.0" styleClass="Button" stylesheets="@darkTheme.css" text="Logout" textFill="WHITE" GridPane.columnIndex="4" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
-         <GridPane.margin>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </GridPane.margin>
-      </Button>
-      <Button fx:id="backButton" alignment="TOP_CENTER" cancelButton="true" contentDisplay="TOP" mnemonicParsing="false" onAction="#backButtonClicked" prefHeight="50.0" prefWidth="150.0" styleClass="Button" stylesheets="@darkTheme.css" text="&lt;" textFill="WHITE" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+      <Button fx:id="backButton" alignment="TOP_CENTER" cancelButton="true" contentDisplay="TOP" mnemonicParsing="false" onAction="#backButtonClicked" opacity="0.5" prefHeight="50.0" prefWidth="150.0" styleClass="Button" stylesheets="@darkTheme.css" text="&lt;" textFill="WHITE" GridPane.halignment="LEFT" GridPane.valignment="TOP">
          <font>
             <Font size="22.0" />
          </font>
@@ -42,25 +37,25 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </GridPane.margin>
       </Button>
-      <Button fx:id="film1" mnemonicParsing="false" onAction="#timeClicked" prefHeight="75.0" prefWidth="400.0" styleClass="Button" stylesheets="@darkTheme.css" text="" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+      <Button fx:id="film1" mnemonicParsing="false" onAction="#timeClicked" opacity="0.5" prefHeight="75.0" prefWidth="400.0" styleClass="Button" stylesheets="@darkTheme.css" text="" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <GridPane.margin>
             <Insets />
          </GridPane.margin>
       </Button>
-      <Button fx:id="film3" mnemonicParsing="false" onAction="#timeClicked" prefHeight="75.0" prefWidth="400.0" styleClass="Button" stylesheets="@darkTheme.css" text="" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-      <Button fx:id="film5" mnemonicParsing="false" onAction="#timeClicked" prefHeight="75.0" prefWidth="400.0" styleClass="Button" stylesheets="@darkTheme.css" text="" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
-      <Button fx:id="film7" mnemonicParsing="false" onAction="#timeClicked" prefHeight="75.0" prefWidth="400.0" styleClass="Button" stylesheets="@darkTheme.css" text="" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
-      <Button fx:id="film2" mnemonicParsing="false" onAction="#timeClicked" prefHeight="75.0" prefWidth="400.0" styleClass="Button" stylesheets="@darkTheme.css" text="" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-      <Button fx:id="film4" mnemonicParsing="false" onAction="#timeClicked" prefHeight="75.0" prefWidth="400.0" styleClass="Button" stylesheets="@darkTheme.css" text="" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-      <Button fx:id="film6" mnemonicParsing="false" onAction="#timeClicked" prefHeight="75.0" prefWidth="400.0" styleClass="Button" stylesheets="@darkTheme.css" text="" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
-      <Button fx:id="film8" mnemonicParsing="false" onAction="#timeClicked" prefHeight="75.0" prefWidth="400.0" styleClass="Button" stylesheets="@darkTheme.css" text="" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
-      <Text fx:id="filmDate" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Showing films for:" textAlignment="CENTER" wrappingWidth="423.4700927734375" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+      <Button fx:id="film3" mnemonicParsing="false" onAction="#timeClicked" opacity="0.5" prefHeight="75.0" prefWidth="400.0" styleClass="Button" stylesheets="@darkTheme.css" text="" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+      <Button fx:id="film5" mnemonicParsing="false" onAction="#timeClicked" opacity="0.5" prefHeight="75.0" prefWidth="400.0" styleClass="Button" stylesheets="@darkTheme.css" text="" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+      <Button fx:id="film7" mnemonicParsing="false" onAction="#timeClicked" opacity="0.5" prefHeight="75.0" prefWidth="400.0" styleClass="Button" stylesheets="@darkTheme.css" text="" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+      <Button fx:id="film2" mnemonicParsing="false" onAction="#timeClicked" opacity="0.5" prefHeight="75.0" prefWidth="400.0" styleClass="Button" stylesheets="@darkTheme.css" text="" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+      <Button fx:id="film4" mnemonicParsing="false" onAction="#timeClicked" opacity="0.5" prefHeight="75.0" prefWidth="400.0" styleClass="Button" stylesheets="@darkTheme.css" text="" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+      <Button fx:id="film6" mnemonicParsing="false" onAction="#timeClicked" opacity="0.5" prefHeight="75.0" prefWidth="400.0" styleClass="Button" stylesheets="@darkTheme.css" text="" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+      <Button fx:id="film8" mnemonicParsing="false" onAction="#timeClicked" opacity="0.5" prefHeight="75.0" prefWidth="400.0" styleClass="Button" stylesheets="@darkTheme.css" text="" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+      <Text fx:id="filmDate" strokeType="OUTSIDE" strokeWidth="0.0" text="Showing films for:" textAlignment="CENTER" wrappingWidth="423.4700927734375" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets top="30.0" />
          </GridPane.margin>
       </Text>
-      <Button fx:id="film9" mnemonicParsing="false" onAction="#timeClicked" prefHeight="75.0" prefWidth="400.0" styleClass="Button" stylesheets="@darkTheme.css" text="" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
-      <Button fx:id="film10" mnemonicParsing="false" onAction="#timeClicked" prefHeight="75.0" prefWidth="400.0" styleClass="Button" stylesheets="@darkTheme.css" text="" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
+      <Button fx:id="film9" mnemonicParsing="false" onAction="#timeClicked" opacity="0.5" prefHeight="75.0" prefWidth="400.0" styleClass="Button" stylesheets="@darkTheme.css" text="" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+      <Button fx:id="film10" mnemonicParsing="false" onAction="#timeClicked" opacity="0.5" prefHeight="75.0" prefWidth="400.0" styleClass="Button" stylesheets="@darkTheme.css" text="" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
       <Label fx:id="screen1" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP" />
       <Label fx:id="screen2" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP" />
       <Label fx:id="screen3" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP" />

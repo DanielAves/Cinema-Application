@@ -1,6 +1,8 @@
+/**
+ * FilmScreenController.java
+ */
+
 package sample;
-
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,75 +14,74 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.logging.Logger;
-
 import java.util.List;
 import java.util.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-public class filmScreenController{
+/**
+ * Fetches film names for a selected date and
+ * outputs the names to the UI for user selection.
+ *
+ * @author Dan Aves
+ */
+public class FilmScreenController{
 
-
-
+  //Declaring FXML elements
   @FXML
   public Button film1,film2,film3,film4,film5,film6,film7,film8,film9,film10;
-  public Text filmDate;
+  public Label filmDateText;
 
   LocalDate inputDate;
 
   DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-  public LocalDate test;
 
+  /**
+  * Sets the local variable inputDate to the passed date from
+  * HomeScreenController, dependent on user selection. Also sets text
+  * on the UI.
+  * @param date.
+  */
   public void setDate(LocalDate date){
     inputDate = date;
-    filmDate.setText("Showing films for " + dtf.format(inputDate));
+    filmDateText.setText("Showing films for " + dtf.format(inputDate));
   }
 
+  /**
+  * This method fetches the correct film names dependent on the previously selected
+  * date.
+  * @param date Used to find all film names
+  */
   public void setScreen(LocalDate date) throws Exception{
-    System.out.println("Showing films for " + dtf.format(inputDate));
     RestClient client = new RestClient("localhost", 5000);
 
     List filmList = new ArrayList();
-    List screeningsList = new ArrayList();
-    List filmIdList = new ArrayList();
+    List<Screening> screeningsList = new ArrayList<Screening>();
+    List<Integer> filmIdList = new ArrayList<Integer>();
 
-    //Populate filmlist
-    filmList = client.getFilms();
+    //Fetch all screenings for particular date
+    screeningsList = client.getScreeningsByDate(inputDate);
 
-    //Check amount of films in db
-    int filmAmount = filmList.size();
-
-    //Populate screeningsList
-    screeningsList = client.getScreenings();
-
-    //Check amount of screenings in db
-    int screeningAmount = screeningsList.size();
-
-    //Date passed from user selection
-    // inputDate = date;
-    // LocalDate inputDate = LocalDate.of(2018,04,04);
-
-
-    for(int i = 1; i<=screeningAmount; i++){
-      Screening s = client.getScreening(i);
-      LocalDate dateScreening = s.getScreening_date();
-      if(dateScreening.equals(inputDate)){
-        if(filmIdList.contains(s.getFilm_id())){
-        }
-        else{
-          filmIdList.add(s.getFilm_id());
-        }
+    //Get the film ids and add to a new list
+    for (int i = 0 ; i <screeningsList.size(); i++){
+      int fid= screeningsList.get(i).getFilm_id();
+      if (filmIdList.contains(fid)){
+        //Do nothing - prvents duplicates
+      }
+      else{
+        filmIdList.add(fid);
       }
     }
-    for(int i =0; i<filmIdList.size() ;i++){ //client.getFilm(i) != null
-      int temp = Integer.parseInt(filmIdList.get(i).toString());
-      Film f = client.getFilm(temp);
+
+    //Gets the filmname for a particular filmID and displays to ui.
+    for(int i =0; i<filmIdList.size() ;i++){
+      int fid = Integer.parseInt(filmIdList.get(i).toString());
+      Film f = client.getFilm(fid);
       String filmName = f.getFilm_name();
       int filmId = f.getFilm_id();
       switch (filmId) {
@@ -109,25 +110,24 @@ public class filmScreenController{
   }
 
 
-
-
-  public void logoutButtonClicked(ActionEvent event) throws IOException{
-    Parent secondaryroot = FXMLLoader.load(getClass().getResource("resources/loginScreen.fxml"));
-    Scene filmScreen = new Scene(secondaryroot);
-    Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    window.setScene(filmScreen);
-    window.show();
-
-  }
-
+  /**
+  * Takes user back a page to homescreen
+  * @param event clicking back button
+  */
   public void backButtonClicked(ActionEvent event) throws IOException{
     Parent secondaryroot = FXMLLoader.load(getClass().getResource("resources/homeScreen.fxml"));
     Scene filmScreen = new Scene(secondaryroot);
     Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
     window.setScene(filmScreen);
     window.show();
-
   }
+
+  /**
+  * When a film is selected the timetableScreen is loaded showing times
+  * for that particular film.
+  *
+  * @param event clicking a filmName
+  */
   public void selectFilm(ActionEvent event) throws Exception{
 
     FXMLLoader Loader = new FXMLLoader();
@@ -135,16 +135,16 @@ public class filmScreenController{
     try{
       Loader.load();
     }catch (IOException ex){
-      Logger.getLogger(filmScreenController.class.getName());
+      Logger.getLogger(FilmScreenController.class.getName());
     }
 
-    timetableController display = Loader.getController();
+    TimeTableController display = Loader.getController();
+    //Determine what button is clicked
     String filmName = (((Button)event.getSource()).getText());
     String buttonID = (((Button)event.getSource()).getId());
 
     int filmID =0;
-
-
+    //Enables correct ID to be passed to next screen dependent on film selected
     if (buttonID.equals("film1")){
       filmID = 1;
     }
@@ -176,8 +176,9 @@ public class filmScreenController{
       filmID = 10;
     }
 
+    //Pass relevant information to next screen
     display.setDate(inputDate); //pass date to next controller
-    display.setTime(filmID); //pass film ID
+    display.calculateShowingTimes(filmID); //pass film ID
     display.setFilmName(filmName);
 
     Parent p = Loader.getRoot();

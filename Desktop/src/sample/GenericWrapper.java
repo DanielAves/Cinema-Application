@@ -1,9 +1,18 @@
+/**
+ * GenericWrapper.java
+ */
+
 package sample;
 import java.util.List;
 import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * Generic wrapper is used for object serialisation/deserialisation.
+ *
+ * @author Mitchell Gladstone
+ */
 public class GenericWrapper<T> {
 
   private List<T> objects;
@@ -13,11 +22,6 @@ public class GenericWrapper<T> {
   private int total_pages;
 
   private int page;
-
-
-
-
-
 
 	/**
 	* Returns value of objects
@@ -29,7 +33,7 @@ public class GenericWrapper<T> {
 
 	/**
 	* Sets new value of objects
-	* @param
+	* @param objects.
 	*/
 	public void setObjects(List<T> objects) {
 		this.objects = objects;
@@ -45,10 +49,14 @@ public class GenericWrapper<T> {
 
 	/**
 	* Sets new value of num_results
-	* @param
+	* @param num_results
 	*/
 	public void setNum_results(int num_results) {
-		this.num_results = num_results;
+    if(num_results < 0) {
+      throw new IllegalArgumentException("Must NOT be negative.");
+    } else {
+		  this.num_results = num_results;
+    }
 	}
 
 	/**
@@ -61,10 +69,14 @@ public class GenericWrapper<T> {
 
 	/**
 	* Sets new value of total_pages
-	* @param
+	* @param total_pages
 	*/
 	public void setTotal_pages(int total_pages) {
-		this.total_pages = total_pages;
+    if(total_pages < 0) {
+      throw new IllegalArgumentException("Must NOT be negative.");
+    } else {
+		  this.total_pages = total_pages;
+    }
 	}
 
 	/**
@@ -77,9 +89,13 @@ public class GenericWrapper<T> {
 
 	/**
 	* Sets new value of page
-	* @param
+	* @param page
 	*/
 	public void setPage(int page) {
-		this.page = page;
+    if(page < 0) {
+      throw new IllegalArgumentException("Must NOT be negative.");
+    } else {
+		  this.page = page;
+    }
 	}
 }
