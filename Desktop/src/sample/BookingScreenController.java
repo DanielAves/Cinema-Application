@@ -58,11 +58,7 @@ public class BookingScreenController {
   */
   public void setDate(LocalDate date){
     LocalDate current = LocalDate.now();
-    if(current.isBefore(date)) {
-      throw new IllegalArgumentException("Date must be in the past.");
-    } else {
-      inputDate = date;
-    }
+    inputDate = date;
   }
 
   /**

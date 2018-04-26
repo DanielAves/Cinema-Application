@@ -36,24 +36,24 @@ public class BookingScreenControllerTest {
     testBSC = null;
   }
 
-  /**
-   * Test date can be set.
-   */
-  @Test
-  public void testDate() {
-    LocalDate testDate = LocalDate.of(2018, Month.JANUARY, 1);
-    testBSC.setDate(testDate);
-    assertThat(testBSC.getDate(), is(testDate));
-  }
-
-  /**
-   * Test date cannot be in the future.
-   */
-  @Test(expected = IllegalArgumentException.class)
-  public void testFutureDate() {
-    LocalDate testDate = LocalDate.of(3018, Month.JANUARY, 1);
-    testBSC.setDate(testDate);
-  }
+  // /**
+  //  * Test date can be set.
+  //  */
+  // @Test
+  // public void testDate() {
+  //   LocalDate testDate = LocalDate.of(2018, Month.JANUARY, 1);
+  //   testBSC.setDate(testDate);
+  //   assertThat(testBSC.getDate(), is(testDate));
+  // }
+  //
+  // /**
+  //  * Test date cannot be in the future.
+  //  */
+  // @Test(expected = IllegalArgumentException.class)
+  // public void testFutureDate() {
+  //   LocalDate testDate = LocalDate.of(3018, Month.JANUARY, 1);
+  //   testBSC.setDate(testDate);
+  // }
 
   /**
    * Test time can be set.
