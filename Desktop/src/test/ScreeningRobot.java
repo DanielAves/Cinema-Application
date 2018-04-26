@@ -30,7 +30,7 @@ import java.time.format.DateTimeFormatter;
 * @version 1.1 (2018-04-24)
 */
 
-public class FilmRobot extends ApplicationTest{
+public class ScreeningRobot extends ApplicationTest {
 
     @Override
     public void start (Stage stage) throws Exception {

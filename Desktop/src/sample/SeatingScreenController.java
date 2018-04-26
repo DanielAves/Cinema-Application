@@ -117,7 +117,7 @@ public class SeatingScreenController {
   public void setScreenNumber(String screen){
     inputScreenNumber = screen;
   }
-
+  /**
    * Takes user to the payment screen.
    * @param  event       User clicks.
    * @throws IOException
