@@ -74,11 +74,11 @@ public class PaymentScreenController {
   String  cardReciept = "cardReciept.pdf";
   String  cashReciept = "cashReciept.pdf";
 
-  String filmname;        //name of the film
-  String ticketType = "adult";      //i.e child, adult etc
-  int ticktPrice = 12 ;         //price of individual ticket
-  int transTotal = 12;        //totl of all tickets
-  int items = 1;              //number of tickets sold
+  String filmname;                //name of the film
+  String ticketType = "adult";    //i.e child, adult etc
+  int ticktPrice = 12 ;           //price of individual ticket
+  int transTotal = 12;            //total of all tickets
+  int items = 1;                  //number of tickets sold
   String screen = "Screen 12";    //screen
   int screenTime;                 //time of viewing
   // int seatNum = 12;

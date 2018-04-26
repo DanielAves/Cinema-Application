@@ -66,7 +66,7 @@ public class HomeScreenRobot extends ApplicationTest{
   @Test
   public void Test1ViewToday () {
     clickOn("#viewToday");
-    verifyThat("#filmDate", hasText("Showing films for " + dtf.format(localDateToday)));
+    verifyThat("#filmDateText", hasText("Showing films for " + dtf.format(localDateToday)));
   }
   /**
   * Test to see if films can be viewd for future date
@@ -74,9 +74,11 @@ public class HomeScreenRobot extends ApplicationTest{
   @Test
   public void Test2ViewFutureDate(){
     clickOn("#filmDate");
+    sleep(2000);
     write(dateTomorrowString);
+    sleep(1000);
     clickOn("#submitButton");
-    verifyThat("#filmDate", hasText("Showing films for " + dtf.format(localDateTomorrow)));
+    verifyThat("#filmDateText", hasText("Showing films for " + dtf.format(localDateTomorrow)));
 
   }
 

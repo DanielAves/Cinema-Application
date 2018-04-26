@@ -96,15 +96,6 @@ public class ScreeningTest {
   }
 
   /**
-   * Test screening_date cannot be in the future.
-   */
-  @Test(expected = IllegalArgumentException.class)
-  public void testFutureScreeningDate() {
-    LocalDate testScreeningDate = LocalDate.of(3018, Month.JANUARY, 1);
-    testScreening.setScreening_date(testScreeningDate);
-  }
-
-  /**
    * Test screen_id can be set.
    */
   @Test

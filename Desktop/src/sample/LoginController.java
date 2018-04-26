@@ -34,7 +34,7 @@ public class LoginController{
   String password1 = "password";
 
   /**
-  * Checks if credentials and loads homescreen or displays erros message
+  * Checks if credentials are valid and loads homescreen or displays error message
   * @param event clicking loginButton
   */
 

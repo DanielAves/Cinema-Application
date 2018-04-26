@@ -1,6 +1,6 @@
 /**
- * TimeTableController.java
- */
+* TimeTableController.java
+*/
 
 package sample;
 import java.util.*;
@@ -23,11 +23,11 @@ import javafx.scene.text.Text;
 import javafx.scene.control.Label;
 
 /**
- * The TimetableController fetches film times for a particular filmID and date and
- * outputs the times to the UI for user selection.
- *
- * @author Dan Aves and Mitchell Gladstone
- */
+* The TimetableController fetches film times for a particular filmID and date and
+* outputs the times to the UI for user selection.
+*
+* @author Dan Aves and Mitchell Gladstone
+*/
 public class TimeTableController{
 
   //Provide access to buttons and labels within timetableScreen.fxml
@@ -44,9 +44,7 @@ public class TimeTableController{
   List<Screening> screeningsList = new ArrayList<Screening>();
   //Stores reduced size of screenings for more efficient searching
   List<Screening> usedScreeningsList = new ArrayList<Screening>();
-  //List<Integer> orderedFilmIds = new ArrayList<Integer>();
-
-  DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
+  //Used for outputting correct format to screen
   DateTimeFormatter time = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
   /**
@@ -106,6 +104,12 @@ public class TimeTableController{
     }
   }
 
+  /**
+  * This method populates the interface with film times and screen numbers
+  * for the specific date and film selected
+  * @param value
+  * @param screenNum
+  */
   public void populateScreen(int value,int screenNum){
     value = value +1;//swith statement starts at 1
     switch (value) {
@@ -167,7 +171,7 @@ public class TimeTableController{
   }
 
   /**
-  * Loads bookingScreen and passes filmID to the corresponding getController
+  * Loads bookingScreen and passes filmID to the corresponding Controller
   * dependent on what button the user clicks
   * @param event.
   */
@@ -187,9 +191,9 @@ public class TimeTableController{
     String buttonID = (((Button)event.getSource()).getId());
 
     int filmID =0;
-    String screenNumberSelected = null; // Used to store what
+    String screenNumberSelected = null;
 
-
+    //Logic to check what button is clicked, and thus what ID corresponds
     if (buttonID.equals("film1")){
       filmID = 0;
       screenNumberSelected = screen1.getText();
@@ -231,6 +235,7 @@ public class TimeTableController{
       screenNumberSelected = screen9.getText();
     }
 
+    //Pass data to next screen
     display.setDate(inputDate); //pass date to next controller
     display.setTime(time); //pass time
     display.setScreeningID(orderedScreeningIds.get(filmID)); //Used to find screeningID
