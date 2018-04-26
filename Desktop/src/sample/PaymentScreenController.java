@@ -129,7 +129,11 @@ public class PaymentScreenController {
   * @param screenID.
   */
   public void setScreenID(int screenID){
-    screenIDLocal = screenID; //Update local version for access in other functions
+    if(screenID < 0) {
+      throw new IllegalArgumentException("ID must NOT be negative.");
+    } else {
+      screenIDLocal = screenID; //Update local version for access in other functions
+    }
   }
 
   /**

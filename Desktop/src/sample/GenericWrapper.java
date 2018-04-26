@@ -52,7 +52,11 @@ public class GenericWrapper<T> {
 	* @param num_results
 	*/
 	public void setNum_results(int num_results) {
-		this.num_results = num_results;
+    if(num_results < 0) {
+      throw new IllegalArgumentException("Must NOT be negative.");
+    } else {
+		  this.num_results = num_results;
+    }
 	}
 
 	/**
@@ -68,7 +72,11 @@ public class GenericWrapper<T> {
 	* @param total_pages
 	*/
 	public void setTotal_pages(int total_pages) {
-		this.total_pages = total_pages;
+    if(total_pages < 0) {
+      throw new IllegalArgumentException("Must NOT be negative.");
+    } else {
+		  this.total_pages = total_pages;
+    }
 	}
 
 	/**
@@ -84,6 +92,10 @@ public class GenericWrapper<T> {
 	* @param page
 	*/
 	public void setPage(int page) {
-		this.page = page;
+    if(page < 0) {
+      throw new IllegalArgumentException("Must NOT be negative.");
+    } else {
+		  this.page = page;
+    }
 	}
 }
