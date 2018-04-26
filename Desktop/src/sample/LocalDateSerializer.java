@@ -1,3 +1,7 @@
+/**
+ * LocalDateSerializer.java
+ */
+
 package sample;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;
@@ -8,17 +12,18 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 /**
-*Used for serialising LocalDate objects
-* @author Mitchell Gladstone
-*/
+ * Used for serialising LocalDate objects
+ *
+ * @author Mitchell Gladstone
+ */
 public class LocalDateSerializer extends StdSerializer<LocalDate> {
 
-    public LocalDateSerializer() {
-        super(LocalDate.class);
-    }
+  public LocalDateSerializer() {
+    super(LocalDate.class);
+  }
 
-    @Override
-    public void serialize(LocalDate value, JsonGenerator generator, SerializerProvider provider) throws IOException {
-        generator.writeString(value.format(DateTimeFormatter.ISO_LOCAL_DATE));
-    }
+  @Override
+  public void serialize(LocalDate value, JsonGenerator generator, SerializerProvider provider) throws IOException {
+    generator.writeString(value.format(DateTimeFormatter.ISO_LOCAL_DATE));
+  }
 }

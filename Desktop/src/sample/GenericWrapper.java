@@ -1,3 +1,7 @@
+/**
+ * GenericWrapper.java
+ */
+
 package sample;
 import java.util.List;
 import java.util.Map;
@@ -5,10 +9,10 @@ import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-*Generic wrapper is used for object serialisation/deserialisation
-*@author Mitchell Gladstone
-*/
-
+ * Generic wrapper is used for object serialisation/deserialisation.
+ *
+ * @author Mitchell Gladstone
+ */
 public class GenericWrapper<T> {
 
   private List<T> objects;

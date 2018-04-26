@@ -1,5 +1,8 @@
-package sample;
+/**
+ * Main.java
+ */
 
+package sample;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -13,13 +16,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
-* This is the starting point
-* of for the desktop application.
-*
-* @author Dan Aves
-* @version 1.1 (2018-03-15)
-*/
-
+ * This is the starting point
+ * of for the desktop application.
+ *
+ * @author Dan Aves
+ */
 public class Main extends Application {
 
   Stage window;

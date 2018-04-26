@@ -1,5 +1,8 @@
-package sample;
+/**
+ * AlertBox.java
+ */
 
+package sample;
 import javafx.stage.*;
 import javafx.scene.*;
 import javafx.scene.layout.*;
@@ -7,13 +10,21 @@ import javafx.scene.control.*;
 import javafx.geometry.*;
 import java.util.*;
 import javafx.util.Duration;
-
 import javafx.animation.*;
 
+/**
+ * Class for ...
+ *
+ * @author
+ */
 public class AlertBox {
 
-
-  public static void display(String title, String message){
+  /**
+   * [display description]
+   * @param title   [description]
+   * @param message [description]
+   */
+  public static void display(String title, String message) {
 
     Stage window = new Stage();
 
@@ -49,6 +60,5 @@ public class AlertBox {
     PauseTransition delayClose = new PauseTransition(Duration.seconds(6));
     delayClose.setOnFinished( event -> window.close() );
     delayClose.play();
-
   }
 }

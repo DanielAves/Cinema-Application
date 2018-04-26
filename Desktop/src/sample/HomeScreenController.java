@@ -1,5 +1,8 @@
-package sample;
+/**
+ * HomeScreenController.java
+ */
 
+package sample;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -15,14 +18,12 @@ import java.util.Calendar;
 import java.util.logging.Logger;
 
 /**
-*
-* The HomeScreenController is the start of the film booking process.
-* A user is able to select films for todays date or a future date.
-*
-* @author Dan Aves
-* @version 1.2 (2018-04-24)
-*/
-
+ *
+ * The HomeScreenController is the start of the film booking process.
+ * A user is able to select films for todays date or a future date.
+ *
+ * @author Dan Aves
+ */
 public class HomeScreenController {
 
   @FXML
