@@ -26,7 +26,7 @@ import java.time.format.DateTimeFormatter;
 *
 * A robot checks the ticket screen for the correct button action.
 *
-* @author Matthew Cutts & Dan Aves
+* @author Matthew Cutts, Dan Aves
 * @version 1.1 (2018-04-24)
 */
 

@@ -6,7 +6,7 @@ package sample;
 import java.util.Map;
 
 /**
- * Class for ...
+ * Class for providing all information for screen information.
  *
  * @author
  */

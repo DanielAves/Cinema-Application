@@ -6,7 +6,8 @@ package sample;
 import java.time.LocalDate;
 
 /**
- * Class for ...
+ * Class for Customer, populates customer information and provides methods
+ * to retrieve and set customer info.
  *
  * @author Mitchell Gladstone
  */

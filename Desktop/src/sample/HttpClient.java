@@ -12,9 +12,9 @@ import java.io.OutputStream;
 import java.net.URL;
 
 /**
- * Class for ...
+ * Class for establishing connection between api
  *
- * @author
+ * @author Mitchell Gladstone
  */
 public class HttpClient {
 

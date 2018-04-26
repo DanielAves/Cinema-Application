@@ -358,7 +358,6 @@ public class PaymentScreenController {
 
     File file = new File(CARD);
     file.getParentFile().mkdirs();
-    generateQr("Hello");
     //create a document
     Document document = new Document();
     //create an instance for it to be generated
@@ -399,6 +398,11 @@ public class PaymentScreenController {
     document.add(new Paragraph("Thank you for visiting Britains Best Cinema Experience"));
     document.add(new Paragraph("#OspreyCinemaWhereExcitingHappens\n\n"));
     document.add(new Paragraph("Tell us how we did by sending us an email\n with the chance to win £100. \n Eamil: ukoc@OSPREYCinema.com \n"));
+
+    //This populates the Qr code
+    String qrinfo = inputFilmName + " | " + inputDate + " | " + inputTime + " | " + inputScreenNumber + " | " + stringname;
+    generateQr(qrinfo);
+
     Image QR = Image.getInstance("ticket.png");
     QR.setAlignment(Image.MIDDLE);
     //adding the 'QR' to the pdf document
@@ -419,7 +423,6 @@ public class PaymentScreenController {
     file.getParentFile().mkdirs();
     //create a document
     Document document = new Document();
-    generateQr("Hello");
     //create an instance for it to be generated
     PdfWriter.getInstance(document, new FileOutputStream(cashReciept));
     //opeing the document to write to it.
@@ -458,6 +461,10 @@ public class PaymentScreenController {
     document.add(new Paragraph("Thank you for visiting Britains Best Cinema Experience"));
     document.add(new Paragraph("#OspreyCinemaWhereExcitingHappens\n\n"));
     document.add(new Paragraph("Tell us how we did by sending us an email\n with the chance to win £100. \n Eamil: ukoc@OSPREYCinema.com \n"));
+
+    //This populates the Qr code
+    String qrinfo = inputFilmName + " | " + inputDate + " | " + inputTime + " | " + inputScreenNumber + " | " + stringname;
+    generateQr(qrinfo);
     Image QR = Image.getInstance("ticket.png");
     QR.setAlignment(Image.MIDDLE);
     //adding the 'QR' to the pdf document

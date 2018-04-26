@@ -6,7 +6,7 @@ package sample;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
- * Class for ...
+ * Class for providing all ticket information for access in other classes
  *
  * @author Mitchell Gladstone
  */

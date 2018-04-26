@@ -5,7 +5,8 @@
 package sample;
 
 /**
- * Class for ...
+ * Class for storing all infromation regarding films, provides methods to fetch
+ * specific film properties. 
  *
  * @author Dan Aves and Mitchell Gladstone
  */

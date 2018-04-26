@@ -5,7 +5,7 @@
 package sample;
 
 /**
- * Class for ...
+ * Class not used
  *
  * @author
  */
