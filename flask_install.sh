@@ -18,3 +18,5 @@ pip install pyqrcode
 pip install cairosvg
 pip install flask-bcrypt
 pip install flask-restless
+./dbcreate.sh
+./run.sh
