@@ -1,3 +1,7 @@
+/**
+ * PaymentScreenController.java
+ */
+
 package sample;
 import javafx.scene.*;
 import javafx.scene.layout.*;
@@ -43,17 +47,11 @@ import com.google.zxing.WriterException;
 import javax.imageio.ImageIO;
 
 /**
-*
-*
-* The payment screen simulates card and cash payment for the till operator.
-* The total amount payable is passed into the class to be used.
-
-*
-* @author Dan Aves,Matt Cutts
-* @version 1.1 (2018-04-22)
-*/
-
-
+ * The payment screen simulates card and cash payment for the till operator.
+ * The total amount payable is passed into the class to be used.
+ *
+ * @author Dan Aves and Matt Cutts
+ */
 public class PaymentScreenController {
 
   /** Path to the resulting PDF file. */
@@ -131,7 +129,11 @@ public class PaymentScreenController {
   * @param screenID.
   */
   public void setScreenID(int screenID){
-    screenIDLocal = screenID; //Update local version for access in other functions
+    if(screenID < 0) {
+      throw new IllegalArgumentException("ID must NOT be negative.");
+    } else {
+      screenIDLocal = screenID; //Update local version for access in other functions
+    }
   }
 
   /**

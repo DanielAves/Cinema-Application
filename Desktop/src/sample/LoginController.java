@@ -1,5 +1,8 @@
-package sample;
+/**
+ * LoginController.java
+ */
 
+package sample;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,14 +17,11 @@ import java.io.IOException;
 
 
 /**
-*
-*
-* The loginController is the first screen the user sees.
-* The user logs in with their credentials here.
-*
-* @author Dan Aves
-*/
-
+ * The loginController is the first screen the user sees.
+ * The user logs in with their credentials here.
+ *
+ * @author Dan Aves
+ */
 public class LoginController{
 
   @FXML

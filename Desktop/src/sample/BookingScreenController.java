@@ -57,7 +57,12 @@ public class BookingScreenController {
   * @param date.
   */
   public void setDate(LocalDate date){
-    inputDate = date;
+    LocalDate current = LocalDate.now();
+    if(current.isBefore(date)) {
+      throw new IllegalArgumentException("Date must be in the past.");
+    } else {
+      inputDate = date;
+    }
   }
 
   /**
@@ -72,7 +77,8 @@ public class BookingScreenController {
   * Returns passed filmID used for back function
   */
   public void setFilmID(int id){
-    inputFilmID = id;
+
+      inputFilmID = id;
   }
 
   /**
@@ -87,7 +93,11 @@ public class BookingScreenController {
   * @param time.
   */
   public void setTime(String time){
-    inputTime = time;
+    if(time == null || time == "") {
+      throw new IllegalArgumentException("Time must have a value.");
+    } else {
+      inputTime = time;
+    }
   }
 
   /**
@@ -104,7 +114,11 @@ public class BookingScreenController {
   * @param id.
   */
   public void setScreeningID(int id){
-    screeningID = id;
+    if(id < 0) {
+      throw new IllegalArgumentException("ID must NOT be negative.");
+    } else {
+      screeningID = id;
+    }
   }
 
   /**

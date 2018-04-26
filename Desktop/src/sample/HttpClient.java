@@ -1,3 +1,7 @@
+/**
+ * HttpClient.java
+ */
+
 package sample;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -7,6 +11,11 @@ import java.net.MalformedURLException;
 import java.io.OutputStream;
 import java.net.URL;
 
+/**
+ * Class for ...
+ *
+ * @author
+ */
 public class HttpClient {
 
   private String host;
