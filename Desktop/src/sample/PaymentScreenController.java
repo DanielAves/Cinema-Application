@@ -19,9 +19,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 import java.time.LocalDate ;
+import java.util.Hashtable;
 
 import java.io.IOException;
 import java.io.*;
+import java.awt.image.BufferedImage;
 
 import java.io.FileOutputStream;
 import com.itextpdf.text.DocumentException;
@@ -30,6 +32,7 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.*;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.*;
+import com.itextpdf.text.Image;
 
 import com.google.zxing.qrcode.QRCodeWriter;
 import com.google.zxing.BarcodeFormat;
@@ -37,6 +40,7 @@ import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.WriterException;
+import javax.imageio.ImageIO;
 
 /**
 *
@@ -79,6 +83,7 @@ public class PaymentScreenController {
   int items = 1;              //number of tickets sold
   String screen = "Screen 12";    //screen
   int screenTime;                 //time of viewing
+  int seatNum = 12;
 
   //Variables for Pdf
   double grandTotal;    //Used to store transaction total
@@ -300,6 +305,7 @@ public class PaymentScreenController {
 
     File file = new File(CARD);
     file.getParentFile().mkdirs();
+    generateQr("Hello");
     //create a document
     Document document = new Document();
     //create an instance for it to be generated
@@ -323,6 +329,9 @@ public class PaymentScreenController {
     document.add(new Paragraph("Thank you for visiting Britains Best Cinema Experience"));
     document.add(new Paragraph("#OspreyCinemaWhereExcitingHappens\n\n"));
     document.add(new Paragraph("Tell us how we did by sending us an email\n with the chance to win £100. \n Eamil: ukoc@OSPREYCinema.com \n"));
+    Image QR = Image.getInstance("ticket.png");
+    QR.setAlignment(Image.MIDDLE);
+    document.add(QR);
     document.close();
   }
 
@@ -332,6 +341,7 @@ public class PaymentScreenController {
     file.getParentFile().mkdirs();
     //create a document
     Document document = new Document();
+    generateQr("Hello");
     //create an instance for it to be generated
     PdfWriter.getInstance(document, new FileOutputStream(cashReciept));
     document.open();
@@ -352,6 +362,44 @@ public class PaymentScreenController {
     document.add(new Paragraph("Thank you for visiting Britains Best Cinema Experience"));
     document.add(new Paragraph("#OspreyCinemaWhereExcitingHappens\n\n"));
     document.add(new Paragraph("Tell us how we did by sending us an email\n with the chance to win £100. \n Eamil: ukoc@OSPREYCinema.com \n"));
+    Image QR = Image.getInstance("ticket.png");
+    QR.setAlignment(Image.MIDDLE);
+    document.add(QR);
     document.close();
+  }
+
+  private static void generateQr(String text){
+      File file = new File("ticket.png");
+      Hashtable hash = new Hashtable();
+      //works out size of string and creates the error correct level
+      hash.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
+      QRCodeWriter codewriter = new QRCodeWriter();
+      //creates the QR matrix
+      try {
+          BitMatrix matrix = codewriter.encode(text, BarcodeFormat.QR_CODE,500,500,hash);
+          //creates the specific image file
+          BufferedImage code = new BufferedImage(500,500,BufferedImage.TYPE_INT_RGB);
+          code.createGraphics();
+          //Creates the white background
+          Graphics2D colours = (Graphics2D)code.getGraphics();
+          colours.setColor(Color.white);
+          colours.fillRect(0,0,500,500);
+          colours.setColor(Color.BLACK);
+          //creates each pixel of the QR code
+          for(int i = 0 ; i<500;i++){
+              for(int j = 0; j < 500;j++){
+                  if (matrix.get(i,j)){
+                      colours.fillRect(i,j,1,1);
+                  }
+              }
+          }
+          //creates an image with a png file type
+          ImageIO.write(code,"png",file);
+
+      } catch (WriterException e) {
+          e.printStackTrace();
+      } catch (IOException e) {
+          e.printStackTrace();
+      }
   }
 }

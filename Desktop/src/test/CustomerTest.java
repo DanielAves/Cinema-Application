@@ -13,7 +13,7 @@ import java.time.Month;
  * Test class for Customer.java. Used to ensure class is working as
  * intended and appropriate validation has been used.
  *
- * @author Ben Ashby & Qasim Hussain
+ * @author Ben Ashby and Qasim Hussain
  */
 public class CustomerTest {
 
@@ -48,7 +48,6 @@ public class CustomerTest {
 
   /**
    * Test customer_id cannot be set to a negative integer.
-   * @param IllegalArgumentException.class Expected if negative value used.
    */
   @Test(expected = IllegalArgumentException.class)
   public void testNegCustomerID() {
@@ -68,7 +67,6 @@ public class CustomerTest {
 
   /**
    * Test customer_f_name cannot be an empty string.
-   * @param IllegalArgumentException.class Expected if no name is given.
    */
   @Test(expected = IllegalArgumentException.class)
   public void testNoCustomerFName() {
@@ -78,7 +76,6 @@ public class CustomerTest {
 
   /**
    * Test customer_f_name cannot be null.
-   * @param IllegalArgumentException.class Expected if null string is given.
    */
   @Test(expected = IllegalArgumentException.class)
   public void testNullCustomerFName() {
@@ -98,7 +95,6 @@ public class CustomerTest {
 
   /**
    * Test customer_s_name cannot be an empty string.
-   * @param IllegalArgumentException.class Expected if no name is given.
    */
   @Test(expected = IllegalArgumentException.class)
   public void testNoCustomerSName() {
@@ -108,7 +104,6 @@ public class CustomerTest {
 
   /**
    * Test customer_s_name cannot be null.
-   * @param IllegalArgumentException.class Expected if null string is given.
    */
   @Test(expected = IllegalArgumentException.class)
   public void testNullCustomerSName() {
@@ -128,7 +123,6 @@ public class CustomerTest {
 
   /**
    * Test customer_dob cannot be in the future.
-   * @param IllegalArgumentException.class Expected if DOB is future.
    */
   @Test(expected = IllegalArgumentException.class)
   public void testFutureCustomerDob() {
@@ -148,7 +142,6 @@ public class CustomerTest {
 
   /**
    * Test customer_mobile cannot be an empty string.
-   * @param IllegalArgumentException.class Expected if no mobile number given.
    */
   @Test(expected = IllegalArgumentException.class)
   public void testNoCustomerMobile() {
@@ -158,7 +151,6 @@ public class CustomerTest {
 
   /**
    * Test customer_mobile cannot be null.
-   * @param IllegalArgumentException.class Expected if null string is given.
    */
   @Test(expected = IllegalArgumentException.class)
   public void testNullCustomerMobile() {
@@ -178,7 +170,6 @@ public class CustomerTest {
 
   /**
    * Test customer_address cannot be an empty string.
-   * @param IllegalArgumentException.class Expected if no address is given.
    */
   @Test(expected = IllegalArgumentException.class)
   public void testNoCustomerAddress() {
@@ -188,7 +179,6 @@ public class CustomerTest {
 
   /**
    * Test customer_address cannot be null.
-   * @param IllegalArgumentException.class Expected if null string is given.
    */
   @Test(expected = IllegalArgumentException.class)
   public void testNullCustomerAddress() {
@@ -208,7 +198,6 @@ public class CustomerTest {
 
   /**
    * Test customer_postcode cannot be an empty string.
-   * @param IllegalArgumentException.class Expected if no postcode is given.
    */
   @Test(expected = IllegalArgumentException.class)
   public void testNoCustomerPostcode() {
@@ -218,7 +207,6 @@ public class CustomerTest {
 
   /**
    * Test customer_postcode cannot be null.
-   * @param IllegalArgumentException.class Expected if null string is given.
    */
   @Test(expected = IllegalArgumentException.class)
   public void testNullCustomerPostcode() {

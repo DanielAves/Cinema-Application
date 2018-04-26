@@ -46,7 +46,6 @@ public class TicketTest {
 
   /**
    * Test ticket_id cannot be set to a negative integer.
-   * @param IllegalArgumentException.class Expected if negative value used.
    */
   @Test(expected = IllegalArgumentException.class)
   public void testNegTicketID() {
@@ -66,7 +65,6 @@ public class TicketTest {
 
   /**
    * Test customer_id cannot be set to a negative integer.
-   * @param IllegalArgumentException.class Expected if negative value used.
    */
   @Test(expected = IllegalArgumentException.class)
   public void testNegCustomerID() {
@@ -86,7 +84,6 @@ public class TicketTest {
 
   /**
    * Test screening_id cannot be set to a negative integer.
-   * @param IllegalArgumentException.class Expected if negative value used.
    */
   @Test(expected = IllegalArgumentException.class)
   public void testNegScreeningID() {
@@ -106,7 +103,6 @@ public class TicketTest {
 
   /**
    * Test seat_id cannot be set to a negative integer.
-   * @param IllegalArgumentException.class Expected if negative value used.
    */
   @Test(expected = IllegalArgumentException.class)
   public void testNegSeatID() {

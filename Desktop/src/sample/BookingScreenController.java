@@ -147,7 +147,7 @@ public class BookingScreenController {
   }
 
   /**
-  * Calculates the childTotal and displays on screen & and appends grandTotal
+  * Calculates the childTotal and displays on screen and appends grandTotal
   * @param event.
   */
   public void comboBoxChild(ActionEvent event) throws IOException{
@@ -163,7 +163,7 @@ public class BookingScreenController {
   }
 
   /**
-  * Calculates the teenTotal and displays on screen & and appends grandTotal
+  * Calculates the teenTotal and displays on screen and appends grandTotal
   * @param event.
   */
   public void comboBoxTeen(ActionEvent event) throws IOException{
@@ -179,7 +179,7 @@ public class BookingScreenController {
   }
 
   /**
-  * Calculates the Student and displays on screen & and appends grandTotal
+  * Calculates the Student and displays on screen and appends grandTotal
   * @param event.
   */
   public void comboBoxStudent(ActionEvent event) throws IOException {
@@ -195,7 +195,7 @@ public class BookingScreenController {
   }
 
   /**
-  * Calculates the AdultTotal and displays on screen & and appends grandTotal
+  * Calculates the AdultTotal and displays on screen and appends grandTotal
   * @param event.
   */
   public void comboBoxAdult(ActionEvent event) throws IOException{
@@ -211,7 +211,7 @@ public class BookingScreenController {
   }
 
   /**
-  * Calculates the pensionerTotal and displays on screen & and appends grandTotal
+  * Calculates the pensionerTotal and displays on screen and appends grandTotal
   * @param event.
   */
   public void comboBoxPensioner(ActionEvent event) throws IOException{
@@ -227,7 +227,7 @@ public class BookingScreenController {
   }
 
   /**
-  * Calculates the PensionerVipTotal and displays on screen & and appends grandTotal
+  * Calculates the PensionerVipTotal and displays on screen and appends grandTotal
   * @param event.
   */
   public void comboBoxPensionerVip(ActionEvent event) throws IOException{
@@ -243,7 +243,7 @@ public class BookingScreenController {
   }
 
   /**
-  * Calculates the vipTotal and displays on screen & and appends grandTotal
+  * Calculates the vipTotal and displays on screen and appends grandTotal
   * @param event.
   */
   public void comboBoxVip(ActionEvent event) throws IOException{
