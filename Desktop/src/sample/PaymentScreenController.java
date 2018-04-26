@@ -50,7 +50,7 @@ import javax.imageio.ImageIO;
  * The payment screen simulates card and cash payment for the till operator.
  * The total amount payable is passed into the class to be used.
  *
- * @author Dan Aves and Matt Cutts
+ * @author Dan Aves, Matt Cutts and Taranvir Bola
  */
 public class PaymentScreenController {
 
@@ -83,9 +83,6 @@ public class PaymentScreenController {
   String inputTime;     //Time of film
   String inputFilmName; //Specific filmname
   String inputScreenNumber; //Selected screen number for film
-
-
-
 
   /**
   * This method sets the local variable grandTotal to the passed total from
@@ -154,7 +151,11 @@ public class PaymentScreenController {
     inputScreenNumber = screen;
   }
 
-
+  /**
+   * Actions when the back button is pressed
+   * @param  event User Click
+   * @throws IOException If button is pressed incorrectly.
+   */
   public void backButtonClicked(ActionEvent event) throws IOException {
     Parent secondaryroot = FXMLLoader.load(getClass().getResource("resources/homeScreen.fxml"));
     Scene filmScreen = new Scene(secondaryroot);
@@ -164,6 +165,11 @@ public class PaymentScreenController {
 
   }
 
+  /**
+   * Will log you out of the till system
+   * @param  event User click
+   * @throws IOException If incorrectly pressed
+   */
   public void logoutButtonClicked(ActionEvent event) throws IOException{
     Parent secondaryroot = FXMLLoader.load(getClass().getResource("resources/homeScreen.fxml"));
     Scene filmScreen = new Scene(secondaryroot);
@@ -173,6 +179,11 @@ public class PaymentScreenController {
 
   }
 
+  /**
+   * This method of payment is being used.
+   * @param  event User click
+   * @throws Exception  If pressed incorrectly
+   */
   public void cardClicked(ActionEvent event) throws Exception{
     AlertBox.display("Please wait", "Processing payment", "card");
     card.setStyle("-fx-background-color: #4286f4");
@@ -181,6 +192,10 @@ public class PaymentScreenController {
     createCardPDF(cardReciept);
   }
 
+  /**
+   * This will book seats on a website for each seat
+   * @throws Exception If no seats booked.
+   */
   public void bookSeats() throws Exception{
     RestClient client = new RestClient("localhost", 5000);
     // create screening obj for appropriate screening
@@ -199,23 +214,37 @@ public class PaymentScreenController {
 
   }
 
-
+  /**
+   * Will get a list of seats
+   * @return the list of seats
+   */
   public List getSeats(){
-
     return seatsPayment;
   }
 
-
+  /**
+   * Will give you the screen number
+   * @return Screen number
+   */
   public int getScreenID(){
-
     return screenIDLocal;
   }
 
+  /**
+   * It will tell you when the cash button is clicked.
+   * @param  event User Click
+   * @throws Exception If incorrectly pressed
+   */
   public void cashClicked(ActionEvent event) throws Exception{
     cashBol = true;
     cash.setStyle("-fx-background-color: #4286f4");
   }
 
+  /**
+   * It will take in a user cash value
+   * @param  event Staff text input
+   * @throws Exception Enters invalid data
+   */
   public void tenderEntered(ActionEvent event) throws Exception{
     String input = tender.getText();
     if (cashBol == true){
@@ -224,6 +253,11 @@ public class PaymentScreenController {
     }
   }
 
+  /**
+   * Will say that customer gave £5, remove from total
+   * @param  event User click
+   * @throws Exception Button incorrectly pressed
+   */
   public void fiveClicked(ActionEvent event) throws Exception{
     if (cashBol == true){
       grandTotal -=5;
@@ -231,6 +265,11 @@ public class PaymentScreenController {
     }
   }
 
+  /**
+  * Will say that customer gave £10, remove from total
+  * @param  event User click
+  * @throws Exception Button incorrectly pressed
+  */
   public void tenClicked(ActionEvent event) throws Exception{
     if (cashBol == true){
       grandTotal -=10;
@@ -238,6 +277,11 @@ public class PaymentScreenController {
     }
   }
 
+  /**
+  * Will say that customer gave £15, remove from total
+  * @param  event User click
+  * @throws Exception Button incorrectly pressed
+  */
   public void fithteenClicked(ActionEvent event) throws Exception{
     if (cashBol == true){
       grandTotal -=15;
@@ -245,6 +289,11 @@ public class PaymentScreenController {
     }
   }
 
+  /**
+  * Will say that customer gave £20, remove from total
+  * @param  event User click
+  * @throws Exception Button incorrectly pressed
+  */
   public void twentyClicked(ActionEvent event) throws Exception{
     if (cashBol == true){
       grandTotal -=20;
@@ -252,6 +301,11 @@ public class PaymentScreenController {
     }
   }
 
+  /**
+  * Will say that customer gave £30, remove from total
+  * @param  event User click
+  * @throws Exception Button incorrectly pressed
+  */
   public void thirtyClicked(ActionEvent event) throws Exception{
     if (cashBol == true){
       grandTotal -=30;
@@ -259,6 +313,11 @@ public class PaymentScreenController {
     }
   }
 
+  /**
+  * Will say that customer gave £40, remove from total
+  * @param  event User click
+  * @throws Exception Button incorrectly pressed
+  */
   public void fortyClicked(ActionEvent event) throws Exception{
     if (cashBol == true){
       grandTotal -=40;
@@ -266,6 +325,10 @@ public class PaymentScreenController {
     }
   }
 
+  /**
+   * It will book the seats, create a cash pdf and output the change value
+   * @throws Exception If invalid value
+   */
   public void change() throws Exception{
     if (grandTotal < 0){
       grandTotal = Math.abs(grandTotal);
@@ -284,6 +347,12 @@ public class PaymentScreenController {
     }
   }
 
+  /**
+   * Creates the PDF for the card with the QR code
+   * @param  cardReciept is the name of the pdf
+   * @throws DocumentException If the document can't be created.
+   * @throws IOException If it can't write the file.
+   */
   private void createCardPDF(String cardReciept) throws DocumentException, IOException {
 
     File file = new File(CARD);
@@ -337,6 +406,12 @@ public class PaymentScreenController {
     document.close();
   }
 
+  /**
+   * Creates the PDF for the cash with the QR code
+   * @param  cardReciept is the name of the pdf
+   * @throws DocumentException If the document can't be created.
+   * @throws IOException If it can't write the file.
+   */
   private void createCashPDF(String cashReciept) throws DocumentException, IOException {
 
     File file = new File(CASH);
@@ -390,6 +465,10 @@ public class PaymentScreenController {
     document.close();
   }
 
+  /**
+   * Will create a QR code from a piece of text, is called ticket.png
+   * @param String Will be the contents of the readable QR code.
+   */
   private static void generateQr(String text){
       File file = new File("ticket.png");
       Hashtable hash = new Hashtable();
