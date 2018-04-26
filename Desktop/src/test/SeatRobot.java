@@ -81,5 +81,24 @@ public class SeatRobot extends ApplicationTest {
         clickOn("#seat22");
         clickOn("#seat7");
         clickOn("#payButton");
+        verifyThat("#seat22", hasText("Seat is already taken, choose another!"));
+        verifyThat("#seat7", hasText("Seat is already taken, choose another!"));
+    }
+
+    /**
+    * Test to make sure we cant select more seats than was specified..
+    */
+    public void Test1SeatChoice3 () {
+        clickOn("#viewToday");
+        clickOn("#film1");
+        clickOn("#film1");;
+        clickOn("#adult");
+        write("2");
+        clickOn("#selectSeats");
+        clickOn("#seat15");
+        clickOn("#seat16");
+        clickOn("#seat84");
+        clickOn("#payButton");
+        verifyThat("#seat84", hasText("Too many seats selected!"));
     }
 }
