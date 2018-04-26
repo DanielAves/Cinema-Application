@@ -334,11 +334,18 @@ public class BookingScreenController {
   */
   public void initialize() {
     child.getItems().addAll(0,1,2,3,4);
+    child.setEditable(true);
     student.getItems().addAll(0,1,2,3,4);
+    student.setEditable(true);
     adult.getItems().addAll(0,1,2,3,4);
+    adult.setEditable(true);
     vip.getItems().addAll(0,1,2,3,4);
+    vip.setEditable(true);
     vipPensioner.getItems().addAll(0,1,2,3,4);
+    vipPensioner.setEditable(true);
     teen.getItems().addAll(0,1,2,3,4);
+    teen.setEditable(true);
     pensioner.getItems().addAll(0,1,2,3,4);
+    pensioner.setEditable(true);
   }
 }

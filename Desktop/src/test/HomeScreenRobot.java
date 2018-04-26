@@ -26,7 +26,7 @@ import java.time.format.DateTimeFormatter;
 *
 * A robot checks the home screen for correct button action.
 *
-* @author Dan Aves
+* @author Dan Aves & Matthew Cutts
 * @version 1.1 (2018-04-24)
 */
 

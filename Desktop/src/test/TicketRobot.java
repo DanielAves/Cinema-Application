@@ -24,13 +24,13 @@ import java.time.format.DateTimeFormatter;
 
 /**
 *
-* A robot checks the film screen for the correct button action.
+* A robot checks the ticket screen for the correct button action.
 *
-* @author Matthew Cutts & Dan Aves 
+* @author Matthew Cutts & Dan Aves
 * @version 1.1 (2018-04-24)
 */
 
-public class ScreeningRobot extends ApplicationTest {
+public class TicketRobot extends ApplicationTest {
 
     @Override
     public void start (Stage stage) throws Exception {
@@ -52,13 +52,15 @@ public class ScreeningRobot extends ApplicationTest {
     }
 
     /**
-    * Test to see if we can click on the time we want to view the film.
+    * Test to see if we can click on the quantity of tickets that we want to buy.
     */
     @Test
-    public void Test1film1 () {
+    public void Test1Ticket1 () {
         clickOn("#viewToday");
         clickOn("#film1");
         clickOn("#screen1");
-        clickOn("#backButton");
+        clickOn("#adult");
+        write("2");
+        clickOn("#selectSeats");
     }
 }

@@ -27,7 +27,7 @@ import java.time.format.DateTimeFormatter;
 * A robot checks the login screen for invalid login details and correct login details.
 * Tests are passed if all ok.
 *
-* @author Dan Aves
+* @author Dan Aves & Matthew Cutts
 */
 
 public class LoginRobot extends ApplicationTest{

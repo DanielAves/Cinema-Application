@@ -24,13 +24,13 @@ import java.time.format.DateTimeFormatter;
 
 /**
 *
-* A robot checks the film screen for the correct button action.
+* A robot checks the ticket screen for the correct button action.
 *
-* @author Matthew Cutts & Dan Aves 
+* @author Matthew Cutts & Dan Aves
 * @version 1.1 (2018-04-24)
 */
 
-public class ScreeningRobot extends ApplicationTest {
+public class PaymentRobot extends ApplicationTest {
 
     @Override
     public void start (Stage stage) throws Exception {
@@ -52,13 +52,57 @@ public class ScreeningRobot extends ApplicationTest {
     }
 
     /**
-    * Test to see if we can click on the time we want to view the film.
+    * Test to see if we can pay using cash, by pressing the vlaue £40.
     */
     @Test
-    public void Test1film1 () {
+    public void Test1Cash () {
         clickOn("#viewToday");
         clickOn("#film1");
         clickOn("#screen1");
-        clickOn("#backButton");
+        clickOn("#adult");
+        write("2");
+        clickOn("#selectSeats");
+        clickOn("#seat20");
+        clickOn("#seat21");
+        clickOn("#payButton");
+        clickOn("#cash");
+        clickOn("#forty");
+    }
+
+    /**
+    * Test to see if we can pay using Card.
+    */
+    @Test
+    public void Test1Card() {
+        clickOn("#viewToday");
+        clickOn("#film1");
+        clickOn("#screen1");
+        clickOn("#adult");
+        write("2");
+        clickOn("#selectSeats");
+        clickOn("#seat99");
+        clickOn("#seat98");
+        clickOn("#payButton");
+        clickOn("#card");
+    }
+
+    /**
+    * Test to see if we can pay by enetering the amount of cash the customer
+    * has given the staff.
+    */
+    @Test
+    public void Test1EnterTender() {
+        clickOn("#viewToday");
+        clickOn("#film1");
+        clickOn("#screen1");
+        clickOn("#adult");
+        write("2");
+        clickOn("#selectSeats");
+        clickOn("#seat68");
+        clickOn("#seat67");
+        clickOn("#payButton");
+        clickOn("#tender");
+        write("50");
+
     }
 }

@@ -103,7 +103,7 @@
                   <Insets />
                </GridPane.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#payClicked" prefHeight="65.0" prefWidth="146.0" styleClass="Button" text="Pay" GridPane.columnIndex="11" GridPane.rowIndex="11" />
+            <Button fx:id="payButton" mnemonicParsing="false" onAction="#payClicked" prefHeight="65.0" prefWidth="146.0" styleClass="Button" text="Pay" GridPane.columnIndex="11" GridPane.rowIndex="11" />
             <Button fx:id="seat2" mnemonicParsing="false" onAction="#seatSelection" prefHeight="60.0" prefWidth="100.0" styleClass="buttonVIP" stylesheets="@darkTheme.css" text="2" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
             <Button fx:id="seat3" mnemonicParsing="false" onAction="#seatSelection" prefHeight="60.0" prefWidth="100.0" styleClass="buttonVIP" stylesheets="@darkTheme.css" text="3" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
             <Button fx:id="seat4" mnemonicParsing="false" onAction="#seatSelection" prefHeight="60.0" prefWidth="100.0" styleClass="buttonVIP" stylesheets="@darkTheme.css" text="4" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
