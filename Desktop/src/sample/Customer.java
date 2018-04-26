@@ -139,7 +139,12 @@ public class Customer {
 	 * @param customer_dob DOB of customer.
 	 */
 	public void setCustomer_dob(LocalDate customer_dob) {
-		this.customer_dob = customer_dob;
+    LocalDate current = LocalDate.now();
+    if(current.isBefore(customer_dob)) {
+      throw new IllegalArgumentException("Date must be in the past.");
+    } else {
+		  this.customer_dob = customer_dob;
+    }
 	}
 
 	/**

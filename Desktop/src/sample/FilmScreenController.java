@@ -1,6 +1,8 @@
+/**
+ * FilmScreenController.java
+ */
+
 package sample;
-
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,17 +25,12 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 /**
-*
-* Fetches film names for a selected date and
-* outputs the names to the UI for user selection.
-*
-*
-* @author Dan Aves
-*/
-
+ * Fetches film names for a selected date and
+ * outputs the names to the UI for user selection.
+ *
+ * @author Dan Aves
+ */
 public class FilmScreenController{
-
-
 
   @FXML
   public Button film1,film2,film3,film4,film5,film6,film7,film8,film9,film10;
@@ -69,8 +66,6 @@ public class FilmScreenController{
 
     //Fetch all screenings for particular date
     screeningsList = client.getScreeningsByDate(inputDate);
-
-
 
     //Get the film ids and add to a new list
     for (int i = 0 ; i <screeningsList.size(); i++){

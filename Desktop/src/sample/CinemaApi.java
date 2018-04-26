@@ -1,100 +1,89 @@
-package sample;
 /**
-*CinemaApi.java
-*A file that creates an intrerface
-*Declarees all possible api functions
-* @author Mitchell Gladstone
-*/
+ * CinemaApi.java
+ */
+
+package sample;
 import java.util.List;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.time.LocalDate ;
+import java.time.LocalDate;
+
+/**
+ * A file that creates an intrerface.
+ * Declarees all possible api functions.
+ *
+ * @author Mitchell Gladstone
+ */
 public interface CinemaApi {
 
-    /**
-    * Customers methods
-    */
-    public Customer createCustomer();
+  // Customer Methods
 
-    public boolean deleteCustomer(Customer customer);
+  public Customer createCustomer();
 
-    public boolean updateCustomer(Customer customer);
+  public boolean deleteCustomer(Customer customer);
 
-    public List<Customer> getCustomers();
+  public boolean updateCustomer(Customer customer);
 
+  public List<Customer> getCustomers();
 
-    /**
-    * Film methods
-    */
-    public Film createFilm();
+  // Film Methods
 
-    public boolean deleteFilm(Film film);
+  public Film createFilm();
 
-    public boolean updateFilm(Film film);
+  public boolean deleteFilm(Film film);
 
-    /*****/
-    public Film getFilm(int id) throws Exception ;
+  public boolean updateFilm(Film film);
 
-    public List<Film> getFilms() throws Exception;
-    /********/
-    /**
-    * Screen methods
-    */
-    public Screen createScreen();
+  public Film getFilm(int id) throws Exception ;
 
-    public boolean deleteScreen(Screen screen);
+  public List<Film> getFilms() throws Exception;
 
-    public boolean updateScreen(Screen screen);
+  // Screen Methods
 
-    /********/
-    public Screen getScreen(int id) throws Exception ;
+  public Screen createScreen();
 
-    public List<Screen> getScreens() throws Exception;
-    /********/
-    /**
-    * Screenings methods
-    */
-    public Screening createScreening();
+  public boolean deleteScreen(Screen screen);
 
-    public boolean deleteScreening(Screening screening);
+  public boolean updateScreen(Screen screen);
 
-    public boolean updateScreening(Screening screening);
+  public Screen getScreen(int id) throws Exception ;
 
+  public List<Screen> getScreens() throws Exception;
 
-    /********/
+  // Screenings Methods
 
-    public Screening getScreening(int id) throws Exception ;
-    public List<Screening> getScreenings() throws Exception;
-    public List<Screening> getScreeningsByDate(LocalDate date) throws Exception;
+  public Screening createScreening();
 
-    /********/
-    /**
-    * Seat methods
-    */
-    public Seat createSeat();
+  public boolean deleteScreening(Screening screening);
 
-    public boolean deleteSeat(Seat seat);
+  public boolean updateScreening(Screening screening);
 
-    public boolean updateSeat(Seat seat);
+  public Screening getScreening(int id) throws Exception ;
 
-    public Seat getSeat(int id) throws Exception;
+  public List<Screening> getScreenings() throws Exception;
 
-    public List<Seat> getSeats() throws Exception;
+  public List<Screening> getScreeningsByDate(LocalDate date) throws Exception;
 
-    /**
-    * Ticket methods
-    */
-    public Ticket createTicket(Customer customer, Screening screening, Seat seat)  throws Exception;
+  // Seat methods
 
-    public boolean deleteTicket(Ticket ticket);
+  public Seat createSeat();
 
-    public boolean updateTicket(Ticket ticket);
+  public boolean deleteSeat(Seat seat);
 
-      /*****/
+  public boolean updateSeat(Seat seat);
 
-    public Ticket getTicket(int id) throws Exception;
+  public Seat getSeat(int id) throws Exception;
 
-    public List<Ticket> getTickets() throws Exception;
+  public List<Seat> getSeats() throws Exception;
 
-      /*****/
+  // Ticket methods
 
+  public Ticket createTicket(Customer customer, Screening screening, Seat seat)  throws Exception;
+
+  public boolean deleteTicket(Ticket ticket);
+
+  public boolean updateTicket(Ticket ticket);
+
+  public Ticket getTicket(int id) throws Exception;
+
+  public List<Ticket> getTickets() throws Exception;
 }

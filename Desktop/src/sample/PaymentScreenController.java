@@ -1,3 +1,7 @@
+/**
+ * PaymentScreenController.java
+ */
+
 package sample;
 import javafx.scene.*;
 import javafx.scene.layout.*;
@@ -43,17 +47,11 @@ import com.google.zxing.WriterException;
 import javax.imageio.ImageIO;
 
 /**
-*
-*
-* The payment screen simulates card and cash payment for the till operator.
-* The total amount payable is passed into the class to be used.
-
-*
-* @author Dan Aves,Matt Cutts
-* @version 1.1 (2018-04-22)
-*/
-
-
+ * The payment screen simulates card and cash payment for the till operator.
+ * The total amount payable is passed into the class to be used.
+ *
+ * @author Dan Aves and Matt Cutts
+ */
 public class PaymentScreenController {
 
   /** Path to the resulting PDF file. */
@@ -91,8 +89,7 @@ public class PaymentScreenController {
   /**
   * This method sets the local variable grandTotal to the passed total from
   * seatingScreenController.
-  * @param totalNew.
-  * @return Nothing.
+  * @param total.
   */
   public void setTotal(double total){
     grandTotal = total;
@@ -111,7 +108,6 @@ public class PaymentScreenController {
   /**
   * This method updates the local list for the passed seats
   * @param seats.
-  * @return Nothing.
   */
   public void setSeats(List seats)
   {
@@ -122,10 +118,13 @@ public class PaymentScreenController {
   * This method updates the local screenID for the passed ID dependent on
   * previous selections.
   * @param screenID.
-  * @return Nothing.
   */
   public void setScreenID(int screenID){
-    screenIDLocal = screenID; //Update local version for access in other functions
+    if(screenID < 0) {
+      throw new IllegalArgumentException("ID must NOT be negative.");
+    } else {
+      screenIDLocal = screenID; //Update local version for access in other functions
+    }
   }
 
   /**
@@ -147,7 +146,7 @@ public class PaymentScreenController {
 
   /**
   * Returns passed Screen number for the film selected
-  * @param num
+  * @param screen
   */
   public void setScreenNumber(String screen){
     inputScreenNumber = screen;
@@ -173,7 +172,7 @@ public class PaymentScreenController {
   }
 
   public void cardClicked(ActionEvent event) throws Exception{
-    AlertBox.display("Please wait", "Processing payment");
+    AlertBox.display("Please wait", "Processing payment", "card");
     card.setStyle("-fx-background-color: #4286f4");
     totalAmount.setText("Total £ " + ("0.00"));
     bookSeats();

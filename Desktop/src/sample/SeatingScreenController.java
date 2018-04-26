@@ -1,6 +1,6 @@
 /**
- * SeatingScreenController.java
- */
+* SeatingScreenController.java
+*/
 
 package sample;
 
@@ -20,10 +20,10 @@ import javafx.scene.control.Button;
 import java.time.LocalDate ;
 
 /**
- * Class for ...
- *
- * @author Dan Aves
- */
+* Class for ...
+*
+* @author Dan Aves
+*/
 public class SeatingScreenController {
 
   /** Total price of tickets. */
@@ -56,44 +56,49 @@ public class SeatingScreenController {
   String inputFilmName;
   /** ID number of the screening. */
   int screeningID;
+  /** Number of screen which film shows on. */
   String inputScreenNumber;
+  /** Total amount of tickets selected. */
+  int ticketQuantity;
+  /** Tracks amount of tickets selected */
+  int seatSelectionCount;
 
 
   /**
-   * Sets new value of totalNew.
-   * @param grandTotal2 Total price of tickets.
-   */
+  * Sets new value of totalNew.
+  * @param grandTotal2 Total price of tickets.
+  */
   public void setTotal(double grandTotal2){
     totalNew = grandTotal2;
   }
 
   /**
-   * Sets the local variable inputDate to the passed
-   * date from BookingScreenController.
-   * @param date Date of screening.
-   */
+  * Sets the local variable inputDate to the passed
+  * date from BookingScreenController.
+  * @param date Date of screening.
+  */
   public void setDate(LocalDate date){
     inputDate = date;
   }
 
   /**
-   * Sets the local variable screeningID to the passed
-   * screening id from TimeTableController.
-   * @param id ID number of screening.
-   */
+  * Sets the local variable screeningID to the passed
+  * screening id from TimeTableController.
+  * @param id ID number of screening.
+  */
   public void setScreeningID(int id){
     screeningID = id;
   }
 
   /**
-   * Returns passed filmID used for back function.
-   * @param id ID number of film.
-   */
+  * Returns passed filmID used for back function.
+  * @param id ID number of film.
+  */
   public void setFilmID(int id){
     inputFilmID = id;
   }
 
- /**
+  /**
   * Returns passed filmName used for back function
   * @param name Name of film.
   */
@@ -102,26 +107,36 @@ public class SeatingScreenController {
   }
 
   /**
-   * Sets the local variable inputTime to the passed
-   * time from BookingScreenController.
-   * @param time Time of screening.
-   */
+  * Sets the local variable inputTime to the passed
+  * time from BookingScreenController.
+  * @param time Time of screening.
+  */
   public void setTime(String time){
     inputTime = time;
   }
 
   /**
   * Returns passed Screen number for the film selected
-  * @param num
+  * @param screen
   */
   public void setScreenNumber(String screen){
     inputScreenNumber = screen;
   }
+
   /**
-   * Takes user to the payment screen.
-   * @param  event       User clicks.
-   * @throws IOException
-   */
+  * Sets ticket quantity based on selection on previous screen
+  * Used for validation.
+  * @param amount
+  */
+  public void setTicketQuantity(int amount){
+    ticketQuantity = amount;
+
+  }
+  /**
+  * Takes user to the payment screen.
+  * @param  event       User clicks.
+  * @throws IOException
+  */
   public void payClicked(ActionEvent event)throws IOException{
     FXMLLoader Loader = new FXMLLoader();
     Loader.setLocation(getClass().getResource("resources/PaymentScreen.fxml"));
@@ -149,10 +164,10 @@ public class SeatingScreenController {
   }
 
   /**
-   * [populateSeats description]
-   * @param  screeningID [description]
-   * @throws Exception   [description]
-   */
+  * [populateSeats description]
+  * @param  screeningID [description]
+  * @throws Exception   [description]
+  */
   public void populateSeats(int screeningID) throws Exception{
     RestClient client = new RestClient("localhost", 5000);
     inputScreeningID = screeningID;
@@ -173,28 +188,40 @@ public class SeatingScreenController {
   }
 
   /**
-   * [seatSelection description]
-   * @param  event     [description]
-   * @throws Exception [description]
-   */
+  * [seatSelection description]
+  * @param  event     [description]
+  * @throws Exception [description]
+  */
   public void seatSelection(ActionEvent event) throws Exception {
-    //Pass ticket total to here and define array based on the amount of seats to be selected based on tickets
-    String seatText = (((Button)event.getSource()).getText());
-
-    if(seatText.equals("Taken")){
-      System.out.println("Seat is already taken");
+    seatSelectionCount++;
+    if (seatSelectionCount > ticketQuantity){
+      System.out.println("Too many seats selected");
+      AlertBox.display("Error", "Too many seats selected!", "seat");
     }
     else{
-      seats.add(seatText);
-      ((Button)event.getSource()).setText("X");
+
+
+
+      //Pass ticket total to here and define array based on the amount of seats to be selected based on tickets
+      String seatText = (((Button)event.getSource()).getText());
+
+      if(seatText.equals("Taken")){
+        System.out.println("Seat is already taken");
+        AlertBox.display("Error", "Seat is already taken, choose another!", "seat");
+        seatSelectionCount--;
+      }
+      else{
+        seats.add(seatText);
+        ((Button)event.getSource()).setText("X");
+      }
     }
   }
 
   /**
-   * [backButtonClicked description]
-   * @param  event     [description]
-   * @throws Exception [description]
-   */
+  * [backButtonClicked description]
+  * @param  event     [description]
+  * @throws Exception [description]
+  */
   public void backButtonClicked(ActionEvent event) throws Exception {
     FXMLLoader Loader = new FXMLLoader();
     Loader.setLocation(getClass().getResource("resources/bookingScreen.fxml"));
@@ -223,10 +250,10 @@ public class SeatingScreenController {
   }
 
   /**
-   * [refreshScreen description]
-   * @param  event     [description]
-   * @throws Exception [description]
-   */
+  * [refreshScreen description]
+  * @param  event     [description]
+  * @throws Exception [description]
+  */
   public void refreshScreen(ActionEvent event) throws Exception{
     FXMLLoader Loader = new FXMLLoader();
     Loader.setLocation(getClass().getResource("resources/seatingScreen.fxml"));
@@ -245,6 +272,7 @@ public class SeatingScreenController {
     display.setFilmID(inputFilmID);
     display.setFilmName(inputFilmName);
     display.setScreenNumber(inputScreenNumber);
+    display.setTicketQuantity(ticketQuantity);
 
 
     Parent p = Loader.getRoot();
@@ -254,9 +282,9 @@ public class SeatingScreenController {
   }
 
   /**
-   * [takenSeats description]
-   * @param seat [description]
-   */
+  * [takenSeats description]
+  * @param seat [description]
+  */
   public void takenSeats(int seat){
     switch (seat) {
       case 1: seat1.setText("Taken");

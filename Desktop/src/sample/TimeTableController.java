@@ -1,5 +1,8 @@
-package sample;
+/**
+ * TimeTableController.java
+ */
 
+package sample;
 import java.util.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,16 +23,11 @@ import javafx.scene.text.Text;
 import javafx.scene.control.Label;
 
 /**
-*
-*
-* The TimetableController fetches film times for a particular filmID and date and
-* outputs the times to the UI for user selection.
-*
-*
-* @author Dan Aves , Mitchell Gladstone
-* @version 1.4 (2018-04-24)
-*/
-
+ * The TimetableController fetches film times for a particular filmID and date and
+ * outputs the times to the UI for user selection.
+ *
+ * @author Dan Aves and Mitchell Gladstone
+ */
 public class TimeTableController{
 
   //Provide access to buttons and labels within timetableScreen.fxml
