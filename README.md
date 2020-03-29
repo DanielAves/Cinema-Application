@@ -1,4 +1,5 @@
-@Author Taranvir Bola, Matthew Cutts, Daniel Aves, Benjamin Ashby,
+Completed as a group project:
+@Author Daniel Aves, Taranvir Bola, Matthew Cutts, , Benjamin Ashby,
 Mitchell Gladstone and Qasim Hussain
 
 In this repository there are files to run a website, server and a till system.
